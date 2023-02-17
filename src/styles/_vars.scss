@@ -1,0 +1,4 @@
+@use 'sass:color';
+
+$main-color: #104b4d;
+$alt-color: color.scale($main-color, $lightness: 30%);

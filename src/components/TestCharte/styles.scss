@@ -1,0 +1,14 @@
+@use '../../styles/vars';
+
+.divtest {
+  height: 50px;
+  width: 50px;
+}
+
+#un {
+  color: vars.$main-color;
+}
+
+#deux {
+  color: vars.$alt-color;
+}
