@@ -3,6 +3,7 @@ import './styles.scss';
 import Header from '../Header/Header';
 import Intro from '../Intro/Intro';
 import Searchbar from '../Searchbar/Searchbar';
+import ServiceCards from '../ServiceCards/ServiceCards';
 
 function App() {
   return (
@@ -10,10 +11,10 @@ function App() {
       <Header />
       <Intro />
       <Searchbar />
+      <ServiceCards />
       {/*
       Searchbar
       ToggleFontSizeBtn
-      ServiceCard
       LastPostsList
       Footer */}
     </div>

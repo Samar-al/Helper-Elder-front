@@ -1,0 +1,15 @@
+.card {
+    border: 1px, solid, black;
+    width: 25%;
+
+    &_logo {
+        width: 50%;
+    }
+}
+
+.servicecards {
+
+    display: flex;
+    margin: 1.5rem;
+    justify-content: space-around;
+}
