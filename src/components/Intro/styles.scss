@@ -1,0 +1,13 @@
+.intro {
+  margin: 1em;
+  padding: 1em;
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  text-align: left;
+  border-radius: 1em;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+
+  &_title {
+    margin-bottom: 0.5em;
+  }
+}

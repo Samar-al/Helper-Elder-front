@@ -1,0 +1,27 @@
+.searchbar {
+  display: flex;
+
+  &_form {
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
+
+    &_service {
+      position: relative;
+      width: 100px;
+
+      &_select_over {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+      }
+
+      &_options {
+        width: 100%;
+        display: none;
+      }
+    }
+  }
+}
