@@ -2,6 +2,7 @@ import PostsPannel from './PostsPannel';
 import './styles.scss';
 import data from './data'; // data temporaires
 
+// Wrapper contenant les panneaux "dernières annonces"
 export default function LastPosts() {
   return (
     <div className="lastsposts">

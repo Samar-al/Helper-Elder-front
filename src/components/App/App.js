@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Header from '../Header/Header';
 import Searchbar from '../Searchbar/Searchbar';
 import Homepage from '../Homepage/Homepage';
+import Footer from '../Footer/Footer';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       ToggleFontSizeBtn
       LastPostsList
       Footer */}
+      <Footer />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import Post from './Post';
 
+// panneau dernières annonces (offre/demande)
 export default function PostsPannel({ title, posts }) {
   return (
     <div className="lastsposts_pannel">

@@ -1,6 +1,7 @@
 import './styles.scss';
 import PropTypes from 'prop-types';
 
+// une annonce parmis les annonces à afficher en homepage
 export default function Post({
   picture,
   title,
