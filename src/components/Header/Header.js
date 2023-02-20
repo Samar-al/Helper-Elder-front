@@ -27,17 +27,12 @@ export default function Header() {
         >
           Mon profil
         </NavLink>
-      </div>
-
-      <div className="header_button">
         <NavLink
           to="/connexion"
           className="header_button"
         >
           Connexion
         </NavLink>
-      </div>
-      <div className="header_button">
         <NavLink
           to="/inscription"
           className="header_button"

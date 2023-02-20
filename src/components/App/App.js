@@ -1,17 +1,17 @@
 import './styles.scss';
-// import TestCharte from '../TestCharte/testCharte';
+import { Route, Routes } from 'react-router-dom';
 import Header from '../Header/Header';
-import Intro from '../Intro/Intro';
 import Searchbar from '../Searchbar/Searchbar';
-import ServiceCards from '../ServiceCards/ServiceCards';
+import Homepage from '../Homepage/Homepage';
 
 function App() {
   return (
     <div className="app">
       <Header />
-      <Intro />
       <Searchbar />
-      <ServiceCards />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+      </Routes>
       {/*
       Searchbar
       ToggleFontSizeBtn
