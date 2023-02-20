@@ -1,15 +1,26 @@
+@use 'src/styles/_vars';
 .card {
-    border: 1px, solid, black;
-    width: 25%;
+  border: 2px solid  vars.$main-color;
+  border-radius: 10%;
+  width: 120px;
+  margin-bottom: 0.5rem;
 
     &_logo {
-        width: 50%;
+      margin-top: 0.2rem;
+      width: 50%;
+      margin-bottom: 0.2rem;
+    }
+
+    &_title {
+      color:vars.$alt-color
     }
 }
 
 .servicecards {
 
-    display: flex;
-    margin: 1.5rem;
-    justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 1.5rem;
 }
+

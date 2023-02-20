@@ -6,6 +6,8 @@ export default function ServiceCards() {
     <div className="servicecards">
       <Card />
       <Card />
+      <Card />
+      <Card />
     </div>
   );
 }
