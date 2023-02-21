@@ -1,15 +1,15 @@
 @use '../../styles/vars';
 
 .intro {
-  margin: 1em;
-  padding: 1em;
-  width: 50%;
-  background-color: vars.$transparent-background-color;
-  text-align: left;
-  border-radius: 1em;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
 
-  &_title {
-    margin-bottom: 0.5em;
-  }
+.intro img {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+.intro_title, .intro_content {
 }

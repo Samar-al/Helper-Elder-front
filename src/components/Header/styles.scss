@@ -4,10 +4,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #FFF;
+  color: #000;
   width: 100%;
   min-height: 75px;
-  background-color: #00000065;
+  background-color: #FFF;
   padding: 1rem;
 
   &_logo {
@@ -16,6 +16,8 @@
 
   &_nav {
     display: flex;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   &_nav_link {
@@ -33,6 +35,9 @@
 }
 
 @media screen and (max-width:760px) {
+  .header {
+    color: #FFF;
+  }
   .header_nav {
     flex-direction: column;
     justify-content: center;
@@ -70,7 +75,8 @@
   }
 
   .show-nav .header_nav {
-    width: 100vw;
+    width: 100%;
+    height: 100%;
     right: 0;
     visibility: visible;
   }
