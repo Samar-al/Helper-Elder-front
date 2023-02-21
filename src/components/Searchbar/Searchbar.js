@@ -1,6 +1,7 @@
 import './styles.scss';
 import FormControl from '@mui/material/FormControl';
 import {
+  Button,
   Checkbox,
   InputLabel,
   ListItemText,
@@ -29,6 +30,7 @@ export default function Searchbar() {
             </Select>
           </FormControl>
         </div>
+
         <div className="searchbar_form_item">
           <FormControl fullWidth className="searchbar_form_item_service" size="small">
             <InputLabel>Type de service</InputLabel>
@@ -49,12 +51,17 @@ export default function Searchbar() {
             </Select>
           </FormControl>
         </div>
-        à
-        <div className="searchbar_form_item">
-          <TextField label="Code postal" variant="outlined" size="small" />
+
+        <div className="searchbar_form_wrapper">
+          à
+          <div className="searchbar_form_item">
+            <TextField label="Code postal" variant="outlined" size="small" />
+          </div>
         </div>
-        <button type="submit">Rechercher</button>
       </form>
+      <div className="searchbar_button">
+          <Button variant="contained">Rechercher</Button>
+      </div>
     </div>
   );
 }

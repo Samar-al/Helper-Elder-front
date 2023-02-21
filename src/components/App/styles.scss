@@ -24,4 +24,13 @@
   .MuiInputLabel-outlined.Mui-focused {
     color: vars.$main-color;
   }
+
+  .MuiButton-root {
+    background-color: vars.$main-color;
+    text-transform: "none";
+
+    &:hover{
+      background-color: vars.$darker-color;
+    }
+  }
 }

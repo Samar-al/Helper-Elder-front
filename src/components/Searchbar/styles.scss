@@ -4,22 +4,36 @@
   display: flex;
   background-color: vars.$transparent-background-color;
   align-items: center;
-  padding: .5em;
+  justify-content: center;
+  padding: .25em;
+
+  &_label {
+    min-width: 110px;
+  }
+
+  &_button {
+    margin: .25em;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
 
   &_form {
     display: flex;
     flex-wrap: wrap;
-    text-align: left;
-    align-items: center;
+    justify-content: center;
 
     &_item {
       width: 160px;
       color: black;
-      margin: 0 .5em;
+      margin: .25em;
+      display: flex;
+      align-items: center;
+    }
 
-      // &_type, &_service {
-      //   background-color: white;
-      // }
+    &_wrapper {
+      display: flex;
+      align-items: center;
     }
 
     // &_service {
