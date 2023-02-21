@@ -1,3 +1,5 @@
+@use '../../styles/vars';
+
 .app {
   min-height: 100vh;
   margin: 0 auto;
@@ -9,4 +11,27 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+
+  // Custom styles for MUI input and buttons components
+  .MuiInputBase-formControl {
+    background-color: vars.$transparent-background-altcolor;
+  }
+
+  .MuiInputBase-root.Mui-focused fieldset {
+    border-color: vars.$main-color;
+  }
+
+  .MuiInputLabel-outlined.Mui-focused {
+    color: vars.$main-color;
+  }
+
+  .MuiButton-root {
+    background-color: vars.$main-color;
+    text-transform: "none";
+
+    &:hover{
+      background-color: vars.$darker-color;
+    }
+  }
 }
