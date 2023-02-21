@@ -60,6 +60,11 @@
   overflow-x: auto;
   scrollbar-color: vars.$main-color;
   scrollbar-width: thin;
-  justify-content: center;
 
+}
+
+@media screen and (min-width: 800px) {
+  .servicecards {
+    justify-content: center;
+  }
 }
