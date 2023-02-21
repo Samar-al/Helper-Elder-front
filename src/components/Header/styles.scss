@@ -1,16 +1,17 @@
+@use 'src/styles/vars';
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: #FFF;
-  position: fixed;
   width: 100%;
   min-height: 75px;
   background-color: #00000065;
   padding: 1rem;
 
   &_logo {
-    height: 100px;
+    height: 80px;
   }
 
   &_nav {
@@ -93,7 +94,7 @@
     height: 3px;
     position: relative;
     border-radius: 3px;
-    background: #FFF;
+    background: vars.$main-color;
     transition: all .5s ease-in-out;
   }
 
@@ -121,10 +122,12 @@
 
   .show-nav .burger_bar::before {
     transform: rotate(45deg);
+    background: #FFF;
   }
 
   .show-nav .burger_bar::after {
     transform: rotate(-45deg);
+    background: #FFF;
   }
 
   // Animation item burger menu
