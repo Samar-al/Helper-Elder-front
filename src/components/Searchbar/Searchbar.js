@@ -61,7 +61,15 @@ export default function Searchbar() {
         <div className="searchbar_form_wrapper">
           à
           <div className="searchbar_form_item">
-            <TextField label="Code postal" size="small" value={adressInput} onChange={(e) => dispatch(typeAdress(e.target.value))} />
+            <TextField
+              label="Code postal"
+              size="small"
+              value={adressInput}
+              onChange={(e) => {
+                const regex = /^\d{0,5}$/; // <= match un nombre contenant 0 à 5 chiffre ("" passe le test)
+                if (regex.test(e.target.value)) dispatch(typeAdress(e.target.value));
+              }}
+            />
           </div>
         </div>
       </form>
