@@ -44,18 +44,6 @@
       }
 }
 
-.servicecards {
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 1rem;
-  width: auto;
-  
-}
-
-
-
 @keyframes point {
   0% {
    transform: translateX(0);
@@ -63,4 +51,15 @@
   100% {
     transform: translateX(.125em);
   }
+}
+
+.servicecards {
+
+  display: flex;
+  margin: 1rem;
+  overflow-x: auto;
+  scrollbar-color: vars.$main-color;
+  scrollbar-width: thin;
+  justify-content: center;
+
 }

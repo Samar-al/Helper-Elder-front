@@ -8,6 +8,10 @@ export default function ServiceCards() {
       <Card />
       <Card />
       <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
     </div>
   );
 }
