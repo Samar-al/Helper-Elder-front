@@ -1,7 +1,4 @@
 @use 'src/styles/_vars';
-
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap');
-
 .card {
 
   display: flex;
@@ -34,12 +31,10 @@
       padding-bottom: .5em;
       margin: 0 0 0.142857143em;
       border-bottom: 2px solid vars.$main-color;
-      transition: color .45s ease, border .45s ease;
     }
 
     &:hover {
       background: vars.$main-color;
-      transform: scale(1.02);
       
       h1 {
         color: #FFFFFF;
@@ -58,6 +53,8 @@
   width: auto;
   
 }
+
+
 
 @keyframes point {
   0% {
