@@ -6,13 +6,18 @@ import {
   InputLabel,
   ListItemText,
   MenuItem,
-  OutlinedInput,
   Select,
   TextField,
 } from '@mui/material';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { typeAdress } from '../../actions/searchbar';
 import services from './data';
 
 export default function Searchbar() {
+  const { adressInput } = useSelector((state) => state.searchbar);
+  const dispatch = useDispatch();
+
   return (
     <div className="searchbar">
       <div className="searchbar_label">Je cherche une</div>
@@ -22,7 +27,7 @@ export default function Searchbar() {
             <InputLabel>Offre/Demande</InputLabel>
             <Select
               label="Offre/Demande"
-              // value={type} // TODO a faire quand le state sera en place
+              value="" // TODO a faire quand le state sera en place
               // onChange={} // TODO a faire quand le state sera en place
             >
               <MenuItem value="offer">Offre</MenuItem>
@@ -39,7 +44,6 @@ export default function Searchbar() {
               label="Type de service"
               value={[]} // TODO a faire quand le state sera en place
               // onChange={handleChange} // TODO a faire quand le state sera en place
-              // input={<OutlinedInput label="Tag" />} // TODO va falloit comprendre ce truc et si il est nécessaire
               renderValue={(selected) => selected.join(', ')}
             >
               {services.map((service) => (
@@ -52,15 +56,17 @@ export default function Searchbar() {
           </FormControl>
         </div>
 
+        {/* this additional div on top of "searchbar_form_item"
+        is necessary to group the "à" with the input within the flexbox */}
         <div className="searchbar_form_wrapper">
           à
           <div className="searchbar_form_item">
-            <TextField label="Code postal" variant="outlined" size="small" />
+            <TextField label="Code postal" size="small" value={adressInput} onChange={(e) => dispatch(typeAdress(e.target.value))} />
           </div>
         </div>
       </form>
       <div className="searchbar_button">
-          <Button variant="contained">Rechercher</Button>
+        <Button variant="contained">Rechercher</Button>
       </div>
     </div>
   );
