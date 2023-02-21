@@ -1,0 +1,38 @@
+.lastsposts {
+  display: flex;
+  flex-direction: column;
+
+  &_pannel {
+
+    &_title {
+      padding: 15px;
+    }
+
+    &_postslist {
+      padding: 10px;
+      display: flex;
+      border: 1px solid #000;
+
+      &_post {
+
+        &_info img {
+          width: 80px;
+          padding: 5px;   
+        }
+
+        &_info {
+          display: flex;
+        }
+
+        &_content {
+          padding: 5px;
+        }
+      }
+    }
+  }
+}
+
+.lastsposts_pannel_main {
+  border: 1px solid #000;
+  margin: 15px;
+}
