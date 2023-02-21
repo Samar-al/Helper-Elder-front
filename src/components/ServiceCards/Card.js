@@ -1,7 +1,7 @@
 import './styles.scss';
 import PropTypes from 'prop-types';
 
-export default function Card({ name, logo }) {
+export default function Card({ name, logo, date }) {
   return (
           <div className="card">
             <img alt="website logo" className="card_logo" src={logo} />
