@@ -6,11 +6,7 @@
   align-items: center;
   justify-content: center;
   padding: .25em;
-  // text-align: left;
-
-  &_label {
-    // min-width: 110px;
-  }
+  color: vars.$main-color;
 
   &_button {
     margin: .25em;
@@ -36,5 +32,11 @@
       display: flex;
       align-items: center;
     }
+  }
+}
+
+@media (max-width: vars.$medium-breakpoint) {
+  .searchbar {
+    flex-direction: column;
   }
 }
