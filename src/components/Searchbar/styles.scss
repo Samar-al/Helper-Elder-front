@@ -9,7 +9,7 @@
   // text-align: left;
 
   &_label {
-    min-width: 110px;
+    // min-width: 110px;
   }
 
   &_button {
@@ -25,7 +25,7 @@
     justify-content: center;
 
     &_item {
-      width: 160px;
+      width: 10em;
       color: black;
       margin: .25em;
       display: flex;
