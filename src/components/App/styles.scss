@@ -1,13 +1,10 @@
 @use '../../styles/vars';
 
 .app {
+  position: relative;
   min-height: 100vh;
   margin: 0 auto;
   text-align: center;
-  background-color: white;
-  background-image: url("../../assets/img/home_background.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
