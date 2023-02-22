@@ -1,15 +1,18 @@
 @use '../../styles/vars';
 
 .intro {
-  margin: 1em;
+  color: vars.$main-color;
+  margin: auto;
+  margin-top: 1em;
   padding: 1em;
   width: 50%;
-  background-color: vars.$transparent-background-color;
+  min-width: 200px;
+  background-color: vars.$transparent-background-altcolor;
   text-align: left;
-  border-radius: 1em;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 
   &_title {
     margin-bottom: 0.5em;
+    font-weight: bold;
   }
 }

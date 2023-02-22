@@ -4,9 +4,9 @@ import Post from './Post';
 // panneau dernières annonces (offre/demande)
 export default function PostsPannel({ title, posts }) {
   return (
-    <div className="lastsposts_pannel">
-      <div className="lastsposts_pannel_title"><h2>{title}</h2></div>
-      <div className="lastsposts_pannel">
+    <div className="lastposts_pannel">
+      <div className="lastposts_pannel_title"><h2>{title}</h2></div>
+      <div className="lastposts_pannel_postlist">
         {posts.map((post) => <Post key={post.id} {...post} />)}
       </div>
     </div>
