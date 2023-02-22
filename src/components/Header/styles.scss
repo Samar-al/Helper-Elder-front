@@ -4,10 +4,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #FFF;
   width: 100%;
   min-height: 75px;
-  background-color: #00000065;
+  background-color: vars.$transparent-background-color;
   padding: 1rem;
 
   &_logo {

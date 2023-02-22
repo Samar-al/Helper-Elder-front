@@ -1,0 +1,24 @@
+@use '../../styles/vars';
+
+.background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: vars.$background-color;
+  z-index: -1;
+
+  // previous "dirty" method :
+  // background-image: url("../../assets/img/homepage_background.png");
+  // background-size: contain;
+  // background-repeat: no-repeat;
+
+  // @media (min-width: 1228px) {
+  //   background-size: cover;
+  // }
+
+  &_image {
+    width: 100%;
+  }
+}
