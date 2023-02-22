@@ -1,17 +1,16 @@
 import { NavLink } from 'react-router-dom';
 import './styles.scss';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../assets/img/logo/Logo.png';
+import { toggleBurger } from '../../actions/burger';
 
 export default function Header() {
-  const [showLinks, setShowLinks] = useState(false);
+  const { isBurgerOpen } = useSelector((state) => state.burger);
 
-  const handleShowLinks = () => {
-    setShowLinks(!showLinks);
-  };
+  const dispatch = useDispatch();
 
   return (
-    <div className={`header ${showLinks ? 'show-nav' : 'hide-nav'}`}>
+    <div className={`header ${isBurgerOpen ? 'show-nav' : 'hide-nav'}`}>
 
       <img alt="website logo" className="header_logo" src={logo} />
 
@@ -58,7 +57,13 @@ export default function Header() {
         </li>
       </div>
       <button type="button" className="header_burger">
-        <span className="burger_bar" onClick={handleShowLinks} />
+        <span
+          className="burger_bar"
+          onClick={() => {
+            const action = toggleBurger();
+            dispatch(action);
+          }}
+        />
       </button>
     </div>
   );
