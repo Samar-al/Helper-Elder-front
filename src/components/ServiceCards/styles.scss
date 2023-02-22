@@ -9,9 +9,6 @@
   width: 120px;
   align-items: center;
   border-radius: 10%;
-  margin-bottom: 0.5rem;
-  border-radius: .5em;
-  text-decoration: none;
   background: white;
   margin: 1em;
   padding: 2.75em 2.5em;
@@ -29,7 +26,7 @@
       color: #2E3C40;
       line-height: 1;
       padding-bottom: .5em;
-      margin: 0 0 0.142857143em;
+      margin: 0.15em;
       border-bottom: 2px solid vars.$main-color;
     }
 
@@ -37,7 +34,7 @@
       background: vars.$main-color;
       
       h1 {
-        color: #FFFFFF;
+        color: white;
         border-bottom-color: vars.$alt-color;
       }
   
