@@ -7,7 +7,7 @@ export default function Background() {
 
   return (
     <div className="background">
-      {location.pathname === '/' && <img src={background} alt="backgound" className="background_image" />}
+      {location.pathname === '/' && <img src={background} alt="background" className="background_image" />}
     </div>
   );
 }
