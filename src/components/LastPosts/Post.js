@@ -11,16 +11,16 @@ export default function Post({
   content,
 }) {
   return (
-    <div className="lastsposts_pannel_postslist">
-      <div className="lastsposts_pannel_postslist_post">
-        <div className="lastsposts_pannel_postslist_post_info">
-          <img alt={title} src={picture} className="lastsposts_pannel_postslist_post_info_picture" />
-          <h3 className="lastsposts_pannel_postslist_post_info_title">{title}</h3>
-          <p className="lastsposts_pannel_postslist_post_info_city">{zipcode} - {city}</p>
-          <p className="lastsposts_pannel_postslist_post_info_date">{date}</p>
+    <div className="lastposts_pannel_postlist_post">
+      <div className="lastposts_pannel_postlist_post_header">
+        <img alt={title} src={picture} className="lastposts_pannel_postlist_post_header_picture" />
+        <div className="lastposts_pannel_postlist_post_header_info">
+          <h3 className="lastposts_pannel_postlist_post_header_info_title">{title}</h3>
+          <p className="lastposts_pannel_postlist_post_header_info_city">{zipcode} - {city}</p>
+          <p className="lastposts_pannel_postlist_post_header_info_date">{date}</p>
         </div>
-        <p className="lastsposts_pannel_postslist_post_content">{content}</p>
       </div>
+      <p className="lastposts_pannel_postlist_post_content">{content}</p>
     </div>
   );
 }
