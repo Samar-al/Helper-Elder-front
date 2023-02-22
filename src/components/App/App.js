@@ -5,6 +5,7 @@ import Searchbar from '../Searchbar/Searchbar';
 import Homepage from '../Homepage/Homepage';
 import Footer from '../Footer/Footer';
 import Background from '../Background/Background';
+import Connexion from '../Connexion/Connexion';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Searchbar />
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/connexion" element={<Connexion />} />
         </Routes>
         {/*
         Searchbar
