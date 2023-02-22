@@ -11,11 +11,11 @@ import {
 } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { typeAdress } from '../../actions/searchbar';
+import { selectPostType, selectServices, typeAdress } from '../../actions/searchbar';
 import services from './data';
 
 export default function Searchbar() {
-  const { adressInput } = useSelector((state) => state.searchbar);
+  const { adressInput, selectedServices, postType } = useSelector((state) => state.searchbar);
   const dispatch = useDispatch();
 
   return (
@@ -27,8 +27,8 @@ export default function Searchbar() {
             <InputLabel>Offre/Demande</InputLabel>
             <Select
               label="Offre/Demande"
-              value="" // TODO a faire quand le state sera en place
-              // onChange={} // TODO a faire quand le state sera en place
+              value={postType}
+              onChange={(e) => dispatch(selectPostType(e.target.value))}
             >
               <MenuItem value="offer">Offre</MenuItem>
               <MenuItem value="request">Demande</MenuItem>
@@ -42,13 +42,13 @@ export default function Searchbar() {
             <Select
               multiple
               label="Type de service"
-              value={[]} // TODO a faire quand le state sera en place
-              // onChange={handleChange} // TODO a faire quand le state sera en place
+              value={selectedServices}
+              onChange={(e) => dispatch(selectServices(e.target.value))}
               renderValue={(selected) => selected.join(', ')}
             >
               {services.map((service) => (
                 <MenuItem key={service} value={service}>
-                  <Checkbox />
+                  <Checkbox checked={selectedServices.includes(service)} />
                   <ListItemText primary={service} />
                 </MenuItem>
               ))}
