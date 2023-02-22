@@ -1,4 +1,8 @@
 import './styles.scss';
+import {
+  Button,
+  TextField,
+} from '@mui/material';
 
 export default function Connexion() {
   return (
@@ -32,3 +36,9 @@ export default function Connexion() {
 }
 
 
+{/* <div className="connexion_form_item">
+<FormControl fullWidth className="connexion_form_item_type" size="small">
+<TextField label="E-mail" size="small" value={emailInput} onChange={(e) => dispatch(typeEmail(e.target.value))} />
+<TextField label="Mot de passe" size="small" value={passwordInput} onChange={(e) => dispatch(typePassword(e.target.value))} />
+</FormControl>
+</div> */}
