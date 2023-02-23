@@ -38,7 +38,7 @@ export default function CreatePostForm() {
           <TextField className="form_input_zipcode" label="Code postal" variant="outlined" />
         </div>
         <div className="form_input">
-          <TextField className="form_input_content" multiline="true" label="Contenu de l'annonce" variant="outlined" />
+          <TextField rows={10} className="form_input_content" multiline="true" label="Contenu de l'annonce" variant="outlined" />
         </div>
         <FormGroup>
           <h2 className="form_content_title">Services attendus ou proposés</h2>
