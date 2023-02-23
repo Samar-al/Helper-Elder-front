@@ -9,8 +9,7 @@ import {
 } from '@mui/material';
 
 export default function Connexion() {
-  const { emailInput } = useSelector((state) => state.connexion);
-  const { passwordInput } = useSelector((state) => state.connexion);
+  const { emailInput, passwordInput } = useSelector((state) => state.connexion);
   const dispatch = useDispatch();
 
   const handleSubmit = (evt) => {
