@@ -1,0 +1,42 @@
+@use '../../styles/vars';
+
+.connexion {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1rem;
+
+  &_title {
+
+    text-align: center;
+    font-weight: bold;
+    margin: 1rem;
+    color: vars.$main-color;
+    font-size: x-large;
+  }
+
+  &_form {
+    display: flex;
+    align-content: space-around;
+    flex-direction: column;
+    margin: 1rem;
+
+  }
+
+  &_form_item {
+    margin: 0.5rem;
+    padding: 0.5rem;
+  
+  }
+
+  &_login_button {
+    margin: 0.5rem;
+    cursor: pointer;
+    padding: 0.8rem;
+
+  }
+
+}
+

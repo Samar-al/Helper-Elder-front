@@ -5,6 +5,7 @@ import Searchbar from '../Searchbar/Searchbar';
 import Homepage from '../Homepage/Homepage';
 import Footer from '../Footer/Footer';
 import Background from '../Background/Background';
+import Connexion from '../Connexion/Connexion';
 import CreatePostForm from '../CreatePostForm/CreatePostForm';
 
 function App() {
