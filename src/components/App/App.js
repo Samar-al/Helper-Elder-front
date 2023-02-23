@@ -11,11 +11,13 @@ function App() {
     <div className="app">
       <Background />
       <div className="wrapper">
-        <Header />
-        <Searchbar />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-        </Routes>
+        <div>
+          <Header />
+          <Searchbar />
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+          </Routes>
+        </div>
         <Footer />
       </div>
     </div>
