@@ -1,18 +1,20 @@
 import axios from 'axios';
-import { LOAD_LAST_POSTS } from '../actions/homepage';
+import { getLastPosts, LOAD_LAST_POSTS } from '../actions/homepage';
 
 const homepageMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOAD_LAST_POSTS:
+      console.log('loading posts');
       axios.get(
-        'https://127.0.0.1:8000/api/accueil-aidant',
+        'https://localhost:8000/api',
       )
         .then((response) => {
           if (response.status !== 200) {
-            console.log('last posts loading failed');
+            console.log('last offers loading failed');
           }
           else {
             console.log(response);
+            store.dispatch(getLastPosts(response.data.lastOffers, response.data.lastRequests));
           }
         })
         .catch((error) => {

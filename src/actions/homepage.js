@@ -7,7 +7,8 @@ export const loadLastPosts = () => ({
   type: LOAD_LAST_POSTS,
 });
 
-export const getLastPosts = (data) => ({
+export const getLastPosts = (offers, requests) => ({
   type: GET_LAST_POSTS,
-  data,
+  offers: offers,
+  requests: requests,
 });

@@ -10,8 +10,8 @@ const reducer = (state = initialState, action = {}) => {
     case GET_LAST_POSTS:
       return {
         ...state,
-        lastOffers: action.data,
-        lastRequests: action.data,
+        lastOffers: action.offers,
+        lastRequests: action.requests,
       };
     default:
       return state;
