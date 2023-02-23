@@ -5,6 +5,7 @@ import Searchbar from '../Searchbar/Searchbar';
 import Homepage from '../Homepage/Homepage';
 import Footer from '../Footer/Footer';
 import Background from '../Background/Background';
+import CreatePostForm from '../CreatePostForm/CreatePostForm';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Searchbar />
           <Routes>
             <Route path="/" element={<Homepage />} />
+            <Route path="/poster-une-annonce" element={<CreatePostForm />} />
           </Routes>
         </div>
         <Footer />
