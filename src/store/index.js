@@ -6,8 +6,6 @@ import { composeWithDevTools } from '@redux-devtools/extension';
 
 const store = createStore(
   reducer,
-
-  // Nouveau enhancer : redux devtools + middlewares
   composeWithDevTools(applyMiddleware(/* éventuellement d'autres middlewares */)),
 );
 
