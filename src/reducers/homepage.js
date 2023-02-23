@@ -1,20 +1,16 @@
-import { LOAD_LAST_OFFERS, LOAD_LAST_REQUESTS } from '../actions/homepage';
+import { GET_LAST_POSTS } from '../actions/homepage';
 
 const initialState = {
   lastOffers: [],
   lastRequests: [],
 };
 
-const homepage = (state = initialState, action = {}) => {
+const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case LOAD_LAST_OFFERS:
+    case GET_LAST_POSTS:
       return {
         ...state,
         lastOffers: action.data,
-      };
-    case LOAD_LAST_REQUESTS:
-      return {
-        ...state,
         lastRequests: action.data,
       };
     default:
@@ -22,4 +18,4 @@ const homepage = (state = initialState, action = {}) => {
   }
 };
 
-export default homepage;
+export default reducer;

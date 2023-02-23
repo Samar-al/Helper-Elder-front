@@ -1,14 +1,13 @@
 // Action type
-export const LOAD_LAST_OFFERS = 'LOAD_LAST_OFFERS';
-export const LOAD_LAST_REQUESTS = 'LOAD_LAST_REQUESTS';
+export const LOAD_LAST_POSTS = 'LOAD_LAST_POSTS';
+export const GET_LAST_POSTS = 'GET_LAST_POSTS';
 
 // Action creator
-export const loadLastOffers = (data) => ({
-  type: LOAD_LAST_OFFERS,
-  data: data,
+export const loadLastPosts = () => ({
+  type: LOAD_LAST_POSTS,
 });
 
-export const loadLastRequests = (data) => ({
-  type: LOAD_LAST_REQUESTS,
-  data: data,
+export const getLastPosts = (data) => ({
+  type: GET_LAST_POSTS,
+  data,
 });
