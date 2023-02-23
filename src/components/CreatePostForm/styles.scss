@@ -1,0 +1,49 @@
+.create_post {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  background: white;
+
+  &_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &_title {
+      font-size: 1.4em;
+    }
+  }
+}
+
+.form_radio {
+  margin: 0.7em;
+}
+
+.form_input {
+  display: flex;
+  margin-bottom: 15px;
+
+  &_title {
+    width: 85%;
+  }
+
+  &_zipcode {
+    width: 30%;
+  }
+
+  &_content {
+    width: 100%;
+    min-height: 50px;
+  }
+}
+
+.form_content_title {
+  margin-top: 0.7em;
+  margin-bottom: 0.7em;
+  display: flex;
+}
+
+.create_button {
+  margin-top: 0.7em;
+  margin-bottom: 0.7em;
+}
