@@ -3,11 +3,11 @@ import './styles.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../assets/img/logo/Logo.png';
 import { toggleBurger } from '../../actions/burger';
-import { handleLogin, handleLogout } from '../../actions/authentication';
+import { handleLogout } from '../../actions/authentication';
 
 export default function Header() {
   const { isBurgerOpen } = useSelector((state) => state.burger);
-  const isLogged = useSelector((state) => state.authentication.isLogged)
+  const {isLogged} = useSelector((state) => state.authentication);
 
   const dispatch = useDispatch();
 
