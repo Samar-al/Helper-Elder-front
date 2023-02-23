@@ -9,18 +9,20 @@ import Background from '../Background/Background';
 function App() {
   return (
     <div className="app">
-      <Background />
+      {/* <Background /> */}
       <div className="wrapper">
-        <Header />
-        <Searchbar />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-        </Routes>
-        {/*
-        Searchbar
-        ToggleFontSizeBtn
-        LastPostsList
-        Footer */}
+          <div>
+            <Header />
+            <Searchbar />
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+            </Routes>
+            {/*
+            Searchbar
+            ToggleFontSizeBtn
+            LastPostsList
+            Footer */}
+          </div>
         <Footer />
       </div>
     </div>
