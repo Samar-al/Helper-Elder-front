@@ -16,11 +16,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
         </Routes>
-        {/*
-        Searchbar
-        ToggleFontSizeBtn
-        LastPostsList
-        Footer */}
         <Footer />
       </div>
     </div>
