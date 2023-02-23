@@ -11,11 +11,12 @@ import {
 } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { typeAdress } from '../../actions/searchbar';
+import { selectPostType, selectServices, typeAdress } from '../../actions/searchbar';
 import services from './data';
+import { zipcodeRegex } from '../../utils/regex';
 
 export default function Searchbar() {
-  const { adressInput } = useSelector((state) => state.searchbar);
+  const { adressInput, selectedServices, postType } = useSelector((state) => state.searchbar);
   const dispatch = useDispatch();
 
   return (
@@ -27,8 +28,8 @@ export default function Searchbar() {
             <InputLabel>Offre/Demande</InputLabel>
             <Select
               label="Offre/Demande"
-              value="" // TODO a faire quand le state sera en place
-              // onChange={} // TODO a faire quand le state sera en place
+              value={postType}
+              onChange={(e) => dispatch(selectPostType(e.target.value))}
             >
               <MenuItem value="offer">Offre</MenuItem>
               <MenuItem value="request">Demande</MenuItem>
@@ -42,13 +43,13 @@ export default function Searchbar() {
             <Select
               multiple
               label="Type de service"
-              value={[]} // TODO a faire quand le state sera en place
-              // onChange={handleChange} // TODO a faire quand le state sera en place
+              value={selectedServices}
+              onChange={(e) => dispatch(selectServices(e.target.value))}
               renderValue={(selected) => selected.join(', ')}
             >
               {services.map((service) => (
                 <MenuItem key={service} value={service}>
-                  <Checkbox />
+                  <Checkbox checked={selectedServices.includes(service)} />
                   <ListItemText primary={service} />
                 </MenuItem>
               ))}
@@ -61,7 +62,15 @@ export default function Searchbar() {
         <div className="searchbar_form_wrapper">
           à
           <div className="searchbar_form_item">
-            <TextField label="Code postal" size="small" value={adressInput} onChange={(e) => dispatch(typeAdress(e.target.value))} />
+            <TextField
+              label="Code postal"
+              size="small"
+              value={adressInput}
+              onChange={(e) => {
+                // match un nombre contenant 0 à 5 chiffres ("" passe le test)
+                if (zipcodeRegex.test(e.target.value)) dispatch(typeAdress(e.target.value));
+              }}
+            />
           </div>
         </div>
       </form>

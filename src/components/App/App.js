@@ -9,7 +9,7 @@ import Background from '../Background/Background';
 function App() {
   return (
     <div className="app">
-      {/* <Background /> */}
+      <Background />
       <div className="wrapper">
           <div>
             <Header />
