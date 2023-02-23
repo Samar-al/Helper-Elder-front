@@ -13,8 +13,7 @@ const homepageMiddleware = (store) => (next) => (action) => {
             console.log('last offers loading failed');
           }
           else {
-            console.log(response);
-            store.dispatch(getLastPosts(response.data.lastOffers, response.data.lastRequests));
+            store.dispatch(getLastPosts(response.data.postsHelper, response.data.postsElder));
           }
         })
         .catch((error) => {
