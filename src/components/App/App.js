@@ -12,17 +12,13 @@ function App() {
     <div className="app">
       <Background />
       <div className="wrapper">
-        <Header />
-        <Searchbar />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/connexion" element={<Connexion />} />
-        </Routes>
-        {/*
-        Searchbar
-        ToggleFontSizeBtn
-        LastPostsList
-        Footer */}
+        <div>
+          <Header />
+          <Searchbar />
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+          </Routes>
+        </div>
         <Footer />
       </div>
     </div>
