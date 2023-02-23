@@ -4,7 +4,7 @@ const initialState = {
   isBurgerOpen: false,
 };
 
-const burger = (state = initialState, action = {}) => {
+const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case TOGGLE_BURGER:
       return {
@@ -16,4 +16,4 @@ const burger = (state = initialState, action = {}) => {
   }
 };
 
-export default burger;
+export default reducer;
