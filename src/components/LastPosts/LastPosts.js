@@ -1,13 +1,15 @@
+import { useSelector } from 'react-redux';
 import PostsPannel from './PostsPannel';
 import './styles.scss';
-import data from './data'; // data temporaires
 
 // Wrapper contenant les panneaux "dernières annonces"
 export default function LastPosts() {
+  const { lastOffers, lastRequests } = useSelector((state) => state.homepage);
+
   return (
     <div className="lastposts">
-      <PostsPannel title="Les dernières offres" posts={data} />
-      <PostsPannel title="Les dernières demandes" posts={data} />
+      <PostsPannel title="Les dernières offres" posts={lastOffers} />
+      <PostsPannel title="Les dernières demandes" posts={lastRequests} />
     </div>
   );
 }

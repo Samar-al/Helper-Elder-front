@@ -17,7 +17,7 @@ PostsPannel.propTypes = {
   title: PropTypes.string.isRequired,
   posts: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    picture: PropTypes.string.isRequired, // à modifier lorsqu'on saura comment récupérer l'avatar
+    picture: PropTypes.string, // à modifier lorsqu'on saura comment récupérer l'avatar
     title: PropTypes.string.isRequired,
     zipcode: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
