@@ -3,11 +3,17 @@ import './styles.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../assets/img/logo/Logo.png';
 import { toggleBurger } from '../../actions/burger';
+import { handleLogin, handleLogout } from '../../actions/authentication';
 
 export default function Header() {
   const { isBurgerOpen } = useSelector((state) => state.burger);
+  const isLogged = useSelector((state) => state.authentication.isLogged)
 
   const dispatch = useDispatch();
+
+  const handleSubmitLogout = () => {
+    dispatch(handleLogout());
+  };
 
   return (
     <div className={`header ${isBurgerOpen ? 'show-nav' : 'hide-nav'}`}>
@@ -31,30 +37,48 @@ export default function Header() {
             Poster une annonce
           </NavLink>
         </li>
-        <li className="header_nav_item slideInDown-3">
-          <NavLink
-            to="/mon-profil"
-            className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
-          >
-            Mon profil
-          </NavLink>
-        </li>
-        <li className="header_nav_item slideInDown-4">
-          <NavLink
-            to="/connexion"
-            className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
-          >
-            Connexion
-          </NavLink>
-        </li>
-        <li className="header_nav_item slideInDown-5">
-          <NavLink
-            to="/inscription"
-            className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
-          >
-            Inscription
-          </NavLink>
-        </li>
+        {!isLogged && (
+          <>
+            <li className="header_nav_item slideInDown-4">
+              <NavLink
+                to="/connexion"
+                className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
+              >
+                Connexion
+              </NavLink>
+            </li>
+
+            <li className="header_nav_item slideInDown-5">
+              <NavLink
+                to="/inscription"
+                className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
+              >
+                Inscription
+              </NavLink>
+            </li>
+        </>
+        )}
+        {isLogged && (
+          <>
+            <li className="header_nav_item slideInDown-3">
+              <NavLink
+                to="/mon-profil"
+                className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
+              >
+                Mon profil
+              </NavLink>
+            </li>
+            <li className="header_nav_item slideInDown-4">
+              <NavLink
+                onClick={handleSubmitLogout}
+                to="/"
+                className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
+              >
+                Déconnexion
+              </NavLink>
+            </li>
+          </>
+        )}
       </div>
       <button type="button" className="header_burger">
         <span

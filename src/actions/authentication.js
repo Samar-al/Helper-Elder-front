@@ -12,7 +12,7 @@ export const handleLogout = () => ({
   type: HANDLE_LOGOUT,
 });
 
-export const saveSuccessfulAuth = (loggedMessage) => ({
+export const saveSuccessfulAuth = () => ({
   type: SAVE_SUCCESSFUL_AUTH,
-  loggedMessage: loggedMessage,
+
 });
