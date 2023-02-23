@@ -61,7 +61,10 @@ export default function CreatePostForm() {
             className="form_input_zipcode"
             label="Code postal"
             value={zipcodeInput}
-            onChange={(event) => dispatch(typeZipcode(event.target.value))}
+            onChange={(event) => {
+              const regex = /^\d{0,5}$/; // <= match un nombre contenant 0 à 5 chiffre ("" passe le test)
+              if (regex.test(event.target.value)) dispatch(typeZipcode(event.target.value));
+            }} // TODO A changer avec variable dans utils
           />
         </div>
         <div className="form_input">
@@ -91,7 +94,7 @@ export default function CreatePostForm() {
         </FormGroup>
         <div className="form_input">
           <TextField
-            label="Tarif"
+            label="Tarif en €"
             value={rateInput}
             onChange={(event) => dispatch(typeRate(event.target.value))}
           />
