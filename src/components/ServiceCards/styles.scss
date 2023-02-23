@@ -60,7 +60,7 @@
 
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: vars.$medium-breakpoint) {
   .servicecards {
     justify-content: center;
   }
