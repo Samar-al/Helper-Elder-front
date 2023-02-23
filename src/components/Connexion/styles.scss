@@ -25,24 +25,19 @@
 
   }
 
-  &_input_password, &_input_email {
+  &_form_item {
     margin: 0.5rem;
     text-align: center;
-    border-radius: 5px;
-    padding: 0.8rem;
-    border-color: vars.$alt-color;
+    padding: 0.5rem;
+    color:red;
   
   }
 
   &_button {
     margin: 0.5rem;
-    text-align: center;
-    border: none;
-    border-radius: 7px;
     cursor: pointer;
-    color: white;
-    background-color: vars.$main-color;
     padding: 0.8rem;
+
   }
 
 }
