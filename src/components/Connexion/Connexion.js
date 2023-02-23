@@ -17,6 +17,7 @@ export default function Connexion() {
     dispatch(handleLogin());
   };
 
+
   return (
     <div className="connexion">
         <div className="connexion_title"> Connexion </div>
@@ -47,5 +48,6 @@ export default function Connexion() {
           </form>
       </div>
   )
+
 };
 
