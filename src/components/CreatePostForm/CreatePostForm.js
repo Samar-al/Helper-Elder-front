@@ -9,9 +9,20 @@ import {
   Switch,
   TextField,
 } from '@mui/material';
+
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  typeContent, typeRate, typeTitle, typeZipcode,
+} from '../../actions/createpostform';
 import './styles.scss';
 
 export default function CreatePostForm() {
+  const {
+    titleInput, zipcodeInput, contentInput, rateInput,
+  } = useSelector((state) => state.createpostform);
+
+  const dispatch = useDispatch();
+
   return (
     <div className="create_post">
       <div className="create_post_header">
@@ -20,13 +31,18 @@ export default function CreatePostForm() {
       </div>
       <Box component="form">
         <div className="form_radio">
-          <RadioGroup row name="radio_button_group">
+          <RadioGroup name="radio_button_group">
             <FormControlLabel value="ponctual" control={<Radio />} label="Je suis un Elder (je cherche de l'aide)" />
             <FormControlLabel value="regular" control={<Radio />} label="Je suis un Helper (je propose de l'aide)" />
           </RadioGroup>
         </div>
         <div className="form_input">
-          <TextField className="form_input_title" label="Titre de l'annonce" variant="outlined" />
+          <TextField
+            className="form_input_title"
+            label="Titre de l'annonce"
+            value={titleInput}
+            onChange={(event) => dispatch(typeTitle(event.target.value))}
+          />
         </div>
         <div className="form_radio">
           <RadioGroup row name="radio_button_group">
@@ -35,10 +51,22 @@ export default function CreatePostForm() {
           </RadioGroup>
         </div>
         <div className="form_input">
-          <TextField className="form_input_zipcode" label="Code postal" variant="outlined" />
+          <TextField
+            className="form_input_zipcode"
+            label="Code postal"
+            value={zipcodeInput}
+            onChange={(event) => dispatch(typeZipcode(event.target.value))}
+          />
         </div>
         <div className="form_input">
-          <TextField rows={10} className="form_input_content" multiline="true" label="Contenu de l'annonce" variant="outlined" />
+          <TextField
+            rows={10}
+            className="form_input_content"
+            multiline="true"
+            label="Contenu de l'annonce"
+            value={contentInput}
+            onChange={(event) => dispatch(typeContent(event.target.value))}
+          />
         </div>
         <FormGroup>
           <h2 className="form_content_title">Services attendus ou proposés</h2>
@@ -52,7 +80,11 @@ export default function CreatePostForm() {
           <FormControlLabel control={<Checkbox />} label="Aide au bain/ Habillage (qualification requise)" />
         </FormGroup>
         <div className="form_input">
-          <TextField label="Tarif" variant="outlined" />
+          <TextField
+            label="Tarif"
+            value={rateInput}
+            onChange={(event) => dispatch(typeRate(event.target.value))}
+          />
         </div>
       </Box>
       <div className="create_button">
