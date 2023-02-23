@@ -2,10 +2,15 @@ import {
   Box,
   Button,
   Checkbox,
+  FormControl,
   FormControlLabel,
   FormGroup,
+  InputLabel,
+  ListItemText,
+  MenuItem,
   Radio,
   RadioGroup,
+  Select,
   Switch,
   TextField,
 } from '@mui/material';
@@ -15,6 +20,7 @@ import {
   typeContent, typeRate, typeTitle, typeZipcode, selectRadio, selectService, selectTypeUser,
 } from '../../actions/createpostform';
 import './styles.scss';
+import services from './data';
 
 export default function CreatePostForm() {
   const {
@@ -77,21 +83,26 @@ export default function CreatePostForm() {
             onChange={(event) => dispatch(typeContent(event.target.value))}
           />
         </div>
-        <FormGroup
-          value={selectedService}
-          onChange={(event) => dispatch(selectService(event.target.value))}
-          renderValue={(selected) => selected.join(', ')} // TODO Les ajouter les uns à la suite des autres
-        >
-          <h2 className="form_content_title">Services attendus ou proposés</h2>
-          <FormControlLabel control={<Checkbox />} label="Chauffeur" value="chauffeur" />
-          <FormControlLabel control={<Checkbox />} label="Courses" value="courses" />
-          <FormControlLabel control={<Checkbox />} label="Ménage" value="ménage" />
-          <FormControlLabel control={<Checkbox />} label="Compagnie" value="compagnie" />
-          <FormControlLabel control={<Checkbox />} label="Toilette" value="toilette" />
-          <FormControlLabel control={<Checkbox />} label="Cuisine" value="cuisine" />
-          <FormControlLabel control={<Checkbox />} label="Soins médicaux (qualification requise)" value="soins médicaux" />
-          <FormControlLabel control={<Checkbox />} label="Aide au bain/ Habillage (qualification requise)" value="aide au bain" />
-        </FormGroup>
+        <div className="form_input">
+          <FormControl fullWidth className="searchbar_form_item_service" size="small">
+            <InputLabel>Type de service</InputLabel>
+            <Select
+              multiple
+              rows={2}
+              label="Type de service"
+              value={selectedService}
+              onChange={(e) => dispatch(selectService(e.target.value))}
+              renderValue={(selected) => selected.join(', ')}
+            >
+              {services.map((service) => (
+                <MenuItem key={service} value={service}>
+                  <Checkbox checked={selectedService.includes(service)} />
+                  <ListItemText primary={service} />
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
         <div className="form_input">
           <TextField
             label="Tarif en €"
