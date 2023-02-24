@@ -7,9 +7,22 @@ import {
 } from '@mui/material';
 import { typeEmail, typePassword } from '../../actions/connexion';
 import { handleLogin } from '../../actions/authentication';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export default function Connexion() {
   const { emailInput, passwordInput } = useSelector((state) => state.connexion);
+  const {isLogged} = useSelector((state) => state.authentication);
+  const navigate = useNavigate();
+  // this code is necessary to make the redirection to the homepage after the user connexion
+  // useEffect was used for fixing a BrowserRouter error : 
+  // https://stackoverflow.com/questions/72160276/warning-cannot-update-a-component-browserrouter-while-rendering-a-different
+  useEffect(()=>{
+  if (isLogged) {
+    navigate("/");
+    }
+  },[isLogged])
+
   const dispatch = useDispatch();
 
   const handleSubmit = (evt) => {

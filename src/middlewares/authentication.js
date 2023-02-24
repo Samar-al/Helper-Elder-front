@@ -6,7 +6,7 @@ const authenticationMiddleware = (store) => (next) => (action) => {
     case HANDLE_LOGIN:
       axios.post(
         //URL
-        'http://localhost:8000/api/login_check', // TO DO check that this is the right URL
+        'http://localhost:8000/api/login_check', 
 
         //data
         {
@@ -19,8 +19,8 @@ const authenticationMiddleware = (store) => (next) => (action) => {
             console.log('connexion failed');
           }
           else {
-            console.log(response);
-            store.dispatch(saveSuccessfulAuth(response.data)) 
+            store.dispatch(saveSuccessfulAuth(response.data));
+
           }
         })
         .catch((error) => {
