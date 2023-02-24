@@ -1,0 +1,28 @@
+.list_posts_result {
+  margin: 10px;
+}
+
+.post_left_picture {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+
+.post_left_username {
+  margin-bottom: 10px;
+}
+
+.post_right {
+  margin: 10px;
+  border: solid 1px black;
+  width: 90%;
+
+  &_title {
+    margin: 10px;
+  }
+
+  &_content {
+    margin: 10px;
+    text-align: justify;
+  }
+}
