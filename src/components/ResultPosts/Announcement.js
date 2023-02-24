@@ -13,7 +13,7 @@ export default function Announcement({
   content,
 }) {
   return (
-    <>
+    <div className="post">
       <div className="post_left">
         <img className="post_left_picture" src={picture} alt={username} />
         <p className="post_left_username">{username}</p>
@@ -21,11 +21,11 @@ export default function Announcement({
         <Rating name="note" value={note} readOnly />
       </div>
       <div className="post_right">
-        <h3 className="post_right_title">{title} - {city} - {zipcode}</h3>
-        <span className="post_right_title_date">{date}</span>
+        <h3 className="post_right_title">{title}</h3>
+        <span className="post_right_title_date">{city} - {zipcode} - {date}</span>
         <p className="post_right_content">{content}</p>
       </div>
-    </>
+    </div>
   );
 }
 
