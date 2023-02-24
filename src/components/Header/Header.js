@@ -7,7 +7,7 @@ import { handleLogout } from '../../actions/authentication';
 
 export default function Header() {
   const { isBurgerOpen } = useSelector((state) => state.burger);
-  const {isLogged} = useSelector((state) => state.authentication);
+  const { isLogged } = useSelector((state) => state.authentication);
 
   const dispatch = useDispatch();
 
@@ -56,7 +56,7 @@ export default function Header() {
                 Inscription
               </NavLink>
             </li>
-        </>
+          </>
         )}
         {isLogged && (
           <>
