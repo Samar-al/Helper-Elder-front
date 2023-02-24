@@ -10,7 +10,8 @@ const store = createStore(
   reducer,
   // Nouveau enhancer : redux devtools + middlewares
   composeWithDevTools(applyMiddleware(
-    homepageMiddleware, authenticationMiddleware,
+    homepageMiddleware,
+    authenticationMiddleware,
   )),
 );
 

@@ -7,12 +7,11 @@ import authenticationReducer from './authentication';
 import createpostformReducer from './createpostform';
 import homepageReducer from './homepage';
 
-
 const rootReducer = combineReducers({
   searchbar: searchbarReducer,
   burger: burgerReducer,
   connexion: connexionReducer,
-  authentication : authenticationReducer,
+  authentication: authenticationReducer,
   createpostform: createpostformReducer,
   homepage: homepageReducer,
 });
