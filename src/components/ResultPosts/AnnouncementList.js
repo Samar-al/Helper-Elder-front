@@ -27,6 +27,10 @@ AnnouncementList.propTypes = {
     zipcode: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
-    date: PropTypes.instanceOf(Date).isRequired,
+    date: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.instanceOf(Date),
+    ]).isRequired,
   })).isRequired,
 };

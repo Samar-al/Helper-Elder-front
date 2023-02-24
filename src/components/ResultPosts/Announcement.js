@@ -36,6 +36,10 @@ Announcement.propTypes = {
   title: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   zipcode: PropTypes.string.isRequired,
-  date: PropTypes.instanceOf(Date).isRequired,
   content: PropTypes.string.isRequired,
+  date: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.instanceOf(Date),
+  ]).isRequired,
 };
