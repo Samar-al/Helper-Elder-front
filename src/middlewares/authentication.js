@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { HANDLE_LOGIN } from '../actions/authentication';
+import { HANDLE_LOGIN, saveSuccessfulAuth } from '../actions/authentication';
 
 const authenticationMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -20,7 +20,7 @@ const authenticationMiddleware = (store) => (next) => (action) => {
           }
           else {
             console.log(response);
-            // store.dispatch(saveSuccessfulAuth(response.data.pseudo, response.data.token)) // TO DO with the right data from the API
+            store.dispatch(saveSuccessfulAuth(response.data)) 
           }
         })
         .catch((error) => {
