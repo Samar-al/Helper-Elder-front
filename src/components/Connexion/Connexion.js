@@ -48,6 +48,7 @@ export default function Connexion() {
         <div className="connexion_form_item">
           <FormControl fullWidth size="small">
             <TextField
+              type="password"
               label="Mot de passe"
               size="small"
               value={passwordInput}

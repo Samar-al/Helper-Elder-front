@@ -15,8 +15,13 @@ const authenticationMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
+          console.log(response);
           if (response.status !== 200) {
             console.log('connexion failed');
+            // TO DO
+            // if (response.status === 401){
+            //   console.log("Nom d'utilisateur et/ou mot de passe incorrect");
+            // }
           }
           else {
             store.dispatch(saveSuccessfulAuth(response.data));
