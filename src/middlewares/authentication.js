@@ -6,7 +6,7 @@ const authenticationMiddleware = (store) => (next) => (action) => {
     case HANDLE_LOGIN:
       axios.post(
         //URL
-        'https://localhost:8000/api/login_check', // TO DO check that this is the right URL
+        'http://localhost:8000/api/login_check', // TO DO check that this is the right URL
 
         //data
         {
