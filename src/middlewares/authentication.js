@@ -1,17 +1,17 @@
 import axios from 'axios';
-import { HANDLE_LOGIN, saveSuccessfulAuth } from '../actions/connexion';
+import { HANDLE_LOGIN } from '../actions/authentication';
 
 const authenticationMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case HANDLE_LOGIN:
-      axios.get(
+      axios.post(
         //URL
         'https://localhost:8000/api/login_check', // TO DO check that this is the right URL
 
         //data
         {
-          email: store.getState().user.email,
-          password: store.getState().user.password,
+          username: store.getState().connexion.emailInput,
+          password: store.getState().connexion.passwordInput,
         },
       )
         .then((response) => {
@@ -19,7 +19,8 @@ const authenticationMiddleware = (store) => (next) => (action) => {
             console.log('connexion failed');
           }
           else {
-            store.dispatch(saveSuccessfulAuth(response.data.pseudo, response.data.token)) // TO DO with the right data from the API
+            console.log(response);
+            // store.dispatch(saveSuccessfulAuth(response.data.pseudo, response.data.token)) // TO DO with the right data from the API
           }
         })
         .catch((error) => {

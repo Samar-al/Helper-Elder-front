@@ -2,7 +2,7 @@ import { HANDLE_LOGOUT, SAVE_SUCCESSFUL_AUTH  } from '../actions/authentication'
 
 export const initialState = {
 
-  isLogged: true,
+  isLogged: false,
 
   // pseudo de l'utilisateur, une fois qu'il est authentifié
   user: null,

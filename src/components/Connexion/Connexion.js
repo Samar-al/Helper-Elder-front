@@ -18,6 +18,7 @@ export default function Connexion() {
   };
 
   return (
+
     <div className="connexion">
       <div className="connexion_title"> Connexion </div>
       <form className="connexion_form" onSubmit={handleSubmit}>
@@ -42,7 +43,7 @@ export default function Connexion() {
           </FormControl>
         </div>
         <div className="connexion_login_button">
-          <Button variant="contained">Se connecter</Button>
+          <Button type="submit" variant="contained">Se connecter</Button>
         </div>
       </form>
     </div>
