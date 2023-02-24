@@ -5,10 +5,9 @@ const authenticationMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case HANDLE_LOGIN:
       axios.post(
-        //URL
-        'http://localhost:8000/api/login_check', 
-
-        //data
+        // URL
+        'http://localhost:8000/api/login_check',
+        // data
         {
           username: store.getState().connexion.emailInput,
           password: store.getState().connexion.passwordInput,
@@ -24,7 +23,6 @@ const authenticationMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(saveSuccessfulAuth(response.data));
-
           }
         })
         .catch((error) => {
