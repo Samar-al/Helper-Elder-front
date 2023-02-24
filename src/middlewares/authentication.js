@@ -5,10 +5,7 @@ const authenticationMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case HANDLE_LOGIN:
       axios.get(
-        //URL
         'https://localhost:8000/api/login_check', // TO DO check that this is the right URL
-
-        //data
         {
           email: store.getState().user.email,
           password: store.getState().user.password,
