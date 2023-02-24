@@ -15,7 +15,6 @@ const authenticationMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log(response);
           if (response.status !== 200) {
             console.log('connexion failed');
             // TO DO
