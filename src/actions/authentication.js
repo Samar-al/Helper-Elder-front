@@ -15,5 +15,4 @@ export const handleLogout = () => ({
 export const saveSuccessfulAuth = (data) => ({
   type: SAVE_SUCCESSFUL_AUTH,
   data: data,
-
 });

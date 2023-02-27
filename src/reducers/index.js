@@ -6,6 +6,7 @@ import connexionReducer from './connexion';
 import authenticationReducer from './authentication';
 import createpostformReducer from './createpostform';
 import homepageReducer from './homepage';
+import appReducer from './app';
 
 const rootReducer = combineReducers({
   searchbar: searchbarReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   authentication: authenticationReducer,
   createpostform: createpostformReducer,
   homepage: homepageReducer,
+  app: appReducer,
 });
 
 export default rootReducer;
