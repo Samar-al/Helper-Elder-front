@@ -35,6 +35,14 @@ export default function CreatePostForm() {
 
   const dispatch = useDispatch();
 
+  function submitForm() {
+    const post = {
+      title: titleInput,
+      content: contentInput,
+      hourly_rate: rateInput,
+    }
+  }
+
   return (
     <div className="create_post">
       <div className="create_post_header">
@@ -113,7 +121,7 @@ export default function CreatePostForm() {
         </div>
       </Box>
       <div className="create_button">
-        <Button variant="contained">Envoyer</Button>
+        <Button onClick={() => submitForm()} variant="contained">Envoyer</Button>
       </div>
     </div>
   );
