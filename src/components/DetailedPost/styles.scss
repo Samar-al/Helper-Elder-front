@@ -1,0 +1,58 @@
+.detailed-post_left {
+  
+  &_picture {
+    width: 100px;
+    margin-bottom: 5px;
+  }
+
+  &_user {
+    margin-bottom: 5px;
+  }
+
+  &_service {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.4em;
+    margin-bottom: 10px;
+
+    &_rate {
+      margin-bottom: 5px;
+    }
+  }
+
+  &_rate {
+    margin-bottom: 5px;
+  }
+}
+
+.detailed-post_right {
+
+  &_title {
+    margin: 10px;
+  }
+
+  &_content {
+    text-align: justify;
+    margin: 10px;
+  }
+}
+
+.view {
+
+  &_title {
+    margin: 25px 10px;
+    text-align: justify;
+  }
+
+  &_item_user {
+    margin: 25px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &_item_content {
+    text-align: justify;
+    margin: 25px 10px;
+  }
+}
