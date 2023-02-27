@@ -7,6 +7,7 @@ import Footer from '../Footer/Footer';
 import Background from '../Background/Background';
 import Connexion from '../Connexion/Connexion';
 import CreatePostForm from '../CreatePostForm/CreatePostForm';
+import FontSizeToggler from '../FontSizeToggler/FontSizeToggler';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <div>
           <Header />
           <Searchbar />
+          <FontSizeToggler />
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/poster-une-annonce" element={<CreatePostForm />} />
