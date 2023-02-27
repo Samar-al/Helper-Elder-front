@@ -6,7 +6,9 @@ import Stack from '@mui/material/Stack';
 import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
 import { FormControl } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeFontSize } from '../../actions/app';
+
 
 export default function FontSizeToggler() {
 
@@ -53,19 +55,22 @@ const AntSwitch = styled(Switch)(({ theme }) => ({
 }));
 
 const dispatch = useDispatch();
+const {largeFontSize} = useSelector ((state) => state.app);
 
   return (
     <div className="fontsizetoggler">
       <FormControl component="fieldset">
         <FormGroup aria-label="position" row>
           <Stack 
-            onChange={(e) => dispatch(changeFontSize(e.target.value))}  
+            onChange={(e) => {
+              console.log(e.target.value);
+              dispatch(changeFontSize())} } 
             direction="row" 
             spacing={1} 
             alignItems="center"
           >
             <Typography>t</Typography>
-            <AntSwitch defaultChecked inputProps={{ 'aria-label': 'ant design' }} />
+            <AntSwitch checked={ largeFontSize } />
             <Typography>T</Typography>
           </Stack>
         </FormGroup>

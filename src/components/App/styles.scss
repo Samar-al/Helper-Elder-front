@@ -31,6 +31,10 @@
       background-color: vars.$darker-color;
     }
   }
+
+    &--large {
+      font-size: xx-large;
+    }
 }
 
 .wrapper {
@@ -42,4 +46,4 @@
 }
 
 
-// font-size: x-large;
+
