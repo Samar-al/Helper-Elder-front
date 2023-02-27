@@ -9,7 +9,6 @@
   flex-direction: column;
   justify-content: space-between;
 
-
   // Custom styles for MUI input and buttons components
   .MuiInputBase-formControl {
     background-color: vars.$transparent-background-altcolor;
@@ -31,6 +30,10 @@
       background-color: vars.$darker-color;
     }
   }
+
+    &--large {
+      font-size: xx-large;
+    }
 }
 
 .wrapper {
@@ -38,5 +41,4 @@
   min-height: 100vh;
   flex-direction: column;
   justify-content: space-between;
-
 }

@@ -10,9 +10,11 @@ import Background from '../Background/Background';
 import Connexion from '../Connexion/Connexion';
 import CreatePostForm from '../CreatePostForm/CreatePostForm';
 import { loadServices } from '../../actions/app';
+import { useSelector } from 'react-redux';
 
 function App() {
   const dispatch = useDispatch();
+  const { largeFontSize } = useSelector((state) => state.app);
 
   // loading services on first app render for searchbar and post creation form
   useEffect(
@@ -23,7 +25,7 @@ function App() {
   );
 
   return (
-    <div className="app">
+    <div className={ largeFontSize ? 'app app--large' : 'app' }>
       <Background />
       <div className="wrapper">
         <div>
