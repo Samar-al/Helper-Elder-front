@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
 
 function App() {
   const dispatch = useDispatch();
-  const {largeFontSize} = useSelector ((state) => state.app);
+  const { largeFontSize } = useSelector((state) => state.app);
 
   // loading services on first app render for searchbar and post creation form
   useEffect(
@@ -25,7 +25,7 @@ function App() {
   );
 
   return (
-    <div className={largeFontSize ? 'app app--large' : 'app'}>
+    <div className={ largeFontSize ? 'app app--large' : 'app' }>
       <Background />
       <div className="wrapper">
         <div>
