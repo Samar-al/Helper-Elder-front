@@ -11,7 +11,11 @@ const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case TYPE_EMAIL: return { ...state, emailInput: action.input };
     case TYPE_PASSWORD: return { ...state, passwordInput: action.input };
-    case SAVE_SUCCESSFUL_AUTH: return { ...state, emailInput: '', passwordInput: '' };
+    case SAVE_SUCCESSFUL_AUTH: return {
+      ...state,
+      emailInput: '',
+      passwordInput: '',
+    };
     default:
       return state;
   }
