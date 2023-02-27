@@ -27,10 +27,16 @@ export default function Post({
 }
 
 Post.propTypes = {
-  picture: PropTypes.string.isRequired, // à modifier lorsqu'on saura comment récupérer l'avatar
+  picture: PropTypes.string,
   title: PropTypes.string.isRequired,
-  zipcode: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
+  zipcode: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
+  city: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
   content: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
+};
+
+Post.defaultProps = {
+  picture: 'img/placeholders/avatar_placeholder.png',
+  zipcode: '75001',
+  city: 'Paris',
 };
