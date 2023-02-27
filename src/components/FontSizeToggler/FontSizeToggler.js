@@ -13,7 +13,7 @@ export default function FontSizeToggler() {
 
 
 const dispatch = useDispatch();
-const {largeFontSize} = useSelector ((state) => state.app);
+const { largeFontSize } = useSelector((state) => state.app);
 
   return (
     <div className="fontsizetoggler">
@@ -22,7 +22,8 @@ const {largeFontSize} = useSelector ((state) => state.app);
           <Stack 
             onChange={(e) => {
               console.log(e.target.value);
-              dispatch(changeFontSize())} } 
+              dispatch(changeFontSize());
+             } 
             direction="row" 
             spacing={1} 
             alignItems="center"
@@ -36,4 +37,3 @@ const {largeFontSize} = useSelector ((state) => state.app);
     </div>
   );
 }
-
