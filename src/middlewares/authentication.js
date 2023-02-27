@@ -6,7 +6,7 @@ const authenticationMiddleware = (store) => (next) => (action) => {
     case HANDLE_LOGIN:
       axios.post(
         // URL
-        'http://localhost:8000/api/login_check',
+        'https://localhost:8000/api/login_check',
         // data
         {
           username: store.getState().connexion.emailInput,
