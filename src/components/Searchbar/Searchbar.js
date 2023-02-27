@@ -12,12 +12,12 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPostType, selectServices, typeAdress } from '../../actions/searchbar';
-import services from './data';
 import { zipcodeRegex } from '../../utils/regex';
 
 export default function Searchbar() {
   const { adressInput, selectedServices, postType } = useSelector((state) => state.searchbar);
   const dispatch = useDispatch();
+  const { serviceList } = useSelector((state) => state.app);
 
   return (
     <div className="searchbar">
@@ -47,10 +47,12 @@ export default function Searchbar() {
               onChange={(e) => dispatch(selectServices(e.target.value))}
               renderValue={(selected) => selected.join(', ')}
             >
-              {services.map((service) => (
-                <MenuItem key={service} value={service}>
-                  <Checkbox checked={selectedServices.includes(service)} />
-                  <ListItemText primary={service} />
+              {/* short circuit evaluation to prevent errors.
+              The list is not created as long as services are not loaded */}
+              {serviceList && serviceList.map((service) => (
+                <MenuItem key={service.name} value={service.name}>
+                  <Checkbox checked={selectedServices.includes(service.name)} />
+                  <ListItemText primary={service.name} />
                 </MenuItem>
               ))}
             </Select>

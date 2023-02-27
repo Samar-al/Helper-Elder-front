@@ -1,5 +1,6 @@
 import { TYPE_EMAIL, TYPE_PASSWORD } from '../actions/connexion';
 import { SAVE_SUCCESSFUL_AUTH } from '../actions/authentication';
+// import { username, password } from '../components/Connexion/login';
 
 export const initialState = {
   emailInput: '',
