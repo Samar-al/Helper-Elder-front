@@ -9,7 +9,6 @@ import Footer from '../Footer/Footer';
 import Background from '../Background/Background';
 import Connexion from '../Connexion/Connexion';
 import CreatePostForm from '../CreatePostForm/CreatePostForm';
-// import FontSizeToggler from '../FontSizeToggler/FontSizeToggler';
 import { loadServices } from '../../actions/app';
 import { useSelector } from 'react-redux';
 
@@ -32,7 +31,6 @@ function App() {
         <div>
           <Header />
           <Searchbar />
-          {/* <FontSizeToggler /> */}
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />
