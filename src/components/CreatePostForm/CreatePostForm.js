@@ -20,6 +20,7 @@ import {
 } from '../../actions/createpostform';
 import './styles.scss';
 import services from './data';
+import { hourlyRateRegex, zipcodeRegex } from '../../utils/regex';
 
 export default function CreatePostForm() {
   const {
@@ -67,9 +68,8 @@ export default function CreatePostForm() {
             label="Code postal"
             value={zipcodeInput}
             onChange={(event) => {
-              const regex = /^\d{0,5}$/; // <= match un nombre contenant 0 à 5 chiffre ("" passe le test)
-              if (regex.test(event.target.value)) dispatch(typeZipcode(event.target.value));
-            }} // TODO A changer avec variable dans utils
+              if (zipcodeRegex.test(event.target.value)) dispatch(typeZipcode(event.target.value));
+            }}
           />
         </div>
         <div className="form_input">
@@ -107,20 +107,8 @@ export default function CreatePostForm() {
             label="Tarif en €"
             value={rateInput}
             onChange={(event) => {
-              const rateRegex = /^\d{0,}(,\d{0,2})?$/;
-              /*
-                ^ means the start of the string
-                \d means a digit
-                {0,} means one or more
-                () with a question mark
-                ? means: match what is inside the group one or no times
-                , is the comma you wrote
-                \d is still a digit
-                {0,2} means match the previous digit one or two times
-                $ matches the end of the string
-              */
-              if (rateRegex.test(event.target.value)) dispatch(typeRate(event.target.value));
-            }} // TODO A changer avec variable dans utils
+              if (hourlyRateRegex.test(event.target.value)) dispatch(typeRate(event.target.value));
+            }}
           />
         </div>
       </Box>

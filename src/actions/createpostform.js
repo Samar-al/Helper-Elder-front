@@ -6,6 +6,7 @@ export const TYPE_RATE = 'TYPE_RATE';
 export const SELECT_RADIO = 'SELECT_RADIO';
 export const SELECT_SERVICE = 'SELECT_SERVICE';
 export const SELECT_TYPE_USER = 'SELECT_TYPE_USER';
+export const SUBMIT_NEW_POST = 'SUBMIT_NEW_POST';
 
 // Action creator
 export const typeTitle = (value) => ({
@@ -41,4 +42,8 @@ export const selectService = (value) => ({
 export const selectTypeUser = (value) => ({
   type: SELECT_TYPE_USER,
   input: value,
+});
+
+export const submitNewPost = () => ({
+  type: SUBMIT_NEW_POST,
 });
