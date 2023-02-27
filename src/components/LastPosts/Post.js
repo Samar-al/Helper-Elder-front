@@ -1,5 +1,6 @@
 import './styles.scss';
 import PropTypes from 'prop-types';
+import { formatDate } from '../../utils/functions';
 
 // une annonce parmis les annonces à afficher en homepage
 export default function Post({
@@ -17,7 +18,7 @@ export default function Post({
         <div className="lastposts_pannel_postlist_post_header_info">
           <h3 className="lastposts_pannel_postlist_post_header_info_title">{title}</h3>
           <p className="lastposts_pannel_postlist_post_header_info_city">{zipcode} - {city}</p>
-          <p className="lastposts_pannel_postlist_post_header_info_date">{Date.parse(createdAt)}</p>
+          <p className="lastposts_pannel_postlist_post_header_info_date">{formatDate(createdAt)}</p>
         </div>
       </div>
       <p className="lastposts_pannel_postlist_post_content">{content}</p>
