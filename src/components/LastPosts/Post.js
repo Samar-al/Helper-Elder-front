@@ -7,7 +7,7 @@ export default function Post({
   title,
   zipcode,
   city,
-  date,
+  createdAt,
   content,
 }) {
   return (
@@ -17,7 +17,7 @@ export default function Post({
         <div className="lastposts_pannel_postlist_post_header_info">
           <h3 className="lastposts_pannel_postlist_post_header_info_title">{title}</h3>
           <p className="lastposts_pannel_postlist_post_header_info_city">{zipcode} - {city}</p>
-          <p className="lastposts_pannel_postlist_post_header_info_date">{date}</p>
+          <p className="lastposts_pannel_postlist_post_header_info_date">{Date.parse(createdAt)}</p>
         </div>
       </div>
       <p className="lastposts_pannel_postlist_post_content">{content}</p>
@@ -31,5 +31,5 @@ Post.propTypes = {
   zipcode: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  date: PropTypes.instanceOf(Date).isRequired,
+  // createdAt: PropTypes.instanceOf(Date).isRequired,
 };

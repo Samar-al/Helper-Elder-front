@@ -22,6 +22,6 @@ PostsPannel.propTypes = {
     zipcode: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
-    date: PropTypes.instanceOf(Date).isRequired,
+    createdAt: PropTypes.instanceOf(Date).isRequired,
   })).isRequired,
 };

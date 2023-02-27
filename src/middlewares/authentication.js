@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { HANDLE_LOGIN, saveSuccessfulAuth } from '../actions/connexion';
+import { HANDLE_LOGIN, saveSuccessfulAuth } from '../actions/authentication';
 
 const authenticationMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
