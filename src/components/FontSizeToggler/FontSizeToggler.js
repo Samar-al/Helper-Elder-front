@@ -63,9 +63,8 @@ const { largeFontSize } = useSelector((state) => state.app);
         <FormGroup aria-label="position" row>
           <Stack 
             onChange={(e) => {
-              console.log(e.target.value);
               dispatch(changeFontSize());
-             } 
+             }} 
             direction="row" 
             spacing={1} 
             alignItems="center"
