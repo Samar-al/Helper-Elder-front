@@ -20,6 +20,7 @@ function App() {
           <FontSizeToggler />
           <Routes>
             <Route path="/" element={<Homepage />} />
+            <Route path="/connexion" element={<Connexion />} />
             <Route path="/poster-une-annonce" element={<CreatePostForm />} />
           </Routes>
         </div>
