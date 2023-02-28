@@ -3,6 +3,7 @@ import {
   Button,
   Typography,
   Rating,
+  TextField,
 } from '@mui/material';
 
 import userinfo from './data'; // data temporaires
@@ -37,17 +38,27 @@ export default function UserProfile() {
           <p><span>Date de naissance :</span> {userinfo.birthdate} </p>
           <p><span>Email :</span> {userinfo.mail} </p>
           <p><span>Localisation :</span> {userinfo.place} </p>
-          <p><span>Sexe :</span> {userinfo.gender} </p>
+          <p><span>Sexe :</span> {userinfo.sex} </p>
         </div>
 
-        <div className="userprofile_input">
+        <div className="userprofile_inputs">
           <div className="userprofile_input_skills">
-            <h1> Compétences </h1>
-            <p> {userinfo.skills} </p>
+            <TextField
+              fullWidth
+              rows={2}
+              multiline="true"
+              label="Compétences"
+              value={userinfo.skills}
+            />
           </div>
           <div className="userprofile_input_description">
-            <h1> Description </h1>
-            <p> {userinfo.description} </p>
+            <TextField
+              fullWidth
+              rows={10}
+              multiline="true"
+              label="Description"
+              value={userinfo.description}
+            />
           </div>
         </div>
 

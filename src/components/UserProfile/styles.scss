@@ -8,10 +8,33 @@
       border: 2px, solid, vars.$main-color;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       padding: 1rem;
       width: 100%;
       border-bottom: 0;
+
+      img {
+        border: 1px, solid, vars.$main-color;
+        max-width: 250px;
+        width: 80%;
+        margin: auto;
+      }
+    }
+
+    &_input {
+
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+
+      h1 {
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+        &_skills, &_description {
+          border: 1px, solid, vars.$main-color;
+          padding: 1rem;
+        }
     }
 
     &_rating {

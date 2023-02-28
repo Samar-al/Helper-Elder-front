@@ -4,7 +4,7 @@ export const TYPE_LASTNAME = 'TYPE_LASTNAME';
 export const TYPE_BIRTHDATE = 'TYPE_BIRTHDATE';
 export const TYPE_EMAIL = 'TYPE_EMAIL';
 export const TYPE_PLACE = 'TYPE_PLACE';
-export const TYPE_SEX = 'TYPE_SEX';
+export const TYPE_GENDER = 'TYPE_GENDER';
 export const TYPE_SKILLS = 'TYPE_SKILLS';
 export const TYPE_DESCRIPTION = 'TYPE_DESCRIPTION';
 
@@ -34,8 +34,8 @@ export const typePlace = (value) => ({
   input: value,
 });
 
-export const typeSex = (value) => ({
-  type: TYPE_SEX,
+export const typeGender = (value) => ({
+  type: TYPE_GENDER,
   input: value,
 });
 

@@ -36,6 +36,7 @@ function App() {
             <Route path="/connexion" element={<Connexion />} />
             <Route path="/poster-une-annonce" element={<CreatePostForm />} />
             <Route path="/mon-profil" element={<UserProfile />} />
+            {/* <Route path="/profil/:id" element={<UserProfile />} /> */}
           </Routes>
         </div>
         <Footer />
