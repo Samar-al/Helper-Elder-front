@@ -9,7 +9,12 @@ const postMiddleware = (store) => (next) => (action) => {
         'https://localhost:8000/api/annonce/ajouter',
         // data
         {
-         
+
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().authentication.jwt}`,
+          },
         },
       )
         .then((response) => {
@@ -21,7 +26,7 @@ const postMiddleware = (store) => (next) => (action) => {
             // }
           }
           else {
-
+            console.log(response);
           }
         })
         .catch((error) => {

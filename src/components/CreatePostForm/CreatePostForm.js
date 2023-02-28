@@ -23,6 +23,7 @@ import {
   selectService,
   selectTypeUser,
   typeRadius,
+  submitNewPost,
 } from '../../actions/createpostform';
 import './styles.scss';
 import { hourlyRateRegex, radiusRegex, zipcodeRegex } from '../../utils/regex';
@@ -56,7 +57,7 @@ export default function CreatePostForm() {
       radius: radiusInput,
       tag: selectedServices,
     };
-    console.log(post);
+    dispatch(submitNewPost(post));
   }
 
   return (

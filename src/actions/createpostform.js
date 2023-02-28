@@ -50,6 +50,7 @@ export const selectTypeUser = (value) => ({
   input: value,
 });
 
-export const submitNewPost = () => ({
+export const submitNewPost = (data) => ({
   type: SUBMIT_NEW_POST,
+  post: data,
 });
