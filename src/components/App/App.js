@@ -21,7 +21,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />
             <Route path="/poster-une-annonce" element={<CreatePostForm />} />
-            <Route path="/annonce/id" element={<DetailedPost />} />
+            <Route path="/annonce/:id" element={<DetailedPost />} />
           </Routes>
         </div>
         <Footer />

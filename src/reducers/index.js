@@ -6,15 +6,16 @@ import connexionReducer from './connexion';
 import authenticationReducer from './authentication';
 import createpostformReducer from './createpostform';
 import homepageReducer from './homepage';
-
+import postReducer from './post';
 
 const rootReducer = combineReducers({
   searchbar: searchbarReducer,
   burger: burgerReducer,
   connexion: connexionReducer,
-  authentication : authenticationReducer,
+  authentication: authenticationReducer,
   createpostform: createpostformReducer,
   homepage: homepageReducer,
+  post: postReducer,
 });
 
 export default rootReducer;
