@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { HANDLE_LOGIN, saveSuccessfulAuth } from '../actions/authentication';
+import { fetchLoggedUser, FETCH_LOGGED_USER, HANDLE_LOGIN, saveJwt, saveLoggedUser } from '../actions/authentication';
 
 const authenticationMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -7,7 +7,7 @@ const authenticationMiddleware = (store) => (next) => (action) => {
       axios.post(
         // URL
         'https://localhost:8000/api/login_check',
-        // data
+        // login + password
         {
           username: store.getState().connexion.emailInput,
           password: store.getState().connexion.passwordInput,
@@ -22,7 +22,31 @@ const authenticationMiddleware = (store) => (next) => (action) => {
             // }
           }
           else {
-            store.dispatch(saveSuccessfulAuth(response.data));
+            // saving the jwt token and then using it to fetch the logged user from API
+            store.dispatch(saveJwt(response.data.token));
+            store.dispatch(fetchLoggedUser(response.data.token));
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+    case FETCH_LOGGED_USER:
+      axios.get(
+        // URL
+        'https://localhost:8000/api/mon-profil',
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().authentication.jwt}`,
+          },
+        },
+      )
+        .then((response) => {
+          if (response.status !== 200) {
+            console.log('fetching of user failed');
+          }
+          else {
+            store.dispatch(saveLoggedUser(response.data));
           }
         })
         .catch((error) => {
