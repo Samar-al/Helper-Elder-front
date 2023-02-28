@@ -16,7 +16,7 @@ const initialState = {
   rateInput: '',
   radiusInput: '',
   selectedPonctual: '',
-  selectedService: [],
+  selectedServices: [],
   selectedTypeUser: [],
 };
 
@@ -61,7 +61,7 @@ const reducer = (state = initialState, action = {}) => {
     case SELECT_SERVICE:
       return {
         ...state,
-        selectedService: action.input,
+        selectedServices: action.input,
       };
 
     case SELECT_TYPE_USER:

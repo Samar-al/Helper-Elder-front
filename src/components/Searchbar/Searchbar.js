@@ -45,13 +45,21 @@ export default function Searchbar() {
               label="Type de service"
               value={selectedServices}
               onChange={(e) => dispatch(selectServices(e.target.value))}
-              renderValue={(selected) => selected.join(', ')}
+              /* Here we need to build a string with all the selected services separated by a ",".
+                 The thing is, we need to put the checkboxes values as IDs to be able to pass those
+                 to the API. Thus, selected is an array of numbers.
+                 First, an array containing the services names as strings is made with
+                 selected.map((serviceId) => serviceList[serviceId - 1].name).
+                 Then, this array is turned into a string with all the selected services names
+                 separated by a coma with .reduce((render, service) => `${render}, ${service}`)
+                 */
+              renderValue={(selected) => selected.map((serviceId) => serviceList[serviceId - 1].name).reduce((render, service) => `${render}, ${service}`)}
             >
               {/* short circuit evaluation to prevent errors.
               The list is not created as long as services are not loaded */}
               {serviceList && serviceList.map((service) => (
-                <MenuItem key={service.name} value={service.name}>
-                  <Checkbox checked={selectedServices.includes(service.name)} />
+                <MenuItem key={service.name} value={service.id}>
+                  <Checkbox checked={selectedServices.includes(service.id)} />
                   <ListItemText primary={service.name} />
                 </MenuItem>
               ))}

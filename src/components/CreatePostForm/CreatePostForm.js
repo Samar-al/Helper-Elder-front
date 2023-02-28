@@ -35,9 +35,11 @@ export default function CreatePostForm() {
     rateInput,
     radiusInput,
     selectedPonctual,
-    selectedService,
+    selectedServices,
     selectedTypeUser,
   } = useSelector((state) => state.createpostform);
+
+  const { user } = useSelector((state) => state.authentication);
 
   const { serviceList } = useSelector((state) => state.app);
 
@@ -45,13 +47,14 @@ export default function CreatePostForm() {
 
   function submitForm() {
     const post = {
-      user_id: "",
+      user_id: user.id,
       title: titleInput,
       content: contentInput,
       hourly_rate: rateInput,
       work_type: selectedPonctual,
       postal_code: zipcodeInput,
       radius: radiusInput,
+      tag: selectedServices,
     };
     console.log(post);
   }
@@ -64,8 +67,8 @@ export default function CreatePostForm() {
       <Box component="form">
         <div className="form_radio">
           <RadioGroup name="radio_button_group" value={selectedTypeUser} onChange={(event) => dispatch(selectTypeUser(event.target.value))}>
-            <FormControlLabel value="elder" control={<Radio />} label="Je suis un Elder (je cherche de l'aide)" />
-            <FormControlLabel value="helper" control={<Radio />} label="Je suis un Helper (je propose de l'aide)" />
+            <FormControlLabel value={1} control={<Radio />} label="Je suis un Elder (je cherche de l'aide)" />
+            <FormControlLabel value={2} control={<Radio />} label="Je suis un Helper (je propose de l'aide)" />
           </RadioGroup>
         </div>
         <div className="form_input">
@@ -88,17 +91,24 @@ export default function CreatePostForm() {
             <InputLabel>Type de service</InputLabel>
             <Select
               multiple
-              rows={2}
               label="Type de service"
-              value={selectedService}
+              value={selectedServices}
               onChange={(e) => dispatch(selectService(e.target.value))}
-              renderValue={(selected) => selected.join(', ')}
+              /* Here we need to build a string with all the selected services separated by a ",".
+                 The thing is, we need to put the checkboxes values as IDs to be able to pass those
+                 to the API. Thus, selected is an array of numbers.
+                 First, an array containing the services names as strings is made with
+                 selected.map((serviceId) => serviceList[serviceId].name).
+                 Then, this array is turned into a string with all the selected services names
+                 separated by a coma with .reduce((render, service) => `${render}, ${service}`)
+                 */
+              renderValue={(selected) => selected.map((serviceId) => serviceList[serviceId - 1].name).reduce((render, service) => `${render}, ${service}`)}
             >
               {/* short circuit evaluation to prevent errors.
               The list is not created as long as services are not loaded */}
               {serviceList && serviceList.map((service) => (
                 <MenuItem key={service.name} value={service.id}>
-                  <Checkbox checked={selectedService.includes(service.name)} />
+                  <Checkbox checked={selectedServices.includes(service.id)} />
                   <ListItemText primary={service.name} />
                 </MenuItem>
               ))}

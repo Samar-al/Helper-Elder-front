@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { fetchLoggedUser, FETCH_LOGGED_USER, HANDLE_LOGIN, saveJwt, saveLoggedUser } from '../actions/authentication';
+import {
+  fetchLoggedUser,
+  FETCH_LOGGED_USER,
+  HANDLE_LOGIN,
+  saveJwt,
+  saveLoggedUser,
+} from '../actions/authentication';
 
 const authenticationMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
