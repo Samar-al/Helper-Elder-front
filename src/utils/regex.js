@@ -13,3 +13,6 @@ export const zipcodeRegex = /^\d{0,5}$/;
   $ matches the end of the string
 */
 export const hourlyRateRegex = /^\d{0,}(,\d{0,2})?$/;
+
+// allows to type only numbers with up to 3 digits
+export const radiusRegex = /^\d{0,3}$/;

@@ -3,9 +3,10 @@ import {
   TYPE_TITLE,
   TYPE_ZIPCODE,
   TYPE_RATE,
-  SELECT_RADIO,
+  SELECT_PONCTUAL,
   SELECT_SERVICE,
   SELECT_TYPE_USER,
+  TYPE_RADIUS,
 } from '../actions/createpostform';
 
 const initialState = {
@@ -13,7 +14,8 @@ const initialState = {
   zipcodeInput: '',
   contentInput: '',
   rateInput: '',
-  selectedRadio: [],
+  radiusInput: '',
+  selectedPonctual: '',
   selectedService: [],
   selectedTypeUser: [],
 };
@@ -44,10 +46,16 @@ const reducer = (state = initialState, action = {}) => {
         rateInput: action.input,
       };
 
-    case SELECT_RADIO:
+    case TYPE_RADIUS:
       return {
         ...state,
-        selectedRadio: action.input,
+        radiusInput: action.input,
+      };
+
+    case SELECT_PONCTUAL:
+      return {
+        ...state,
+        selectedPonctual: action.input,
       };
 
     case SELECT_SERVICE:
