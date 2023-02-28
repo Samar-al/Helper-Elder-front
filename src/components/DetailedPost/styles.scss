@@ -4,7 +4,7 @@
   
   &_picture {
     width: 100px;
-    margin-bottom: 5px;
+    margin: 5px;
   }
 
   &_user {
@@ -74,14 +74,15 @@
     width: 60vw;
     margin: 10px;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
   }
 
   .detailed-post_right_header {
     display: flex;
     justify-content: space-between;
     margin: 30px
+  }
+
+  .views {
+    padding: 20px;
   }
 }
