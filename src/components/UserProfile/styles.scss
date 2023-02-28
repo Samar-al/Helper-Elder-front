@@ -1,0 +1,90 @@
+@use 'src/styles/_vars';
+.userprofile {
+
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+
+    &_info_media {
+      border: 2px, solid, vars.$main-color;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+      border-right: 0;
+    }
+
+    &_rating {
+      text-align: center;
+    }
+
+    &_button {
+      display: flex;
+      flex-direction: column;
+
+
+      &_add_post, &_message {
+        margin: 0.5rem 0;
+      }
+
+      &_modify {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+    }
+
+    &_info_text {
+      display: flex;
+      flex-direction: column;
+      width: 700px;
+      padding: 1rem;
+      border: 2px, solid, vars.$main-color;
+      
+        &_paragraph {
+          display: flex;
+          flex-direction: column;
+          // align-items: flex-start;
+          margin: 1rem;
+            
+          p {
+            margin-bottom: 0.5rem;
+            text-align: left;
+          }
+        }
+    }
+
+    &_input_skills {
+
+      margin-bottom: 1rem;
+    
+    }
+}
+
+@media (max-width: vars.$medium-breakpoint) { 
+  .userprofile {
+    display: flex;
+    flex-wrap: wrap;
+
+    &_info_media {
+      border: 2px, solid, vars.$main-color;
+      border-bottom: 0;
+      
+    }
+
+    &_button {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+    }
+
+    &_paragraph {
+    
+      p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+

@@ -9,6 +9,7 @@ import Footer from '../Footer/Footer';
 import Background from '../Background/Background';
 import Connexion from '../Connexion/Connexion';
 import CreatePostForm from '../CreatePostForm/CreatePostForm';
+import UserProfile from '../UserProfile/UserProfile';
 import { loadServices } from '../../actions/app';
 import { useSelector } from 'react-redux';
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />
             <Route path="/poster-une-annonce" element={<CreatePostForm />} />
+            <Route path="/mon-profil" element={<UserProfile />} />
           </Routes>
         </div>
         <Footer />
