@@ -4,6 +4,10 @@ import {
   Typography,
   Rating,
   TextField,
+  FormControl,
+  Select,
+  InputLabel,
+  MenuItem,
 } from '@mui/material';
 
 import userinfo from './data'; // data temporaires
@@ -30,38 +34,70 @@ export default function UserProfile() {
 
       <div className="userprofile_info_text">
         <div className="userprofile_button_modify">
-          <Button variant="contained">Modifier</Button>
+          <Button variant="contained">Enregistrer</Button>
         </div>
-        <div className="userprofile_info_text_paragraph">
-          <p><span>Nom :</span> {userinfo.firstname} </p>
-          <p><span>Prénom :</span> {userinfo.lastname} </p>
-          <p><span>Date de naissance :</span> {userinfo.birthdate} </p>
-          <p><span>Email :</span> {userinfo.mail} </p>
-          <p><span>Localisation :</span> {userinfo.place} </p>
-          <p><span>Sexe :</span> {userinfo.sex} </p>
+        <div className="userprofile_info_text_paragraph_edit">
+          <div className="userprofile_form_item">
+            <TextField
+              size="small"
+              label="Nom"
+            />
+          </div>
+          <div className="userprofile_form_item">
+            <TextField
+              size="small"
+              label="Prénom"
+            />
+          </div>
+          <div className="userprofile_form_item">
+            <TextField
+              size="small"
+              label="Date de naissance"
+            />
+          </div>
+          <div className="userprofile_form_item">
+            <TextField
+              size="small"
+              label="Email"
+            />
+          </div>
+          <div className="userprofile_form_item">
+            <TextField
+              size="small"
+              label="Localisation"
+            />
+          </div>
+          <FormControl fullWidth className="searchbar_form_item_service" size="small">
+            <InputLabel>Sexe</InputLabel>
+            <Select
+              label="Sexe"
+              value=""
+            >
+              <MenuItem value={1}>Homme</MenuItem>
+              <MenuItem value={2}>Femme</MenuItem>
+              <MenuItem value={3}>Ne préfère pas répondre</MenuItem>
+            </Select>
+          </FormControl>
         </div>
 
         <div className="userprofile_inputs">
-          <div className="userprofile_input_skills">
+          <div className="userprofile_input_skills_edit">
             <TextField
               fullWidth
               rows={2}
-              multiline="true"
+              multiline
               label="Compétences"
-              value={userinfo.skills}
             />
           </div>
-          <div className="userprofile_input_description">
+          <div className="userprofile_input_description_edit">
             <TextField
               fullWidth
               rows={10}
-              multiline="true"
+              multiline
               label="Description"
-              value={userinfo.description}
             />
           </div>
         </div>
-
       </div>
 
     </div>

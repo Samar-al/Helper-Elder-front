@@ -35,6 +35,10 @@
           border: 1px, solid, vars.$main-color;
           padding: 1rem;
         }
+
+        &_skills_edit, &_description_edit {
+          margin-bottom: 1rem;
+        }
     }
 
     &_rating {
@@ -77,12 +81,21 @@
             font-weight: bold;
           }
         }
+
+        &_paragraph_edit {
+          margin: 1rem 0;
+          text-align: left;
+          display: flex;
+          flex-direction: column;
+        }
     }
 
     &_input_skills {
-
       margin-bottom: 1rem;
-    
+    }
+
+    &_form_item {
+      margin-bottom: 0.5rem;
     }
 }
 
@@ -119,3 +132,11 @@
   }
 }
 
+@media (min-width: vars.$small-breakpoint) { 
+  .userprofile {
+    &_info_text_paragraph_edit {
+      width:50% 
+
+    }
+  }
+}

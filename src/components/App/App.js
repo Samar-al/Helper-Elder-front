@@ -10,6 +10,7 @@ import Background from '../Background/Background';
 import Connexion from '../Connexion/Connexion';
 import CreatePostForm from '../CreatePostForm/CreatePostForm';
 import UserProfile from '../UserProfile/UserProfile';
+import UserProfileEdit from '../UserProfile/UserProfileEdit';
 import { loadServices } from '../../actions/app';
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
             <Route path="/connexion" element={<Connexion />} />
             <Route path="/poster-une-annonce" element={<CreatePostForm />} />
             <Route path="/mon-profil" element={<UserProfile />} />
+            <Route path="/mon-profil/editer" element={<UserProfileEdit />} />
             {/* <Route path="/profil/:id" element={<UserProfile />} /> */}
           </Routes>
         </div>
