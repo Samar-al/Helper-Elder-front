@@ -47,7 +47,6 @@ export default function CreatePostForm() {
     <div className="create_post">
       <div className="create_post_header">
         <h1 className="create_post_header_title">Poster une annonce</h1>
-        <Switch />
       </div>
       <Box component="form">
         <div className="form_radio">
@@ -84,7 +83,7 @@ export default function CreatePostForm() {
           <TextField
             rows={10}
             className="form_input_content"
-            multiline="true"
+            multiline
             label="Contenu de l'annonce"
             value={contentInput}
             onChange={(event) => dispatch(typeContent(event.target.value))}

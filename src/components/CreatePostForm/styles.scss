@@ -3,6 +3,9 @@
   flex-direction: column;
   margin: 1em;
   background: white;
+  border-radius: 10px;
+  padding: 1em;
+  text-align: left;
 
   &_header {
     display: flex;
@@ -25,10 +28,6 @@
 
   &_title {
     width: 85%;
-  }
-
-  &_zipcode {
-    width: 30%;
   }
 
   &_content {
