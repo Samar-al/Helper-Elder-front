@@ -1,7 +1,7 @@
 import './styles.scss';
 import { Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from '../Header/Header';
 import Searchbar from '../Searchbar/Searchbar';
 import Homepage from '../Homepage/Homepage';
@@ -11,7 +11,6 @@ import Connexion from '../Connexion/Connexion';
 import CreatePostForm from '../CreatePostForm/CreatePostForm';
 import UserProfile from '../UserProfile/UserProfile';
 import { loadServices } from '../../actions/app';
-import { useSelector } from 'react-redux';
 
 function App() {
   const dispatch = useDispatch();
@@ -26,7 +25,7 @@ function App() {
   );
 
   return (
-    <div className={ largeFontSize ? 'app app--large' : 'app' }>
+    <div className={largeFontSize ? 'app app--large' : 'app'}>
       <Background />
       <div className="wrapper">
         <div>

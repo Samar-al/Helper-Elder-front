@@ -2,7 +2,7 @@ import { GET_SERVICES, CHANGE_FONT_SIZE } from '../actions/app';
 
 const initialState = {
   serviceList: [],
-  largeFontSize : false,
+  largeFontSize: false,
 };
 
 const reducer = (state = initialState, action = {}) => {

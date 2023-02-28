@@ -13,17 +13,17 @@ export default function UserProfile() {
   return (
     <div className="userprofile">
       <div className="userprofile_info_media">
-        <img alt="userprofile picture" className="userprofile_picture" src= {userinfo.picture} />
+        <img alt="userprofile picture" className="userprofile_picture" src={userinfo.picture} />
         <div className="userprofile_rating">
           <Typography component="legend" />
-            <Rating name="note" value={4} readOnly />
+          <Rating name="note" value={4} readOnly />
         </div>
         <div className="userprofile_button">
           <div className="userprofile_button_add_post">
             <Button className="userprofile_button_add_post" variant="contained">Ajouter une annonce</Button>
           </div>
           <div className="userprofile_button_message">
-            <Button  variant="contained">Messagerie</Button>
+            <Button variant="contained">Messagerie</Button>
           </div>
         </div>
       </div>
@@ -33,12 +33,12 @@ export default function UserProfile() {
           <Button variant="contained">Modifier</Button>
         </div>
         <div className="userprofile_info_text_paragraph">
-          <p>Nom : {userinfo.firstname} </p>
-          <p>Prénom : {userinfo.lastname} </p>
-          <p>Date de naissance : {userinfo.birthdate} </p>
-          <p>Email : {userinfo.mail} </p>
-          <p>Localisation : {userinfo.place} </p>
-          <p>Sexe : {userinfo.sex} </p>
+          <p><span>Nom :</span> {userinfo.firstname} </p>
+          <p><span>Prénom :</span> {userinfo.lastname} </p>
+          <p><span>Date de naissance :</span> {userinfo.birthdate} </p>
+          <p><span>Email :</span> {userinfo.mail} </p>
+          <p><span>Localisation :</span> {userinfo.place} </p>
+          <p><span>Sexe :</span> {userinfo.sex} </p>
         </div>
 
         <div className="userprofile_inputs">
@@ -49,7 +49,6 @@ export default function UserProfile() {
               multiline="true"
               label="Compétences"
               value={userinfo.skills}
-              // onChange={(event) => dispatch(typeSkills(event.target.value))}
             />
           </div>
           <div className="userprofile_input_description">
@@ -59,13 +58,12 @@ export default function UserProfile() {
               multiline="true"
               label="Description"
               value={userinfo.description}
-              // onChange={(event) => dispatch(typeDescription(event.target.value))}
             />
           </div>
         </div>
 
-      </div>      
-      
+      </div>
+
     </div>
   );
 }
