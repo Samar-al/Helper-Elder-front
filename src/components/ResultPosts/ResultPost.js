@@ -2,7 +2,7 @@ import './styles.scss';
 import PropTypes from 'prop-types';
 import { Rating, Typography } from '@mui/material';
 
-export default function Announcement({
+export default function ResultPost({
   picture,
   username,
   note,
@@ -29,7 +29,7 @@ export default function Announcement({
   );
 }
 
-Announcement.propTypes = {
+ResultPost.propTypes = {
   picture: PropTypes.string.isRequired, // à modifier lorsqu'on saura comment récupérer l'avatar
   username: PropTypes.string.isRequired,
   note: PropTypes.number.isRequired,
