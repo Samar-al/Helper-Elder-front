@@ -54,7 +54,7 @@ export default function CreatePostForm() {
       hourly_rate: rateInput,
       work_type: selectedPonctual,
       postal_code: zipcodeInput,
-      radius: radiusInput,
+      radius: Number(radiusInput),
       tag: selectedServices,
     };
     dispatch(submitNewPost(post));

@@ -1,29 +1,20 @@
 import axios from 'axios';
 import { SUBMIT_NEW_POST } from '../actions/createpostform';
+import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 
 const postMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_NEW_POST:
       axios.post(
         // URL
-        'https://localhost:8000/api/annonce/ajouter',
+        `${baseUrl}/annonce/ajouter`,
         // data
-        {
-
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${store.getState().authentication.jwt}`,
-          },
-        },
+        action.post,
+        getHttpAuthHeaders(store.getState().authentication.jwt),
       )
         .then((response) => {
-          if (response.status !== 200) {
+          if (response.status !== 201) {
             console.log('post creation failed');
-            // TO DO
-            // if (response.status === 401){
-            //   console.log("Nom d'utilisateur et/ou mot de passe incorrect");
-            // }
           }
           else {
             console.log(response);

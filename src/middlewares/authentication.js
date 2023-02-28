@@ -6,13 +6,14 @@ import {
   saveJwt,
   saveLoggedUser,
 } from '../actions/authentication';
+import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 
 const authenticationMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case HANDLE_LOGIN:
       axios.post(
         // URL
-        'https://localhost:8000/api/login_check',
+        `${baseUrl}/login_check`,
         // login + password
         {
           username: store.getState().connexion.emailInput,
@@ -40,12 +41,8 @@ const authenticationMiddleware = (store) => (next) => (action) => {
     case FETCH_LOGGED_USER:
       axios.get(
         // URL
-        'https://localhost:8000/api/mon-profil',
-        {
-          headers: {
-            Authorization: `Bearer ${store.getState().authentication.jwt}`,
-          },
-        },
+        `${baseUrl}/mon-profil`,
+        getHttpAuthHeaders(store.getState().authentication.jwt),
       )
         .then((response) => {
           if (response.status !== 200) {

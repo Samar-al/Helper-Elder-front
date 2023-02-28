@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { getServices, LOAD_SERVICES } from '../actions/app';
+import { baseUrl } from '../utils/api';
 
 const appMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOAD_SERVICES:
       axios.get(
-        'https://localhost:8000/api/service',
+        `${baseUrl}/service`,
       )
         .then((response) => {
           if (response.status !== 200) {
