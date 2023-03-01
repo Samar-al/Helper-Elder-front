@@ -22,6 +22,7 @@ export const redirectAction = (path) => ({
 
 export const redirectDone = () => ({
   type: REDIRECT_DONE,
+});
 
 export const changeFontSize = () => ({
   type: CHANGE_FONT_SIZE,

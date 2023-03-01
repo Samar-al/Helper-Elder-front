@@ -1,9 +1,14 @@
-import { GET_SERVICES, REDIRECT_ACTION, REDIRECT_DONE } from '../actions/app';
+import {
+  CHANGE_FONT_SIZE,
+  GET_SERVICES,
+  REDIRECT_ACTION,
+  REDIRECT_DONE,
+} from '../actions/app';
 
 const initialState = {
   serviceList: [],
   redirectPath: '',
-  largeFontSize : false,
+  largeFontSize: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -22,6 +27,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         redirectPath: '',
+      };
     case CHANGE_FONT_SIZE:
       return {
         ...state,
