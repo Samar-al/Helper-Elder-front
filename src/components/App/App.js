@@ -1,5 +1,5 @@
 import './styles.scss';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../Header/Header';
@@ -15,6 +15,7 @@ import { loadServices, redirectDone } from '../../actions/app';
 function App() {
   const dispatch = useDispatch();
   const { redirectPath, largeFontSize } = useSelector((state) => state.app);
+  const navigate = useNavigate();
 
   // loading services on first app render for searchbar and post creation form
   useEffect(
@@ -28,11 +29,16 @@ function App() {
   // redirectAction(path) can be dispatched from anywhere to put the said path into the state.
   // whenever the App component sees a redirection path in the state, it redirects to it
   // and then empties state.app.redirectPath by dispatching redirectDone()
-  if (redirectPath !== '') {
-    const path = redirectPath;
-    dispatch(redirectDone());
-    return <Navigate to={path} />;
-  }
+  useEffect(
+    () => {
+      if (redirectPath !== '') {
+        const path = redirectPath;
+        dispatch(redirectDone());
+        navigate(path);
+      }
+    },
+    [redirectPath],
+  );
 
   return (
     <div className={largeFontSize ? 'app app--large' : 'app'}>
