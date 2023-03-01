@@ -1,16 +1,31 @@
 import './styles.scss';
-import PropTypes from 'prop-types';
 import { Pagination } from '@mui/material';
-import data from './data';
+// import data from './data';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import ResultPost from './ResultPost';
+import { loadPostsElders, loadPostsHelpers } from '../../actions/resultposts';
 
 export default function ResultPosts() {
+  const dispatch = useDispatch();
+  const { postsListHelpers, postsListElders } = useSelector((state) => state.post);
+
+  useEffect(
+    () => {
+      dispatch(loadPostsHelpers);
+      dispatch(loadPostsElders);
+    },
+    [],
+  );
+
+  console.log(postsListHelpers);
   return (
     <div className="resultposts">
       <div className="list_posts">
         <p className="list_posts_result">4 résultats sur 357</p>
         <div className="posts">
-          {data.map((post) => <ResultPost key={post.id} {...post} />)}
+          {postsListHelpers.map((postHelper) => <ResultPost key={postHelper.id} {...postHelper} />)}
+          {postsListElders.map((postElder) => <ResultPost key={postElder.id} {...postElder} />)}
         </div>
         <div className="pagination">
           <Pagination count={10} variant="outlined" />
@@ -19,15 +34,3 @@ export default function ResultPosts() {
     </div>
   );
 }
-
-ResultPosts.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    picture: PropTypes.string.isRequired, // à modifier lorsqu'on saura comment récupérer l'avatar
-    title: PropTypes.string.isRequired,
-    zipcode: PropTypes.string.isRequired,
-    city: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
-    date: PropTypes.instanceOf(Date).isRequired,
-  })).isRequired,
-};

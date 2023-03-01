@@ -4,14 +4,15 @@ import { Rating, Typography } from '@mui/material';
 
 export default function ResultPost({
   picture,
-  username,
-  note,
+  firstname,
+  avgRating,
   title,
-  city,
-  zipcode,
-  date,
+  postalCode,
+  createdAt,
   content,
+  id,
 }) {
+  console.log(title);
   return (
     <div className="post">
       <div className="post_left">
@@ -31,15 +32,10 @@ export default function ResultPost({
 
 ResultPost.propTypes = {
   picture: PropTypes.string.isRequired, // à modifier lorsqu'on saura comment récupérer l'avatar
-  username: PropTypes.string.isRequired,
-  note: PropTypes.number.isRequired,
+  firstname: PropTypes.string.isRequired,
+  avgRating: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  zipcode: PropTypes.string.isRequired,
+  postalCode: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  date: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.instanceOf(Date),
-  ]).isRequired,
+  createdAt: PropTypes.string.isRequired,
 };
