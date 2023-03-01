@@ -1,5 +1,6 @@
 node_modules/
 dist/
+src/components/Connexion/login.js
 
 .DS_Store
 Thumbs.db

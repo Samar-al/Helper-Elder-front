@@ -1,4 +1,7 @@
 import axios from 'axios';
+import { redirectAction } from '../actions/app';
+import { handlePostSaved, SUBMIT_NEW_POST } from '../actions/createpostform';
+import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 import {
   getPost, getReviews, loadReviews, LOAD_POST, LOAD_REVIEWS,
 } from '../actions/detailedpost';
@@ -34,6 +37,29 @@ const postMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(getReviews(response.data.reviewsTaker));
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+
+    case SUBMIT_NEW_POST:
+      axios.post(
+        // URL
+        `${baseUrl}/annonce/ajouter`,
+        // data
+        action.post,
+        // header
+        getHttpAuthHeaders(store.getState().authentication.jwt),
+      )
+        .then((response) => {
+          if (response.status !== 201) {
+            console.log('post creation failed');
+          }
+          else {
+            store.dispatch(handlePostSaved());
+            store.dispatch(redirectAction('/'));
           }
         })
         .catch((error) => {

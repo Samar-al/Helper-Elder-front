@@ -1,13 +1,14 @@
 import './styles.scss';
 import PropTypes from 'prop-types';
+import { formatDate } from '../../utils/functions';
 
 // une annonce parmis les annonces à afficher en homepage
 export default function Post({
   picture,
   title,
-  zipcode,
+  postalCode,
   city,
-  date,
+  createdAt,
   content,
 }) {
   return (
@@ -16,8 +17,8 @@ export default function Post({
         <img alt={title} src={picture} className="lastposts_pannel_postlist_post_header_picture" />
         <div className="lastposts_pannel_postlist_post_header_info">
           <h3 className="lastposts_pannel_postlist_post_header_info_title">{title}</h3>
-          <p className="lastposts_pannel_postlist_post_header_info_city">{zipcode} - {city}</p>
-          <p className="lastposts_pannel_postlist_post_header_info_date">{date}</p>
+          <p className="lastposts_pannel_postlist_post_header_info_city">{city} - {postalCode}</p>
+          <p className="lastposts_pannel_postlist_post_header_info_date">le {formatDate(createdAt)}</p>
         </div>
       </div>
       <p className="lastposts_pannel_postlist_post_content">{content}</p>
@@ -26,10 +27,16 @@ export default function Post({
 }
 
 Post.propTypes = {
-  picture: PropTypes.string.isRequired, // à modifier lorsqu'on saura comment récupérer l'avatar
+  picture: PropTypes.string,
   title: PropTypes.string.isRequired,
-  zipcode: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
+  postalCode: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
+  city: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
   content: PropTypes.string.isRequired,
-  date: PropTypes.instanceOf(Date).isRequired,
+  createdAt: PropTypes.string.isRequired,
+};
+
+Post.defaultProps = {
+  picture: 'img/placeholders/avatar_placeholder.png',
+  postalCode: '75001',
+  city: 'Paris',
 };

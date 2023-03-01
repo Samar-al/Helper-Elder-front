@@ -9,7 +9,7 @@
   min-width: 200px;
   background-color: vars.$transparent-background-altcolor;
   text-align: left;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: vars.$standard-box-shadow;
 
   &_title {
     margin-bottom: 0.5em;

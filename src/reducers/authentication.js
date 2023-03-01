@@ -1,21 +1,21 @@
-import { HANDLE_LOGOUT, SAVE_SUCCESSFUL_AUTH  } from '../actions/authentication';
+import { HANDLE_LOGOUT, SAVE_JWT, SAVE_LOGGED_USER } from '../actions/authentication';
 
 export const initialState = {
-
-  isLogged: false,
-
-  // pseudo de l'utilisateur, une fois qu'il est authentifié
   user: null,
-  token: '',
+  jwt: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case HANDLE_LOGOUT: return { ...state, isLogged: false };
-    case SAVE_SUCCESSFUL_AUTH: return {...state, isLogged: true,
-        user: action.user,
-        token: action.token,
-      };
+    case HANDLE_LOGOUT: return { ...state, user: null, jwt: '' };
+    case SAVE_JWT: return {
+      ...state,
+      jwt: action.token,
+    };
+    case SAVE_LOGGED_USER: return {
+      ...state,
+      user: action.user,
+    };
     default:
       return state;
   }

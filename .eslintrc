@@ -1,6 +1,11 @@
 {
   "extends": "airbnb",
   "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "babelOptions": {
+      "configFile": "./.babelrc"
+    }
+  },
   "env": {
     "browser": true
   },

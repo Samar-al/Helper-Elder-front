@@ -4,22 +4,30 @@ import {
   Checkbox,
   FormControl,
   FormControlLabel,
+  InputAdornment,
   InputLabel,
   ListItemText,
   MenuItem,
   Radio,
   RadioGroup,
   Select,
-  Switch,
   TextField,
 } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  typeContent, typeRate, typeTitle, typeZipcode, selectRadio, selectService, selectTypeUser,
+  typeContent,
+  typeRate,
+  typeTitle,
+  typeZipcode,
+  selectPonctual,
+  selectService,
+  selectTypeUser,
+  typeRadius,
+  submitNewPost,
 } from '../../actions/createpostform';
 import './styles.scss';
-import services from './data';
+import { hourlyRateRegex, radiusRegex, zipcodeRegex } from '../../utils/regex';
 
 export default function CreatePostForm() {
   const {
@@ -27,24 +35,42 @@ export default function CreatePostForm() {
     zipcodeInput,
     contentInput,
     rateInput,
-    selectedRadio,
-    selectedService,
+    radiusInput,
+    selectedPonctual,
+    selectedServices,
     selectedTypeUser,
   } = useSelector((state) => state.createpostform);
 
+  const { user } = useSelector((state) => state.authentication);
+
+  const { serviceList } = useSelector((state) => state.app);
+
   const dispatch = useDispatch();
+
+  function submitForm() {
+    const post = {
+      user_id: user.id,
+      title: titleInput,
+      content: contentInput,
+      hourly_rate: rateInput,
+      work_type: selectedPonctual,
+      postal_code: zipcodeInput,
+      radius: Number(radiusInput),
+      tag: selectedServices,
+    };
+    dispatch(submitNewPost(post));
+  }
 
   return (
     <div className="create_post">
       <div className="create_post_header">
         <h1 className="create_post_header_title">Poster une annonce</h1>
-        <Switch />
       </div>
       <Box component="form">
         <div className="form_radio">
           <RadioGroup name="radio_button_group" value={selectedTypeUser} onChange={(event) => dispatch(selectTypeUser(event.target.value))}>
-            <FormControlLabel value="elder" control={<Radio />} label="Je suis un Elder (je cherche de l'aide)" />
-            <FormControlLabel value="helper" control={<Radio />} label="Je suis un Helper (je propose de l'aide)" />
+            <FormControlLabel value={1} control={<Radio />} label="Je suis un Elder (je cherche de l'aide)" />
+            <FormControlLabel value={2} control={<Radio />} label="Je suis un Helper (je propose de l'aide)" />
           </RadioGroup>
         </div>
         <div className="form_input">
@@ -52,51 +78,40 @@ export default function CreatePostForm() {
             className="form_input_title"
             label="Titre de l'annonce"
             value={titleInput}
+            size="small"
             onChange={(event) => dispatch(typeTitle(event.target.value))}
           />
         </div>
         <div className="form_radio">
-          <RadioGroup row name="radio_button_group" value={selectedRadio} onChange={(event) => dispatch(selectRadio(event.target.value))}>
-            <FormControlLabel value="ponctual" control={<Radio />} label="Service ponctuel" />
-            <FormControlLabel value="regular" control={<Radio />} label="Service régulier" />
+          <RadioGroup row name="radio_button_group" value={selectedPonctual} onChange={(event) => dispatch(selectPonctual(event.target.value))}>
+            <FormControlLabel value="true" control={<Radio />} label="Service ponctuel" />
+            <FormControlLabel value="false" control={<Radio />} label="Service régulier" />
           </RadioGroup>
-        </div>
-        <div className="form_input">
-          <TextField
-            className="form_input_zipcode"
-            label="Code postal"
-            value={zipcodeInput}
-            onChange={(event) => {
-              const regex = /^\d{0,5}$/; // <= match un nombre contenant 0 à 5 chiffre ("" passe le test)
-              if (regex.test(event.target.value)) dispatch(typeZipcode(event.target.value));
-            }} // TODO A changer avec variable dans utils
-          />
-        </div>
-        <div className="form_input">
-          <TextField
-            rows={10}
-            className="form_input_content"
-            multiline="true"
-            label="Contenu de l'annonce"
-            value={contentInput}
-            onChange={(event) => dispatch(typeContent(event.target.value))}
-          />
         </div>
         <div className="form_input">
           <FormControl fullWidth className="searchbar_form_item_service" size="small">
             <InputLabel>Type de service</InputLabel>
             <Select
               multiple
-              rows={2}
               label="Type de service"
-              value={selectedService}
+              value={selectedServices}
               onChange={(e) => dispatch(selectService(e.target.value))}
-              renderValue={(selected) => selected.join(', ')}
+              /* Here we need to build a string with all the selected services separated by a ",".
+                 The thing is, we need to put the checkboxes values as IDs to be able to pass those
+                 to the API. Thus, selected is an array of numbers.
+                 First, an array containing the services names as strings is made with
+                 selected.map((serviceId) => serviceList[serviceId].name).
+                 Then, this array is turned into a string with all the selected services names
+                 separated by a coma with .reduce((render, service) => `${render}, ${service}`)
+                 */
+              renderValue={(selected) => selected.map((serviceId) => serviceList[serviceId - 1].name).reduce((render, service) => `${render}, ${service}`)}
             >
-              {services.map((service) => (
-                <MenuItem key={service} value={service}>
-                  <Checkbox checked={selectedService.includes(service)} />
-                  <ListItemText primary={service} />
+              {/* short circuit evaluation to prevent errors.
+              The list is not created as long as services are not loaded */}
+              {serviceList && serviceList.map((service) => (
+                <MenuItem key={service.name} value={service.id}>
+                  <Checkbox checked={selectedServices.includes(service.id)} />
+                  <ListItemText primary={service.name} />
                 </MenuItem>
               ))}
             </Select>
@@ -104,28 +119,55 @@ export default function CreatePostForm() {
         </div>
         <div className="form_input">
           <TextField
-            label="Tarif en €"
-            value={rateInput}
+            className="form_input_zipcode"
+            label="Code postal"
+            value={zipcodeInput}
+            size="small"
             onChange={(event) => {
-              const rateRegex = /^\d{0,}(,\d{0,2})?$/;
-              /*
-                ^ means the start of the string
-                \d means a digit
-                {0,} means one or more
-                () with a question mark
-                ? means: match what is inside the group one or no times
-                , is the comma you wrote
-                \d is still a digit
-                {0,2} means match the previous digit one or two times
-                $ matches the end of the string
-              */
-              if (rateRegex.test(event.target.value)) dispatch(typeRate(event.target.value));
-            }} // TODO A changer avec variable dans utils
+              if (zipcodeRegex.test(event.target.value)) dispatch(typeZipcode(event.target.value));
+            }}
+          />
+        </div>
+        <div className="form_input">
+          <TextField
+            className="form_input_radius"
+            label="Rayon"
+            value={radiusInput}
+            size="small"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">km</InputAdornment>,
+            }}
+            onChange={(event) => {
+              if (radiusRegex.test(event.target.value)) dispatch(typeRadius(event.target.value));
+            }}
+          />
+        </div>
+        <div className="form_input">
+          <TextField
+            rows={10}
+            className="form_input_content"
+            multiline
+            label="Contenu de l'annonce"
+            value={contentInput}
+            onChange={(event) => dispatch(typeContent(event.target.value))}
+          />
+        </div>
+        <div className="form_input">
+          <TextField
+            label="Tarif"
+            value={rateInput}
+            size="small"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">€</InputAdornment>,
+            }}
+            onChange={(event) => {
+              if (hourlyRateRegex.test(event.target.value)) dispatch(typeRate(event.target.value));
+            }}
           />
         </div>
       </Box>
       <div className="create_button">
-        <Button variant="contained">Envoyer</Button>
+        <Button onClick={() => submitForm()} variant="contained">Envoyer</Button>
       </div>
     </div>
   );
