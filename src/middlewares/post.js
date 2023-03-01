@@ -11,6 +11,7 @@ const postMiddleware = (store) => (next) => (action) => {
         `${baseUrl}/annonce/ajouter`,
         // data
         action.post,
+        // header
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )
         .then((response) => {
