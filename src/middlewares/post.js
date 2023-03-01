@@ -2,9 +2,95 @@ import axios from 'axios';
 import { redirectAction } from '../actions/app';
 import { handlePostSaved, SUBMIT_NEW_POST } from '../actions/createpostform';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
+import {
+  getPost, getReviews, loadReviews, LOAD_POST, LOAD_REVIEWS,
+} from '../actions/detailedpost';
+import {
+  getPostsElders,
+  getPostsHelpers,
+  LOAD_POSTS_ELDERS,
+  LOAD_POSTS_HELPERS,
+} from '../actions/resultposts';
 
 const postMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
+    case LOAD_POSTS_HELPERS:
+      axios.get(
+        // URL
+        `${baseUrl}/annonce/aidant`,
+      )
+        .then((response) => {
+          if (response.status !== 200) {
+            console.log('posts not found');
+          }
+          else {
+            store.dispatch(getPostsHelpers(response.data));
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+
+    case LOAD_POSTS_ELDERS:
+      axios.get(
+        // URL
+        `${baseUrl}/annonce/recherche-aide`,
+      )
+        .then((response) => {
+          if (response.status !== 200) {
+            console.log('posts not found');
+          }
+          else {
+            store.dispatch(getPostsElders(response.data));
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+
+    case LOAD_POST:
+      axios.get(
+        // URL
+        `${baseUrl}/annonce/${action.id}`, // TO DO check that this is the right URL
+      )
+        .then((response) => {
+          if (response.status !== 200) {
+            console.log('post not found');
+          }
+          else {
+            store.dispatch(getPost(response.data));
+            if (store.getState().authentication.user !== null) {
+              store.dispatch(loadReviews(response.data.user.id));
+            }
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+
+    case LOAD_REVIEWS:
+      axios.get(
+        // URL
+        `${baseUrl}/profil/${action.userId}`, // TO DO check that this is the right URL
+        // header
+        getHttpAuthHeaders(store.getState().authentication.jwt),
+      )
+        .then((response) => {
+          if (response.status !== 200) {
+            console.log('user not found');
+          }
+          else {
+            store.dispatch(getReviews(response.data.reviewsTaker));
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+
     case SUBMIT_NEW_POST:
       axios.post(
         // URL
