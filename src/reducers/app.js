@@ -2,7 +2,7 @@ import { GET_SERVICES, REDIRECT_ACTION, REDIRECT_DONE } from '../actions/app';
 
 const initialState = {
   serviceList: [],
-  redirectPath: '/',
+  redirectPath: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
