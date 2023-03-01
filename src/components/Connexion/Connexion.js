@@ -32,7 +32,6 @@ export default function Connexion() {
   };
 
   return (
-
     <div className="connexion">
       <div className="connexion_title"> Connexion </div>
       <form className="connexion_form" onSubmit={handleSubmit}>
