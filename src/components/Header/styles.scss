@@ -31,7 +31,7 @@
   }
 }
 
-@media screen and (max-width:760px) {
+@media screen and (max-width: vars.$medium-breakpoint) {
   .header_nav {
     flex-direction: column;
     justify-content: center;

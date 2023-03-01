@@ -2,28 +2,32 @@
 
 .lastposts {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   border: 0;
 
+
   &_pannel {
-    border: 1px solid black;
     margin: 0 2em 2em 2em;
     background-color: white;
     max-width: 550px;
+    box-shadow: vars.$standard-box-shadow;
+    border-radius: 10px;
 
     &_title {
       padding: 1em;
+      font-weight: bold;
+      color: vars.$main-color;
     }
 
     &_postlist {
+      text-align: justify;
+      border-top : 1px solid vars.$border-light-color;
 
-      border-top : 1px solid black;
       &_post {
         width: 100%;
         padding: 1em;
-
-        border-top: 1px solid black;
+        border-top: 1px solid vars.$border-light-color;
         &:first-child {
           border: 0;
         }
@@ -32,18 +36,30 @@
           display: flex;
 
           &_picture {
-            width: 40px;
-            height: 40px;
-            margin-right: 0.5em;
+            width: 48px;
+            height: 48px;
+            font-size: 0; // hiding alt when image is not found
           }
 
           &_info {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            margin-left: 0.5em;
+
+            &_title {
+              text-align: left;
+              display: -webkit-box;
+              -webkit-line-clamp: 1; /* number of lines to show */
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              font-weight: bold;
+            }
 
             &_date {
-              display: none;
+              font-size: 0.8em;
+              font-style: italic;
             }
           }
 
@@ -66,10 +82,10 @@
         border: 0;
 
         &:nth-child(-n+2) {
-          border-bottom: 1px solid black;
+          border-bottom: 1px solid vars.$border-light-color;
         }
         &:nth-child(even) {
-          border-left: 1px solid black;
+          border-left: 1px solid vars.$border-light-color;
         }
 
         &_header {
@@ -80,7 +96,6 @@
           display: -webkit-box;
           -webkit-line-clamp: 3; /* number of lines to show */
           -webkit-box-orient: vertical;
-          text-align: justify;
           overflow: hidden;
           text-overflow: ellipsis;
         }

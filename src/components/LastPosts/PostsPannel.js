@@ -17,11 +17,11 @@ PostsPannel.propTypes = {
   title: PropTypes.string.isRequired,
   posts: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    picture: PropTypes.string.isRequired, // à modifier lorsqu'on saura comment récupérer l'avatar
+    picture: PropTypes.string,
     title: PropTypes.string.isRequired,
-    zipcode: PropTypes.string.isRequired,
-    city: PropTypes.string.isRequired,
+    zipcode: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
+    city: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
     content: PropTypes.string.isRequired,
-    date: PropTypes.instanceOf(Date).isRequired,
+    createdAt: PropTypes.string.isRequired,
   })).isRequired,
 };

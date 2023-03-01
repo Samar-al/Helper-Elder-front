@@ -1,19 +1,19 @@
 import axios from 'axios';
-import { getLastPosts, LOAD_LAST_POSTS } from '../actions/homepage';
+import { getServices, LOAD_SERVICES } from '../actions/app';
 import { baseUrl } from '../utils/api';
 
-const homepageMiddleware = (store) => (next) => (action) => {
+const appMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case LOAD_LAST_POSTS:
+    case LOAD_SERVICES:
       axios.get(
-        baseUrl,
+        `${baseUrl}/service`,
       )
         .then((response) => {
           if (response.status !== 200) {
-            console.log('last posts loading failed');
+            console.log('services types loading failed');
           }
           else {
-            store.dispatch(getLastPosts(response.data.postsHelper, response.data.postsElder));
+            store.dispatch(getServices(response.data));
           }
         })
         .catch((error) => {
@@ -24,4 +24,4 @@ const homepageMiddleware = (store) => (next) => (action) => {
   }
   next(action);
 };
-export default homepageMiddleware;
+export default appMiddleware;
