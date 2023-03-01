@@ -72,7 +72,7 @@ export default function UserProfile() {
           </div>
         </div>
       </div>
-      <form onSubmit={submitForm()}>
+      <form onSubmit={() => submitForm()}>
         <div className="userprofile_info_text">
           <div className="userprofile_button_modify">
             <Button variant="contained">Enregistrer</Button>

@@ -8,6 +8,7 @@ export const SELECT_GENDER = 'SELECT_GENDER';
 export const TYPE_DESCRIPTION = 'TYPE_DESCRIPTION';
 export const SUBMIT_USER_CHANGES = 'SUBMIT_USER_CHANGES';
 export const HANDLE_USER_CHANGES_SAVED = 'HANDLE_USER_CHANGES_SAVED';
+export const FILL_USER_EDIT_FORM = 'FILL_USER_EDIT_FORM';
 
 // Action creator
 export const typeFirstname = (value) => ({
@@ -52,4 +53,8 @@ export const submitUserChanges = (data) => ({
 
 export const handleUserChangesSaved = () => ({
   type: HANDLE_USER_CHANGES_SAVED,
+});
+
+export const fillUserEditForm = () => ({
+  type: FILL_USER_EDIT_FORM,
 });

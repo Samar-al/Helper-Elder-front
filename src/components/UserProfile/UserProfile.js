@@ -5,6 +5,7 @@ import {
   Rating,
 } from '@mui/material';
 
+import { NavLink } from 'react-router-dom';
 import userinfo from './data'; // data temporaires
 import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
 
@@ -29,7 +30,14 @@ export default function UserProfile() {
 
       <div className="userprofile_info_text">
         <div className="userprofile_button_modify">
-          <Button variant="contained">Modifier</Button>
+          <Button variant="contained">
+            <NavLink
+              to="/mon-profil/modifier"
+              className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
+            >
+              Modifier
+            </NavLink>
+          </Button>
         </div>
         <div className="userprofile_info_text_paragraph">
           <p><span>Prénom :</span> {userinfo.firstname} </p>

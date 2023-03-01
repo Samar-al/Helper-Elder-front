@@ -6,6 +6,7 @@ import {
   TYPE_POSTAL_CODE,
   SELECT_GENDER,
   TYPE_DESCRIPTION,
+  FILL_USER_EDIT_FORM,
 } from '../actions/userprofile';
 
 const initialState = {
@@ -18,7 +19,7 @@ const initialState = {
   descriptionInput: '',
 };
 
-const reducer = (state = initialState, action = {}) => {
+const reducer = (store, state = initialState, action = {}) => {
   switch (action.type) {
     case TYPE_FIRSTNAME:
       return {
@@ -60,6 +61,19 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         descriptionInput: action.input,
+      };
+
+    case FILL_USER_EDIT_FORM:
+      return {
+        ...state,
+        firstnameInput: store.getState().authentication.user.firstname,
+        lastnameInput: store.getState().authentication.user.lastname,
+        birthdateInput: store.getState().authentication.user.birthdate,
+        emailInput: store.getState().authentication.user.email,
+        postalCodeInput: store.getState().authentication.user.postalCode,
+        selectedGender: store.getState().authentication.user.gender,
+        descriptionInput: store.getState().authentication.user.description,
+
       };
     default:
       return state;
