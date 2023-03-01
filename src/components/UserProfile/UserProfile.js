@@ -32,8 +32,8 @@ export default function UserProfile() {
           <Button variant="contained">Modifier</Button>
         </div>
         <div className="userprofile_info_text_paragraph">
-          <p><span>Nom :</span> {userinfo.firstname} </p>
-          <p><span>Prénom :</span> {userinfo.lastname} </p>
+          <p><span>Prénom :</span> {userinfo.firstname} </p>
+          <p><span>Nom :</span> {userinfo.lastname} </p>
           <p><span>Date de naissance :</span> {userinfo.birthdate} </p>
           <p><span>Email :</span> {userinfo.mail} </p>
           <p><span>Localisation :</span> {userinfo.place} </p>
@@ -41,10 +41,6 @@ export default function UserProfile() {
         </div>
 
         <div className="userprofile_input">
-          <div className="userprofile_input_skills">
-            <h1> Compétences </h1>
-            <p> {userinfo.skills} </p>
-          </div>
           <div className="userprofile_input_description">
             <h1> Description </h1>
             <p> {userinfo.description} </p>

@@ -3,9 +3,8 @@ import {
   TYPE_LASTNAME,
   TYPE_BIRTHDATE,
   TYPE_EMAIL,
-  TYPE_PLACE,
+  TYPE_POSTAL_CODE,
   SELECT_GENDER,
-  TYPE_SKILLS,
   TYPE_DESCRIPTION,
 } from '../actions/userprofile';
 
@@ -14,9 +13,8 @@ const initialState = {
   lastnameInput: '',
   birthdateInput: '',
   emailInput: '',
-  placeInput: '',
+  postalCodeInput: '',
   selectedGender: [],
-  skillsInput: '',
   descriptionInput: '',
 };
 
@@ -46,22 +44,16 @@ const reducer = (state = initialState, action = {}) => {
         emailInput: action.input,
       };
 
-    case TYPE_PLACE:
+    case TYPE_POSTAL_CODE:
       return {
         ...state,
-        placeInput: action.input,
+        postalCodeInput: action.input,
       };
 
     case SELECT_GENDER:
       return {
         ...state,
         selectedGender: action.input,
-      };
-
-    case TYPE_SKILLS:
-      return {
-        ...state,
-        skillsInput: action.input,
       };
 
     case TYPE_DESCRIPTION:

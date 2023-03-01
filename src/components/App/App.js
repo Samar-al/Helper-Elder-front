@@ -47,8 +47,8 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />
             {/* TO DO put the two next route in private */}
-            <Route path="/mon-profil" element={<UserProfile />} />
-            <Route path="/mon-profil/editer" element={<UserProfileEdit />} />
+            <Route path="/mon-profil" element={<PrivateRoute element={<UserProfile />} />} />
+            <Route path="/mon-profil/modifier" element={<PrivateRoute element={<UserProfileEdit />} />} />
             {/* <Route path="/profil/:id" element={<UserProfile />} /> */}
             <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
           </Routes>

@@ -31,12 +31,12 @@
         margin-bottom: 1rem;
       }
 
-        &_skills, &_description {
+        &_description {
           border: 1px, solid, vars.$main-color;
           padding: 1rem;
         }
 
-        &_skills_edit, &_description_edit {
+        &_description_edit {
           margin-bottom: 1rem;
         }
     }
@@ -88,10 +88,6 @@
           display: flex;
           flex-direction: column;
         }
-    }
-
-    &_input_skills {
-      margin-bottom: 1rem;
     }
 
     &_form_item {
