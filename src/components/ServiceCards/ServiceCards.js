@@ -6,13 +6,12 @@ import PropTypes from 'prop-types';
 export default function ServiceCards() {
   return (
     <div className="servicecards">
-      {cards.map ((card) => (
-      <Card 
-      key={card.id}
-      {...card} 
-      />
+      {cards.map((card) => (
+        <Card
+          key={card.id}
+          {...card}
+        />
       ))}
-      </div>
-    );
-  }
-  
+    </div>
+  );
+}
