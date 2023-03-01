@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { SUBMIT_NEW_POST } from '../actions/createpostform';
+import { redirectAction } from '../actions/app';
+import { handlePostSaved, SUBMIT_NEW_POST } from '../actions/createpostform';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 
 const postMiddleware = (store) => (next) => (action) => {
@@ -17,7 +18,8 @@ const postMiddleware = (store) => (next) => (action) => {
             console.log('post creation failed');
           }
           else {
-            console.log(response);
+            store.dispatch(handlePostSaved());
+            store.dispatch(redirectAction('/'));
           }
         })
         .catch((error) => {

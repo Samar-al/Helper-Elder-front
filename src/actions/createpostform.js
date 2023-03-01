@@ -8,6 +8,7 @@ export const SELECT_PONCTUAL = 'SELECT_PONCTUAL';
 export const SELECT_SERVICE = 'SELECT_SERVICE';
 export const SELECT_TYPE_USER = 'SELECT_TYPE_USER';
 export const SUBMIT_NEW_POST = 'SUBMIT_NEW_POST';
+export const HANDLE_POST_SAVED = 'HANDLE_POST_SAVED';
 
 // Action creator
 export const typeTitle = (value) => ({
@@ -53,4 +54,8 @@ export const selectTypeUser = (value) => ({
 export const submitNewPost = (data) => ({
   type: SUBMIT_NEW_POST,
   post: data,
+});
+
+export const handlePostSaved = () => ({
+  type: HANDLE_POST_SAVED,
 });
