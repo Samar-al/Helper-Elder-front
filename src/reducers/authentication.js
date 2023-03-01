@@ -7,7 +7,8 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case HANDLE_LOGOUT: return { ...state, user: null, jwt: '' };
+    case HANDLE_LOGOUT:
+      return { ...state, user: null, jwt: '' };
     case SAVE_JWT: return {
       ...state,
       jwt: action.token,

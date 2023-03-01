@@ -12,7 +12,6 @@ import CreatePostForm from '../CreatePostForm/CreatePostForm';
 import PrivateRoute from './PrivateRoute';
 import { loadServices, redirectDone } from '../../actions/app';
 
-
 function App() {
   const dispatch = useDispatch();
   const { redirectPath, largeFontSize } = useSelector((state) => state.app);
@@ -36,7 +35,7 @@ function App() {
   }
 
   return (
-    <div className={ largeFontSize ? 'app app--large' : 'app' }>
+    <div className={largeFontSize ? 'app app--large' : 'app'}>
       <Background />
       <div className="wrapper">
         <div>
