@@ -13,6 +13,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPostType, selectServices, typeAdress } from '../../actions/searchbar';
 import { zipcodeRegex } from '../../utils/regex';
+import FontSizeToggler from '../FontSizeToggler/FontSizeToggler';
 
 export default function Searchbar() {
   const { adressInput, selectedServices, postType } = useSelector((state) => state.searchbar);
@@ -87,6 +88,7 @@ export default function Searchbar() {
       <div className="searchbar_button">
         <Button variant="contained">Rechercher</Button>
       </div>
+      <FontSizeToggler />
     </div>
   );
 }

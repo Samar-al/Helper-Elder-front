@@ -42,6 +42,7 @@ const authenticationMiddleware = (store) => (next) => (action) => {
       axios.get(
         // URL
         `${baseUrl}/mon-profil`,
+        // Header
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )
         .then((response) => {

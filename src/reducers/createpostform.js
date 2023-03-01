@@ -7,6 +7,7 @@ import {
   SELECT_SERVICE,
   SELECT_TYPE_USER,
   TYPE_RADIUS,
+  HANDLE_POST_SAVED,
 } from '../actions/createpostform';
 
 const initialState = {
@@ -68,6 +69,10 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         selectedTypeUser: action.input,
+      };
+    case HANDLE_POST_SAVED:
+      return {
+        ...initialState,
       };
     default:
       return state;

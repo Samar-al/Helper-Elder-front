@@ -17,7 +17,8 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import {
   typeContent,
-  typeRate, typeTitle,
+  typeRate,
+  typeTitle,
   typeZipcode,
   selectPonctual,
   selectService,
