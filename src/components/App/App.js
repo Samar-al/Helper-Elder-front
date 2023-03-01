@@ -10,6 +10,7 @@ import Background from '../Background/Background';
 import Connexion from '../Connexion/Connexion';
 import CreatePostForm from '../CreatePostForm/CreatePostForm';
 import { loadServices } from '../../actions/app';
+import PrivateRoute from './PrivateRoute';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />
-            <Route path="/poster-une-annonce" element={<CreatePostForm />} />
+            <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
           </Routes>
         </div>
         <Footer />
