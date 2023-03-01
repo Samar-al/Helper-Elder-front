@@ -53,14 +53,13 @@ export default function DetailedPost() {
       <div className="views">
         <h2 className="view_title">Les avis:</h2>
         {currentReviews.map((review) => (
-          <div className="view_item">
-            <p key={review.id} className="view_item_user">{review.id} - <Typography component="legend" />
+          <div className="view_item" key={review.id}>
+            <p className="view_item_user">{review.id} - <Typography component="legend" />
               <Rating name="note" value={review.rate} readOnly />
             </p>
             <p className="view_item_content">{review.content}</p>
           </div>
         ))}
-
       </div>
       )}
     </div>
