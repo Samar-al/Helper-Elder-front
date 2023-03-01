@@ -1,7 +1,7 @@
 import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 
-export const AntSwitch = styled(Switch)(({ theme }) => ({
+const AntSwitch = styled(Switch)(({ theme }) => ({
   width: 28,
   height: 16,
   padding: 0,
@@ -42,3 +42,5 @@ export const AntSwitch = styled(Switch)(({ theme }) => ({
     boxSizing: 'border-box',
   },
 }));
+
+export default AntSwitch;

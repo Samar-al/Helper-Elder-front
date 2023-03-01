@@ -6,7 +6,7 @@ import { formatDate } from '../../utils/functions';
 export default function Post({
   picture,
   title,
-  zipcode,
+  postalCode,
   city,
   createdAt,
   content,
@@ -17,7 +17,7 @@ export default function Post({
         <img alt={title} src={picture} className="lastposts_pannel_postlist_post_header_picture" />
         <div className="lastposts_pannel_postlist_post_header_info">
           <h3 className="lastposts_pannel_postlist_post_header_info_title">{title}</h3>
-          <p className="lastposts_pannel_postlist_post_header_info_city">{zipcode} - {city}</p>
+          <p className="lastposts_pannel_postlist_post_header_info_city">{city} - {postalCode}</p>
           <p className="lastposts_pannel_postlist_post_header_info_date">le {formatDate(createdAt)}</p>
         </div>
       </div>
@@ -29,7 +29,7 @@ export default function Post({
 Post.propTypes = {
   picture: PropTypes.string,
   title: PropTypes.string.isRequired,
-  zipcode: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
+  postalCode: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
   city: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
   content: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
@@ -37,6 +37,6 @@ Post.propTypes = {
 
 Post.defaultProps = {
   picture: 'img/placeholders/avatar_placeholder.png',
-  zipcode: '75001',
+  postalCode: '75001',
   city: 'Paris',
 };

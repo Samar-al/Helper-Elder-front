@@ -1,12 +1,15 @@
 import './styles.scss';
-import * as React from 'react';
 import FormGroup from '@mui/material/FormGroup';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { FormControl } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFontSize } from '../../actions/app';
+<<<<<<< HEAD
 import { AntSwitch } from './AntSwitch';
+=======
+import AntSwitch from './AntSwitch';
+>>>>>>> develop
 
 export default function FontSizeToggler() {
   const dispatch = useDispatch();
@@ -17,7 +20,11 @@ export default function FontSizeToggler() {
       <FormControl component="fieldset">
         <FormGroup aria-label="position" row>
           <Stack
+<<<<<<< HEAD
             onChange={(e) => {
+=======
+            onChange={() => {
+>>>>>>> develop
               dispatch(changeFontSize());
             }}
             direction="row"
