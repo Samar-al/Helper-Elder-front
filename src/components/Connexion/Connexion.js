@@ -1,6 +1,5 @@
 import './styles.scss';
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Button,
@@ -13,16 +12,9 @@ import { handleLogin } from '../../actions/authentication';
 export default function Connexion() {
   const { emailInput, passwordInput } = useSelector((state) => state.connexion);
   const { user } = useSelector((state) => state.authentication);
-  const navigate = useNavigate();
-  // this code is necessary to make the redirection to the homepage after the user connexion
-  // useEffect was used for fixing a BrowserRouter error :
-  // https://stackoverflow.com/questions/72160276/warning-cannot-update-a-component-browserrouter-while-rendering-a-different
-  useEffect(
-    () => {
-      if (user) navigate('/');
-    },
-    [user],
-  );
+
+  // redirects to homepage if a user is logged in
+  if (user) return <Navigate to="/" />;
 
   const dispatch = useDispatch();
 
