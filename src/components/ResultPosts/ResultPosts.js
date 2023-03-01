@@ -12,8 +12,8 @@ export default function ResultPosts() {
 
   useEffect(
     () => {
-      dispatch(loadPostsHelpers);
-      dispatch(loadPostsElders);
+      dispatch(loadPostsHelpers());
+      dispatch(loadPostsElders());
     },
     [],
   );

@@ -13,7 +13,6 @@ import {
 } from '../actions/resultposts';
 
 const postMiddleware = (store) => (next) => (action) => {
-  console.log('test');
   switch (action.type) {
     case LOAD_POSTS_HELPERS:
       axios.get(
@@ -21,12 +20,10 @@ const postMiddleware = (store) => (next) => (action) => {
         `${baseUrl}/annonce/aidant`,
       )
         .then((response) => {
-          console.log(response);
           if (response.status !== 200) {
             console.log('posts not found');
           }
           else {
-            console.log(response.data);
             store.dispatch(getPostsHelpers(response.data));
           }
         })
