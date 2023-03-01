@@ -9,6 +9,7 @@ import Footer from '../Footer/Footer';
 import Background from '../Background/Background';
 import Connexion from '../Connexion/Connexion';
 import CreatePostForm from '../CreatePostForm/CreatePostForm';
+import DetailedPost from '../DetailedPost/DetailedPost';
 import PrivateRoute from './PrivateRoute';
 import { loadServices, redirectDone } from '../../actions/app';
 
@@ -50,6 +51,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />
+            <Route path="/annonce/:id" element={<DetailedPost />} />
             <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
           </Routes>
         </div>

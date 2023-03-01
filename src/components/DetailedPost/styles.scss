@@ -1,0 +1,100 @@
+@use '../../styles/vars';
+
+.detailed-post_left {
+  
+  &_picture {
+    width: 100px;
+    margin: 5px;
+  }
+
+  &_user {
+    margin-bottom: 5px;
+  }
+
+  &_service {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.4em;
+    margin-bottom: 10px;
+
+    &_rate {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.detailed-post_right {
+
+  &_title {
+    font-weight: bold;
+
+    &_subtitle {
+      font-weight: lighter;
+      font-size: 0.9em;
+      font-style: italic;
+    }
+  }
+
+  &_content {
+    text-align: justify;
+    margin: 20px;
+  }
+}
+
+.view {
+
+  &_title {
+    margin: 25px 10px;
+    text-align: justify;
+  }
+
+  &_item_user {
+    margin: 25px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &_item_content {
+    text-align: justify;
+    margin: 25px 20px;
+  }
+}
+
+@media (min-width: vars.$small-breakpoint) {
+  .detailed-post {
+    display: flex;
+
+    &_left {
+      width: 350vw;
+    }
+
+    &_right_title {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media (min-width: vars.$medium-breakpoint) {
+  .detailed-post_left {
+    width: 60vw;
+    margin: 10px;
+    padding: 20px;
+  }
+
+  .detailed-post_right_header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+  }
+
+  .detailed-post_right_content {
+    margin: 0;
+    padding: 15px;
+  }
+
+  .views {
+    padding: 20px;
+  }
+}
