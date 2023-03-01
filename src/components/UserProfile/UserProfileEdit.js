@@ -31,7 +31,7 @@ export default function UserProfile() {
           </div>
         </div>
       </div>
-
+      {/* TO DO put a form around the code */}
       <div className="userprofile_info_text">
         <div className="userprofile_button_modify">
           <Button variant="contained">Enregistrer</Button>
