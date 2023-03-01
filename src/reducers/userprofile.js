@@ -19,7 +19,7 @@ const initialState = {
   descriptionInput: '',
 };
 
-const reducer = (store, state = initialState, action = {}) => {
+const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case TYPE_FIRSTNAME:
       return {
@@ -66,13 +66,7 @@ const reducer = (store, state = initialState, action = {}) => {
     case FILL_USER_EDIT_FORM:
       return {
         ...state,
-        firstnameInput: store.getState().authentication.user.firstname,
-        lastnameInput: store.getState().authentication.user.lastname,
-        birthdateInput: store.getState().authentication.user.birthdate,
-        emailInput: store.getState().authentication.user.email,
-        postalCodeInput: store.getState().authentication.user.postalCode,
-        selectedGender: store.getState().authentication.user.gender,
-        descriptionInput: store.getState().authentication.user.description,
+        fillUserEditForm: action.input,
 
       };
     default:

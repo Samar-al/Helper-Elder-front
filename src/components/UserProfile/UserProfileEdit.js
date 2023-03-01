@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import {
   typeFirstname,
   typeLastname,
@@ -21,6 +22,7 @@ import {
   selectGender,
   typeDescription,
   submitUserChanges,
+  fillUserEditForm,
 } from '../../actions/userprofile';
 
 import userinfo from './data'; // data temporaires
@@ -42,6 +44,10 @@ export default function UserProfile() {
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    fillUserEditForm(user);
+  }, []);
+
   function submitForm() {
     const post = {
       user_id: user.id,
@@ -55,6 +61,7 @@ export default function UserProfile() {
     };
     dispatch(submitUserChanges(post));
   }
+  console.log(user);
   return (
     <div className="userprofile">
       <div className="userprofile_info_media">

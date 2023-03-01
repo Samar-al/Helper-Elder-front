@@ -7,7 +7,7 @@ import authenticationReducer from './authentication';
 import createpostformReducer from './createpostform';
 import homepageReducer from './homepage';
 import appReducer from './app';
-import userprofileReducer from './userprofile';
+import userProfileReducer from './userprofile';
 
 const rootReducer = combineReducers({
   searchbar: searchbarReducer,
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   createpostform: createpostformReducer,
   homepage: homepageReducer,
   app: appReducer,
-  userprofile: userprofileReducer,
+  userprofile: userProfileReducer,
 });
 
 export default rootReducer;
