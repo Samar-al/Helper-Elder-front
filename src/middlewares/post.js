@@ -30,6 +30,8 @@ const postMiddleware = (store) => (next) => (action) => {
       axios.get(
         // URL
         `http://localhost:8000/api/profil/${action.userId}`, // TO DO check that this is the right URL
+        // header
+        getHttpAuthHeaders(store.getState().authentication.jwt),
       )
         .then((response) => {
           if (response.status !== 200) {
