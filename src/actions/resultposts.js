@@ -1,23 +1,12 @@
 // Action type
-export const LOAD_POSTS_HELPERS = 'LOAD_POSTS_HELPERS';
-export const LOAD_POSTS_ELDERS = 'LOAD_POSTS_ELDERS';
-export const GET_POSTS_HELPERS = 'GET_POSTS-HELPERS';
-export const GET_POSTS_ELDERS = 'GET_POSTS-ELDERS';
+export const GET_FILTERED_POSTS = 'GET_FILTERED_POSTS-ELDERS';
+export const SEARCH_POSTS = 'SEARCH_POSTS';
 
-export const loadPostsHelpers = () => ({
-  type: LOAD_POSTS_HELPERS,
-});
-
-export const loadPostsElders = () => ({
-  type: LOAD_POSTS_ELDERS,
-});
-
-export const getPostsHelpers = (data) => ({
-  type: GET_POSTS_HELPERS,
+export const getFilteredPosts = (data) => ({
+  type: GET_FILTERED_POSTS,
   data: data,
 });
 
-export const getPostsElders = (data) => ({
-  type: GET_POSTS_ELDERS,
-  data: data,
+export const searchPosts = () => ({
+  type: SEARCH_POSTS,
 });

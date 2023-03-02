@@ -5,44 +5,44 @@ import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 import {
   getPost, getReviews, loadReviews, LOAD_POST, LOAD_REVIEWS,
 } from '../actions/detailedpost';
-import {
-  getPostsElders,
-  getPostsHelpers,
-  LOAD_POSTS_ELDERS,
-  LOAD_POSTS_HELPERS,
-} from '../actions/resultposts';
+import { getFilteredPosts, SEARCH_POSTS } from '../actions/resultposts';
 
 const postMiddleware = (store) => (next) => (action) => {
-  switch (action.type) {
-    case LOAD_POSTS_HELPERS:
-      axios.get(
-        // URL
-        `${baseUrl}/annonce/aidant`,
-      )
-        .then((response) => {
-          if (response.status !== 200) {
-            console.log('posts not found');
-          }
-          else {
-            store.dispatch(getPostsHelpers(response.data));
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      break;
+  const { adressInput, selectedServices, postType } = store.getState().searchbar;
 
-    case LOAD_POSTS_ELDERS:
+  // filter functions
+  function filterByZipcode(post) {
+    if (adressInput.slice(0,2) === 97) return adressInput.slice(0, 3) === post.postalCode.slice(0, 3);
+    return adressInput.slice(0, 2) === post.postalCode.slice(0, 2);
+  }
+  function filterByServices(post) {
+    if (postType === 'aidant') {
+      const tagsAsInt = post.tag.map((tag) => tag.id);
+      return selectedServices.every((service) => tagsAsInt.includes(service));
+    }
+    return post.tag.every((service) => selectedServices.includes(service.id));
+  }
+
+  function searchUrl() {
+    if (postType === 'offer') return 'aidant';
+    if (postType === 'request') return 'recherche-aide';
+    return false;
+  }
+
+  switch (action.type) {
+    case SEARCH_POSTS:
+      if (postType !== 'offer' && postType !== 'request') break;
       axios.get(
         // URL
-        `${baseUrl}/annonce/recherche-aide`,
+        `${baseUrl}/annonce/${searchUrl()}`,
       )
         .then((response) => {
           if (response.status !== 200) {
             console.log('posts not found');
           }
           else {
-            store.dispatch(getPostsElders(response.data));
+            const arrayPostsFilter = response.data.filter(filterByServices).filter(filterByZipcode);
+            store.dispatch(getFilteredPosts(arrayPostsFilter));
           }
         })
         .catch((error) => {

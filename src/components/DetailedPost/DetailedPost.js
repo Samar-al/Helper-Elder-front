@@ -32,7 +32,7 @@ export default function DetailedPost() {
           <Rating name="note" value={currentPost.user.avgRating} readOnly />
           <ul className="detailed-post_left_service">
             Services proposés:
-            {serviceList.map((service) => (
+            {currentPost.tag.map((service) => (
               <li key={service.id} className="detailed-post_left_service_item">{service.name}</li>
             ))}
           </ul>

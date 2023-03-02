@@ -1,34 +1,23 @@
 import './styles.scss';
 import { Pagination } from '@mui/material';
 // import data from './data';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import ResultPost from './ResultPost';
-import { loadPostsElders, loadPostsHelpers } from '../../actions/resultposts';
 
 export default function ResultPosts() {
-  const dispatch = useDispatch();
-  const { postsListHelpers, postsListElders } = useSelector((state) => state.post);
-
-  useEffect(
-    () => {
-      dispatch(loadPostsHelpers());
-      dispatch(loadPostsElders());
-    },
-    [],
-  );
+  const { postsList } = useSelector((state) => state.post);
 
   return (
     <div className="resultposts">
       <div className="list_posts">
-        <p className="list_posts_result">4 résultats sur 357</p>
+        {/*  <p className="list_posts_result">4 résultats sur 357</p>
+        TODO to be implemented in a later version */}
         <div className="posts">
-          {postsListHelpers.map((postHelper) => <ResultPost key={postHelper.id} {...postHelper} />)}
-          {postsListElders.map((postElder) => <ResultPost key={postElder.id} {...postElder} />)}
+          {postsList.map((post) => <ResultPost key={post.id} {...post} />)}
         </div>
-        <div className="pagination">
+        {/* <div className="pagination">
           <Pagination count={10} variant="outlined" />
-        </div>
+        </div> TODO to be implemented in a later version */ }
       </div>
     </div>
   );

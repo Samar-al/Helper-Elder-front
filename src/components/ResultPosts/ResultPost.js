@@ -27,13 +27,12 @@ export default function ResultPost({
 }
 
 ResultPost.propTypes = {
-  user: PropTypes.objectOf(
+  user:
     PropTypes.shape({
       picture: PropTypes.string.isRequired,
       firstname: PropTypes.string.isRequired,
       avgRating: PropTypes.number.isRequired,
-    }),
-  ).isRequired, // à modifier lorsqu'on saura comment récupérer l'avatar
+    }).isRequired,
   title: PropTypes.string.isRequired,
   postalCode: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
