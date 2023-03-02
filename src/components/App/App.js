@@ -11,6 +11,7 @@ import Connexion from '../Connexion/Connexion';
 import CreatePostForm from '../CreatePostForm/CreatePostForm';
 import DetailedPost from '../DetailedPost/DetailedPost';
 import PrivateRoute from './PrivateRoute';
+import Contact from '../Contact/Contact';
 import { loadServices, redirectDone } from '../../actions/app';
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />
             <Route path="/annonce/:id" element={<DetailedPost />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
           </Routes>
         </div>
