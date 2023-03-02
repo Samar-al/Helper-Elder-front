@@ -6,17 +6,20 @@ import {
 } from '@mui/material';
 
 import { NavLink } from 'react-router-dom';
-import userinfo from './data'; // data temporaires
+import { useSelector } from 'react-redux';
+// import userinfo from './data'; data temporaires
 import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
+import { formatDate } from '../../utils/functions';
 
 export default function UserProfile() {
+  const { user } = useSelector((state) => state.authentication);
   return (
     <div className="userprofile">
       <div className="userprofile_info_media">
-        <img alt="userprofile" className="userprofile_picture" src={userinfo.picture ? userinfo.picture : avatarPlaceholder} />
+        <img alt="userprofile" className="userprofile_picture" src={user.picture ? user.picture : avatarPlaceholder} />
         <div className="userprofile_rating">
           <Typography component="legend" />
-          <Rating name="note" value={4} readOnly />
+          <Rating name="note" value={user.avgRating} readOnly />
         </div>
         <div className="userprofile_button">
           <div className="userprofile_button_add_post">
@@ -40,18 +43,19 @@ export default function UserProfile() {
           </Button>
         </div>
         <div className="userprofile_info_text_paragraph">
-          <p><span>Prénom :</span> {userinfo.firstname} </p>
-          <p><span>Nom :</span> {userinfo.lastname} </p>
-          <p><span>Date de naissance :</span> {userinfo.birthdate} </p>
-          <p><span>Email :</span> {userinfo.mail} </p>
-          <p><span>Localisation :</span> {userinfo.place} </p>
-          <p><span>Sexe :</span> {userinfo.gender} </p>
+          <p><span>Prénom :</span> {user.firstname} </p>
+          <p><span>Nom :</span> {user.lastname} </p>
+          <p><span>Date de naissance :</span> {formatDate(user.birthdate)} </p>
+          <p><span>Email :</span> {user.email} </p>
+          <p><span>Localisation :</span> {user.postalCode} </p>
+          <p><span>Sexe :</span> {user.gender} </p>
+          {/* TO DO mettre un affichage conditionnel pour le sexe */}
         </div>
 
         <div className="userprofile_input">
           <div className="userprofile_input_description">
             <h1> Description </h1>
-            <p> {userinfo.description} </p>
+            <p> {user.description} </p>
           </div>
         </div>
 

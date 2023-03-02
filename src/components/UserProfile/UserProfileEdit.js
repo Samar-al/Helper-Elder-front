@@ -14,18 +14,17 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {
-  typeFirstname,
-  typeLastname,
-  typeBirthdate,
-  typeEmail,
-  typePostalCode,
-  selectGender,
-  typeDescription,
+  profileEditTypeFirstname,
+  profileEditTypeLastname,
+  profileEditTypeBirthdate,
+  profileEditTypeEmail,
+  profileEditTypePostalCode,
+  profileEditSelectGender,
+  profileEditTypeDescription,
   submitUserChanges,
   fillUserEditForm,
 } from '../../actions/userprofile';
 
-import userinfo from './data'; // data temporaires
 import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
 import { zipcodeRegex } from '../../utils/regex';
 
@@ -45,12 +44,13 @@ export default function UserProfile() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fillUserEditForm(user);
+    dispatch(fillUserEditForm(user));
   }, []);
 
-  function submitForm() {
-    const post = {
-      user_id: user.id,
+  function submitForm(event) {
+    event.preventDefault();
+    const updatedUser = {
+      id: user.id,
       firstname: firstnameInput,
       lastname: lastnameInput,
       birthdate: birthdateInput,
@@ -59,13 +59,13 @@ export default function UserProfile() {
       gender: selectedGender,
       dscription: descriptionInput,
     };
-    dispatch(submitUserChanges(post));
+    dispatch(submitUserChanges(updatedUser));
   }
-  console.log(user);
+
   return (
     <div className="userprofile">
       <div className="userprofile_info_media">
-        <img alt="userprofile" className="userprofile_picture" src={userinfo.picture ? userinfo.picture : avatarPlaceholder} />
+        <img alt="userprofile" className="userprofile_picture" src={user.picture ? user.picture : avatarPlaceholder} />
         <div className="userprofile_rating">
           <Typography component="legend" />
           <Rating name="note" value={4} readOnly />
@@ -79,10 +79,10 @@ export default function UserProfile() {
           </div>
         </div>
       </div>
-      <form onSubmit={() => submitForm()}>
+      <form onSubmit={(event) => submitForm(event)}>
         <div className="userprofile_info_text">
           <div className="userprofile_button_modify">
-            <Button variant="contained">Enregistrer</Button>
+            <Button type="submit" variant="contained">Enregistrer</Button>
           </div>
           <div className="userprofile_info_text_paragraph_edit">
             <div className="userprofile_form_item">
@@ -90,7 +90,7 @@ export default function UserProfile() {
                 size="small"
                 label="Prénom"
                 value={firstnameInput}
-                onChange={(event) => dispatch(typeFirstname(event.target.value))}
+                onChange={(event) => dispatch(profileEditTypeFirstname(event.target.value))}
               />
             </div>
             <div className="userprofile_form_item">
@@ -98,7 +98,7 @@ export default function UserProfile() {
                 size="small"
                 label="Nom"
                 value={lastnameInput}
-                onChange={(event) => dispatch(typeLastname(event.target.value))}
+                onChange={(event) => dispatch(profileEditTypeLastname(event.target.value))}
               />
             </div>
             <div className="userprofile_form_item">
@@ -106,7 +106,7 @@ export default function UserProfile() {
                 size="small"
                 label="Date de naissance"
                 value={birthdateInput}
-                onChange={(event) => dispatch(typeBirthdate(event.target.value))}
+                onChange={(event) => dispatch(profileEditTypeBirthdate(event.target.value))}
               />
             </div>
             <div className="userprofile_form_item">
@@ -114,7 +114,7 @@ export default function UserProfile() {
                 size="small"
                 label="Email"
                 value={emailInput}
-                onChange={(event) => dispatch(typeEmail(event.target.value))}
+                onChange={(event) => dispatch(profileEditTypeEmail(event.target.value))}
               />
             </div>
             <div className="userprofile_form_item">
@@ -123,7 +123,7 @@ export default function UserProfile() {
                 label="Localisation"
                 value={postalCodeInput}
                 onChange={(event) => {
-                  if (zipcodeRegex.test(event.target.value)) dispatch(typePostalCode(event.target.value));
+                  if (zipcodeRegex.test(event.target.value)) dispatch(profileEditTypePostalCode(event.target.value));
                 }}
               />
             </div>
@@ -132,7 +132,7 @@ export default function UserProfile() {
               <Select
                 label="Sexe"
                 value={selectedGender}
-                onChange={(e) => dispatch(selectGender(e.target.value))}
+                onChange={(e) => dispatch(profileEditSelectGender(e.target.value))}
               >
                 <MenuItem value={1}>Homme</MenuItem>
                 <MenuItem value={2}>Femme</MenuItem>
@@ -148,7 +148,8 @@ export default function UserProfile() {
                 rows={10}
                 multiline
                 label="Description"
-                onChange={(event) => dispatch(typeDescription(event.target.value))}
+                value={descriptionInput}
+                onChange={(event) => dispatch(profileEditTypeDescription(event.target.value))}
               />
             </div>
           </div>

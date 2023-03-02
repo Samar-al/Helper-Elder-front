@@ -1,11 +1,11 @@
 import {
-  TYPE_FIRSTNAME,
-  TYPE_LASTNAME,
-  TYPE_BIRTHDATE,
-  TYPE_EMAIL,
-  TYPE_POSTAL_CODE,
-  SELECT_GENDER,
-  TYPE_DESCRIPTION,
+  PROFILE_EDIT_TYPE_FIRSTNAME,
+  PROFILE_EDIT_TYPE_LASTNAME,
+  PROFILE_EDIT_TYPE_BIRTHDATE,
+  PROFILE_EDIT_TYPE_EMAIL,
+  PROFILE_EDIT_TYPE_POSTAL_CODE,
+  PROFILE_EDIT_SELECT_GENDER,
+  PROFILE_EDIT_TYPE_DESCRIPTION,
   FILL_USER_EDIT_FORM,
 } from '../actions/userprofile';
 
@@ -21,43 +21,43 @@ const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case TYPE_FIRSTNAME:
+    case PROFILE_EDIT_TYPE_FIRSTNAME:
       return {
         ...state,
         firstnameInput: action.input,
       };
 
-    case TYPE_LASTNAME:
+    case PROFILE_EDIT_TYPE_LASTNAME:
       return {
         ...state,
         lastnameInput: action.input,
       };
 
-    case TYPE_BIRTHDATE:
+    case PROFILE_EDIT_TYPE_BIRTHDATE:
       return {
         ...state,
         birthdateInput: action.input,
       };
 
-    case TYPE_EMAIL:
+    case PROFILE_EDIT_TYPE_EMAIL:
       return {
         ...state,
         emailInput: action.input,
       };
 
-    case TYPE_POSTAL_CODE:
+    case PROFILE_EDIT_TYPE_POSTAL_CODE:
       return {
         ...state,
         postalCodeInput: action.input,
       };
 
-    case SELECT_GENDER:
+    case PROFILE_EDIT_SELECT_GENDER:
       return {
         ...state,
         selectedGender: action.input,
       };
 
-    case TYPE_DESCRIPTION:
+    case PROFILE_EDIT_TYPE_DESCRIPTION:
       return {
         ...state,
         descriptionInput: action.input,
@@ -66,8 +66,13 @@ const reducer = (state = initialState, action = {}) => {
     case FILL_USER_EDIT_FORM:
       return {
         ...state,
-        fillUserEditForm: action.input,
-
+        firstnameInput: action.data.firstname,
+        lastnameInput: action.data.lastname,
+        birthdateInput: action.data.birthdate,
+        emailInput: action.data.email,
+        postalCodeInput: action.data.postalCode,
+        selectedGender: action.data.gender,
+        descriptionInput: action.data.description,
       };
     default:
       return state;

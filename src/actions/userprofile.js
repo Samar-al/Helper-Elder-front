@@ -1,60 +1,61 @@
 // Action type
-export const TYPE_FIRSTNAME = 'TYPE_FIRSTNAME';
-export const TYPE_LASTNAME = 'TYPE_LASTNAME';
-export const TYPE_BIRTHDATE = 'TYPE_BIRTHDATE';
-export const TYPE_EMAIL = 'TYPE_EMAIL';
-export const TYPE_POSTAL_CODE = 'TYPE_POSTAL_CODE';
-export const SELECT_GENDER = 'SELECT_GENDER';
-export const TYPE_DESCRIPTION = 'TYPE_DESCRIPTION';
+export const PROFILE_EDIT_TYPE_FIRSTNAME = 'PROFILE_EDIT_TYPE_FIRSTNAME';
+export const PROFILE_EDIT_TYPE_LASTNAME = 'PROFILE_EDIT_TYPE_LASTNAME';
+export const PROFILE_EDIT_TYPE_BIRTHDATE = 'PROFILE_EDIT_TYPE_BIRTHDATE';
+export const PROFILE_EDIT_TYPE_EMAIL = 'PROFILE_EDIT_TYPE_EMAIL';
+export const PROFILE_EDIT_TYPE_POSTAL_CODE = 'PROFILE_EDIT_TYPE_POSTAL_CODE';
+export const PROFILE_EDIT_SELECT_GENDER = 'PROFILE_EDIT_SELECT_GENDER';
+export const PROFILE_EDIT_TYPE_DESCRIPTION = 'PROFILE_EDIT_TYPE_DESCRIPTION';
 export const SUBMIT_USER_CHANGES = 'SUBMIT_USER_CHANGES';
 export const HANDLE_USER_CHANGES_SAVED = 'HANDLE_USER_CHANGES_SAVED';
 export const FILL_USER_EDIT_FORM = 'FILL_USER_EDIT_FORM';
 
 // Action creator
-export const typeFirstname = (value) => ({
-  type: TYPE_FIRSTNAME,
+export const profileEditTypeFirstname = (value) => ({
+  type: PROFILE_EDIT_TYPE_FIRSTNAME,
   input: value,
 });
 
-export const typeLastname = (value) => ({
-  type: TYPE_LASTNAME,
+export const profileEditTypeLastname = (value) => ({
+  type: PROFILE_EDIT_TYPE_LASTNAME,
   input: value,
 });
 
-export const typeBirthdate = (value) => ({
-  type: TYPE_BIRTHDATE,
+export const profileEditTypeBirthdate = (value) => ({
+  type: PROFILE_EDIT_TYPE_BIRTHDATE,
   input: value,
 });
 
-export const typeEmail = (value) => ({
-  type: TYPE_EMAIL,
+export const profileEditTypeEmail = (value) => ({
+  type: PROFILE_EDIT_TYPE_EMAIL,
   input: value,
 });
 
-export const typePostalCode = (value) => ({
-  type: TYPE_POSTAL_CODE,
+export const profileEditTypePostalCode = (value) => ({
+  type: PROFILE_EDIT_TYPE_POSTAL_CODE,
   input: value,
 });
 
-export const selectGender = (value) => ({
-  type: SELECT_GENDER,
+export const profileEditSelectGender = (value) => ({
+  type: PROFILE_EDIT_SELECT_GENDER,
   input: value,
 });
 
-export const typeDescription = (value) => ({
-  type: TYPE_DESCRIPTION,
+export const profileEditTypeDescription = (value) => ({
+  type: PROFILE_EDIT_TYPE_DESCRIPTION,
   input: value,
 });
 
 export const submitUserChanges = (data) => ({
   type: SUBMIT_USER_CHANGES,
-  post: data,
+  updatedUser: data,
 });
 
 export const handleUserChangesSaved = () => ({
   type: HANDLE_USER_CHANGES_SAVED,
 });
 
-export const fillUserEditForm = () => ({
+export const fillUserEditForm = (data) => ({
   type: FILL_USER_EDIT_FORM,
+  data: data,
 });
