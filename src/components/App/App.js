@@ -11,11 +11,12 @@ import Connexion from '../Connexion/Connexion';
 import CreatePostForm from '../CreatePostForm/CreatePostForm';
 import DetailedPost from '../DetailedPost/DetailedPost';
 import PrivateRoute from './PrivateRoute';
-import { loadServices, redirectDone } from '../../actions/app';
+import { clearInfoModal, loadServices, redirectDone } from '../../actions/app';
+import InfoModal from '../InfoModal/InfoModal';
 
 function App() {
   const dispatch = useDispatch();
-  const { redirectPath, largeFontSize } = useSelector((state) => state.app);
+  const { redirectPath, largeFontSize, infoMessages } = useSelector((state) => state.app);
   const navigate = useNavigate();
 
   // loading services on first app render for searchbar and post creation form
@@ -41,6 +42,13 @@ function App() {
     [redirectPath],
   );
 
+  useEffect(
+    () => {
+      if (infoMessages.length !== 0) setTimeout(() => dispatch(clearInfoModal()), 4000);
+    },
+    [infoMessages],
+  );
+
   return (
     <div className={largeFontSize ? 'app app--large' : 'app'}>
       <Background />
@@ -48,6 +56,7 @@ function App() {
         <div>
           <Header />
           <Searchbar />
+          <InfoModal />
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />

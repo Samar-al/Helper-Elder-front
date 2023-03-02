@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { redirectAction } from '../actions/app';
+import { displayInfoMessages, redirectAction } from '../actions/app';
 import { handlePostSaved, SUBMIT_NEW_POST } from '../actions/createpostform';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 import {
@@ -64,6 +64,7 @@ const postMiddleware = (store) => (next) => (action) => {
           else {
             store.dispatch(handlePostSaved());
             store.dispatch(redirectAction('/'));
+            store.dispatch(displayInfoMessages(['Annonce créée avec succès !']));
           }
         })
         .catch((error) => {
