@@ -37,6 +37,7 @@ Post.propTypes = {
   city: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
   content: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 Post.defaultProps = {

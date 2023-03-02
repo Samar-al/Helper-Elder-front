@@ -1,6 +1,7 @@
 import './styles.scss';
 import PropTypes from 'prop-types';
 import { Rating, Typography } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
 export default function ResultPost({
   user,
@@ -8,6 +9,7 @@ export default function ResultPost({
   postalCode,
   createdAt,
   content,
+  id,
 }) {
   return (
     <div className="post">
@@ -17,11 +19,13 @@ export default function ResultPost({
         <Typography component="legend" />
         <Rating name="note" value={user.avgRating} readOnly />
       </div>
-      <div className="post_right">
-        <h3 className="post_right_title">{title}</h3>
-        <span className="post_right_title_date">{postalCode} - {createdAt}</span>
-        <p className="post_right_content">{content}</p>
-      </div>
+      <NavLink to={`/annonce/${id}`}>
+        <div className="post_right">
+          <h3 className="post_right_title">{title}</h3>
+          <span className="post_right_title_date">{postalCode} - {createdAt}</span>
+          <p className="post_right_content">{content}</p>
+        </div>
+      </NavLink>
     </div>
   );
 }
@@ -37,4 +41,5 @@ ResultPost.propTypes = {
   postalCode: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
