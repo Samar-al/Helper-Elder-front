@@ -2,8 +2,6 @@
 import './styles.scss';
 import {
   Button,
-  Typography,
-  Rating,
   TextField,
   FormControl,
   Select,
@@ -66,18 +64,6 @@ export default function UserProfile() {
     <div className="userprofile">
       <div className="userprofile_info_media">
         <img alt="userprofile" className="userprofile_picture" src={user.picture ? user.picture : avatarPlaceholder} />
-        <div className="userprofile_rating">
-          <Typography component="legend" />
-          <Rating name="note" value={4} readOnly />
-        </div>
-        <div className="userprofile_button">
-          <div className="userprofile_button_add_post">
-            <Button className="userprofile_button_add_post" variant="contained">Ajouter une annonce</Button>
-          </div>
-          <div className="userprofile_button_message">
-            <Button variant="contained">Messagerie</Button>
-          </div>
-        </div>
       </div>
       <form onSubmit={(event) => submitForm(event)}>
         <div className="userprofile_info_text">
@@ -133,6 +119,7 @@ export default function UserProfile() {
                 label="Sexe"
                 value={selectedGender}
                 onChange={(e) => dispatch(profileEditSelectGender(e.target.value))}
+
               >
                 <MenuItem value={1}>Homme</MenuItem>
                 <MenuItem value={2}>Femme</MenuItem>

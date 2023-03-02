@@ -15,7 +15,7 @@ const initialState = {
   birthdateInput: '',
   emailInput: '',
   postalCodeInput: '',
-  selectedGender: [],
+  selectedGender: '',
   descriptionInput: '',
 };
 

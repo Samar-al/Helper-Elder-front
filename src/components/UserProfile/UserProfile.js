@@ -13,6 +13,18 @@ import { formatDate } from '../../utils/functions';
 
 export default function UserProfile() {
   const { user } = useSelector((state) => state.authentication);
+
+  function displayGender() {
+    if (user.gender === 1) {
+      return 'Homme';
+    }
+    if (user.gender === 2) {
+      return 'Femme';
+    }
+
+    return 'Ne préfère pas répondre';
+  }
+
   return (
     <div className="userprofile">
       <div className="userprofile_info_media">
@@ -23,7 +35,14 @@ export default function UserProfile() {
         </div>
         <div className="userprofile_button">
           <div className="userprofile_button_add_post">
-            <Button className="userprofile_button_add_post" variant="contained">Ajouter une annonce</Button>
+            <Button className="userprofile_button_add_post" variant="contained">
+              <NavLink
+                to="/poster-une-annonce"
+                className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
+              >
+                Poster une annonce
+              </NavLink>
+            </Button>
           </div>
           <div className="userprofile_button_message">
             <Button variant="contained">Messagerie</Button>
@@ -48,7 +67,7 @@ export default function UserProfile() {
           <p><span>Date de naissance :</span> {formatDate(user.birthdate)} </p>
           <p><span>Email :</span> {user.email} </p>
           <p><span>Localisation :</span> {user.postalCode} </p>
-          <p><span>Sexe :</span> {user.gender} </p>
+          <p><span>Sexe :</span> {displayGender(user.gender)} </p>
           {/* TO DO mettre un affichage conditionnel pour le sexe */}
         </div>
 
