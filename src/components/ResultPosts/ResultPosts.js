@@ -18,7 +18,6 @@ export default function ResultPosts() {
     [],
   );
 
-  console.log(postsListHelpers);
   return (
     <div className="resultposts">
       <div className="list_posts">
