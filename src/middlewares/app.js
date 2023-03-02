@@ -5,7 +5,7 @@ const appMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOAD_SERVICES:
       axios.get(
-        'https://localhost:8000/api/service',
+        'http://localhost:8000/api/service',
       )
         .then((response) => {
           if (response.status !== 200) {

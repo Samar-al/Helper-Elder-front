@@ -5,7 +5,7 @@ const homepageMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOAD_LAST_POSTS:
       axios.get(
-        'https://localhost:8000/api',
+        'http://localhost:8000/api',
       )
         .then((response) => {
           if (response.status !== 200) {
