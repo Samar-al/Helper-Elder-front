@@ -7,7 +7,6 @@ import {
 
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-// import userinfo from './data'; data temporaires
 import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
 import { formatDate } from '../../utils/functions';
 
@@ -68,7 +67,6 @@ export default function UserProfile() {
           <p><span>Email :</span> {user.email} </p>
           <p><span>Localisation :</span> {user.postalCode} </p>
           <p><span>Sexe :</span> {displayGender(user.gender)} </p>
-          {/* TO DO mettre un affichage conditionnel pour le sexe */}
         </div>
 
         <div className="userprofile_input">

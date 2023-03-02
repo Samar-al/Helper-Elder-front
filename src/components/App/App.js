@@ -46,7 +46,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />
-            {/* TO DO put the two next route in private */}
             <Route path="/mon-profil" element={<PrivateRoute element={<UserProfile />} />} />
             <Route path="/mon-profil/modifier" element={<PrivateRoute element={<UserProfileEdit />} />} />
             {/* <Route path="/profil/:id" element={<UserProfile />} /> */}
