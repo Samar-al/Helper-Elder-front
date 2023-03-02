@@ -11,16 +11,23 @@ import Connexion from '../Connexion/Connexion';
 import CreatePostForm from '../CreatePostForm/CreatePostForm';
 import PrivateRoute from './PrivateRoute';
 import { loadServices, redirectDone } from '../../actions/app';
+import { saveJwt, saveLoggedUser } from '../../actions/authentication';
 
 function App() {
   const dispatch = useDispatch();
   const { redirectPath, largeFontSize } = useSelector((state) => state.app);
   const navigate = useNavigate();
 
-  // loading services on first app render for searchbar and post creation form
+  // on first app render
   useEffect(
     () => {
+      // loading services for searchbar and post creation form
       dispatch(loadServices());
+      // if a user and jwt token are present in the sessionStorage, save them in the store
+      if (sessionStorage.jwt && sessionStorage.user) {
+        dispatch(saveJwt(sessionStorage.jwt));
+        dispatch(saveLoggedUser(JSON.parse(sessionStorage.user)));
+      }
     },
     [],
   );
