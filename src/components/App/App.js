@@ -52,7 +52,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />
             <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
-            <Route path="/evaluer" element={<ReviewForm />} />
+            <Route path="/utilisateur/:id/evaluer" element={<PrivateRoute element={<ReviewForm />} />} />
           </Routes>
         </div>
         <Footer />

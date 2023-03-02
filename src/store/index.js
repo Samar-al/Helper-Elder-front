@@ -7,6 +7,7 @@ import homepageMiddleware from '../middlewares/homepage';
 import authenticationMiddleware from '../middlewares/authentication';
 import appMiddleware from '../middlewares/app';
 import postMiddleware from '../middlewares/post';
+import reviewMiddleware from '../middlewares/review';
 
 const store = createStore(
   reducer,
@@ -16,6 +17,7 @@ const store = createStore(
     authenticationMiddleware,
     appMiddleware,
     postMiddleware,
+    reviewMiddleware,
   )),
 );
 

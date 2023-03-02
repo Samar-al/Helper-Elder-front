@@ -2,8 +2,9 @@
 
 .create_review {
   margin: 2em;
+  text-align: left;
 
-  &_subtitle {
+  &_title {
     margin-bottom: 1em;
     font-weight: bold;
   }
@@ -11,11 +12,10 @@
   &_form {
 
     &_comment {
-      margin-bottom: 2em;
+      margin-bottom: 1.5em;
       width: 100%;
     }
   }
-
 }
 
 @media (min-width: vars.$small-breakpoint) {
