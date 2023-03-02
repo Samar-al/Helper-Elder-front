@@ -43,6 +43,7 @@ const postMiddleware = (store) => (next) => (action) => {
           else {
             const arrayPostsFilter = response.data.filter(filterByServices).filter(filterByZipcode);
             store.dispatch(getFilteredPosts(arrayPostsFilter));
+            store.dispatch(redirectAction('/annonce'));
           }
         })
         .catch((error) => {
