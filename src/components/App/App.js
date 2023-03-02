@@ -11,6 +11,7 @@ import Connexion from '../Connexion/Connexion';
 import CreatePostForm from '../CreatePostForm/CreatePostForm';
 import PrivateRoute from './PrivateRoute';
 import { loadServices, redirectDone } from '../../actions/app';
+import ReviewForm from '../ReviewForm/ReviewForm';
 
 function App() {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />
             <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
+            <Route path="/evaluer" element={<ReviewForm />} />
           </Routes>
         </div>
         <Footer />
