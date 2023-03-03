@@ -14,6 +14,7 @@ import DetailedPost from '../DetailedPost/DetailedPost';
 import UserProfile from '../UserProfile/UserProfile';
 import UserProfileEdit from '../UserProfile/UserProfileEdit';
 import PrivateRoute from './PrivateRoute';
+import About from '../About/About';
 import Contact from '../Contact/Contact';
 import { loadServices, redirectDone } from '../../actions/app';
 import { clearInfoModal, loadServices, redirectDone } from '../../actions/app';
@@ -80,6 +81,7 @@ function App() {
             <Route path="/mon-profil/modifier" element={<PrivateRoute element={<UserProfileEdit />} />} />
             {/* <Route path="/profil/:id" element={<UserProfile />} /> */}
             <Route path="/annonce/:id" element={<DetailedPost />} />
+            <Route path="/a-propos" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
           </Routes>
