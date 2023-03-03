@@ -32,13 +32,13 @@ export const changeFontSize = () => ({
   type: CHANGE_FONT_SIZE,
 });
 
-
 export const showFormModal = () => ({
   type: SHOW_FORM_MODAL,
 });
 
 export const hideFormModal = () => ({
   type: HIDE_FORM_MODAL,
+});
 
 export const displayInfoMessages = (messages) => ({
   type: DISPLAY_INFO_MESSAGES,
@@ -47,5 +47,4 @@ export const displayInfoMessages = (messages) => ({
 
 export const clearInfoModal = () => ({
   type: CLEAR_INFO_MODAL,
-
 });

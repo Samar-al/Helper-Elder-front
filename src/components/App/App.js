@@ -16,10 +16,8 @@ import UserProfileEdit from '../UserProfile/UserProfileEdit';
 import PrivateRoute from './PrivateRoute';
 import About from '../About/About';
 import Contact from '../Contact/Contact';
-import { loadServices, redirectDone } from '../../actions/app';
 import { clearInfoModal, loadServices, redirectDone } from '../../actions/app';
 import InfoModal from '../InfoModal/InfoModal';
-import DetailedPost from '../DetailedPost/DetailedPost';
 import { saveJwt, saveLoggedUser } from '../../actions/authentication';
 import LegalMentions from '../LegalMentions/LegalMentions';
 

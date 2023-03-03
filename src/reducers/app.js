@@ -48,6 +48,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         formModalIsVisible: false,
+      };
     case DISPLAY_INFO_MESSAGES:
       return {
         ...state,
