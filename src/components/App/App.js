@@ -26,11 +26,6 @@ function App() {
     () => {
       // loading services for searchbar and post creation form
       dispatch(loadServices());
-      // if a user and jwt token are present in the sessionStorage, save them in the store
-      if (sessionStorage.jwt && sessionStorage.user) {
-        dispatch(saveJwt(sessionStorage.jwt));
-        dispatch(saveLoggedUser(JSON.parse(sessionStorage.user)));
-      }
     },
     [],
   );

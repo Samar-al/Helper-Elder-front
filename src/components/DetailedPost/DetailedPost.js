@@ -21,6 +21,7 @@ export default function DetailedPost() {
     },
     [],
   );
+
   return (
     <div className="main">
       {currentPost !== null && (
