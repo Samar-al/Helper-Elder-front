@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../assets/img/logo/Logo.png';
 import { toggleBurger } from '../../actions/burger';
 import { handleLogout } from '../../actions/authentication';
+import { displayInfoMessages } from '../../actions/app';
 
 export default function Header() {
   const { isBurgerOpen } = useSelector((state) => state.burger);
@@ -13,6 +14,7 @@ export default function Header() {
 
   const handleSubmitLogout = () => {
     dispatch(handleLogout());
+    dispatch(displayInfoMessages(['Utilisateur déconnecté !']));
   };
 
   return (
