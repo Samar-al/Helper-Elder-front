@@ -3,7 +3,7 @@ import './styles.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 // import reviews from './data-reviews';
-import { useLocation } from 'react-router-dom';
+import { useLocation, NavLink } from 'react-router-dom';
 import { loadPost } from '../../actions/detailedpost';
 
 export default function DetailedPost() {
@@ -27,7 +27,14 @@ export default function DetailedPost() {
       <div className="detailed-post">
         <div className="detailed-post_left">
           <img className="detailed-post_left_picture" src={currentPost.user.picture} alt={currentPost.user.firstname} />
-          <p className="detailed-post_left_user">{currentPost.user.firstname} {currentPost.user.lastname}</p>
+          <p className="detailed-post_left_user">
+            <NavLink
+              to={`/profil/${currentPost.user.id}`}
+              className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
+            >
+              {currentPost.user.firstname} {currentPost.user.lastname}
+            </NavLink>
+          </p>
           <Typography component="legend" />
           <Rating name="note" value={currentPost.user.avgRating} readOnly />
           <ul className="detailed-post_left_service">
