@@ -21,6 +21,7 @@ import { clearInfoModal, loadServices, redirectDone } from '../../actions/app';
 import InfoModal from '../InfoModal/InfoModal';
 import DetailedPost from '../DetailedPost/DetailedPost';
 import { saveJwt, saveLoggedUser } from '../../actions/authentication';
+import LegalMentions from '../LegalMentions/LegalMentions';
 
 function App() {
   const dispatch = useDispatch();
@@ -76,6 +77,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />
+            <Route path="/mentions-légales" element={<LegalMentions />} />
             <Route path="/annonce" element={<ResultPosts />} />
             <Route path="/mon-profil" element={<PrivateRoute element={<UserProfile />} />} />
             <Route path="/mon-profil/modifier" element={<PrivateRoute element={<UserProfileEdit />} />} />
