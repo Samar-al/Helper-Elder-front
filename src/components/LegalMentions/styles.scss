@@ -1,0 +1,52 @@
+@use '../../styles/vars';
+
+.legalmentions {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1rem;
+
+  &_title {
+
+    text-align: center;
+    font-weight: bold;
+    margin: 2rem;
+    color: white;
+    font-size: x-large;
+    width: 70%;
+    background-color: vars.$main-color;
+    padding: 2rem;
+    border-radius: 7px;
+  }
+
+  &_text{
+    margin:1rem;
+    text-align: justify;
+    padding: 1rem;
+    width: 65%;
+
+    p {
+      margin-bottom: 1rem;
+    }
+    h1{
+    font-weight: bold;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    color: vars.$main-color;
+    font-size: large;
+    }
+    a {
+      color:vars.$main-color;
+      font-style: italic;
+      
+
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+}
+

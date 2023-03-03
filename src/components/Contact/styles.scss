@@ -1,0 +1,29 @@
+@use '../../styles/vars';
+
+.contact {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1rem;
+
+  &_title {
+
+    text-align: center;
+    font-weight: bold;
+    margin: 1rem;
+    color: vars.$main-color;
+    font-size: x-large;
+  }
+
+  &_text{
+    margin:1rem;
+    span {
+      font-weight: 800;
+      text-decoration: underline;
+      
+    }
+  }
+}
+

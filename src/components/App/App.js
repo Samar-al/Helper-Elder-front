@@ -9,16 +9,21 @@ import Footer from '../Footer/Footer';
 import Background from '../Background/Background';
 import Connexion from '../Connexion/Connexion';
 import CreatePostForm from '../CreatePostForm/CreatePostForm';
+import ResultPosts from '../ResultPosts/ResultPosts';
+import DetailedPost from '../DetailedPost/DetailedPost';
 import UserProfile from '../UserProfile/UserProfile';
 import UserProfileEdit from '../UserProfile/UserProfileEdit';
 import PrivateRoute from './PrivateRoute';
-import { loadServices, redirectDone } from '../../actions/app';
-import DetailedPost from '../DetailedPost/DetailedPost';
+import About from '../About/About';
+import Contact from '../Contact/Contact';
+import { clearInfoModal, loadServices, redirectDone } from '../../actions/app';
+import InfoModal from '../InfoModal/InfoModal';
 import { saveJwt, saveLoggedUser } from '../../actions/authentication';
+import LegalMentions from '../LegalMentions/LegalMentions';
 
 function App() {
   const dispatch = useDispatch();
-  const { redirectPath, largeFontSize } = useSelector((state) => state.app);
+  const { redirectPath, largeFontSize, infoMessages } = useSelector((state) => state.app);
   const navigate = useNavigate();
 
   // on first app render
@@ -45,6 +50,15 @@ function App() {
     [redirectPath],
   );
 
+  /* when a message is dispatched, a timer is set after which
+  the message is cleared and the modal disappears */
+  useEffect(
+    () => {
+      if (infoMessages.length !== 0) setTimeout(() => dispatch(clearInfoModal()), 4000);
+    },
+    [infoMessages],
+  );
+
   return (
     <div className={largeFontSize ? 'app app--large' : 'app'}>
       <Background />
@@ -52,13 +66,18 @@ function App() {
         <div>
           <Header />
           <Searchbar />
+          <InfoModal />
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />
             <Route path="/profil/:id" element={<PrivateRoute element={<UserProfile />} />} />
+            <Route path="/mentions-légales" element={<LegalMentions />} />
+            <Route path="/annonce" element={<ResultPosts />} />
             <Route path="/mon-profil" element={<PrivateRoute element={<UserProfile />} />} />
             <Route path="/mon-profil/modifier" element={<PrivateRoute element={<UserProfileEdit />} />} />
             <Route path="/annonce/:id" element={<DetailedPost />} />
+            <Route path="/a-propos" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
           </Routes>
         </div>

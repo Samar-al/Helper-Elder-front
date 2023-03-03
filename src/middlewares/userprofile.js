@@ -6,6 +6,8 @@ import {
   savePageUser,
   SUBMIT_USER_CHANGES,
 } from '../actions/userprofile';
+import { saveLoggedUser } from '../actions/authentication';
+import { handleUserChangesSaved, SUBMIT_USER_CHANGES } from '../actions/userprofile';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 
 const userProfileMiddleware = (store) => (next) => (action) => {
@@ -27,6 +29,7 @@ const userProfileMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(handleUserChangesSaved());
+            store.dispatch(saveLoggedUser(response.data)); // updating the user in the state
             store.dispatch(redirectAction('/'));
           }
         })
