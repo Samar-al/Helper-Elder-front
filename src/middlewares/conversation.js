@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { hideFormModal } from '../actions/app';
+import { displayInfoMessages, hideFormModal } from '../actions/app';
 import { convFormClear, CONV_FORM_SUBMIT_CONV } from '../actions/conversation';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 
@@ -22,6 +22,7 @@ const conversationMiddleware = (store) => (next) => (action) => {
           else {
             store.dispatch(hideFormModal());
             store.dispatch(convFormClear());
+            store.dispatch(displayInfoMessages(['Conversation créée !', 'Message envoyé !']));
           }
         })
         .catch((error) => {
