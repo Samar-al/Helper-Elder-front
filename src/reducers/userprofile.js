@@ -8,6 +8,7 @@ import {
   PROFILE_EDIT_TYPE_DESCRIPTION,
   FILL_USER_EDIT_FORM,
   SAVE_PAGE_USER,
+  CLEAR_PAGE_USER,
 } from '../actions/userprofile';
 
 const initialState = {
@@ -77,6 +78,7 @@ const reducer = (state = initialState, action = {}) => {
         descriptionInput: action.data.description,
       };
     case SAVE_PAGE_USER: return { ...state, currentPageUser: action.data };
+    case CLEAR_PAGE_USER: return { ...state, currentPageUser: null};
     default:
       return state;
   }

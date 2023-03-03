@@ -9,7 +9,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
 import { formatDate } from '../../utils/functions';
-import { fetchPageUser } from '../../actions/userprofile';
+import { clearPageUser, fetchPageUser } from '../../actions/userprofile';
 
 export default function UserProfile() {
   const dispatch = useDispatch();
@@ -37,8 +37,10 @@ export default function UserProfile() {
   useEffect(
     () => {
       if (!isMyProfile) dispatch(fetchPageUser(location.pathname.split('/').pop()));
+
+      return () => dispatch(clearPageUser());
     },
-    [isMyProfile],
+    [],
   );
 
   return (
