@@ -4,6 +4,8 @@ export const GET_SERVICES = 'GET_SERVICES';
 export const REDIRECT_ACTION = 'REDIRECT_ACTION';
 export const REDIRECT_DONE = 'REDIRECT_DONE';
 export const CHANGE_FONT_SIZE = 'CHANGE_FONT_SIZE';
+export const SHOW_FORM_MODAL = 'SHOW_FORM_MODAL';
+export const HIDE_FORM_MODAL = 'HIDE_FORM_MODAL';
 
 // Action creator
 export const loadServices = () => ({
@@ -26,4 +28,12 @@ export const redirectDone = () => ({
 
 export const changeFontSize = () => ({
   type: CHANGE_FONT_SIZE,
+});
+
+export const showFormModal = () => ({
+  type: SHOW_FORM_MODAL,
+});
+
+export const hideFormModal = () => ({
+  type: HIDE_FORM_MODAL,
 });
