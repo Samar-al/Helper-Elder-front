@@ -18,7 +18,6 @@ import About from '../About/About';
 import Contact from '../Contact/Contact';
 import { clearInfoModal, loadServices, redirectDone } from '../../actions/app';
 import InfoModal from '../InfoModal/InfoModal';
-import { saveJwt, saveLoggedUser } from '../../actions/authentication';
 import LegalMentions from '../LegalMentions/LegalMentions';
 
 function App() {
