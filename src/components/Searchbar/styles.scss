@@ -8,6 +8,11 @@
   padding: .25em;
   color: vars.$main-color;
   text-align: left;
+  flex-direction: column;
+  
+  &_label {
+    text-align: center;
+  }
 
   &_button {
     margin: .25em;
@@ -37,8 +42,8 @@
   }
 }
 
-@media (max-width: vars.$medium-breakpoint) {
+@media (min-width: vars.$medium-breakpoint) {
   .searchbar {
-    flex-direction: column;
+    flex-direction: row;
   }
 }

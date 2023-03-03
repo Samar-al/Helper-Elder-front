@@ -8,6 +8,7 @@ import createpostformReducer from './createpostform';
 import homepageReducer from './homepage';
 import postReducer from './post';
 import appReducer from './appReducer';
+import reviewReducer from './review';
 import userProfileReducer from './userprofile';
 import conversationReducer from './conversation';
 
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   homepage: homepageReducer,
   post: postReducer,
   app: appReducer,
+  review: reviewReducer,
   userprofile: userProfileReducer,
   conversation: conversationReducer,
 });

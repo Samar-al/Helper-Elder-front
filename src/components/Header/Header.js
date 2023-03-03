@@ -79,6 +79,14 @@ export default function Header() {
                 Déconnexion
               </NavLink>
             </li>
+            <li className="header_nav_item slideInDown-5">
+              <NavLink
+                to="/utilisateur/1/evaluer"
+                className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
+              >
+                Test review
+              </NavLink>
+            </li>
           </>
         )}
       </div>

@@ -19,6 +19,7 @@ import Contact from '../Contact/Contact';
 import { clearInfoModal, loadServices, redirectDone } from '../../actions/app';
 import InfoModal from '../InfoModal/InfoModal';
 import LegalMentions from '../LegalMentions/LegalMentions';
+import ReviewForm from '../ReviewForm/ReviewForm';
 
 function App() {
   const dispatch = useDispatch();
@@ -78,6 +79,7 @@ function App() {
             <Route path="/a-propos" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
+            <Route path="/utilisateur/:id/evaluer" element={<PrivateRoute element={<ReviewForm />} />} />
           </Routes>
         </div>
         <Footer />
