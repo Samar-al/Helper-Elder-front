@@ -9,9 +9,11 @@ import Footer from '../Footer/Footer';
 import Background from '../Background/Background';
 import Connexion from '../Connexion/Connexion';
 import CreatePostForm from '../CreatePostForm/CreatePostForm';
-import DetailedPost from '../DetailedPost/DetailedPost';
+import UserProfile from '../UserProfile/UserProfile';
+import UserProfileEdit from '../UserProfile/UserProfileEdit';
 import PrivateRoute from './PrivateRoute';
 import { loadServices, redirectDone } from '../../actions/app';
+import DetailedPost from '../DetailedPost/DetailedPost';
 import { saveJwt, saveLoggedUser } from '../../actions/authentication';
 
 function App() {
@@ -58,6 +60,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />
+            <Route path="/mon-profil" element={<PrivateRoute element={<UserProfile />} />} />
+            <Route path="/mon-profil/modifier" element={<PrivateRoute element={<UserProfileEdit />} />} />
+            {/* <Route path="/profil/:id" element={<UserProfile />} /> */}
             <Route path="/annonce/:id" element={<DetailedPost />} />
             <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
           </Routes>
