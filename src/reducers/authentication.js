@@ -1,8 +1,8 @@
 import { HANDLE_LOGOUT, SAVE_JWT, SAVE_LOGGED_USER } from '../actions/authentication';
 
 export const initialState = {
-  user: null,
-  jwt: '',
+  user: sessionStorage.getItem('user') ?? null,
+  jwt: sessionStorage.getItem('jwt') ?? '',
 };
 
 const reducer = (state = initialState, action = {}) => {

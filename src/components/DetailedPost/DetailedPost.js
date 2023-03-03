@@ -2,7 +2,7 @@ import { Button, Rating, Typography } from '@mui/material';
 import './styles.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, NavLink } from 'react-router-dom';
 import { loadPost } from '../../actions/detailedpost';
 import FormModal from '../FormModal/FormModal';
 import { showFormModal } from '../../actions/app';
@@ -27,6 +27,7 @@ export default function DetailedPost() {
     },
     [],
   );
+
   return (
     <>
       <div className="main">
