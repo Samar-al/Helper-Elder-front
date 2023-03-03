@@ -15,6 +15,7 @@ import PrivateRoute from './PrivateRoute';
 import { loadServices, redirectDone } from '../../actions/app';
 import DetailedPost from '../DetailedPost/DetailedPost';
 import { saveJwt, saveLoggedUser } from '../../actions/authentication';
+import LegalMentions from '../LegalMentions/LegalMentions';
 
 function App() {
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />
+            <Route path="/mentions-légales" element={<LegalMentions />} />
             <Route path="/mon-profil" element={<PrivateRoute element={<UserProfile />} />} />
             <Route path="/mon-profil/modifier" element={<PrivateRoute element={<UserProfileEdit />} />} />
             {/* <Route path="/profil/:id" element={<UserProfile />} /> */}
