@@ -145,4 +145,10 @@ main {
   }
 }
 
+@media (min-width: vars.$medium-breakpoint) {
+  .conversation_header_title {
+    width: 50%;
+  }
+}
+
 

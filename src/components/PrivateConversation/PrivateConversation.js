@@ -1,4 +1,5 @@
 import './styles.scss';
+import { NavLink } from 'react-router-dom';
 import back from '../../assets/img/icons/fleche-gauche.png';
 import profile from '../../assets/img/icons/user.png';
 import send from '../../assets/img/icons/envoyer.png';
@@ -8,7 +9,9 @@ export default function PrivateConversation() {
     <main className="message">
       <div className="message_header">
         <div className="message_header_button">
-          <img src={back} alt="Retour" />
+          <NavLink to="/mon-profil/conversation">
+            <img src={back} alt="Retour" />
+          </NavLink>
           <p>Retour</p>
         </div>
         <div className="message_header_user">
