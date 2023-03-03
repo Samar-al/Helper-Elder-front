@@ -1,0 +1,91 @@
+@use '../../styles/vars';
+
+main {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.conversation {
+
+  &_header {
+    position: fixed;
+  width: 100%;
+  height: 5em;
+  background-color: vars.$main-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  z-index: 2;
+
+  &_button {
+    position: relative;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_button button {
+    background-color: transparent;
+    border: none;
+
+    & img {
+      width: 2em;
+      height: 2em;
+    }
+  }
+
+  &_title {
+    position: relative;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-transform: capitalize;
+    }
+  }
+
+  &_section {
+    position: relative;
+    top: 4.5em;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+
+    &_list:first-of-type {
+      margin-top: 1.6em;
+    }
+
+    &_list {
+      position: relative;
+      width: 95%;
+      height: 3em;
+      display: flex;
+      margin-bottom: 1em;
+
+      &_picture {
+        position: relative;
+        width: 20%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & img {
+          width: 2.5em;
+          height: 2.5em;
+        }
+      }
+    }
+  }
+}
+
+
