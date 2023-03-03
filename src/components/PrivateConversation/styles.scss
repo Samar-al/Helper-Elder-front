@@ -132,6 +132,14 @@
   }
 }
 
+.username {
+  color: black;
+  font-size: 15px;
+  margin: 2px;
+  padding: 2px;
+  font-style: italic;
+}
+
 .right {
   margin-left: auto;
 
@@ -140,6 +148,8 @@
     background: vars.$light-color;
   }
 }
+
+
 
 .left p {
   margin-left: 10px;
