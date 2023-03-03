@@ -24,7 +24,7 @@ const userProfileMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(handleUserChangesSaved());
-            store.dispatch(saveLoggedUser(action.updatedUser)); // updating the user in the state
+            store.dispatch(saveLoggedUser(response.data)); // updating the user in the state
             store.dispatch(redirectAction('/'));
           }
         })
