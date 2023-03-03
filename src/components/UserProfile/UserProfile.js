@@ -69,9 +69,13 @@ export default function UserProfile() {
         )}
         <div className="userprofile_info_text_paragraph">
           <p><span>Prénom :</span> {pageUser.firstname} </p>
-          <p><span>Nom :</span> {pageUser.lastname} </p>
-          <p><span>Date de naissance :</span> {formatDate(pageUser.birthdate)} </p>
-          <p><span>Email :</span> {pageUser.email} </p>
+          {isMyProfile && (
+            <>
+              <p><span>Nom :</span> {pageUser.lastname} </p>
+              <p><span>Date de naissance :</span> {formatDate(pageUser.birthdate)} </p>
+              <p><span>Email :</span> {pageUser.email} </p>
+            </>
+          )}
           <p><span>Localisation :</span> {pageUser.postalCode} </p>
           <p><span>Sexe :</span> {displayGender(pageUser.gender)} </p>
         </div>
