@@ -9,7 +9,7 @@ export default function ReviewForm() {
   // const { user } = useSelector((state) => )
   const giverId = useSelector((state) => state.authentication.user.id);
   // TODO this needs to be a prop with the current logged user's id
-  const takerId = 1; // TODO this needs to be a prop with the current page user's id
+  const takerId = 30; // TODO this needs to be a prop with the current page user's id
   const dispatch = useDispatch();
 
   function submitReview(e) {
@@ -17,8 +17,8 @@ export default function ReviewForm() {
     const review = {
       content: commentInput,
       rate: rateInput,
-      user_giver_id: giverId,
-      user_taker_id: takerId,
+      userGiver: giverId,
+      userTaker: takerId,
     };
     dispatch(reviewFormHandleSubmit(review));
   }
