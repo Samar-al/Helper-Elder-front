@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { redirectAction } from '../actions/app';
+import { displayInfoMessages, redirectAction } from '../actions/app';
 import {
   fetchLoggedUser,
   FETCH_LOGGED_USER,
@@ -53,6 +53,7 @@ const authenticationMiddleware = (store) => (next) => (action) => {
           else {
             store.dispatch(saveLoggedUser(response.data));
             store.dispatch(redirectAction('/'));
+            store.dispatch(displayInfoMessages(['Connexion réussie !']));
           }
         })
         .catch((error) => {

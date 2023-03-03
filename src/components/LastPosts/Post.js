@@ -20,7 +20,7 @@ export default function Post({
           <img alt={title} src={picture} className="lastposts_pannel_postlist_post_header_picture" />
           <div className="lastposts_pannel_postlist_post_header_info">
             <h3 className="lastposts_pannel_postlist_post_header_info_title">{title}</h3>
-            <p className="lastposts_pannel_postlist_post_header_info_city">{city} - {postalCode}</p>
+            <p className="lastposts_pannel_postlist_post_header_info_city">{postalCode}</p>
             <p className="lastposts_pannel_postlist_post_header_info_date">le {formatDate(createdAt)}</p>
           </div>
         </div>

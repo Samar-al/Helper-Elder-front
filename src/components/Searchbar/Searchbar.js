@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import './styles.scss';
 import FormControl from '@mui/material/FormControl';
 import {
@@ -60,11 +61,14 @@ export default function Searchbar() {
                  The thing is, we need to put the checkboxes values as IDs to be able to pass those
                  to the API. Thus, selected is an array of numbers.
                  First, an array containing the services names as strings is made with
-                 selected.map((serviceId) => serviceList[serviceId - 1].name).
+                 selected.map((serviceId) => serviceList.find((service) => service.id === serviceId).name)
                  Then, this array is turned into a string with all the selected services names
                  separated by a coma with .reduce((render, service) => `${render}, ${service}`)
                  */
-              renderValue={(selected) => selected.map((serviceId) => serviceList[serviceId - 1].name).reduce((render, service) => `${render}, ${service}`)}
+              renderValue={(selected) => {
+                const serviceNameArray = selected.map((serviceId) => serviceList.find((service) => service.id === serviceId).name);
+                return serviceNameArray.reduce((render, service) => `${render}, ${service}`);
+              }}
             >
               {/* short circuit evaluation to prevent errors.
               The list is not created as long as services are not loaded */}

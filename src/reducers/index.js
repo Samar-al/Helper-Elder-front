@@ -8,6 +8,7 @@ import createpostformReducer from './createpostform';
 import homepageReducer from './homepage';
 import postReducer from './post';
 import appReducer from './app';
+import userProfileReducer from './userprofile';
 
 const rootReducer = combineReducers({
   searchbar: searchbarReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   homepage: homepageReducer,
   post: postReducer,
   app: appReducer,
+  userprofile: userProfileReducer,
 });
 
 export default rootReducer;
