@@ -69,12 +69,12 @@ export default function CreatePostForm() {
         <h1 className="create_post_header_title">Poster une annonce</h1>
       </div>
       <form className="form" onSubmit={(e) => submitForm(e)}>
-        <div className="form_radio">
+        {/* <div className="form_radio">
           <RadioGroup name="radio_button_group" value={selectedTypeUser} onChange={(event) => dispatch(selectTypeUser(event.target.value))}>
             <FormControlLabel value={1} control={<Radio />} label="Je suis un Elder (je cherche de l'aide)" />
             <FormControlLabel value={2} control={<Radio />} label="Je suis un Helper (je propose de l'aide)" />
           </RadioGroup>
-        </div>
+        </div> */}
         <div className="form_input">
           <TextField
             className="form_input_title"
