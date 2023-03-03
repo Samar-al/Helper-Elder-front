@@ -1,5 +1,6 @@
 import './styles.scss';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import { formatDate } from '../../utils/functions';
 
 // une annonce parmis les annonces à afficher en homepage
@@ -10,18 +11,21 @@ export default function Post({
   city,
   createdAt,
   content,
+  id,
 }) {
   return (
     <div className="lastposts_pannel_postlist_post">
-      <div className="lastposts_pannel_postlist_post_header">
-        <img alt={title} src={picture} className="lastposts_pannel_postlist_post_header_picture" />
-        <div className="lastposts_pannel_postlist_post_header_info">
-          <h3 className="lastposts_pannel_postlist_post_header_info_title">{title}</h3>
-          <p className="lastposts_pannel_postlist_post_header_info_city">{city} - {postalCode}</p>
-          <p className="lastposts_pannel_postlist_post_header_info_date">le {formatDate(createdAt)}</p>
+      <NavLink to={`/annonce/${id}`}>
+        <div className="lastposts_pannel_postlist_post_header">
+          <img alt={title} src={picture} className="lastposts_pannel_postlist_post_header_picture" />
+          <div className="lastposts_pannel_postlist_post_header_info">
+            <h3 className="lastposts_pannel_postlist_post_header_info_title">{title}</h3>
+            <p className="lastposts_pannel_postlist_post_header_info_city">{city} - {postalCode}</p>
+            <p className="lastposts_pannel_postlist_post_header_info_date">le {formatDate(createdAt)}</p>
+          </div>
         </div>
-      </div>
-      <p className="lastposts_pannel_postlist_post_content">{content}</p>
+        <p className="lastposts_pannel_postlist_post_content">{content}</p>
+      </NavLink>
     </div>
   );
 }

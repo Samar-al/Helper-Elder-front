@@ -54,7 +54,10 @@ export default function Searchbar() {
                  Then, this array is turned into a string with all the selected services names
                  separated by a coma with .reduce((render, service) => `${render}, ${service}`)
                  */
-              renderValue={(selected) => selected.map((serviceId) => serviceList[serviceId - 1].name).reduce((render, service) => `${render}, ${service}`)}
+              renderValue={(selected) => {
+                console.log(serviceList[selected[0] - 1])
+                selected.map((serviceId) => serviceList[serviceId - 1].name).reduce((render, service) => `${render}, ${service}`)
+              }}
             >
               {/* short circuit evaluation to prevent errors.
               The list is not created as long as services are not loaded */}

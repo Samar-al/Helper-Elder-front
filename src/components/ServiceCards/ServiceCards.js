@@ -1,15 +1,16 @@
 import './styles.scss';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import Card from './Card';
-import cards from './data'; // data temporaires
 
 export default function ServiceCards() {
+  const { serviceList } = useSelector((state) => state.app);
+
   return (
     <div className="servicecards">
-      {cards.map((card) => (
+      {serviceList.map((service) => (
         <Card
-          key={card.id}
-          {...card}
+          key={service.name}
+          {...service}
         />
       ))}
     </div>
