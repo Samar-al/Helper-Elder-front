@@ -3,14 +3,17 @@ import {
   CLEAR_INFO_MODAL,
   DISPLAY_INFO_MESSAGES,
   GET_SERVICES,
+  HIDE_FORM_MODAL,
   REDIRECT_ACTION,
   REDIRECT_DONE,
+  SHOW_FORM_MODAL,
 } from '../actions/app';
 
 const initialState = {
   serviceList: [],
   redirectPath: '',
   largeFontSize: false,
+  formModalIsVisible: false,
   infoMessages: [],
 };
 
@@ -36,6 +39,15 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         largeFontSize: !state.largeFontSize,
       };
+    case SHOW_FORM_MODAL:
+      return {
+        ...state,
+        formModalIsVisible: true,
+      };
+    case HIDE_FORM_MODAL:
+      return {
+        ...state,
+        formModalIsVisible: false,
     case DISPLAY_INFO_MESSAGES:
       return {
         ...state,
