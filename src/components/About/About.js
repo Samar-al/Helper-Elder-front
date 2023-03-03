@@ -10,15 +10,15 @@ export default function About() {
         <h1 className="about_title">À propos de nous</h1>
         <div className="about_content">
           <p>
-            Ce site a pour but de faciliter les échanges entre les personnes âgées et les aides à domicile.
+            Ce site a pour but de faciliter les échanges entre les personnes âgées et des personnes proposant leur aide.
           </p>
           <p>
             Nous l'avons conçu afin que des personnes âgées à mobilité réduite, ou ayant un
-            besoin spécifique (compagnie, toilette, etc.), puissent rentrer en contact avec des aides à domicile
+            besoin spécifique (compagnie, toilette, etc.), puissent rentrer en contact avec des Helpers
             grâce à un système d'annonces et de messagerie.
           </p>
           <p>
-            Un système que nous avons également mis à disposition des aidants, particuliers ou professionnels de santé, pour qu'ils puissent
+            Un système que nous avons également mis à disposition des Helpers, particuliers ou professionnels de santé, pour qu'ils puissent
             par eux même offrir leurs différents services.
           </p>
         </div>
@@ -26,5 +26,3 @@ export default function About() {
     </div>
   );
 }
-
-// TODO Add picture credit
