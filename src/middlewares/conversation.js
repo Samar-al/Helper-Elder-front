@@ -6,7 +6,6 @@ import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 const conversationMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case CONV_FORM_SUBMIT_CONV:
-      console.log(action);
       axios.post(
         // URL
         `${baseUrl}/message/envoyer`,

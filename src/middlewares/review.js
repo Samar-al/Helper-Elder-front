@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { redirectAction } from '../actions/app';
-import { REVIEW_FORM_HANDLE_SUBMIT } from '../actions/review';
+import { displayInfoMessages, hideFormModal } from '../actions/app';
+import { reviewFormClear, REVIEW_FORM_HANDLE_SUBMIT } from '../actions/review';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 
 const reviewMiddleware = (store) => (next) => (action) => {
@@ -19,8 +19,9 @@ const reviewMiddleware = (store) => (next) => (action) => {
             console.log('review creation failed');
           }
           else {
-            console.log(response);
-            store.dispatch(redirectAction('/'));
+            store.dispatch(displayInfoMessages(['Avis enregistré !']));
+            store.dispatch(hideFormModal());
+            store.dispatch(reviewFormClear());
           }
         })
         .catch((error) => {

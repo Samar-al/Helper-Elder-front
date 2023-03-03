@@ -20,7 +20,6 @@ export default function UserProfile() {
   const { formModalIsVisible } = useSelector((state) => state.app);
   const location = useLocation();
   const isMyProfile = location.pathname === '/mon-profil';
-  let formType;
 
   // if the current page is '/mon-profil'
   // this component will use the logged user to display its information
@@ -82,8 +81,7 @@ export default function UserProfile() {
                 <div className="userprofile_button_message">
                   <Button
                     onClick={() => {
-                      formType = 'conversation';
-                      dispatch(showFormModal());
+                      dispatch(showFormModal('conversation'));
                     }}
                     variant="contained"
                   >Envoyer un message
@@ -92,8 +90,7 @@ export default function UserProfile() {
                 <div className="userprofile_button_review">
                   <Button
                     onClick={() => {
-                      formType = 'review';
-                      dispatch(showFormModal());
+                      dispatch(showFormModal('review'));
                     }}
                     variant="contained"
                   >Laisser un avis
@@ -136,7 +133,7 @@ export default function UserProfile() {
             </div>
           </div>
         </div>
-        {formModalIsVisible && <FormModal formType="conversation" targetUser={pageUser} />}
+        {formModalIsVisible && <FormModal targetUser={pageUser} />}
       </>
       )}
     </div>
