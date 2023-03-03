@@ -4,18 +4,24 @@ import {
   Typography,
   Rating,
 } from '@mui/material';
-
+import { useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
 import { formatDate } from '../../utils/functions';
+import { fetchPageUser } from '../../actions/userprofile';
 
 export default function UserProfile() {
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.authentication);
-  const { currentPost } = useSelector((state) => state.post);
+  const { currentPageUser } = useSelector((state) => state.userprofile)
   const location = useLocation();
   const isMyProfile = location.pathname === '/mon-profil';
-  const pageUser = isMyProfile ? user : currentPost.user;
+
+  // if the current page is '/mon-profil'
+  // this component will use the logged user to display its information
+  // otherwise it will fetch the user corresponding to the id in the url and use this one instead
+  const pageUser = isMyProfile ? user : currentPageUser;
 
   function displayGender() {
     if (pageUser.gender === 1) {
@@ -27,6 +33,13 @@ export default function UserProfile() {
 
     return 'Ne préfère pas répondre';
   }
+
+  useEffect(
+    () => {
+      if (!isMyProfile) dispatch(fetchPageUser(location.pathname.split('/').pop()));
+    },
+    [isMyProfile],
+  );
 
   return (
     <div className="userprofile">

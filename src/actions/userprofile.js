@@ -9,6 +9,8 @@ export const PROFILE_EDIT_TYPE_DESCRIPTION = 'PROFILE_EDIT_TYPE_DESCRIPTION';
 export const SUBMIT_USER_CHANGES = 'SUBMIT_USER_CHANGES';
 export const HANDLE_USER_CHANGES_SAVED = 'HANDLE_USER_CHANGES_SAVED';
 export const FILL_USER_EDIT_FORM = 'FILL_USER_EDIT_FORM';
+export const FETCH_PAGE_USER = 'FETCH_PAGE_USER';
+export const SAVE_PAGE_USER = 'SAVE_PAGE_USER';
 
 // Action creator
 export const profileEditTypeFirstname = (value) => ({
@@ -57,5 +59,15 @@ export const handleUserChangesSaved = () => ({
 
 export const fillUserEditForm = (data) => ({
   type: FILL_USER_EDIT_FORM,
+  data: data,
+});
+
+export const fetchPageUser = (id) => ({
+  type: FETCH_PAGE_USER,
+  userId: id,
+});
+
+export const savePageUser = (data) => ({
+  type: SAVE_PAGE_USER,
   data: data,
 });
