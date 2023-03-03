@@ -12,13 +12,14 @@ import CreatePostForm from '../CreatePostForm/CreatePostForm';
 import UserProfile from '../UserProfile/UserProfile';
 import UserProfileEdit from '../UserProfile/UserProfileEdit';
 import PrivateRoute from './PrivateRoute';
-import { loadServices, redirectDone } from '../../actions/app';
+import { clearInfoModal, loadServices, redirectDone } from '../../actions/app';
+import InfoModal from '../InfoModal/InfoModal';
 import DetailedPost from '../DetailedPost/DetailedPost';
 import { saveJwt, saveLoggedUser } from '../../actions/authentication';
 
 function App() {
   const dispatch = useDispatch();
-  const { redirectPath, largeFontSize } = useSelector((state) => state.app);
+  const { redirectPath, largeFontSize, infoMessages } = useSelector((state) => state.app);
   const navigate = useNavigate();
 
   // on first app render
@@ -50,6 +51,15 @@ function App() {
     [redirectPath],
   );
 
+  /* when a message is dispatched, a timer is set after which
+  the message is cleared and the modal disappears */
+  useEffect(
+    () => {
+      if (infoMessages.length !== 0) setTimeout(() => dispatch(clearInfoModal()), 4000);
+    },
+    [infoMessages],
+  );
+
   return (
     <div className={largeFontSize ? 'app app--large' : 'app'}>
       <Background />
@@ -57,6 +67,7 @@ function App() {
         <div>
           <Header />
           <Searchbar />
+          <InfoModal />
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />

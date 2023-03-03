@@ -1,5 +1,7 @@
 import {
   CHANGE_FONT_SIZE,
+  CLEAR_INFO_MODAL,
+  DISPLAY_INFO_MESSAGES,
   GET_SERVICES,
   REDIRECT_ACTION,
   REDIRECT_DONE,
@@ -9,6 +11,7 @@ const initialState = {
   serviceList: [],
   redirectPath: '',
   largeFontSize: false,
+  infoMessages: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -32,6 +35,16 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         largeFontSize: !state.largeFontSize,
+      };
+    case DISPLAY_INFO_MESSAGES:
+      return {
+        ...state,
+        infoMessages: action.messages,
+      };
+    case CLEAR_INFO_MODAL:
+      return {
+        ...state,
+        infoMessages: [],
       };
     default:
       return state;
