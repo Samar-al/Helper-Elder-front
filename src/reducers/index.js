@@ -7,7 +7,7 @@ import authenticationReducer from './authentication';
 import createpostformReducer from './createpostform';
 import homepageReducer from './homepage';
 import postReducer from './post';
-import appReducer from './app';
+import appReducer from './appReducer';
 import userProfileReducer from './userprofile';
 import conversationReducer from './conversation';
 

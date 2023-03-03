@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { redirectAction } from '../actions/app';
+import { saveLoggedUser } from '../actions/authentication';
 import { handleUserChangesSaved, SUBMIT_USER_CHANGES } from '../actions/userprofile';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 
@@ -23,6 +24,7 @@ const userProfileMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(handleUserChangesSaved());
+            store.dispatch(saveLoggedUser(action.updatedUser)); // updating the user in the state
             store.dispatch(redirectAction('/'));
           }
         })
