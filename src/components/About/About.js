@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import './styles.scss';
 import aboutPicture from '../../../public/img/a-propos-picture.jpg';
 
@@ -7,7 +8,14 @@ export default function About() {
       <img className="about_picture" alt="logo" src={aboutPicture} />
       <div className="about_text">
         <h1 className="about_title">À propos de nous</h1>
-        <p className="about_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+        <p className="about_content"> Notre site s’adresse autant aux particuliers qu’aux professionnels de la santé.
+          Il est conçu pour que des personnes âgées à mobilité réduite ou ayant un besoin spécifique dans
+          le cadre des services proposés sur le site puissent rentrer en contact/
+
+          Les “Helpers” (particuliers et/ou professionnels) peuvent être des étudiants, des professionnels de santé,
+          des personnes sans qualification particulière. Ils peuvent proposer leurs services pour venir en aide aux Elders.
+          Les modalités de mise en œuvre des différentes prestations seront à définir entre utilisateurs via la messagerie.
+        </p>
       </div>
     </div>
   );
