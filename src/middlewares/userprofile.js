@@ -7,7 +7,6 @@ import {
   SUBMIT_USER_CHANGES,
 } from '../actions/userprofile';
 import { saveLoggedUser } from '../actions/authentication';
-import { handleUserChangesSaved, SUBMIT_USER_CHANGES } from '../actions/userprofile';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 
 const userProfileMiddleware = (store) => (next) => (action) => {

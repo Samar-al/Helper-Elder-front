@@ -35,8 +35,13 @@ export default function DetailedPost() {
         <div className="detailed-post">
           <div className="detailed-post_left">
             <img className="detailed-post_left_picture" src={currentPost.user.picture} alt={currentPost.user.firstname} />
-            <p className="detailed-post_left_user">{currentPost.user.firstname} {currentPost.user.lastname}</p>
-            <Typography component="legend" />
+            <p className="detailed-post_left_user">
+              <NavLink
+                to={`/profil/${currentPost.user.id}`}
+              >
+                {currentPost.user.firstname}
+              </NavLink>
+            </p>
             <Rating name="note" value={currentPost.user.avgRating} readOnly />
             <ul className="detailed-post_left_service">
               Services proposés:
