@@ -3,12 +3,15 @@ import {
   GET_SERVICES,
   REDIRECT_ACTION,
   REDIRECT_DONE,
+  // LOAD_NEXT_MESSAGES,
 } from '../actions/app';
 
 const initialState = {
   serviceList: [],
   redirectPath: '',
   largeFontSize: false,
+  /* messages: [],
+  loading: false, */
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -33,6 +36,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         largeFontSize: !state.largeFontSize,
       };
+      /*  case LOAD_NEXT_MESSAGES:
+      return {
+        ...state,
+        loading: true,
+      }; */
     default:
       return state;
   }

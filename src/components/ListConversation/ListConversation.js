@@ -75,6 +75,20 @@ export default function ListConversation() {
           </div>
         </div>
       </div>
+      <div className="conversation_section">
+        <div className="conversation_section_list">
+          <div className="conversation_section_list_picture">
+            <img src={profile} alt="profil" />
+          </div>
+          <div className="conversation_section_list_content">
+            <p className="conversation_section_list_content_name">Jacques Brel</p>
+            <p className="conversation_section_list_content_content">Si tu savais ce qu'il m'est arrivé !</p>
+          </div>
+          <div className="conversation_section_list_date">
+            <p className="conversation_section_list_date_time">15:00 PM</p>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
