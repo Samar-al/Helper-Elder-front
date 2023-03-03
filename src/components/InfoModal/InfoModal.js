@@ -3,6 +3,7 @@ import './styles.scss';
 
 export default function InfoModal() {
   const { infoMessages } = useSelector((state) => state.app);
+  /* when the infoMessages array is empty, the modal is not shown */
   return (
     <div className={infoMessages.length !== 0 ? 'info_modal' : 'info_modal info_modal-hidden'}>
       <h2 className="info_modal_title">Information</h2>

@@ -42,6 +42,8 @@ function App() {
     [redirectPath],
   );
 
+  /* when a message is dispatched, a timer is set after which
+  the message is cleared and the modal disappears */
   useEffect(
     () => {
       if (infoMessages.length !== 0) setTimeout(() => dispatch(clearInfoModal()), 4000);
