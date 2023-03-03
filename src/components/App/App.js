@@ -60,7 +60,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/connexion" element={<Connexion />} />
-            <Route path="/profil/:id" element={<UserProfile />} />
+            <Route path="/profil/:id" element={<PrivateRoute element={<UserProfile />} />} />
             <Route path="/mon-profil" element={<PrivateRoute element={<UserProfile />} />} />
             <Route path="/mon-profil/modifier" element={<PrivateRoute element={<UserProfileEdit />} />} />
             <Route path="/annonce/:id" element={<DetailedPost />} />
