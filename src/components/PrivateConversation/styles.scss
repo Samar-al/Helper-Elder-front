@@ -1,9 +1,5 @@
 @use '../../styles/vars';
 
-img {
-  width: 30px;
-}
-
 .message {
   margin: 0 auto;
   border-radius: 25px;
@@ -12,10 +8,9 @@ img {
   justify-content: flex-end;
   flex-direction: column;
   position: relative;
-  top: 50px;
 
   &_header {
-    position: absolute;
+    position: relative;
     background-color: vars.$main-color;
     top: 0px;
     width: 100%;
@@ -24,6 +19,7 @@ img {
     justify-content: space-between;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    color: white;
 
     &_button {
       width: 100%;
@@ -32,7 +28,7 @@ img {
 
       & img {
         width: 30px;
-        margin-left: 5px;
+        margin-left: 10px;
       }
 
       & p {
@@ -47,6 +43,113 @@ img {
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      margin-right: 15px;
     }
+  }
+
+  &_conversation {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    &_talk {
+      margin: 20px 0;
+      color: white;
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      max-width: 70%;
+
+      & img {
+        width: 50px;
+        border-radius: 50%;
+        margin-bottom: auto;
+      }
+
+      & p {
+        padding: 15px;
+        line-height: 25px;
+        border-radius: 20px;
+      }
+    }
+  }
+
+  &_form {
+    width: 100%;
+    height: 90px;
+    background-color: vars.$light-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_container {
+      background: white;
+      display: flex;
+      width: 90%;
+      height: 60px;
+      border-radius: 9999px;
+
+      &_text {
+        width: 90%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+
+        & textarea {
+          resize: none;
+          border: none;
+          outline: none;
+          padding-left: 10px;
+          font-size: 16px;
+          width: 100%;
+          height: 40px;
+          padding-top: 10px;
+          font-family: Arial, Helvetica, sans-serif;
+          border-radius: 9999px;
+        }
+      }
+
+      &_button {
+        background: white;
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
+        width: 70px;
+        border: none;
+        display: flex;
+        padding-right: 5px;
+        justify-content: center;
+        align-items: center;
+
+        & img {
+          width: 30px;
+        }
+      }
+    }
+  }
+}
+
+.right {
+  margin-left: auto;
+
+  & p {
+    margin-right: 10px;
+    background: vars.$light-color;
+  }
+}
+
+.left p {
+  margin-left: 10px;
+  background: rgb(216, 216, 216);
+  color: black;
+}
+
+
+@media (min-width: vars.$medium-breakpoint) {
+  .message_conversation {
+    width: 70%;
   }
 }

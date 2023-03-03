@@ -16,21 +16,37 @@ export default function PrivateConversation() {
         </div>
       </div>
       <div className="message_conversation">
-        <div className="message_conversation_left">
+        <div className="message_conversation_talk left">
           <img src={profile} alt="profil" />
           <p>Bonjour je serais intéressée par votre annonce</p>
         </div>
-        <div className="message_conversation_right">
-          <img src={profile} alt="profil" />
+        <div className="message_conversation_talk right">
           <p>Bonjour, je peux répondre à vos questions si vous le souhaitez?</p>
+          <img src={profile} alt="profil" />
         </div>
-        <div className="message_conversation_left">
+        <div className="message_conversation_talk left">
           <img src={profile} alt="profil" />
           <p>Oui j'aurai 2/3 questions à vous poser effectivement !</p>
         </div>
-        <div className="message_conversation_right">
-          <img src={profile} alt="profil" />
+        <div className="message_conversation_talk right">
           <p>Je vous écoute, dîtes-moi tout ^^</p>
+          <img src={profile} alt="profil" />
+        </div>
+        <div className="message_conversation_talk left">
+          <img src={profile} alt="profil" />
+          <p>Bonjour je serais intéressée par votre annonce</p>
+        </div>
+        <div className="message_conversation_talk right">
+          <p>Bonjour, je peux répondre à vos questions si vous le souhaitez?</p>
+          <img src={profile} alt="profil" />
+        </div>
+        <div className="message_conversation_talk left">
+          <img src={profile} alt="profil" />
+          <p>Oui j'aurai 2/3 questions à vous poser effectivement !</p>
+        </div>
+        <div className="message_conversation_talk right">
+          <p>Je vous écoute, dîtes-moi tout ^^</p>
+          <img src={profile} alt="profil" />
         </div>
       </div>
       <form className="message_form">
