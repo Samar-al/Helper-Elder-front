@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 import {
-  Box,
   Button,
   Checkbox,
   FormControl,
