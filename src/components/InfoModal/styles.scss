@@ -1,0 +1,35 @@
+@use 'src/styles/vars';
+
+.info_modal {
+  position: fixed;
+  background-color: vars.$main-color;
+  top: 0;
+  margin: 1em;
+  padding: 0.5em;
+  border-radius: 10px;
+  max-width: 200px;
+  color: white;
+
+  &_title {
+    font-weight: bold;
+  }
+  
+  &_separator {
+    width: 100%;
+    border: 1px solid white;
+    margin-top: 0;
+  }
+
+  &_messages {
+    overflow-wrap: break-word;
+    text-align: left;
+
+    &:not(:last-child) {
+      margin-bottom: 0.5em;
+    }
+  }
+
+  &-hidden {
+    display: none;
+  }
+}
