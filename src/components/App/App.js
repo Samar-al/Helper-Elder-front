@@ -14,6 +14,7 @@ import PrivateRoute from './PrivateRoute';
 import { loadServices, redirectDone } from '../../actions/app';
 import { saveJwt, saveLoggedUser } from '../../actions/authentication';
 import ListConversation from '../ListConversation/ListConversation';
+import PrivateConversation from '../PrivateConversation/PrivateConversation';
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +63,7 @@ function App() {
             <Route path="/annonce/:id" element={<DetailedPost />} />
             <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
             <Route path="/mon-profil/conversation" element={<ListConversation />} />
+            <Route path="/mon-profil/conversation/1" element={<PrivateConversation />} />
           </Routes>
         </div>
         <Footer />
