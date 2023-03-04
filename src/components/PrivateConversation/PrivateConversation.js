@@ -41,20 +41,6 @@ export default function PrivateConversation() {
           </div>
           <p>Bonjour je serais intéressée par votre annonce</p>
         </div>
-        <div className="message_conversation_talk right">
-          <p>Bonjour, je peux répondre à vos questions si vous le souhaitez?</p>
-          <div>
-            <img src={profile} alt="profil" />
-            <div className="username">pseudo</div>
-          </div>
-        </div>
-        <div className="message_conversation_talk left">
-          <div>
-            <img src={profile} alt="profil" />
-            <div className="username">pseudo</div>
-          </div>
-          <p>Bonjour je serais intéressée par votre annonce</p>
-        </div>
       </div>
       {/*  <div className="message_conversation_loader">
         <img src={loader} alt="Loading..." />
