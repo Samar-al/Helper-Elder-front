@@ -20,6 +20,7 @@ import { clearInfoModal, loadServices, redirectDone } from '../../actions/app';
 import InfoModal from '../InfoModal/InfoModal';
 import { saveJwt, saveLoggedUser } from '../../actions/authentication';
 import LegalMentions from '../LegalMentions/LegalMentions';
+import NotFound from '../NotFound/NotFound';
 
 function App() {
   const dispatch = useDispatch();
@@ -79,6 +80,7 @@ function App() {
             <Route path="/a-propos" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
+            <Route path="/*" element={<NotFound />} />
           </Routes>
         </div>
         <Footer />
