@@ -28,6 +28,7 @@ export default function ListConversation() {
             </div>
             <div className="conversation_section_list_date">
               <p className="conversation_section_list_date_time">13:00 PM</p>
+              {/* If there are new messages */}
               {/* <p className="conversation_section_list_date_num">2</p> */}
             </div>
           </div>

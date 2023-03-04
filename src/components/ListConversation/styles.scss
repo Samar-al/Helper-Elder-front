@@ -149,6 +149,18 @@ main {
   .conversation_header_title {
     width: 50%;
   }
+
+  .conversation_section_list {
+    height: 4em;
+
+    &_content_name {
+      font-size: 1.1em;
+    }
+
+    &_content_content {
+      font-size: 1em;
+    }
+  }
 }
 
 
