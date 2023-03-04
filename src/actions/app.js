@@ -4,7 +4,6 @@ export const GET_SERVICES = 'GET_SERVICES';
 export const REDIRECT_ACTION = 'REDIRECT_ACTION';
 export const REDIRECT_DONE = 'REDIRECT_DONE';
 export const CHANGE_FONT_SIZE = 'CHANGE_FONT_SIZE';
-// export const LOAD_NEXT_MESSAGES = 'LOAD_NEXT_MESSAGES';
 
 // Action creator
 export const loadServices = () => ({
@@ -28,7 +27,3 @@ export const redirectDone = () => ({
 export const changeFontSize = () => ({
   type: CHANGE_FONT_SIZE,
 });
-
-// export const loadNextMessages = () => ({
-//   type: LOAD_NEXT_MESSAGES,
-// });
