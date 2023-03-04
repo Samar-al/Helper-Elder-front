@@ -6,6 +6,33 @@ import send from '../../assets/img/icons/envoyer.png';
 // import loader from '../../assets/img/icons/loader.gif';
 
 export default function PrivateConversation() {
+  const messages = [
+    {
+      id: 1,
+      user: 'pseudo',
+      content: 'Bonjour je serais intéressé par votre annonce',
+    },
+    {
+      id: 2,
+      user: 'moi',
+      content: 'Bonjour, je peux répondre à vos questions si vous le souhaitez?',
+    },
+    {
+      id: 3,
+      user: 'pseudo',
+      content: 'D\'accord, merci beaucoup!',
+    },
+    {
+      id: 3,
+      user: 'pseudo',
+      content: 'D\'accord, merci beaucoup!',
+    },
+    {
+      id: 2,
+      user: 'moi',
+      content: 'Bonjour, je peux répondre à vos questions si vous le souhaitez?',
+    },
+  ];
   return (
     <main className="message">
       <div className="message_header">
@@ -20,27 +47,20 @@ export default function PrivateConversation() {
         </div>
       </div>
       <div className="message_conversation">
-        <div className="message_conversation_talk left">
-          <div>
-            <img src={profile} alt="profil" />
-            <div className="username">pseudo</div>
+        {messages.map((message, index) => (
+          <div
+            key={message.id}
+            className={`message_conversation_talk ${message.user === 'moi' ? 'right' : 'left'}`}
+          >
+            {index === 0 || messages[index - 1].user !== message.user ? (
+              <div>
+                <img src={profile} alt="profil" />
+                <div className="username">{message.user}</div>
+              </div>
+            ) : null }
+            <p>{message.content}</p>
           </div>
-          <p>Bonjour je serais intéressée par votre annonce</p>
-        </div>
-        <div className="message_conversation_talk right">
-          <p>Bonjour, je peux répondre à vos questions si vous le souhaitez?</p>
-          <div>
-            <img src={profile} alt="profil" />
-            <div className="username">pseudo</div>
-          </div>
-        </div>
-        <div className="message_conversation_talk left">
-          <div>
-            <img src={profile} alt="profil" />
-            <div className="username">pseudo</div>
-          </div>
-          <p>Bonjour je serais intéressée par votre annonce</p>
-        </div>
+        ))}
       </div>
       {/*  <div className="message_conversation_loader">
         <img src={loader} alt="Loading..." />
