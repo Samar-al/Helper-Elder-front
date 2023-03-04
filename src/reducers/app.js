@@ -3,7 +3,6 @@ import {
   GET_SERVICES,
   REDIRECT_ACTION,
   REDIRECT_DONE,
-  // LOAD_NEXT_MESSAGES,
 } from '../actions/app';
 
 const initialState = {
