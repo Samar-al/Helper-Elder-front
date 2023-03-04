@@ -10,8 +10,6 @@ const initialState = {
   serviceList: [],
   redirectPath: '',
   largeFontSize: false,
-  /* messages: [],
-  loading: false, */
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -36,11 +34,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         largeFontSize: !state.largeFontSize,
       };
-      /*  case LOAD_NEXT_MESSAGES:
-      return {
-        ...state,
-        loading: true,
-      }; */
     default:
       return state;
   }

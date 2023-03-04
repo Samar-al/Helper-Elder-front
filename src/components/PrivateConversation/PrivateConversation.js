@@ -1,30 +1,11 @@
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { useEffect } from 'react';
 import back from '../../assets/img/icons/fleche-gauche.png';
 import profile from '../../assets/img/icons/user.png';
 import send from '../../assets/img/icons/envoyer.png';
 // import loader from '../../assets/img/icons/loader.gif';
-// import { loadNextMessages } from '../../actions/app';
 
 export default function PrivateConversation() {
-  /* const dispatch = useDispatch();
-
-  useEffect(() => {
-    function handleScroll() {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        dispatch(loadNextMessages());
-        document.querySelector('.message_conversation_loader').style.display = 'block';
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [dispatch]); */
   return (
     <main className="message">
       <div className="message_header">
@@ -75,7 +56,7 @@ export default function PrivateConversation() {
           <p>Bonjour je serais intéressée par votre annonce</p>
         </div>
       </div>
-      {/*  <div className="message_conversation_loader" style={{ display: 'none' }}>
+      {/*  <div className="message_conversation_loader">
         <img src={loader} alt="Loading..." />
       </div> */}
       <form className="message_form">
