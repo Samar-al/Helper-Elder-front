@@ -1,6 +1,7 @@
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
-import back from '../../assets/img/icons/fleche-gauche.png';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import SendIcon from '@mui/icons-material/Send';
 import profile from '../../assets/img/icons/user.png';
 import send from '../../assets/img/icons/envoyer.png';
 // import loader from '../../assets/img/icons/loader.gif';
@@ -38,7 +39,7 @@ export default function PrivateConversation() {
       <div className="message_header">
         <div className="message_header_button">
           <NavLink to="/mon-profil/conversation">
-            <img src={back} alt="Retour" />
+            <ArrowBackIcon />
           </NavLink>
           <p>Retour</p>
         </div>
@@ -71,7 +72,7 @@ export default function PrivateConversation() {
             <textarea placeholder="Entrez votre message" />
           </div>
           <button type="button" className="message_form_container_button">
-            <img src={send} alt="Envoyer" />
+            <SendIcon />
           </button>
         </div>
       </form>

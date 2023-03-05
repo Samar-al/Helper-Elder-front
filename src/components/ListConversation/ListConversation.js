@@ -1,6 +1,6 @@
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
-import back from '../../assets/img/icons/fleche-gauche.png';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import profile from '../../assets/img/icons/user.png';
 
 export default function ListConversation() {
@@ -10,7 +10,7 @@ export default function ListConversation() {
         <div className="conversation_header_button">
           <NavLink to="/mon-profil">
             <button type="button">
-              <img src={back} alt="Retour" />
+              <ArrowBackIcon />
             </button>
           </NavLink>
         </div>

@@ -1,7 +1,6 @@
 @use '../../styles/vars';
 
 main {
-  position: relative;
   width: 100%;
   height: auto;
 }
@@ -20,7 +19,6 @@ main {
   z-index: 2;
 
   &_button {
-    position: relative;
     width: 20%;
     height: 100%;
     display: flex;
@@ -39,7 +37,6 @@ main {
   }
 
   &_title {
-    position: relative;
     width: 60%;
     height: 100%;
     display: flex;
@@ -50,27 +47,21 @@ main {
   }
 
   &_section {
-    position: relative;
-    z-index: 1;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: auto;
 
     &_list:first-of-type {
       margin-top: 1.6em;
     }
 
     &_list {
-      position: relative;
       width: 95%;
       height: 3em;
       display: flex;
       margin-bottom: 1em;
 
       &_picture {
-        position: relative;
         width: 20%;
         height: 100%;
         display: flex;
@@ -86,7 +77,6 @@ main {
       }
 
       &_content {
-        position: relative;
         width: calc(60% - .5em); // .5em for up coming padding
         padding: 0.5em;
         display: flex;
@@ -110,7 +100,6 @@ main {
       }
 
       &_date {
-        position: relative;
         width: 20%;
         height: 100%;
         display: flex;
