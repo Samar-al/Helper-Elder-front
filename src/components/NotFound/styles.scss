@@ -1,3 +1,5 @@
+@use '../../styles/vars';
+
 .not-found {
   height: 100vh;
   background-image: linear-gradient(to bottom right, #94d8c1, #b1edf8);
@@ -12,6 +14,7 @@
   padding: 4rem;
   border-radius: 1rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  margin: 2rem;
 
   & h1 {
     font-size: 5rem;
@@ -29,7 +32,7 @@
 
 
 
-@media (max-width: 768px) {
+@media (min-width: vars.$medium-breakpoint) {
   .not-found_content {
     padding: 2rem;
   
