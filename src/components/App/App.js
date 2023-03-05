@@ -18,9 +18,9 @@ import About from '../About/About';
 import Contact from '../Contact/Contact';
 import { clearInfoModal, loadServices, redirectDone } from '../../actions/app';
 import InfoModal from '../InfoModal/InfoModal';
-import { saveJwt, saveLoggedUser } from '../../actions/authentication';
 import LegalMentions from '../LegalMentions/LegalMentions';
 import NotFound from '../NotFound/NotFound';
+import { Navigate } from 'react-router-dom';
 
 function App() {
   const dispatch = useDispatch();
@@ -80,7 +80,8 @@ function App() {
             <Route path="/a-propos" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
-            <Route path="/*" element={<NotFound />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="/*" element={<Navigate to="/404" />} />
           </Routes>
         </div>
         <Footer />

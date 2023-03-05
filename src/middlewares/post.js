@@ -6,12 +6,14 @@ import {
   getPost, getReviews, loadReviews, LOAD_POST, LOAD_REVIEWS,
 } from '../actions/detailedpost';
 import { getFilteredPosts, SEARCH_POSTS } from '../actions/resultposts';
+import errorManagement from './errorManagement';
 
 const postMiddleware = (store) => (next) => (action) => {
   const { adressInput, selectedServices, postType } = store.getState().searchbar;
 
   // filter functions
   function filterByZipcode(post) {
+    // eslint-disable-next-line max-len
     if (adressInput.slice(0, 2) === 97) return adressInput.slice(0, 3) === post.postalCode.slice(0, 3);
     return adressInput.slice(0, 2) === post.postalCode.slice(0, 2);
   }
@@ -48,6 +50,7 @@ const postMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          errorManagement(error.response.status, store);
         });
       break;
 
@@ -69,6 +72,7 @@ const postMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          errorManagement(error.response.status, store);
         });
       break;
 
@@ -113,6 +117,7 @@ const postMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          errorManagement(error.response.status, store);
         });
       break;
     default:
