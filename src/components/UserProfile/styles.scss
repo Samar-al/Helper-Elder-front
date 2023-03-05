@@ -1,0 +1,139 @@
+@use 'src/styles/_vars';
+.userprofile {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2rem;
+
+    &_info_media {
+      border: 2px, solid, vars.$main-color;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      width: 100%;
+      border-bottom: 0;
+
+      img {
+        border: 1px, solid, vars.$main-color;
+        max-width: 250px;
+        width: 80%;
+        margin: auto;
+      }
+    }
+
+    &_input {
+
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+
+      h1 {
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+        &_description {
+          border: 1px, solid, vars.$main-color;
+          padding: 1rem;
+          word-break: break-word;
+        }
+
+        &_description_edit {
+          margin-bottom: 1rem;
+        }
+    }
+
+    &_rating {
+      text-align: center;
+    }
+
+    &_button {
+      display: flex;
+      flex-direction: column;
+
+
+      &_add_post, &_message, &_review {
+        margin: 0.5rem 0;
+      }
+
+      &_modify {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+    }
+
+    &_info_text {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 1rem;
+      border: 2px, solid, vars.$main-color;
+      
+        &_paragraph {
+          display: flex;
+          flex-direction: column;
+          margin: 1rem;
+            
+          p {
+            margin-bottom: 0.5rem;
+            text-align: left;
+          }
+
+          span {
+            font-weight: bold;
+          }
+        }
+
+        &_paragraph_edit {
+          margin: 1rem 0;
+          text-align: left;
+          display: flex;
+          flex-direction: column;
+        }
+    }
+
+    &_form_item {
+      margin-bottom: 0.5rem;
+    }
+}
+
+@media (min-width: vars.$medium-breakpoint) { 
+  .userprofile {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+    &_info_media {
+      border: 2px, solid, vars.$main-color;
+      border-right: 0;
+      width: 300px;
+    }
+
+    &_info_text {
+      width: 700px;
+    }
+
+    &_button {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+    }
+
+    &_paragraph {
+    
+      p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+@media (min-width: vars.$small-breakpoint) { 
+  .userprofile {
+    &_info_text_paragraph_edit {
+      width:50% 
+
+    }
+  }
+}

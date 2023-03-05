@@ -1,0 +1,54 @@
+@use '../../styles/vars';
+
+.dimmer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: vars.$dimmer-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 21;
+
+  .modal_wrapper {
+    max-width: vars.$small-breakpoint;
+    width: 100%;
+    background-color: white;
+    padding: 1em;
+    border-radius: 10px;
+    margin: 2em;
+    text-align: left;
+    z-index: 22;
+    position: relative;
+
+    &_close {
+      color: vars.$main-color;
+      position: absolute;
+      top: 0.4em;
+      right: 0.5em;
+    }
+
+    .create_conversation, .create_review {
+      width: 100%;
+    
+      &_legend {
+        margin-bottom: 1em;
+    
+        &_recipient {
+          font-weight: bold;
+        }
+      }
+    
+      &_form {
+    
+        &_item {
+          margin-bottom: 1.5em;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+}
