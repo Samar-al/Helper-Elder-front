@@ -32,8 +32,9 @@ export const changeFontSize = () => ({
   type: CHANGE_FONT_SIZE,
 });
 
-export const showFormModal = () => ({
+export const showFormModal = (formType) => ({
   type: SHOW_FORM_MODAL,
+  formType: formType,
 });
 
 export const hideFormModal = () => ({

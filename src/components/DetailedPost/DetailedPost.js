@@ -58,7 +58,7 @@ export default function DetailedPost() {
               {user && (
               <Button
                 onClick={() => {
-                  dispatch(showFormModal());
+                  dispatch(showFormModal('conversation'));
                   dispatch(convFormTypeTitle(`RE: ${currentPost.title}`));
                 }}
                 variant="contained"
@@ -84,7 +84,7 @@ export default function DetailedPost() {
           </div>
         )}
       </div>
-      {formModalIsVisible && currentPost !== null && <FormModal formType="conversation" targetUser={currentPost.user} />}
+      {formModalIsVisible && currentPost !== null && <FormModal targetUser={currentPost.user} />}
     </>
   );
 }
