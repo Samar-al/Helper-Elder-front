@@ -31,9 +31,10 @@ const conversationMiddleware = (store) => (next) => (action) => {
         });
       break;
     case LOAD_CONVERSATION:
+      console.log(action.id);
       axios.get(
         // URL
-        `${baseUrl}/mon-profil/conversation/${action.id}`,
+        `${baseUrl}/mon-profil/conversation`,
         // header
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )

@@ -26,9 +26,8 @@ export const convFormSubmitConv = (message) => ({
   message: message,
 });
 
-export const loadConversation = (id) => ({
+export const loadConversation = () => ({
   type: LOAD_CONVERSATION,
-  id: id,
 });
 
 export const getConversation = (data) => ({
