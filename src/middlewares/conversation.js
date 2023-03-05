@@ -2,6 +2,7 @@ import axios from 'axios';
 import { displayInfoMessages, hideFormModal } from '../actions/app';
 import { convFormClear, CONV_FORM_SUBMIT_CONV } from '../actions/conversation';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
+import errorManagement from './errorManagement';
 
 const conversationMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -26,6 +27,7 @@ const conversationMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          errorManagement(error.response.status, store);
         });
       break;
     default:
