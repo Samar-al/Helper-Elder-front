@@ -18,6 +18,10 @@
   //   background-size: cover;
   // }
 
+  &-notfound {
+    background-image: linear-gradient(to bottom right, #94d8c1, #b1edf8);
+  }
+
   &_image {
     width: 100%;
   }

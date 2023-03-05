@@ -6,7 +6,7 @@ export default function Background() {
   const location = useLocation();
 
   return (
-    <div className="background">
+    <div className={location.pathname === '/404' ? 'background background-notfound' : 'background'}>
       {location.pathname === '/' && <img src={background} alt="background" className="background_image" />}
     </div>
   );
