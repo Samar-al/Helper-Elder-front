@@ -1,6 +1,7 @@
 @use 'sass:color';
 
 $main-color: #104b4d;
+$light-color: #3c7275;
 $alt-color: color.scale($main-color, $lightness: 30%);
 $darker-color: color.scale($main-color, $lightness: -30%);
 $background-color: rgb(255 252 234);
