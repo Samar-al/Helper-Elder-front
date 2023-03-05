@@ -2,8 +2,7 @@ import './styles.scss';
 import { NavLink } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SendIcon from '@mui/icons-material/Send';
-import profile from '../../assets/img/icons/user.png';
-import send from '../../assets/img/icons/envoyer.png';
+import profile from '../../../public/img/placeholders/avatar_placeholder.png';
 // import loader from '../../assets/img/icons/loader.gif';
 
 export default function PrivateConversation() {

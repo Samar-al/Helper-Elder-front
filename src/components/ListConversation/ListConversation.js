@@ -1,7 +1,7 @@
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import profile from '../../assets/img/icons/user.png';
+import profile from '../../../public/img/placeholders/avatar_placeholder.png';
 
 export default function ListConversation() {
   return (
