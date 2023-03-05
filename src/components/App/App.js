@@ -14,6 +14,8 @@ import DetailedPost from '../DetailedPost/DetailedPost';
 import UserProfile from '../UserProfile/UserProfile';
 import UserProfileEdit from '../UserProfile/UserProfileEdit';
 import PrivateRoute from './PrivateRoute';
+import ListConversation from '../ListConversation/ListConversation';
+import PrivateConversation from '../PrivateConversation/PrivateConversation';
 import About from '../About/About';
 import Contact from '../Contact/Contact';
 import { clearInfoModal, loadServices, redirectDone } from '../../actions/app';
@@ -21,6 +23,7 @@ import InfoModal from '../InfoModal/InfoModal';
 import LegalMentions from '../LegalMentions/LegalMentions';
 import NotFound from '../NotFound/NotFound';
 import { Navigate } from 'react-router-dom';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -80,8 +83,11 @@ function App() {
             <Route path="/a-propos" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
+            <Route path="/mon-profil/conversation" element={<ListConversation />} />
+            <Route path="/mon-profil/conversation/1" element={<PrivateConversation />} />
             <Route path="/404" element={<NotFound />} />
             <Route path="/*" element={<Navigate to="/404" />} />
+
           </Routes>
         </div>
         <Footer />

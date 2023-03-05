@@ -1,7 +1,13 @@
 import { Button, TextField } from '@mui/material';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { convFormSubmitConv, convFormTypeMsg, convFormTypeTitle } from '../../actions/conversation';
+import {
+  convFormClear,
+  convFormSubmitConv,
+  convFormTypeMsg,
+  convFormTypeTitle,
+} from '../../actions/conversation';
 import './styles.scss';
 
 export default function ConversationForm({ id, firstname }) {
@@ -11,13 +17,19 @@ export default function ConversationForm({ id, firstname }) {
 
   function submitConv(e) {
     e.preventDefault();
-    dispatch(convFormSubmitConv({
+    const message = {
       title: titleInput,
       content: messageInput,
       userSender: user.id,
       userRecipient: id,
-    }));
+    };
+    dispatch(convFormSubmitConv(message));
   }
+
+  useEffect(
+    () => () => dispatch(convFormClear()),
+    [],
+  );
 
   return (
     <div className="create_conversation">
