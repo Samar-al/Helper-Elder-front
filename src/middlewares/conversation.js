@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { displayInfoMessages, hideFormModal } from '../actions/app';
-import { convFormClear, CONV_FORM_SUBMIT_CONV } from '../actions/conversation';
+import {
+  convFormClear, CONV_FORM_SUBMIT_CONV, getConversation, LOAD_CONVERSATION,
+} from '../actions/conversation';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 
 const conversationMiddleware = (store) => (next) => (action) => {
@@ -22,6 +24,25 @@ const conversationMiddleware = (store) => (next) => (action) => {
             store.dispatch(hideFormModal());
             store.dispatch(convFormClear());
             store.dispatch(displayInfoMessages(['Conversation créée !', 'Message envoyé !']));
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+    case LOAD_CONVERSATION:
+      axios.get(
+        // URL
+        `${baseUrl}/mon-profil/conversation/${action.id}`,
+        // header
+        getHttpAuthHeaders(store.getState().authentication.jwt),
+      )
+        .then((response) => {
+          if (response.status !== 200) {
+            console.log('conversation not found');
+          }
+          else {
+            store.dispatch(getConversation(response.data));
           }
         })
         .catch((error) => {

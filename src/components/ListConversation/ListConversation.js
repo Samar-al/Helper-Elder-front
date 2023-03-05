@@ -1,9 +1,11 @@
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useSelector } from 'react-redux';
 import profile from '../../../public/img/placeholders/avatar_placeholder.png';
 
 export default function ListConversation() {
+  const { conversation } = useSelector((state) => state.conversation);
   return (
     <main>
       <div className="conversation_header">
@@ -17,6 +19,7 @@ export default function ListConversation() {
         <div className="conversation_header_title">Messages</div>
       </div>
       <NavLink to="/mon-profil/conversation/1">
+        {console.log(conversation)}
         <div className="conversation_section">
           <div className="conversation_section_list">
             <div className="conversation_section_list_picture">
@@ -34,62 +37,6 @@ export default function ListConversation() {
           </div>
         </div>
       </NavLink>
-      <div className="conversation_section">
-        <div className="conversation_section_list">
-          <div className="conversation_section_list_picture">
-            <img src={profile} alt="profil" />
-          </div>
-          <div className="conversation_section_list_content">
-            <p className="conversation_section_list_content_name">Jacques Brel</p>
-            <p className="conversation_section_list_content_content">Si tu savais ce qu'il m'est arrivé !</p>
-          </div>
-          <div className="conversation_section_list_date">
-            <p className="conversation_section_list_date_time">15:00 PM</p>
-          </div>
-        </div>
-      </div>
-      <div className="conversation_section">
-        <div className="conversation_section_list">
-          <div className="conversation_section_list_picture">
-            <img src={profile} alt="profil" />
-          </div>
-          <div className="conversation_section_list_content">
-            <p className="conversation_section_list_content_name">Jacques Brel</p>
-            <p className="conversation_section_list_content_content">Si tu savais ce qu'il m'est arrivé !</p>
-          </div>
-          <div className="conversation_section_list_date">
-            <p className="conversation_section_list_date_time">15:00 PM</p>
-          </div>
-        </div>
-      </div>
-      <div className="conversation_section">
-        <div className="conversation_section_list">
-          <div className="conversation_section_list_picture">
-            <img src={profile} alt="profil" />
-          </div>
-          <div className="conversation_section_list_content">
-            <p className="conversation_section_list_content_name">Jacques Brel</p>
-            <p className="conversation_section_list_content_content">Si tu savais ce qu'il m'est arrivé !</p>
-          </div>
-          <div className="conversation_section_list_date">
-            <p className="conversation_section_list_date_time">15:00 PM</p>
-          </div>
-        </div>
-      </div>
-      <div className="conversation_section">
-        <div className="conversation_section_list">
-          <div className="conversation_section_list_picture">
-            <img src={profile} alt="profil" />
-          </div>
-          <div className="conversation_section_list_content">
-            <p className="conversation_section_list_content_name">Jacques Brel</p>
-            <p className="conversation_section_list_content_content">Si tu savais ce qu'il m'est arrivé !</p>
-          </div>
-          <div className="conversation_section_list_date">
-            <p className="conversation_section_list_date_time">15:00 PM</p>
-          </div>
-        </div>
-      </div>
     </main>
   );
 }
