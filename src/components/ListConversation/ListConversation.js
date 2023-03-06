@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import profile from '../../../public/img/placeholders/avatar_placeholder.png';
 import { loadConversation } from '../../actions/conversation';
 
-export default function ListConversation({ conversationList }) {
+export default function ListConversation() {
   const { conversationList } = useSelector((state) => state.conversation);
   const dispatch = useDispatch();
 
@@ -16,6 +16,7 @@ export default function ListConversation({ conversationList }) {
     },
     [],
   );
+  // console.log(conversationList);
   return (
     <main>
       <div className="conversation_header">
@@ -29,25 +30,22 @@ export default function ListConversation({ conversationList }) {
         <div className="conversation_header_title">Messages</div>
       </div>
       <NavLink to="/mon-profil/conversation/1">
-        {console.log(conversationList)}
-        {conversationList.map((conversation) => (
-          <div className="conversation_section">
-            <div className="conversation_section_list">
-              <div className="conversation_section_list_picture">
-                <img src={profile} alt="profil" />
-              </div>
-              <div className="conversation_section_list_content">
-                <p className="conversation_section_list_content_name">Avril Lavigne</p>
-                <p className="conversation_section_list_content_content">{conversation.title}</p>
-              </div>
-              <div className="conversation_section_list_date">
-                <p className="conversation_section_list_date_time">13:00 PM</p>
-                {/* If there are new messages */}
-                {/* <p className="conversation_section_list_date_num">2</p> */}
-              </div>
+        <div className="conversation_section">
+          <div className="conversation_section_list">
+            <div className="conversation_section_list_picture">
+              <img src={profile} alt="profil" />
+            </div>
+            <div className="conversation_section_list_content">
+              <p className="conversation_section_list_content_name">{conversationList.user1_id}</p>
+              <p className="conversation_section_list_content_content">{conversationList.title}</p>
+            </div>
+            <div className="conversation_section_list_date">
+              <p className="conversation_section_list_date_time">{conversationList.created_at}</p>
+              {/* If there are new messages */}
+              {/* <p className="conversation_section_list_date_num">2</p> */}
             </div>
           </div>
-        ))}
+        </div>
       </NavLink>
     </main>
   );

@@ -1,7 +1,11 @@
 import axios from 'axios';
 import { displayInfoMessages, hideFormModal } from '../actions/app';
 import {
-  convFormClear, CONV_FORM_SUBMIT_CONV, getConversation, LOAD_CONVERSATION,
+  convFormClear,
+  CONV_FORM_SUBMIT_CONV,
+  getConversation, getMessages,
+  LOAD_CONVERSATION,
+  LOAD_MESSAGES,
 } from '../actions/conversation';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 
@@ -31,7 +35,6 @@ const conversationMiddleware = (store) => (next) => (action) => {
         });
       break;
     case LOAD_CONVERSATION:
-      console.log(action.id);
       axios.get(
         // URL
         `${baseUrl}/mon-profil/conversation`,
@@ -44,6 +47,25 @@ const conversationMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(getConversation(response.data));
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+    case LOAD_MESSAGES:
+      axios.get(
+        // URL
+        `${baseUrl}/mon-profil/conversation/${action.conversationId}`,
+        // header
+        getHttpAuthHeaders(store.getState().authentication.jwt),
+      )
+        .then((response) => {
+          if (response.status !== 200) {
+            console.log('messages not found');
+          }
+          else {
+            store.dispatch(getMessages(response.data));
           }
         })
         .catch((error) => {

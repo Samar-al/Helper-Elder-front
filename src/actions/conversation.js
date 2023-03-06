@@ -5,6 +5,8 @@ export const CONV_FORM_CLEAR = 'CONV_FORM_CLEAR';
 export const CONV_FORM_SUBMIT_CONV = 'CONV_FORM_SUBMIT_CONV';
 export const LOAD_CONVERSATION = 'LOAD_CONVERSATION';
 export const GET_CONVERSATION = 'GET_CONVERSATION';
+export const LOAD_MESSAGES = 'LOAD_MESSAGES';
+export const GET_MESSAGES = 'GET_MESSAGES';
 
 // Action creator
 export const convFormTypeTitle = (value) => ({
@@ -32,5 +34,15 @@ export const loadConversation = () => ({
 
 export const getConversation = (data) => ({
   type: GET_CONVERSATION,
+  data: data,
+});
+
+export const loadMessages = (conversationId) => ({
+  type: LOAD_MESSAGES,
+  conversationId: conversationId,
+});
+
+export const getMessages = (data) => ({
+  type: GET_MESSAGES,
   data: data,
 });
