@@ -39,6 +39,13 @@ export default function Registration() {
 
   const dispatch = useDispatch();
 
+  // function passwordValidation(event) {
+  //   if ({ passwordInput } === { passwordConfirmationInput }) {
+  //     return dispatch(typeNewUserPassword(event.target.value));
+  //   }
+  //   alert('Les deux mots de passe ne sont pas identiques');
+  // }
+
   function submitForm(e) {
     e.preventDefault();
     const newUser = {
@@ -63,15 +70,15 @@ export default function Registration() {
         <form onSubmit={(e) => submitForm(e)}>
           <div className="registration_form_radio">
             <RadioGroup row name="radio_button_group" value={selectedTypeNewUser} onChange={(event) => dispatch(selectNewUserType(event.target.value))}>
-              <FormControlLabel value="true" control={<Radio />} label="Je suis un ELDER (cherche de l'aide)" />
-              <FormControlLabel value="false" control={<Radio />} label="Je suis un HELPER (propose de l'aide)" />
+              <FormControlLabel value="1" control={<Radio />} label="Je suis un ELDER (cherche de l'aide)" />
+              <FormControlLabel value="2" control={<Radio />} label="Je suis un HELPER (propose de l'aide)" />
             </RadioGroup>
           </div>
           <div className="registration_form_radio">
             <RadioGroup row name="radio_button_group" value={selectedGender} onChange={(event) => dispatch(selectNewUserGender(event.target.value))}>
-              <FormControlLabel value="true" control={<Radio />} label="Homme" />
-              <FormControlLabel value="false" control={<Radio />} label="Femme" />
-              <FormControlLabel value="false" control={<Radio />} label="Ne préfère pas répondre" />
+              <FormControlLabel value="1" control={<Radio />} label="Homme" />
+              <FormControlLabel value="2" control={<Radio />} label="Femme" />
+              <FormControlLabel value="3" control={<Radio />} label="Ne préfère pas répondre" />
             </RadioGroup>
           </div>
           <div className="registration_form_input">
@@ -130,6 +137,14 @@ export default function Registration() {
               onChange={(event) => dispatch(typeNewUserPassword(event.target.value))}
             />
           </div>
+          {/* <div className="registration_form_input">
+            <TextField
+              className="registration_form_input_password"
+              label="Confirmer votre mot de passe"
+              value={passwordConfirmationInput}
+              size="small"
+            />
+          </div> */}
           <div className="registration_form_input">
             <TextField
               className="registration_form_input_description"

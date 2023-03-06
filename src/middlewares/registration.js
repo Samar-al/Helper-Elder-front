@@ -6,7 +6,7 @@ import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 const registrationMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_NEW_USER:
-      axios.post(
+      axios.newUser(
         // URL
         `${baseUrl}/inscription`,
         // data

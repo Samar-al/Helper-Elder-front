@@ -5,6 +5,7 @@ export const TYPE_NEW_USER_BIRTHDATE = 'TYPE_NEW_USER_BIRTHDATE';
 export const TYPE_NEW_USER_EMAIL = 'TYPE_NEW_USER_EMAIL';
 export const TYPE_NEW_USER_POSTAL_CODE = 'TYPE_NEW_USER_POSTAL_CODE';
 export const TYPE_NEW_USER_PASSWORD = 'TYPE_NEW_USER_PASSWORD';
+export const TYPE_NEW_USER_PASSWORD_CONFIRMATION = 'TYPE_NEW_USER_PASSWORD_CONFIRMATION';
 export const TYPE_NEW_USER_DESCRIPTION = 'TYPE_NEW_USER_DESCRIPTION';
 export const SELECT_NEW_USER_TYPE = 'SELECT_NEW_USER_TYPE';
 export const SELECT_NEW_USER_GENDER = 'SELECT_NEW_USER_GENDER';
@@ -39,6 +40,11 @@ export const typeNewUserEmail = (value) => ({
 
 export const typeNewUserPassword = (value) => ({
   type: TYPE_NEW_USER_PASSWORD,
+  input: value,
+});
+
+export const typeNewUserPasswordConfirmation = (value) => ({
+  type: TYPE_NEW_USER_PASSWORD_CONFIRMATION,
   input: value,
 });
 

@@ -9,6 +9,7 @@ import {
   SELECT_NEW_USER_GENDER,
   SELECT_NEW_USER_TYPE,
   HANDLE_NEW_USER_SAVED,
+  TYPE_NEW_USER_PASSWORD_CONFIRMATION,
 } from '../actions/registration';
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
   postalCodeInput: '',
   emailInput: '',
   passwordInput: '',
+  passwordConfirmationInput: '',
   descriptionInput: '',
   selectedTypeNewUser: [],
   selectedGender: [],
@@ -53,6 +55,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         emailInput: action.input,
+      };
+
+    case TYPE_NEW_USER_PASSWORD_CONFIRMATION:
+      return {
+        ...state,
+        passwordConfirmationInput: action.input,
       };
 
     case TYPE_NEW_USER_PASSWORD:
