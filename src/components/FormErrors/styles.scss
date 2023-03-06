@@ -1,0 +1,29 @@
+@use '../../styles/vars';
+
+.form_errors {
+  color: vars.$error-color;
+  background-color: vars.$error-bg;
+  border: 1px solid vars.$error-color;
+  border-radius: 1em;
+  padding: 1em;
+  width: 100%;
+  margin-bottom: 1em;
+  margin-top: 1.5em;
+
+  hr {
+    border: 1px solid vars.$error-color;
+    margin-bottom: 1em;
+  }
+
+  &_list {
+    &_error {
+      &:not(:last-child) {
+        margin-bottom: 0.5em;
+      }
+    }
+  }
+
+  &_title {
+    font-weight: bold;
+  }
+}

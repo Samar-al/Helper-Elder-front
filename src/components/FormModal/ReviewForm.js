@@ -9,6 +9,7 @@ import {
   reviewFormTypeComment
 } from '../../actions/review';
 import './styles.scss';
+import FormErrors from '../FormErrors/FormErrors';
 
 export default function ReviewForm({ id, firstname }) {
   const { rateInput, commentInput } = useSelector((state) => state.review);
@@ -33,6 +34,7 @@ export default function ReviewForm({ id, firstname }) {
 
   return (
     <div className="create_review">
+      <FormErrors />
       <h2 className="create_review_legend">Laissez un avis à l'utilisateur : <span className="create_conversation_legend_recipient">{firstname}</span></h2>
       <form className="create_review_form" onSubmit={(e) => submitReview(e)}>
         <div className="create_review_form_item">
@@ -44,6 +46,7 @@ export default function ReviewForm({ id, firstname }) {
         </div>
         <div className="create_review_form_item">
           <TextField
+            required
             fullWidth
             size="small"
             multiline
