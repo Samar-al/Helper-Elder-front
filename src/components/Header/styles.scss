@@ -7,10 +7,10 @@
   width: 100%;
   min-height: 75px;
   background-color: vars.$transparent-background-color;
-  padding: 1rem;
+  padding: 0 0.5rem;
 
   &_logo {
-    height: 80px;
+    height: 150px;
   }
 
   &_nav {
@@ -18,8 +18,13 @@
   }
 
   &_nav_link {
-    padding: 0.3rem;
+    padding: 1rem;
     color: inherit;
+
+    &-active {
+      font-weight: bold;
+      font-style: italic;
+    }
   }
 
   &_burger {
@@ -73,6 +78,7 @@
     right: 0;
     visibility: visible;
     z-index: 10;
+    color: white;
   }
 
   .header_burger {
