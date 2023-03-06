@@ -1,4 +1,20 @@
 @use 'src/styles/_vars';
+
+
+.servicecards {
+  display: flex;
+  justify-content: center;
+
+  &_list {
+    display: flex;
+    justify-content: left;
+    max-width: 80%;
+    overflow-x: auto;
+    scrollbar-color: vars.$main-color;
+    scrollbar-width: thin;
+  }
+}
+
 .card {
 
   display: flex;
@@ -48,16 +64,6 @@
   100% {
     transform: translateX(.125em);
   }
-}
-
-.servicecards {
-
-  display: flex;
-  margin: 1rem;
-  overflow-x: auto;
-  scrollbar-color: vars.$main-color;
-  scrollbar-width: thin;
-
 }
 
 @media screen and (min-width: vars.$medium-breakpoint) {
