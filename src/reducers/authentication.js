@@ -1,7 +1,7 @@
 import { HANDLE_LOGOUT, SAVE_JWT, SAVE_LOGGED_USER } from '../actions/authentication';
 
 export const initialState = {
-  user: localStorage.getItem('user') ?? null,
+  user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
   jwt: localStorage.getItem('jwt') ?? '',
 };
 

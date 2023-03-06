@@ -14,6 +14,7 @@ const initialState = {
   redirectPath: '',
   largeFontSize: false,
   formModalIsVisible: false,
+  formModalType: '',
   infoMessages: [],
 };
 
@@ -43,6 +44,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         formModalIsVisible: true,
+        formModalType: action.formType,
       };
     case HIDE_FORM_MODAL:
       return {

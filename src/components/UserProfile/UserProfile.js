@@ -1,7 +1,6 @@
 import './styles.scss';
 import {
   Button,
-  Typography,
   Rating,
 } from '@mui/material';
 import { useEffect } from 'react';
@@ -10,11 +9,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
 import { formatDate } from '../../utils/functions';
 import { clearPageUser, fetchPageUser } from '../../actions/userprofile';
+import FormModal from '../FormModal/FormModal';
+import { convFormClear } from '../../actions/conversation';
+import { showFormModal } from '../../actions/app';
 
 export default function UserProfile() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.authentication);
-  const { currentPageUser } = useSelector((state) => state.userprofile)
+  const { currentPageUser } = useSelector((state) => state.userprofile);
+  const { formModalIsVisible } = useSelector((state) => state.app);
   const location = useLocation();
   const isMyProfile = location.pathname === '/mon-profil';
 
@@ -38,7 +41,10 @@ export default function UserProfile() {
     () => {
       if (!isMyProfile) dispatch(fetchPageUser(location.pathname.split('/').pop()));
 
-      return () => dispatch(clearPageUser());
+      return () => {
+        dispatch(clearPageUser());
+        dispatch(convFormClear());
+      };
     },
     [],
   );
@@ -50,25 +56,48 @@ export default function UserProfile() {
         <div className="userprofile_info_media">
           <img alt="userprofile" className="userprofile_picture" src={pageUser.picture ? pageUser.picture : avatarPlaceholder} />
           <div className="userprofile_rating">
-            <Typography component="legend" />
             <Rating name="note" value={pageUser.avgRating} readOnly />
           </div>
           <div className="userprofile_button">
             {isMyProfile && (
-            <div className="userprofile_button_add_post">
-              <Button className="userprofile_button_add_post" variant="contained">
-                <NavLink
-                  to="/poster-une-annonce"
-                  className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
-                >
-                  Poster une annonce
-                </NavLink>
-              </Button>
-            </div>
+            <>
+              <div className="userprofile_button_add_post">
+                <Button className="userprofile_button_add_post" variant="contained">
+                  <NavLink
+                    to="/poster-une-annonce"
+                    className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
+                  >
+                    Poster une annonce
+                  </NavLink>
+                </Button>
+              </div>
+              <div className="userprofile_button_message">
+                <Button variant="contained">Messagerie</Button>
+              </div>
+            </>
             )}
-            <div className="userprofile_button_message">
-              <Button variant="contained"> {(isMyProfile ? 'Messagerie' : 'Envoyer un message')} </Button>
-            </div>
+            {!isMyProfile && (
+              <>
+                <div className="userprofile_button_message">
+                  <Button
+                    onClick={() => {
+                      dispatch(showFormModal('conversation'));
+                    }}
+                    variant="contained"
+                  >Envoyer un message
+                  </Button>
+                </div>
+                <div className="userprofile_button_review">
+                  <Button
+                    onClick={() => {
+                      dispatch(showFormModal('review'));
+                    }}
+                    variant="contained"
+                  >Laisser un avis
+                  </Button>
+                </div>
+              </>
+            )}
           </div>
         </div>
         <div className="userprofile_info_text">
@@ -104,6 +133,7 @@ export default function UserProfile() {
             </div>
           </div>
         </div>
+        {formModalIsVisible && <FormModal targetUser={pageUser} />}
       </>
       )}
     </div>

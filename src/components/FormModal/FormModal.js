@@ -1,17 +1,20 @@
 import PropTypes from 'prop-types';
 import CloseIcon from '@mui/icons-material/Close';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ConversationForm from './ConversationForm';
 import './styles.scss';
 import { hideFormModal } from '../../actions/app';
+import ReviewForm from './ReviewForm';
 
-export default function FormModal({ formType, targetUser }) {
+export default function FormModal({ targetUser }) {
   const dispatch = useDispatch();
+  const { formModalType } = useSelector((state) => state.app);
 
   return (
     <div className="dimmer">
       <div className="modal_wrapper">
-        {formType === 'conversation' && <ConversationForm {...targetUser} />}
+        {formModalType === 'conversation' && <ConversationForm {...targetUser} />}
+        {formModalType === 'review' && <ReviewForm {...targetUser} />}
         <CloseIcon onClick={() => dispatch(hideFormModal())} className="modal_wrapper_close" />
       </div>
     </div>
@@ -19,7 +22,6 @@ export default function FormModal({ formType, targetUser }) {
 }
 
 FormModal.propTypes = {
-  formType: PropTypes.string.isRequired,
   targetUser: PropTypes.shape({
     id: PropTypes.number.isRequired,
     firstname: PropTypes.string.isRequired,
