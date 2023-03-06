@@ -78,13 +78,13 @@ const reducer = (state = initialState, action = {}) => {
     case SELECT_NEW_USER_GENDER:
       return {
         ...state,
-        selectedGender: action.input,
+        selectedGender: Number(action.input),
       };
 
     case SELECT_NEW_USER_TYPE:
       return {
         ...state,
-        selectedTypeNewUser: action.input,
+        selectedTypeNewUser: Number(action.input),
       };
 
     case HANDLE_NEW_USER_SAVED:

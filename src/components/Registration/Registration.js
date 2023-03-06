@@ -55,11 +55,13 @@ export default function Registration() {
       birthdate: birthdateInput,
       postal_code: postalCodeInput,
       email: emailInput,
-      paswword: passwordInput,
+      password: passwordInput,
       gender: selectedGender,
-      newType: selectedTypeNewUser,
+      type: selectedTypeNewUser,
+      description: descriptionInput,
     };
     dispatch(submitNewUser(newUser));
+    console.log(newUser);
   }
 
   return (
@@ -79,7 +81,6 @@ export default function Registration() {
             <RadioGroup row name="radio_button_group" value={selectedGender} onChange={(event) => dispatch(selectNewUserGender(event.target.value))}>
               <FormControlLabel value="1" control={<Radio />} label="Homme" />
               <FormControlLabel value="2" control={<Radio />} label="Femme" />
-              <FormControlLabel value="3" control={<Radio />} label="Ne préfère pas répondre" />
             </RadioGroup>
           </div>
           <div className="registration_form_input">
@@ -106,10 +107,13 @@ export default function Registration() {
               label="Date de naissance (JJ/MM/AAAA)"
               value={birthdateInput}
               size="small"
-              onChange={(event) => {
+              onChange={(event) => dispatch(typeNewUserBirthdate(event.target.value))}
+            />
+
+            {/* onChange={(event) => {
                 if (birthdateRegex.test(event.target.value)) dispatch(typeNewUserBirthdate(event.target.value));
               }}
-            />
+            /> */}
           </div>
           <div className="registration_form_input">
             <TextField
@@ -125,6 +129,7 @@ export default function Registration() {
           <div className="registration_form_input">
             <TextField
               className="registration_form_input_email"
+              type="email"
               label="Email"
               value={emailInput}
               size="small"
