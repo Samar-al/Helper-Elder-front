@@ -1,24 +1,24 @@
 import { HANDLE_LOGOUT, SAVE_JWT, SAVE_LOGGED_USER } from '../actions/authentication';
 
 export const initialState = {
-  user: sessionStorage.getItem('user') ?? null,
-  jwt: sessionStorage.getItem('jwt') ?? '',
+  user: localStorage.getItem('user') ?? null,
+  jwt: localStorage.getItem('jwt') ?? '',
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case HANDLE_LOGOUT:
-      sessionStorage.removeItem('jwt');
-      sessionStorage.removeItem('user');
+      localStorage.removeItem('jwt');
+      localStorage.removeItem('user');
       return { ...state, user: null, jwt: '' };
     case SAVE_JWT:
-      sessionStorage.setItem('jwt', action.token);
+      localStorage.setItem('jwt', action.token);
       return {
         ...state,
         jwt: action.token,
       };
     case SAVE_LOGGED_USER:
-      sessionStorage.setItem('user', JSON.stringify(action.user));
+      localStorage.setItem('user', JSON.stringify(action.user));
       return {
         ...state,
         user: action.user,
