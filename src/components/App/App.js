@@ -82,7 +82,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
             <Route path="/mon-profil/conversation" element={<ListConversation />} />
-            <Route path="/mon-profil/conversation/1" element={<PrivateConversation />} />
+            <Route path="/mon-profil/conversation/:id" element={<PrivateConversation />} />
           </Routes>
         </div>
         <Footer />

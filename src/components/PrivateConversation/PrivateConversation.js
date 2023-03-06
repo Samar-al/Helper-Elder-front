@@ -10,8 +10,14 @@ import { loadMessages } from '../../actions/conversation';
 
 export default function PrivateConversation() {
   const { messagesList } = useSelector((state) => state.conversation);
+  const { user } = useSelector((state) => state.authentication);
   const dispatch = useDispatch();
   const location = useLocation();
+
+  function getInterlocutor() {
+    if (messagesList[0].userSender.id === user.id) return messagesList[0].userRecipient;
+    return messagesList[0].userSender;
+  }
 
   useEffect(
     () => {
@@ -20,41 +26,35 @@ export default function PrivateConversation() {
     [],
   );
   console.log(messagesList);
-  console.log(location.pathname);
   return (
     <main className="message">
-      {messagesList.map((messages) => (
-        <>
-          <div className="message_header">
-            <div className="message_header_button">
-              <NavLink to="/mon-profil/conversation">
-                <ArrowBackIcon />
-              </NavLink>
-              <p>Retour</p>
-            </div>
-            <div className="message_header_user">
-              <p>{messages.userRecipient.firstname}</p>
-            </div>
-          </div>
-          <div className="message_conversation">
-            {messagesList.map((message, index) => (
-              <div
-                key={message.id}
-                className={`message_conversation_talk ${message.user === 'moi' ? 'right' : 'left'}`}
-              >
-                {index === 0 || messagesList[index - 1].user !== message.user ? (
-                  <div>
-                    <img src={profile} alt="profil" />
-                    <div className="username">{messages.userRecipient.firstname}</div>
-                  </div>
-                ) : null}
-                <p>{messages.conversation.title}</p>
+      <div className="message_header">
+        <div className="message_header_button">
+          <NavLink to="/mon-profil/conversation">
+            <ArrowBackIcon />
+          </NavLink>
+          <p>Retour</p>
+        </div>
+        <div className="message_header_user">
+          <p>{messagesList.length !== 0 && getInterlocutor().firstname}</p>
+        </div>
+      </div>
+      <div className="message_conversation">
+        { messagesList.length !== 0 && messagesList.map((message, index) => (
+          <div
+            key={message.id}
+            className={`message_conversation_talk ${message.userSender.id === user.id ? 'right' : 'left'}`}
+          >
+            {index === 0 || messagesList[index - 1].user !== message.user ? (
+              <div>
+                <img src={profile} alt="profil" />
+                <div className="username">{message.userRecipient.firstname || message.userSender.firstname}</div>
               </div>
-            ))}
+            ) : null}
+            <p>{message.content}</p>
           </div>
-        </>
-      ))}
-
+        ))}
+      </div>
       {/*  <div className="message_conversation_loader">
         <img src={loader} alt="Loading..." />
       </div> */}
