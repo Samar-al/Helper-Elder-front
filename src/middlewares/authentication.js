@@ -52,7 +52,7 @@ const authenticationMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(saveLoggedUser(response.data));
-            store.dispatch(redirectAction('/'));
+            store.dispatch(redirectAction(-2)); // redirects to the last page before connexion page
             store.dispatch(displayInfoMessages(['Connexion réussie !']));
           }
         })
