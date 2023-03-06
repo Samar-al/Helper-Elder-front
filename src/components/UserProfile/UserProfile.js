@@ -11,7 +11,7 @@ import { formatDate } from '../../utils/functions';
 import { clearPageUser, fetchPageUser } from '../../actions/userprofile';
 import FormModal from '../FormModal/FormModal';
 import { convFormClear } from '../../actions/conversation';
-import { showFormModal } from '../../actions/app';
+import { redirectAction, showFormModal } from '../../actions/app';
 
 export default function UserProfile() {
   const dispatch = useDispatch();
@@ -39,7 +39,8 @@ export default function UserProfile() {
 
   useEffect(
     () => {
-      if (!isMyProfile) dispatch(fetchPageUser(location.pathname.split('/').pop()));
+      if (Number(location.pathname.split('/').pop()) === user.id) dispatch(redirectAction('/mon-profil'));
+      else if (!isMyProfile) dispatch(fetchPageUser(location.pathname.split('/').pop()));
 
       return () => {
         dispatch(clearPageUser());
