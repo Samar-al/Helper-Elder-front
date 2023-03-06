@@ -1,27 +1,31 @@
 import './styles.scss';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import { formatDate } from '../../utils/functions';
 
 // une annonce parmis les annonces à afficher en homepage
 export default function Post({
   picture,
   title,
-  zipcode,
+  postalCode,
   city,
   createdAt,
   content,
+  id,
 }) {
   return (
     <div className="lastposts_pannel_postlist_post">
-      <div className="lastposts_pannel_postlist_post_header">
-        <img alt={title} src={picture} className="lastposts_pannel_postlist_post_header_picture" />
-        <div className="lastposts_pannel_postlist_post_header_info">
-          <h3 className="lastposts_pannel_postlist_post_header_info_title">{title}</h3>
-          <p className="lastposts_pannel_postlist_post_header_info_city">{zipcode} - {city}</p>
-          <p className="lastposts_pannel_postlist_post_header_info_date">le {formatDate(createdAt)}</p>
+      <NavLink to={`/annonce/${id}`}>
+        <div className="lastposts_pannel_postlist_post_header">
+          <img alt={title} src={picture} className="lastposts_pannel_postlist_post_header_picture" />
+          <div className="lastposts_pannel_postlist_post_header_info">
+            <h3 className="lastposts_pannel_postlist_post_header_info_title">{title}</h3>
+            <p className="lastposts_pannel_postlist_post_header_info_city">{city} - {postalCode}</p>
+            <p className="lastposts_pannel_postlist_post_header_info_date">le {formatDate(createdAt)}</p>
+          </div>
         </div>
-      </div>
-      <p className="lastposts_pannel_postlist_post_content">{content}</p>
+        <p className="lastposts_pannel_postlist_post_content">{content}</p>
+      </NavLink>
     </div>
   );
 }
@@ -29,7 +33,7 @@ export default function Post({
 Post.propTypes = {
   picture: PropTypes.string,
   title: PropTypes.string.isRequired,
-  zipcode: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
+  postalCode: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
   city: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
   content: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
@@ -37,6 +41,6 @@ Post.propTypes = {
 
 Post.defaultProps = {
   picture: 'img/placeholders/avatar_placeholder.png',
-  zipcode: '75001',
+  postalCode: '75001',
   city: 'Paris',
 };

@@ -3,9 +3,12 @@ export const TYPE_TITLE = 'TYPE_TITLE';
 export const TYPE_ZIPCODE = 'TYPE_ZIPCODE';
 export const TYPE_CONTENT = 'TYPE_CONTENT';
 export const TYPE_RATE = 'TYPE_RATE';
-export const SELECT_RADIO = 'SELECT_RADIO';
+export const TYPE_RADIUS = 'TYPE_RADIUS';
+export const SELECT_PONCTUAL = 'SELECT_PONCTUAL';
 export const SELECT_SERVICE = 'SELECT_SERVICE';
 export const SELECT_TYPE_USER = 'SELECT_TYPE_USER';
+export const SUBMIT_NEW_POST = 'SUBMIT_NEW_POST';
+export const HANDLE_POST_SAVED = 'HANDLE_POST_SAVED';
 
 // Action creator
 export const typeTitle = (value) => ({
@@ -28,8 +31,13 @@ export const typeRate = (value) => ({
   input: value,
 });
 
-export const selectRadio = (value) => ({
-  type: SELECT_RADIO,
+export const typeRadius = (value) => ({
+  type: TYPE_RADIUS,
+  input: value,
+});
+
+export const selectPonctual = (value) => ({
+  type: SELECT_PONCTUAL,
   input: value,
 });
 
@@ -41,4 +49,13 @@ export const selectService = (value) => ({
 export const selectTypeUser = (value) => ({
   type: SELECT_TYPE_USER,
   input: value,
+});
+
+export const submitNewPost = (data) => ({
+  type: SUBMIT_NEW_POST,
+  post: data,
+});
+
+export const handlePostSaved = () => ({
+  type: HANDLE_POST_SAVED,
 });
