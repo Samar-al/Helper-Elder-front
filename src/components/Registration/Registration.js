@@ -6,6 +6,7 @@ import {
   RadioGroup,
   TextField,
 } from '@mui/material';
+// import { DatePicker } from '@mui/x-date-pickers';
 
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -22,7 +23,7 @@ import {
 
 } from '../../actions/registration';
 import './styles.scss';
-import { zipcodeRegex } from '../../utils/regex';
+import { zipcodeRegex, birthdateRegex } from '../../utils/regex';
 
 export default function Registration() {
   const {
@@ -102,10 +103,12 @@ export default function Registration() {
           <div className="registration_form_input">
             <TextField
               className="registration_form_input_birthdate"
-              label="Date de naissance"
+              label="Date de naissance (JJ/MM/AAAA)"
               value={birthdateInput}
               size="small"
-              onChange={(event) => dispatch(typeNewUserBirthdate(event.target.value))}
+              onChange={(event) => {
+                if (birthdateRegex.test(event.target.value)) dispatch(typeNewUserBirthdate(event.target.value));
+              }}
             />
           </div>
           <div className="registration_form_input">
@@ -131,6 +134,7 @@ export default function Registration() {
           <div className="registration_form_input">
             <TextField
               className="registration_form_input_password"
+              type="password"
               label="Mot de passe"
               value={passwordInput}
               size="small"
