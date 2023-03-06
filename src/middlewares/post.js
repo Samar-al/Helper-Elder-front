@@ -1,13 +1,59 @@
 import axios from 'axios';
-import { redirectAction } from '../actions/app';
+import { displayInfoMessages, redirectAction } from '../actions/app';
 import { handlePostSaved, SUBMIT_NEW_POST } from '../actions/createpostform';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 import {
   getPost, getReviews, loadReviews, LOAD_POST, LOAD_REVIEWS,
 } from '../actions/detailedpost';
+import { getFilteredPosts, SEARCH_POSTS } from '../actions/resultposts';
+import errorManagement from './errorManagement';
 
 const postMiddleware = (store) => (next) => (action) => {
+  const { adressInput, selectedServices, postType } = store.getState().searchbar;
+
+  // filter functions
+  function filterByZipcode(post) {
+    // eslint-disable-next-line max-len
+    if (adressInput.slice(0, 2) === 97) return adressInput.slice(0, 3) === post.postalCode.slice(0, 3);
+    return adressInput.slice(0, 2) === post.postalCode.slice(0, 2);
+  }
+  function filterByServices(post) {
+    if (postType === 'aidant') {
+      const tagsAsInt = post.tag.map((tag) => tag.id);
+      return selectedServices.every((service) => tagsAsInt.includes(service));
+    }
+    return post.tag.every((service) => selectedServices.includes(service.id));
+  }
+
+  function searchUrl() {
+    if (postType === 'offer') return 'aidant';
+    if (postType === 'request') return 'recherche-aide';
+    return false;
+  }
+
   switch (action.type) {
+    case SEARCH_POSTS:
+      if (postType !== 'offer' && postType !== 'request') break;
+      axios.get(
+        // URL
+        `${baseUrl}/annonce/${searchUrl()}`,
+      )
+        .then((response) => {
+          if (response.status !== 200) {
+            console.log('posts not found');
+          }
+          else {
+            const arrayPostsFilter = response.data.filter(filterByServices).filter(filterByZipcode);
+            store.dispatch(getFilteredPosts(arrayPostsFilter));
+            store.dispatch(redirectAction('/annonce'));
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          errorManagement(error.response.status, store);
+        });
+      break;
+
     case LOAD_POST:
       axios.get(
         // URL
@@ -26,8 +72,10 @@ const postMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          errorManagement(error.response.status, store);
         });
       break;
+
     case LOAD_REVIEWS:
       axios.get(
         // URL
@@ -64,10 +112,12 @@ const postMiddleware = (store) => (next) => (action) => {
           else {
             store.dispatch(handlePostSaved());
             store.dispatch(redirectAction('/'));
+            store.dispatch(displayInfoMessages(['Annonce créée avec succès !']));
           }
         })
         .catch((error) => {
           console.log(error);
+          errorManagement(error.response.status, store);
         });
       break;
     default:
