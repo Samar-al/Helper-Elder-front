@@ -16,7 +16,6 @@ import {
   typeNewUserEmail,
   typeNewUserPassword,
   typeNewUserPostalCode,
-  typeNewUserDescription,
   selectNewUserGender,
   selectNewUserType,
   submitNewUser,
@@ -58,7 +57,9 @@ export default function Registration() {
       password: passwordInput,
       gender: selectedGender,
       type: selectedTypeNewUser,
-      description: descriptionInput,
+      description: selectedTypeNewUser === 1
+        ? 'Je me suis inscrit-e sur le site helpers-elders afin de trouver une personne qui puisse m’aider dans mes tâches quotidiennes.'
+        : 'Je me suis inscrit-e sur le site helpers-elders afin de proposer mes services à des personnes dans le besoin. ',
     };
     dispatch(submitNewUser(newUser));
     console.log(newUser);
@@ -154,7 +155,7 @@ export default function Registration() {
               size="small"
             />
           </div> */}
-          <div className="registration_form_input">
+          {/* <div className="registration_form_input">
             <TextField
               className="registration_form_input_description"
               label="Description"
@@ -163,7 +164,7 @@ export default function Registration() {
               multiline
               onChange={(event) => dispatch(typeNewUserDescription(event.target.value))}
             />
-          </div>
+          </div> */}
           <div className="registration_create_button">
             <Button type="submit" variant="contained">Créer mon compte</Button>
           </div>
