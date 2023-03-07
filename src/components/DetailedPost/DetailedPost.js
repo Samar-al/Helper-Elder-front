@@ -42,7 +42,7 @@ export default function DetailedPost() {
                 {currentPost.user.firstname}
               </NavLink>
             </p>
-            <Rating name="note" value={currentPost.user.avgRating} readOnly />
+            <Rating value={currentPost.user.avgRating} readOnly />
             <ul className="detailed-post_left_service">
               Services proposés:
               {currentPost.tag.map((service) => (
