@@ -23,6 +23,7 @@ import {
 } from '../../actions/registration';
 import './styles.scss';
 import { zipcodeRegex, birthdateRegex } from '../../utils/regex';
+import { formatDateForApi } from '../../utils/functions';
 
 export default function Registration() {
   const {
@@ -32,7 +33,6 @@ export default function Registration() {
     postalCodeInput,
     emailInput,
     passwordInput,
-    descriptionInput,
     selectedTypeNewUser,
     selectedGender,
   } = useSelector((state) => state.registration);
@@ -51,7 +51,7 @@ export default function Registration() {
     const newUser = {
       firstname: firstnameInput,
       lastname: lastnameInput,
-      birthdate: birthdateInput,
+      birthdate: formatDateForApi(birthdateInput),
       postal_code: postalCodeInput,
       email: emailInput,
       password: passwordInput,
@@ -62,9 +62,7 @@ export default function Registration() {
         : 'Je me suis inscrit-e sur le site helpers-elders afin de proposer mes services à des personnes dans le besoin. ',
     };
     dispatch(submitNewUser(newUser));
-    console.log(newUser);
   }
-
   return (
     <div className="registration">
       <div className="registration_header">
@@ -108,13 +106,10 @@ export default function Registration() {
               label="Date de naissance (JJ/MM/AAAA)"
               value={birthdateInput}
               size="small"
-              onChange={(event) => dispatch(typeNewUserBirthdate(event.target.value))}
-            />
-
-            {/* onChange={(event) => {
+              onChange={(event) => {
                 if (birthdateRegex.test(event.target.value)) dispatch(typeNewUserBirthdate(event.target.value));
               }}
-            /> */}
+            />
           </div>
           <div className="registration_form_input">
             <TextField
