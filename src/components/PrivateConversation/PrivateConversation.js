@@ -47,18 +47,21 @@ export default function PrivateConversation() {
           const previousMessage = messagesList[index - 1];
           const previousMessageIsFromSameUser = previousMessage && previousMessage.userSender.id === message.userSender.id;
           return (
-            <div
-              key={message.id}
-              className={`message_conversation_talk ${currentUserIsSender ? 'right' : 'left'}`}
-            >
-              {!previousMessageIsFromSameUser && (
+            <>
+              <p className="message_conversation_title">{message.conversation.title}</p>
+              <div
+                key={message.id}
+                className={`message_conversation_talk ${currentUserIsSender ? 'right' : 'left'}`}
+              >
+                {!previousMessageIsFromSameUser && (
                 <div>
                   <img src={profile} alt="profil" />
                   <div className="username">{message.userSender.firstname}</div>
                 </div>
-              )}
-              <p>{message.content}</p>
-            </div>
+                )}
+                <p>{message.content}</p>
+              </div>
+            </>
           );
         })}
       </div>

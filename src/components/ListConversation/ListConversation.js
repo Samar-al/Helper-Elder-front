@@ -16,7 +16,6 @@ export default function ListConversation() {
     },
     [],
   );
-  console.log(conversationList);
   return (
     <main>
       <div className="conversation_header">
@@ -29,24 +28,26 @@ export default function ListConversation() {
         </div>
         <div className="conversation_header_title">Messages</div>
       </div>
-      <NavLink to="/mon-profil/conversation/1">
-        <div className="conversation_section">
-          <div className="conversation_section_list">
-            <div className="conversation_section_list_picture">
-              <img src={profile} alt="profil" />
-            </div>
-            <div className="conversation_section_list_content">
-              <p className="conversation_section_list_content_name">{conversationList.user1_id}</p>
-              <p className="conversation_section_list_content_content">{conversationList.title}</p>
-            </div>
-            <div className="conversation_section_list_date">
-              <p className="conversation_section_list_date_time">{conversationList.created_at}</p>
-              {/* If there are new messages */}
-              {/* <p className="conversation_section_list_date_num">2</p> */}
+      {conversationList.map((conversation) => (
+        <NavLink to={`/mon-profil/conversation/${conversation.id}`}>
+          <div className="conversation_section">
+            <div className="conversation_section_list">
+              <div className="conversation_section_list_picture">
+                <img src={profile} alt="profil" />
+              </div>
+              <div className="conversation_section_list_content">
+                <p className="conversation_section_list_content_name">{conversation.user2_id}</p>
+                <p className="conversation_section_list_content_content">{conversation.title}</p>
+              </div>
+              <div className="conversation_section_list_date">
+                <p className="conversation_section_list_date_time">{conversation.created_at}</p>
+                {/* If there are new messages */}
+                {/* <p className="conversation_section_list_date_num">2</p> */}
+              </div>
             </div>
           </div>
-        </div>
-      </NavLink>
+        </NavLink>
+      ))}
     </main>
   );
 }

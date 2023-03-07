@@ -81,6 +81,11 @@
     height: calc(100vh - 70px - 90px);
     overflow-y: scroll;
 
+    &_title {
+      margin: 20px;
+      font-style: italic;
+    }
+
     &_loader {
       left: 0;
       width: 100%;

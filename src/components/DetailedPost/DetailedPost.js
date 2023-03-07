@@ -19,7 +19,7 @@ export default function DetailedPost() {
     () => {
       // split() divdes a string into an ordered list of substrings
       // pop() return the last element from an array
-      dispatch((location.pathname.split('/').pop()));
+      dispatch(loadPost(location.pathname.split('/').pop()));
       // dispatch(loadReview(location.pathname.split('/').pop()));
 
       // clear conversation form when unmounting component
