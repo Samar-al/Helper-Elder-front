@@ -4,7 +4,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import profile from '../../../public/img/placeholders/avatar_placeholder.png';
-import { loadConversation } from '../../actions/conversation';
+import { loadConversations } from '../../actions/conversation';
 
 export default function ListConversation() {
   const { conversationList } = useSelector((state) => state.conversation);
@@ -12,11 +12,11 @@ export default function ListConversation() {
 
   useEffect(
     () => {
-      dispatch(loadConversation());
+      dispatch(loadConversations());
     },
     [],
   );
-  // console.log(conversationList);
+  console.log(conversationList);
   return (
     <main>
       <div className="conversation_header">

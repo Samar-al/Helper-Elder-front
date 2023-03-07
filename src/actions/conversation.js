@@ -3,8 +3,8 @@ export const CONV_FORM_TYPE_TITLE = 'CONV_FORM_TYPE_TITLE';
 export const CONV_FORM_TYPE_MSG = 'CONV_FORM_TYPE_MSG';
 export const CONV_FORM_CLEAR = 'CONV_FORM_CLEAR';
 export const CONV_FORM_SUBMIT_CONV = 'CONV_FORM_SUBMIT_CONV';
-export const LOAD_CONVERSATION = 'LOAD_CONVERSATION';
-export const GET_CONVERSATION = 'GET_CONVERSATION';
+export const LOAD_CONVERSATIONS = 'LOAD_CONVERSATIONS';
+export const GET_CONVERSATIONS = 'GET_CONVERSATIONS';
 export const LOAD_MESSAGES = 'LOAD_MESSAGES';
 export const GET_MESSAGES = 'GET_MESSAGES';
 
@@ -28,12 +28,12 @@ export const convFormSubmitConv = (message) => ({
   message: message,
 });
 
-export const loadConversation = () => ({
-  type: LOAD_CONVERSATION,
+export const loadConversations = () => ({
+  type: LOAD_CONVERSATIONS,
 });
 
-export const getConversation = (data) => ({
-  type: GET_CONVERSATION,
+export const getConversations = (data) => ({
+  type: GET_CONVERSATIONS,
   data: data,
 });
 

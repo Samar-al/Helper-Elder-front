@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import './styles.scss';
 import { NavLink, useLocation } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -40,20 +41,26 @@ export default function PrivateConversation() {
         </div>
       </div>
       <div className="message_conversation">
-        { messagesList.length !== 0 && messagesList.map((message, index) => (
-          <div
-            key={message.id}
-            className={`message_conversation_talk ${message.userSender.id === user.id ? 'right' : 'left'}`}
-          >
-            {index === 0 || messagesList[index - 1].user !== message.user ? (
-              <div>
-                <img src={profile} alt="profil" />
-                <div className="username">{message.userRecipient.firstname || message.userSender.firstname}</div>
-              </div>
-            ) : null}
-            <p>{message.content}</p>
-          </div>
-        ))}
+        { messagesList.length !== 0 && messagesList.map((message, index) => {
+          const currentUserIsSender = message.userSender.id === user.id;
+          console.log(message.userSender.id, user.id);
+          const previousMessage = messagesList[index - 1];
+          const previousMessageIsFromSameUser = previousMessage && previousMessage.userSender.id === message.userSender.id;
+          return (
+            <div
+              key={message.id}
+              className={`message_conversation_talk ${currentUserIsSender ? 'right' : 'left'}`}
+            >
+              {!previousMessageIsFromSameUser && (
+                <div>
+                  <img src={profile} alt="profil" />
+                  <div className="username">{message.userSender.firstname}</div>
+                </div>
+              )}
+              <p>{message.content}</p>
+            </div>
+          );
+        })}
       </div>
       {/*  <div className="message_conversation_loader">
         <img src={loader} alt="Loading..." />

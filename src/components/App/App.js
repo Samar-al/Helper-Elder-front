@@ -22,7 +22,6 @@ import { clearInfoModal, loadServices, redirectDone } from '../../actions/app';
 import InfoModal from '../InfoModal/InfoModal';
 import LegalMentions from '../LegalMentions/LegalMentions';
 
-
 function App() {
   const dispatch = useDispatch();
   const { redirectPath, largeFontSize, infoMessages } = useSelector((state) => state.app);

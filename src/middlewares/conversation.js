@@ -3,8 +3,8 @@ import { displayInfoMessages, hideFormModal } from '../actions/app';
 import {
   convFormClear,
   CONV_FORM_SUBMIT_CONV,
-  getConversation, getMessages,
-  LOAD_CONVERSATION,
+  getConversations, getMessages,
+  LOAD_CONVERSATIONS,
   LOAD_MESSAGES,
 } from '../actions/conversation';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
@@ -34,7 +34,7 @@ const conversationMiddleware = (store) => (next) => (action) => {
           console.log(error);
         });
       break;
-    case LOAD_CONVERSATION:
+    case LOAD_CONVERSATIONS:
       axios.get(
         // URL
         `${baseUrl}/mon-profil/conversation`,
@@ -46,7 +46,7 @@ const conversationMiddleware = (store) => (next) => (action) => {
             console.log('conversation not found');
           }
           else {
-            store.dispatch(getConversation(response.data));
+            store.dispatch(getConversations(response.data));
           }
         })
         .catch((error) => {
