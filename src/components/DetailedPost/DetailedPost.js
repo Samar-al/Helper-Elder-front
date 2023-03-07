@@ -56,14 +56,16 @@ export default function DetailedPost() {
             <div className="detailed-post_right_header">
               <h1 className="detailed-post_right_title">{currentPost.title} <span className="detailed-post_right_title_subtitle">Service {currentPost.workType ? 'ponctuel' : 'régulier'} </span></h1>
               {user && (
-              <Button
-                onClick={() => {
-                  dispatch(showFormModal('conversation'));
-                  dispatch(convFormTypeTitle(`RE: ${currentPost.title}`));
-                }}
-                variant="contained"
-              >Envoyer un message
-              </Button>
+              <div className="detailed-post_right_message">
+                <Button
+                  onClick={() => {
+                    dispatch(showFormModal('conversation'));
+                    dispatch(convFormTypeTitle(`RE: ${currentPost.title}`));
+                  }}
+                  variant="contained"
+                >Envoyer un message
+                </Button>
+              </div>
               )}
             </div>
             <p className="detailed-post_right_content">{currentPost.content}</p>

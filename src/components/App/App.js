@@ -69,42 +69,40 @@ function App() {
   return (
     <div className={largeFontSize ? 'app app--large' : 'app'}>
       <Background />
-      <div className="wrapper">
-        <div>
-          <Header />
-          <Searchbar />
-          <InfoModal />
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/connexion" element={<Connexion />} />
+      <Header />
+      <Searchbar />
+      <InfoModal />
+      <main>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/connexion" element={<Connexion />} />
 
-            {/* posts */}
-            <Route path="/annonce" element={<ResultPosts />} />
-            <Route path="/annonce/:id" element={<DetailedPost />} />
-            <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
+          {/* posts */}
+          <Route path="/annonce" element={<ResultPosts />} />
+          <Route path="/annonce/:id" element={<DetailedPost />} />
+          <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
 
-            {/* profiles */}
-            <Route path="/profil/:id" element={<PrivateRoute element={<UserProfile />} />} />
-            <Route path="/mon-profil" element={<PrivateRoute element={<UserProfile />} />} />
-            <Route path="/mon-profil/modifier" element={<PrivateRoute element={<UserProfileEdit />} />} />
+          {/* profiles */}
+          <Route path="/profil/:id" element={<PrivateRoute element={<UserProfile />} />} />
+          <Route path="/mon-profil" element={<PrivateRoute element={<UserProfile />} />} />
+          <Route path="/mon-profil/modifier" element={<PrivateRoute element={<UserProfileEdit />} />} />
 
-            {/* conversation */}
-            <Route path="/mon-profil/conversation" element={<ListConversation />} />
-            <Route path="/mon-profil/conversation/1" element={<PrivateConversation />} />
+          {/* conversation */}
+          <Route path="/mon-profil/conversation" element={<ListConversation />} />
+          <Route path="/mon-profil/conversation/1" element={<PrivateConversation />} />
 
-            {/* others */}
-            <Route path="/mentions-légales" element={<LegalMentions />} />
-            <Route path="/a-propos" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
+          {/* others */}
+          <Route path="/mentions-légales" element={<LegalMentions />} />
+          <Route path="/a-propos" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
 
-            {/* error 404 */}
-            <Route path="/404" element={<NotFound />} />
-            <Route path="/*" element={<Navigate to="/404" />} />
+          {/* error 404 */}
+          <Route path="/404" element={<NotFound />} />
+          <Route path="/*" element={<Navigate to="/404" />} />
 
-          </Routes>
-        </div>
-        <Footer />
-      </div>
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 }
