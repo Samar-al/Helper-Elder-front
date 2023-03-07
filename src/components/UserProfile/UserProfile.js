@@ -11,7 +11,7 @@ import { formatDate } from '../../utils/functions';
 import { clearPageUser, fetchPageUser } from '../../actions/userprofile';
 import FormModal from '../FormModal/FormModal';
 import { convFormClear } from '../../actions/conversation';
-import { showFormModal } from '../../actions/app';
+import { redirectAction, showFormModal } from '../../actions/app';
 import ReviewPannel from '../ReviewPannel/ReviewPannel';
 
 export default function UserProfile() {

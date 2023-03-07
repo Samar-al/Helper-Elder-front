@@ -6,7 +6,7 @@ import {
   reviewFormClear,
   reviewFormHandleSubmit,
   reviewFormSelectRate,
-  reviewFormTypeComment
+  reviewFormTypeComment,
 } from '../../actions/review';
 import './styles.scss';
 
