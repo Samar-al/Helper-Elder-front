@@ -6,6 +6,8 @@ import {
   getConversations, getMessages,
   LOAD_CONVERSATIONS,
   LOAD_MESSAGES,
+  saveMessage,
+  SUBMIT_MESSAGE,
 } from '../actions/conversation';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 
@@ -66,6 +68,29 @@ const conversationMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(getMessages(response.data));
+          }
+        })
+        .catch((error) => {
+          // TODO redirection 403 conversation
+          console.log(error);
+        });
+      break;
+    case SUBMIT_MESSAGE:
+      axios.post(
+        // URL
+        `${baseUrl}/message/envoyer`,
+        // data
+        action.message,
+        // header
+        getHttpAuthHeaders(store.getState().authentication.jwt),
+      )
+        .then((response) => {
+          if (response.status !== 201) {
+            console.log('message not send');
+          }
+          else {
+            console.log(response);
+            store.dispatch(saveMessage(response.data));
           }
         })
         .catch((error) => {
