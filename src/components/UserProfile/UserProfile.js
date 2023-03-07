@@ -67,7 +67,6 @@ export default function UserProfile() {
                   <Button className="userprofile_button_add_post" variant="contained">
                     <NavLink
                       to="/poster-une-annonce"
-                      className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
                     >
                       Poster une annonce
                     </NavLink>
@@ -108,7 +107,6 @@ export default function UserProfile() {
               <Button variant="contained">
                 <NavLink
                   to="/mon-profil/modifier"
-                  className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
                 >
                   Modifier
                 </NavLink>
