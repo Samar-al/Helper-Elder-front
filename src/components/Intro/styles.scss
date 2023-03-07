@@ -2,17 +2,34 @@
 
 .intro {
   color: vars.$main-color;
-  margin: auto;
-  margin-top: 1em;
+  margin: 2em auto;
   padding: 1em;
-  width: 50%;
+  width: 80%;
   min-width: 200px;
   background-color: vars.$transparent-background-altcolor;
-  text-align: left;
+  text-align: justify;
   box-shadow: vars.$standard-box-shadow;
+  border-radius: 10px;
 
   &_title {
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
     font-weight: bold;
+    text-align: center;
+    font-size: large;
+  }
+
+  &_content {
+    line-height: 25px;
+  }
+
+  span{
+    font-weight: bold;
+  }
+}
+
+
+@media (min-width: vars.$medium-breakpoint) { 
+  .intro {
+    width: 65%;
   }
 }
