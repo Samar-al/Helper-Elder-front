@@ -16,7 +16,7 @@ const reducer = (state = initialState, action = {}) => {
     case REVIEW_FORM_SELECT_RATE: return { ...state, rateInput: action.input };
     case REVIEW_FORM_TYPE_COMMENT: return { ...state, commentInput: action.input };
     case REVIEW_FORM_CLEAR: return { ...initialState };
-    case REVIEW_FORM_ERRORS_THROW: return { ...initialState, errors: action.errors };
+    case REVIEW_FORM_ERRORS_THROW: return { ...state, errors: action.errors };
     default: return state;
   }
 };

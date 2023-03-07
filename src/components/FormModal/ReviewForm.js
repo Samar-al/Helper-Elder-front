@@ -18,11 +18,11 @@ export default function ReviewForm({ id, firstname }) {
   const dispatch = useDispatch();
 
   /* Fills an array with potential error and pushes it into the state.
-  If there is no error, pushes an empty array and returns a review object.
+  If there is no error, pushes an empty array and returns a valid object.
   If there are error, returns false. */
   function validateReview() {
     const formErrors = [];
-    if (commentInput.length <= 20 || commentInput.length >= 150) formErrors.push('Le commentaire doit contenir entre 20 et 150 caractères.');
+    if (commentInput.length < 20 || commentInput.length > 150) formErrors.push('Le commentaire doit contenir entre 20 et 150 caractères.');
 
     dispatch(reviewFormErrorsThrow(formErrors));
     if (formErrors.length !== 0) {
