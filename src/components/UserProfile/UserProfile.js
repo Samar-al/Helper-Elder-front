@@ -40,7 +40,8 @@ export default function UserProfile() {
 
   useEffect(
     () => {
-      if (!isMyProfile) dispatch(fetchPageUser(location.pathname.split('/').pop()));
+      if (Number(location.pathname.split('/').pop()) === user.id) dispatch(redirectAction('/mon-profil'));
+      else if (!isMyProfile) dispatch(fetchPageUser(location.pathname.split('/').pop()));
 
       return () => {
         dispatch(clearPageUser());

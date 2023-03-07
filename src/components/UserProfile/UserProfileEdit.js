@@ -63,16 +63,18 @@ export default function UserProfile() {
   return (
     <div className="userprofile">
       <div className="userprofile_info_media">
-        <img alt="userprofile" className="userprofile_picture" src={user.picture ? user.picture : avatarPlaceholder} />
+        <img alt="userprofile" src={user.picture ? user.picture : avatarPlaceholder} />
       </div>
-      <form onSubmit={(event) => submitForm(event)}>
-        <div className="userprofile_info_text">
+      <div className="userprofile_info_text">
+        <form onSubmit={(event) => submitForm(event)}>
+
           <div className="userprofile_button_modify">
             <Button type="submit" variant="contained">Enregistrer</Button>
           </div>
           <div className="userprofile_info_text_paragraph_edit">
             <div className="userprofile_form_item">
               <TextField
+                fullWidth
                 size="small"
                 label="Prénom"
                 value={firstnameInput}
@@ -81,6 +83,7 @@ export default function UserProfile() {
             </div>
             <div className="userprofile_form_item">
               <TextField
+                fullWidth
                 size="small"
                 label="Nom"
                 value={lastnameInput}
@@ -89,6 +92,7 @@ export default function UserProfile() {
             </div>
             <div className="userprofile_form_item">
               <TextField
+                fullWidth
                 size="small"
                 label="Date de naissance"
                 value={birthdateInput}
@@ -97,6 +101,7 @@ export default function UserProfile() {
             </div>
             <div className="userprofile_form_item">
               <TextField
+                fullWidth
                 size="small"
                 label="Email"
                 value={emailInput}
@@ -105,6 +110,7 @@ export default function UserProfile() {
             </div>
             <div className="userprofile_form_item">
               <TextField
+                fullWidth
                 size="small"
                 label="Localisation"
                 value={postalCodeInput}
@@ -113,17 +119,15 @@ export default function UserProfile() {
                 }}
               />
             </div>
-            <FormControl fullWidth className="searchbar_form_item_service" size="small">
+            <FormControl size="small">
               <InputLabel>Sexe</InputLabel>
               <Select
                 label="Sexe"
                 value={selectedGender}
                 onChange={(e) => dispatch(profileEditSelectGender(e.target.value))}
-
               >
                 <MenuItem value={1}>Homme</MenuItem>
                 <MenuItem value={2}>Femme</MenuItem>
-                <MenuItem value={3}>Ne préfère pas répondre</MenuItem>
               </Select>
             </FormControl>
           </div>
@@ -132,7 +136,6 @@ export default function UserProfile() {
             <div className="userprofile_input_description_edit">
               <TextField
                 fullWidth
-                rows={10}
                 multiline
                 label="Description"
                 value={descriptionInput}
@@ -140,9 +143,8 @@ export default function UserProfile() {
               />
             </div>
           </div>
-        </div>
-      </form>
-
+        </form>
+      </div>
     </div>
   );
 }
