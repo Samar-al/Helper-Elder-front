@@ -7,12 +7,14 @@ export default function ServiceCards() {
 
   return (
     <div className="servicecards">
-      {serviceList.map((service) => (
-        <Card
-          key={service.name}
-          {...service}
-        />
-      ))}
+      <div className="servicecards_list">
+        {serviceList.map((service) => (
+          <Card
+            key={service.name}
+            {...service}
+          />
+        ))}
+      </div>
     </div>
   );
 }
