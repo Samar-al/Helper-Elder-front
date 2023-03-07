@@ -76,18 +76,13 @@ export default function Registration() {
               <FormControlLabel value="2" control={<Radio />} label="Je suis un HELPER (propose de l'aide)" />
             </RadioGroup>
           </div>
-          <div className="registration_form_radio">
-            <RadioGroup row name="radio_button_group" value={selectedGender} onChange={(event) => dispatch(selectNewUserGender(event.target.value))}>
-              <FormControlLabel value="1" control={<Radio />} label="Homme" />
-              <FormControlLabel value="2" control={<Radio />} label="Femme" />
-            </RadioGroup>
-          </div>
           <div className="registration_form_input">
             <TextField
               className="registration_form_input_lastname"
               label="Nom"
               value={lastnameInput}
               size="small"
+              fullWidth
               onChange={(event) => dispatch(typeNewUserLastname(event.target.value))}
             />
           </div>
@@ -97,8 +92,15 @@ export default function Registration() {
               label="Prénom"
               value={firstnameInput}
               size="small"
+              fullWidth
               onChange={(event) => dispatch(typeNewUserFirstname(event.target.value))}
             />
+          </div>
+          <div className="registration_form_radio">
+            <RadioGroup row name="radio_button_group" value={selectedGender} onChange={(event) => dispatch(selectNewUserGender(event.target.value))}>
+              <FormControlLabel value="1" control={<Radio />} label="Homme" />
+              <FormControlLabel value="2" control={<Radio />} label="Femme" />
+            </RadioGroup>
           </div>
           <div className="registration_form_input">
             <TextField
@@ -106,6 +108,7 @@ export default function Registration() {
               label="Date de naissance (JJ/MM/AAAA)"
               value={birthdateInput}
               size="small"
+              fullWidth
               onChange={(event) => {
                 if (birthdateRegex.test(event.target.value)) dispatch(typeNewUserBirthdate(event.target.value));
               }}
@@ -117,6 +120,7 @@ export default function Registration() {
               label="Code postal"
               value={postalCodeInput}
               size="small"
+              fullWidth
               onChange={(event) => {
                 if (zipcodeRegex.test(event.target.value)) dispatch(typeNewUserPostalCode(event.target.value));
               }}
@@ -129,6 +133,7 @@ export default function Registration() {
               label="Email"
               value={emailInput}
               size="small"
+              fullWidth
               onChange={(event) => dispatch(typeNewUserEmail(event.target.value))}
             />
           </div>
@@ -139,6 +144,7 @@ export default function Registration() {
               label="Mot de passe"
               value={passwordInput}
               size="small"
+              fullWidth
               onChange={(event) => dispatch(typeNewUserPassword(event.target.value))}
             />
           </div>
