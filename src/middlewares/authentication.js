@@ -23,14 +23,9 @@ const authenticationMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          if (response.status !== 200) {
-            console.log('connexion failed');
-          }
-          else {
-            // saving the jwt token and then using it to fetch the logged user from API
-            store.dispatch(saveJwt(response.data.token));
-            store.dispatch(fetchLoggedUser(response.data.token));
-          }
+          // saving the jwt token and then using it to fetch the logged user from API
+          store.dispatch(saveJwt(response.data.token));
+          store.dispatch(fetchLoggedUser(response.data.token));
         })
         .catch((error) => {
           console.log(error);
@@ -46,14 +41,9 @@ const authenticationMiddleware = (store) => (next) => (action) => {
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )
         .then((response) => {
-          if (response.status !== 200) {
-            console.log('fetching of user failed');
-          }
-          else {
-            store.dispatch(saveLoggedUser(response.data));
-            store.dispatch(redirectAction(-2)); // redirects to the last page before connexion page
-            store.dispatch(displayInfoMessages(['Connexion réussie !']));
-          }
+          store.dispatch(saveLoggedUser(response.data));
+          store.dispatch(redirectAction(-2)); // redirects to the last page before connexion page
+          store.dispatch(displayInfoMessages(['Connexion réussie !']));
         })
         .catch((error) => {
           console.log(error);
