@@ -10,6 +10,7 @@ export default function DetailedPost() {
   const dispatch = useDispatch();
   const location = useLocation();
   const { currentPost, currentReviews } = useSelector((state) => state.post);
+  const { serviceList } = useSelector((state) => state.app);
 
   useEffect(
     () => {
@@ -31,11 +32,9 @@ export default function DetailedPost() {
           <Rating name="note" value={currentPost.user.avgRating} readOnly />
           <ul className="detailed-post_left_service">
             Services proposés:
-            <li className="detailed-post_left_service_item">Compagnie</li>
-            <li className="detailed-post_left_service_item">Courses</li>
-            <li className="detailed-post_left_service_item">Chauffeur</li>
-            <li className="detailed-post_left_service_item">Cuisine</li>
-            <li className="detailed-post_left_service_item">Ménage</li>
+            {serviceList.map((service) => (
+              <li key={service.id} className="detailed-post_left_service_item">{service.name}</li>
+            ))}
           </ul>
           <p className="detailed-post_left_service_rate">Tarifs {currentPost.hourlyRate}€ de l'heure</p>
           <p>{currentPost.postalCode}</p> {/* TODO MAP */}
@@ -55,14 +54,13 @@ export default function DetailedPost() {
       <div className="views">
         <h2 className="view_title">Les avis:</h2>
         {currentReviews.map((review) => (
-          <div className="view_item">
-            <p key={review.id} className="view_item_user">{review.id} - <Typography component="legend" />
+          <div className="view_item" key={review.id}>
+            <p className="view_item_user">{review.id} - <Typography component="legend" />
               <Rating name="note" value={review.rate} readOnly />
             </p>
             <p className="view_item_content">{review.content}</p>
           </div>
         ))}
-
       </div>
       )}
     </div>

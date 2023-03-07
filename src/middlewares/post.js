@@ -11,7 +11,7 @@ const postMiddleware = (store) => (next) => (action) => {
     case LOAD_POST:
       axios.get(
         // URL
-        `http://localhost:8000/api/annonce/${action.id}`, // TO DO check that this is the right URL
+        `${baseUrl}/annonce/${action.id}`, // TO DO check that this is the right URL
       )
         .then((response) => {
           if (response.status !== 200) {
@@ -19,7 +19,9 @@ const postMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(getPost(response.data));
-            store.dispatch(loadReviews(response.data.user.id));
+            if (store.getState().authentication.user !== null) {
+              store.dispatch(loadReviews(response.data.user.id));
+            }
           }
         })
         .catch((error) => {
@@ -29,7 +31,7 @@ const postMiddleware = (store) => (next) => (action) => {
     case LOAD_REVIEWS:
       axios.get(
         // URL
-        `http://localhost:8000/api/profil/${action.userId}`, // TO DO check that this is the right URL
+        `${baseUrl}/profil/${action.userId}`, // TO DO check that this is the right URL
         // header
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )
