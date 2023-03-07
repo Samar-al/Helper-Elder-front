@@ -7,6 +7,7 @@ import {
   saveJwt,
   saveLoggedUser,
 } from '../actions/authentication';
+import { loginFormThrowErrors } from '../actions/connexion';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 
 const authenticationMiddleware = (store) => (next) => (action) => {
@@ -24,10 +25,6 @@ const authenticationMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           if (response.status !== 200) {
             console.log('connexion failed');
-            // TO DO
-            // if (response.status === 401){
-            //   console.log("Nom d'utilisateur et/ou mot de passe incorrect");
-            // }
           }
           else {
             // saving the jwt token and then using it to fetch the logged user from API
@@ -37,6 +34,8 @@ const authenticationMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          if (error.response.status === 401) store.dispatch(loginFormThrowErrors(['Adresse e-mail ou mot de passe incorrect.']));
+          else store.dispatch(loginFormThrowErrors(['La connexion a échoué.']));
         });
       break;
     case FETCH_LOGGED_USER:
