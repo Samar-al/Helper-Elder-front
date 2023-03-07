@@ -15,23 +15,33 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectPostType, selectServices, typeAdress } from '../../actions/searchbar';
 import { zipcodeRegex } from '../../utils/regex';
 import FontSizeToggler from '../FontSizeToggler/FontSizeToggler';
+import { searchPosts } from '../../actions/resultposts';
 
 export default function Searchbar() {
   const { adressInput, selectedServices, postType } = useSelector((state) => state.searchbar);
   const dispatch = useDispatch();
   const { serviceList } = useSelector((state) => state.app);
+  // const { valueSearchBar } = useSelector((state) => state.post);
 
   return (
     <div className="searchbar">
       <div className="searchbar_label">Je cherche une</div>
-      <form className="searchbar_form">
+      <form
+        className="searchbar_form"
+        onSubmit={(event) => {
+          event.preventDefault();
+          dispatch(searchPosts());
+        }}
+      >
         <div className="searchbar_form_item">
           <FormControl fullWidth className="searchbar_form_item_type" size="small">
             <InputLabel>Offre/Demande</InputLabel>
             <Select
               label="Offre/Demande"
               value={postType}
-              onChange={(e) => dispatch(selectPostType(e.target.value))}
+              onChange={(e) => {
+                dispatch(selectPostType(e.target.value));
+              }}
             >
               <MenuItem value="offer">Offre</MenuItem>
               <MenuItem value="request">Demande</MenuItem>
@@ -88,10 +98,10 @@ export default function Searchbar() {
             />
           </div>
         </div>
+        <div className="searchbar_form_button">
+          <Button type="submit" variant="contained">Rechercher</Button>
+        </div>
       </form>
-      <div className="searchbar_button">
-        <Button variant="contained">Rechercher</Button>
-      </div>
       <FontSizeToggler />
     </div>
   );
