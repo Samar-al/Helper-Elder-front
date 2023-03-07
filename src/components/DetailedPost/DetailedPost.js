@@ -43,9 +43,11 @@ export default function DetailedPost() {
         <div className="detailed-post_right">
           <div className="detailed-post_right_header">
             <h1 className="detailed-post_right_title">{currentPost.title} <span className="detailed-post_right_title_subtitle">Service {currentPost.workType ? 'ponctuel' : 'régulier'} </span></h1>
+            <p className="detailed-post_right_content">{currentPost.content}</p>
+          </div>
+          <div className="detailed-post_right_content_button">
             <Button type="submit" variant="contained">Envoyer un message</Button>
           </div>
-          <p className="detailed-post_right_content">{currentPost.content}</p>
         </div>
       </div>
       )}
