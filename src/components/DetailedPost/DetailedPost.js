@@ -1,4 +1,4 @@
-import { Button, Rating, Typography } from '@mui/material';
+import { Button, Rating } from '@mui/material';
 import './styles.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -7,6 +7,7 @@ import { loadPost } from '../../actions/detailedpost';
 import FormModal from '../FormModal/FormModal';
 import { showFormModal } from '../../actions/app';
 import { convFormClear, convFormTypeTitle } from '../../actions/conversation';
+import ReviewPannel from '../ReviewPannel/ReviewPannel';
 
 export default function DetailedPost() {
   const dispatch = useDispatch();
@@ -20,7 +21,6 @@ export default function DetailedPost() {
       // split() divdes a string into an ordered list of substrings
       // pop() return the last element from an array
       dispatch(loadPost(location.pathname.split('/').pop()));
-      // dispatch(loadReview(location.pathname.split('/').pop()));
 
       // clear conversation form when unmounting component
       return () => dispatch(convFormClear());
@@ -70,19 +70,7 @@ export default function DetailedPost() {
           </div>
         </div>
         )}
-        {currentReviews !== null && (
-          <div className="views">
-            <h2 className="view_title">Les avis:</h2>
-            {currentReviews.map((review) => (
-              <div className="view_item" key={review.id}>
-                <p className="view_item_user">{review.id} - <Typography component="legend" />
-                  <Rating name="note" value={review.rate} readOnly />
-                </p>
-                <p className="view_item_content">{review.content}</p>
-              </div>
-            ))}
-          </div>
-        )}
+        {currentReviews.length !== 0 && <ReviewPannel reviews={currentReviews} />}
       </div>
       {formModalIsVisible && currentPost !== null && <FormModal targetUser={currentPost.user} />}
     </>
