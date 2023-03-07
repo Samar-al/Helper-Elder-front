@@ -1,5 +1,5 @@
+/* eslint-disable max-len */
 import {
-  Box,
   Button,
   Checkbox,
   FormControl,
@@ -47,7 +47,8 @@ export default function CreatePostForm() {
 
   const dispatch = useDispatch();
 
-  function submitForm() {
+  function submitForm(e) {
+    e.preventDefault();
     const post = {
       user_id: user.id,
       title: titleInput,
@@ -66,13 +67,13 @@ export default function CreatePostForm() {
       <div className="create_post_header">
         <h1 className="create_post_header_title">Poster une annonce</h1>
       </div>
-      <Box component="form">
-        <div className="form_radio">
+      <form className="form" onSubmit={(e) => submitForm(e)}>
+        {/* <div className="form_radio"> // TODO let the user decide if they are posting an offer or request
           <RadioGroup name="radio_button_group" value={selectedTypeUser} onChange={(event) => dispatch(selectTypeUser(event.target.value))}>
             <FormControlLabel value={1} control={<Radio />} label="Je suis un Elder (je cherche de l'aide)" />
             <FormControlLabel value={2} control={<Radio />} label="Je suis un Helper (je propose de l'aide)" />
           </RadioGroup>
-        </div>
+        </div> */}
         <div className="form_input">
           <TextField
             className="form_input_title"
@@ -100,11 +101,14 @@ export default function CreatePostForm() {
                  The thing is, we need to put the checkboxes values as IDs to be able to pass those
                  to the API. Thus, selected is an array of numbers.
                  First, an array containing the services names as strings is made with
-                 selected.map((serviceId) => serviceList[serviceId].name).
+                 selected.map((serviceId) => serviceList.find((service) => service.id === serviceId).name)
                  Then, this array is turned into a string with all the selected services names
                  separated by a coma with .reduce((render, service) => `${render}, ${service}`)
                  */
-              renderValue={(selected) => selected.map((serviceId) => serviceList[serviceId - 1].name).reduce((render, service) => `${render}, ${service}`)}
+              renderValue={(selected) => {
+                const serviceNameArray = selected.map((serviceId) => serviceList.find((service) => service.id === serviceId).name);
+                return serviceNameArray.reduce((render, service) => `${render}, ${service}`);
+              }}
             >
               {/* short circuit evaluation to prevent errors.
               The list is not created as long as services are not loaded */}
@@ -165,10 +169,10 @@ export default function CreatePostForm() {
             }}
           />
         </div>
-      </Box>
-      <div className="create_button">
-        <Button onClick={() => submitForm()} variant="contained">Envoyer</Button>
-      </div>
+        <div className="create_button">
+          <Button type="submit" variant="contained">Envoyer</Button>
+        </div>
+      </form>
     </div>
   );
 }

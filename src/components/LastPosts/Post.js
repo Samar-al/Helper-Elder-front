@@ -8,7 +8,6 @@ export default function Post({
   picture,
   title,
   postalCode,
-  city,
   createdAt,
   content,
   id,
@@ -20,7 +19,7 @@ export default function Post({
           <img alt={title} src={picture} className="lastposts_pannel_postlist_post_header_picture" />
           <div className="lastposts_pannel_postlist_post_header_info">
             <h3 className="lastposts_pannel_postlist_post_header_info_title">{title}</h3>
-            <p className="lastposts_pannel_postlist_post_header_info_city">{city} - {postalCode}</p>
+            <p className="lastposts_pannel_postlist_post_header_info_city">{postalCode}</p>
             <p className="lastposts_pannel_postlist_post_header_info_date">le {formatDate(createdAt)}</p>
           </div>
         </div>
@@ -33,14 +32,12 @@ export default function Post({
 Post.propTypes = {
   picture: PropTypes.string,
   title: PropTypes.string.isRequired,
-  postalCode: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
-  city: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
+  postalCode: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 Post.defaultProps = {
   picture: 'img/placeholders/avatar_placeholder.png',
-  postalCode: '75001',
-  city: 'Paris',
 };
