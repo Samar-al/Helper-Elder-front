@@ -8,7 +8,7 @@
       border: 2px, solid, vars.$main-color;
       display: flex;
       flex-direction: column;
-      padding: 1rem;
+      padding: 0.5rem;
       width: 100%;
       border-bottom: 0;
 
@@ -87,11 +87,13 @@
           text-align: left;
           display: flex;
           flex-direction: column;
+          width: 80%;
         }
     }
 
     &_form_item {
       margin-bottom: 0.5rem;
+      width: 90%;
     }
 }
 
@@ -109,6 +111,11 @@
 
     &_info_text {
       width: 700px;
+      
+      &_paragraph_edit {
+
+        width : 60%;
+      }
     }
 
     &_button {
@@ -124,15 +131,6 @@
         overflow: hidden;
         text-overflow: ellipsis;
       }
-    }
-  }
-}
-
-@media (min-width: vars.$small-breakpoint) { 
-  .userprofile {
-    &_info_text_paragraph_edit {
-      width:50% 
-
     }
   }
 }
