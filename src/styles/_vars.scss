@@ -1,12 +1,14 @@
 @use 'sass:color';
 
 $main-color: #104b4d;
+$light-color: #3c7275;
 $alt-color: color.scale($main-color, $lightness: 30%);
 $darker-color: color.scale($main-color, $lightness: -30%);
 $background-color: rgb(255 252 234);
 $border-light-color: rgb(146, 146, 146);
 $transparent-background-color: rgba(255, 255, 255, 0.6);
 $transparent-background-altcolor: rgba(255, 255, 255, 0.8);
+$dimmer-color: rgba(0, 0, 0, 0.6);
 
 $standard-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 

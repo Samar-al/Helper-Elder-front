@@ -7,6 +7,8 @@ import {
   PROFILE_EDIT_SELECT_GENDER,
   PROFILE_EDIT_TYPE_DESCRIPTION,
   FILL_USER_EDIT_FORM,
+  SAVE_PAGE_USER,
+  CLEAR_PAGE_USER,
 } from '../actions/userprofile';
 
 const initialState = {
@@ -17,6 +19,7 @@ const initialState = {
   postalCodeInput: '',
   selectedGender: '',
   descriptionInput: '',
+  currentPageUser: null,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -74,6 +77,8 @@ const reducer = (state = initialState, action = {}) => {
         selectedGender: action.data.gender,
         descriptionInput: action.data.description,
       };
+    case SAVE_PAGE_USER: return { ...state, currentPageUser: action.data };
+    case CLEAR_PAGE_USER: return { ...state, currentPageUser: null};
     default:
       return state;
   }

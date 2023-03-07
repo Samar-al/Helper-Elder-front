@@ -34,6 +34,7 @@
         &_description {
           border: 1px, solid, vars.$main-color;
           padding: 1rem;
+          word-break: break-word;
         }
 
         &_description_edit {
@@ -50,7 +51,7 @@
       flex-direction: column;
 
 
-      &_add_post, &_message {
+      &_add_post, &_message, &_review {
         margin: 0.5rem 0;
       }
 

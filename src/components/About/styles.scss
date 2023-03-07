@@ -1,0 +1,50 @@
+@use '../../styles/vars';
+
+.about {
+
+  display: flex;
+  margin: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+
+  &_title {
+
+    text-align: center;
+    font-weight: bold;
+    margin: 1rem;
+    color: vars.$main-color;
+    font-size: x-large;
+  }
+
+  &_text{
+    margin:1rem;
+    text-align: justify;
+
+    p{
+      margin-bottom: 1rem;
+    }
+  }
+
+  &_picture {
+    width: 80%;
+    text-align: center;
+    box-shadow:8px 8px 10px 0 rgba(0,0,0,0.5);
+  }
+}
+
+@media screen and (min-width: vars.$medium-breakpoint) {
+ 
+  .about {
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+    &_picture {
+      width: 40%;
+    }
+
+    &_text{
+      padding:1rem;
+    }
+  }
+}

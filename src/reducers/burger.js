@@ -1,4 +1,4 @@
-import { TOGGLE_BURGER } from '../actions/burger';
+import { CLOSE_BURGER, TOGGLE_BURGER } from '../actions/burger';
 
 const initialState = {
   isBurgerOpen: false,
@@ -10,6 +10,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isBurgerOpen: !state.isBurgerOpen,
+      };
+    case CLOSE_BURGER:
+      return {
+        ...state,
+        isBurgerOpen: false,
       };
     default:
       return state;

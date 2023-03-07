@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import './styles.scss';
 import FormControl from '@mui/material/FormControl';
 import {
@@ -14,23 +15,33 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectPostType, selectServices, typeAdress } from '../../actions/searchbar';
 import { zipcodeRegex } from '../../utils/regex';
 import FontSizeToggler from '../FontSizeToggler/FontSizeToggler';
+import { searchPosts } from '../../actions/resultposts';
 
 export default function Searchbar() {
   const { adressInput, selectedServices, postType } = useSelector((state) => state.searchbar);
   const dispatch = useDispatch();
   const { serviceList } = useSelector((state) => state.app);
+  // const { valueSearchBar } = useSelector((state) => state.post);
 
   return (
     <div className="searchbar">
       <div className="searchbar_label">Je cherche une</div>
-      <form className="searchbar_form">
+      <form
+        className="searchbar_form"
+        onSubmit={(event) => {
+          event.preventDefault();
+          dispatch(searchPosts());
+        }}
+      >
         <div className="searchbar_form_item">
           <FormControl fullWidth className="searchbar_form_item_type" size="small">
             <InputLabel>Offre/Demande</InputLabel>
             <Select
               label="Offre/Demande"
               value={postType}
-              onChange={(e) => dispatch(selectPostType(e.target.value))}
+              onChange={(e) => {
+                dispatch(selectPostType(e.target.value));
+              }}
             >
               <MenuItem value="offer">Offre</MenuItem>
               <MenuItem value="request">Demande</MenuItem>
@@ -50,13 +61,13 @@ export default function Searchbar() {
                  The thing is, we need to put the checkboxes values as IDs to be able to pass those
                  to the API. Thus, selected is an array of numbers.
                  First, an array containing the services names as strings is made with
-                 selected.map((serviceId) => serviceList[serviceId - 1].name).
+                 selected.map((serviceId) => serviceList.find((service) => service.id === serviceId).name)
                  Then, this array is turned into a string with all the selected services names
                  separated by a coma with .reduce((render, service) => `${render}, ${service}`)
                  */
               renderValue={(selected) => {
-                console.log(serviceList[selected[0] - 1])
-                selected.map((serviceId) => serviceList[serviceId - 1].name).reduce((render, service) => `${render}, ${service}`)
+                const serviceNameArray = selected.map((serviceId) => serviceList.find((service) => service.id === serviceId).name);
+                return serviceNameArray.reduce((render, service) => `${render}, ${service}`);
               }}
             >
               {/* short circuit evaluation to prevent errors.
@@ -87,10 +98,10 @@ export default function Searchbar() {
             />
           </div>
         </div>
+        <div className="searchbar_form_button">
+          <Button type="submit" variant="contained">Rechercher</Button>
+        </div>
       </form>
-      <div className="searchbar_button">
-        <Button variant="contained">Rechercher</Button>
-      </div>
       <FontSizeToggler />
     </div>
   );
