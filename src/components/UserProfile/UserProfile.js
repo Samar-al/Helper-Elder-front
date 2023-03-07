@@ -65,7 +65,6 @@ export default function UserProfile() {
                 <Button className="userprofile_button_add_post" variant="contained">
                   <NavLink
                     to="/poster-une-annonce"
-                    className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
                   >
                     Poster une annonce
                   </NavLink>
@@ -125,26 +124,25 @@ export default function UserProfile() {
             <p><span>Sexe :</span> {displayGender(pageUser.gender)} </p>
           </div>
         </div>
-      </div>
 
-      <div className="userprofile_info_text">
-        <div className="userprofile_button_modify">
-          <Button variant="contained">
-            <NavLink
-              to="/mon-profil/modifier"
-            >
-              Modifier
-            </NavLink>
-          </Button>
-        </div>
-        <div className="userprofile_info_text_paragraph">
-          <p><span>Prénom :</span> {user.firstname} </p>
-          <p><span>Nom :</span> {user.lastname} </p>
-          <p><span>Date de naissance :</span> {formatDate(user.birthdate)} </p>
-          <p><span>Email :</span> {user.email} </p>
-          <p><span>Localisation :</span> {user.postalCode} </p>
-          <p><span>Sexe :</span> {displayGender(user.gender)} </p>
-        </div>
+        <div className="userprofile_info_text">
+          <div className="userprofile_button_modify">
+            <Button variant="contained">
+              <NavLink
+                to="/mon-profil/modifier"
+              >
+                Modifier
+              </NavLink>
+            </Button>
+          </div>
+          <div className="userprofile_info_text_paragraph">
+            <p><span>Prénom :</span> {user.firstname} </p>
+            <p><span>Nom :</span> {user.lastname} </p>
+            <p><span>Date de naissance :</span> {formatDate(user.birthdate)} </p>
+            <p><span>Email :</span> {user.email} </p>
+            <p><span>Localisation :</span> {user.postalCode} </p>
+            <p><span>Sexe :</span> {displayGender(user.gender)} </p>
+          </div>
 
           <div className="userprofile_input">
             <div className="userprofile_input_description">
