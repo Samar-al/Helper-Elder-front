@@ -9,6 +9,7 @@ export const SELECT_SERVICE = 'SELECT_SERVICE';
 export const SELECT_TYPE_USER = 'SELECT_TYPE_USER';
 export const SUBMIT_NEW_POST = 'SUBMIT_NEW_POST';
 export const HANDLE_POST_SAVED = 'HANDLE_POST_SAVED';
+export const CREATE_POST_THROW_ERRORS = 'CREATE_POST_THROW_ERRORS';
 
 // Action creator
 export const typeTitle = (value) => ({
@@ -58,4 +59,9 @@ export const submitNewPost = (data) => ({
 
 export const handlePostSaved = () => ({
   type: HANDLE_POST_SAVED,
+});
+
+export const createPostThrowErrors = (errors) => ({
+  type: CREATE_POST_THROW_ERRORS,
+  errors: errors,
 });

@@ -8,6 +8,8 @@ export const zipcodeRegex = /^\d{5}$/;
 export const emailRegex = /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 /*
+  Old regex with cents : /^\d{0,3}(,\d{0,2})?$/;
+
   ^ means the start of the string
   \d means a digit
   {0,} means one or more
@@ -18,10 +20,10 @@ export const emailRegex = /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
   {0,2} means match the previous digit one or two times
   $ matches the end of the string
 */
-export const hourlyRateRegex = /^\d{0,}(,\d{0,2})?$/;
+export const hourlyRateTypeRegex = /^\d{0,3}$/;
 
 // allows to type only numbers with up to 3 digits
-export const radiusRegex = /^\d{0,3}$/;
+export const radiusTypeRegex = /^\d{0,3}$/;
 
 // allows to type only numbers and /
 export const birthdateTypeRegex = /^(\d|\/){0,10}$/;
