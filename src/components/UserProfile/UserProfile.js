@@ -72,7 +72,13 @@ export default function UserProfile() {
                 </Button>
               </div>
               <div className="userprofile_button_message">
-                <Button variant="contained">Messagerie</Button>
+                <Button variant="contained">
+                  <NavLink
+                    to="/mon-profil/conversation"
+                  >
+                    Messagerie
+                  </NavLink>
+                </Button>
               </div>
             </>
             )}
