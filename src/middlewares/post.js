@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { displayInfoMessages, redirectAction } from '../actions/app';
-import { handlePostSaved, SUBMIT_NEW_POST } from '../actions/createpostform';
+import { createPostFormClear, createPostThrowErrors, SUBMIT_NEW_POST } from '../actions/createpostform';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 import {
   getPost, getReviews, loadReviews, LOAD_POST, LOAD_REVIEWS,
@@ -100,14 +100,14 @@ const postMiddleware = (store) => (next) => (action) => {
             console.log('post creation failed');
           }
           else {
-            store.dispatch(handlePostSaved());
+            store.dispatch(createPostFormClear());
             store.dispatch(redirectAction('/'));
             store.dispatch(displayInfoMessages(['Annonce créée avec succès !']));
           }
         })
         .catch((error) => {
           console.log(error);
-          errorManagement(error.response.status, store);
+          if (!errorManagement(error.response.status, store)) store.dispatch(createPostThrowErrors('La création d\'annonce a échoué'));
         });
       break;
     default:

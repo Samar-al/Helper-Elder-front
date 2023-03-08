@@ -13,7 +13,7 @@ import {
   Select,
   TextField,
 } from '@mui/material';
-
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   typeContent,
@@ -25,9 +25,16 @@ import {
   typeRadius,
   submitNewPost,
   createPostThrowErrors,
+  createPostFormClear,
 } from '../../actions/createpostform';
 import './styles.scss';
-import { hourlyRateTypeRegex, radiusTypeRegex, zipcodeRegex, zipcodeTypeRegex } from '../../utils/regex';
+import {
+  hourlyRateTypeRegex,
+  radiusTypeRegex,
+  zipcodeRegex,
+  zipcodeTypeRegex,
+} from '../../utils/regex';
+import FormErrors from '../FormErrors/FormErrors';
 
 export default function CreatePostForm() {
   const {
@@ -38,10 +45,9 @@ export default function CreatePostForm() {
     radiusInput,
     selectedPonctual,
     selectedServices,
+    errors,
   } = useSelector((state) => state.createpostform);
-
   const { user } = useSelector((state) => state.authentication);
-
   const { serviceList } = useSelector((state) => state.app);
 
   const dispatch = useDispatch();
@@ -53,8 +59,8 @@ export default function CreatePostForm() {
     if (Number(rateInput) > 500) formErrors.push('Le tarif horaire ne doit pas dépasser 500€.');
     if (!['true', 'false'].includes(selectedPonctual)) formErrors.push('Veuillez indiquer si le service est pontuel ou régulier.');
     if (!zipcodeRegex.test(zipcodeInput)) formErrors.push('Veuillez entrer un code postal valide à 5 chiffres.');
-    if (Number(radiusInput) > 999) formErrors.push('Le rayon géographique ne doit pas dépasser 999km');
-    if (selectedServices.length === 0) formErrors.push('Veuillez sélectionner au moins un type de service');
+    if (Number(radiusInput) > 999) formErrors.push('Le rayon géographique ne doit pas dépasser 999km.');
+    if (selectedServices.length === 0) formErrors.push('Veuillez sélectionner au moins un type de service.');
 
     dispatch(createPostThrowErrors(formErrors));
     if (formErrors.length !== 0) {
@@ -79,8 +85,14 @@ export default function CreatePostForm() {
     if (post) dispatch(submitNewPost(post));
   }
 
+  useEffect(
+    () => () => dispatch(createPostFormClear()),
+    [],
+  );
+
   return (
     <div className="create_post">
+      {errors.length !== 0 && <FormErrors errors={errors} />}
       <div className="create_post_header">
         <h1 className="create_post_header_title">Poster une annonce</h1>
       </div>

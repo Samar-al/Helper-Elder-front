@@ -8,7 +8,7 @@ export const SELECT_PONCTUAL = 'SELECT_PONCTUAL';
 export const SELECT_SERVICE = 'SELECT_SERVICE';
 export const SELECT_TYPE_USER = 'SELECT_TYPE_USER';
 export const SUBMIT_NEW_POST = 'SUBMIT_NEW_POST';
-export const HANDLE_POST_SAVED = 'HANDLE_POST_SAVED';
+export const CREATE_POST_FORM_CLEAR = 'CREATE_POST_FORM_CLEAR';
 export const CREATE_POST_THROW_ERRORS = 'CREATE_POST_THROW_ERRORS';
 
 // Action creator
@@ -57,8 +57,8 @@ export const submitNewPost = (data) => ({
   post: data,
 });
 
-export const handlePostSaved = () => ({
-  type: HANDLE_POST_SAVED,
+export const createPostFormClear = () => ({
+  type: CREATE_POST_FORM_CLEAR,
 });
 
 export const createPostThrowErrors = (errors) => ({
