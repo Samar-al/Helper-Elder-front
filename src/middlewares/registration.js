@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { displayInfoMessages, redirectAction } from '../actions/app';
-import { SUBMIT_NEW_USER, handleNewUserSaved } from '../actions/registration';
+import { SUBMIT_NEW_USER, registrationFormClear } from '../actions/registration';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 
 const registrationMiddleware = (store) => (next) => (action) => {
@@ -19,7 +19,7 @@ const registrationMiddleware = (store) => (next) => (action) => {
             console.log('user profile creation failed');
           }
           else {
-            store.dispatch(handleNewUserSaved());
+            store.dispatch(registrationFormClear());
             store.dispatch(redirectAction('/'));
             store.dispatch(displayInfoMessages(['Nouvel utilisateur créé avec succès !']));
           }

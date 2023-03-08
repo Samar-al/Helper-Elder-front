@@ -8,7 +8,7 @@ import {
   TYPE_NEW_USER_DESCRIPTION,
   SELECT_NEW_USER_GENDER,
   SELECT_NEW_USER_TYPE,
-  HANDLE_NEW_USER_SAVED,
+  REGISTRATION_FORM_CLEAR,
   TYPE_NEW_USER_PASSWORD_CONFIRMATION,
 } from '../actions/registration';
 
@@ -87,7 +87,7 @@ const reducer = (state = initialState, action = {}) => {
         selectedTypeNewUser: Number(action.input),
       };
 
-    case HANDLE_NEW_USER_SAVED:
+    case REGISTRATION_FORM_CLEAR:
       return {
         ...initialState,
       };

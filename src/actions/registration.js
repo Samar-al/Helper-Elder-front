@@ -10,7 +10,7 @@ export const TYPE_NEW_USER_DESCRIPTION = 'TYPE_NEW_USER_DESCRIPTION';
 export const SELECT_NEW_USER_TYPE = 'SELECT_NEW_USER_TYPE';
 export const SELECT_NEW_USER_GENDER = 'SELECT_NEW_USER_GENDER';
 export const SUBMIT_NEW_USER = 'SUBMIT_NEW_USER';
-export const HANDLE_NEW_USER_SAVED = 'HANDLE_NEW_USER_SAVED';
+export const REGISTRATION_FORM_CLEAR = 'REGISTRATION_FORM_CLEAR';
 
 // Action creator
 export const typeNewUserFirstname = (value) => ({
@@ -68,6 +68,6 @@ export const submitNewUser = (data) => ({
   newUser: data,
 });
 
-export const handleNewUserSaved = () => ({
-  type: HANDLE_NEW_USER_SAVED,
+export const registrationFormClear = () => ({
+  type: REGISTRATION_FORM_CLEAR,
 });
