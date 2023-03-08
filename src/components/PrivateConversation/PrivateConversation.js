@@ -4,12 +4,13 @@ import { NavLink, useLocation } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SendIcon from '@mui/icons-material/Send';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import profile from '../../../public/img/placeholders/avatar_placeholder.png';
 import { loadMessages, sendMessage, submitMessage } from '../../actions/conversation';
 // import loader from '../../assets/img/icons/loader.gif';
 
 export default function PrivateConversation() {
+  const messageListRef = useRef();
   const { messagesList } = useSelector((state) => state.conversation);
   const { messageInput } = useSelector((state) => state.conversation);
   const { user } = useSelector((state) => state.authentication);
@@ -34,12 +35,22 @@ export default function PrivateConversation() {
     if (messageInput.trim() !== '') {
       dispatch(submitMessage(message));
     }
-    console.log('message envoyé:', message);
   }
 
   useEffect(() => {
     dispatch(loadMessages(location.pathname.split('/').pop()));
   }, []);
+
+  useEffect(() => {
+    const totalHeight = messageListRef.current.scrollHeight;
+
+    // Scrolls the scrollbar at the bottom when there is a new message
+    messageListRef.current.scrollTo({
+      top: totalHeight,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }, [messagesList]);
 
   return (
     <main className="message">
@@ -59,7 +70,7 @@ export default function PrivateConversation() {
           </div>
         </div>
       </div>
-      <div className="message_conversation">
+      <div className="message_conversation" ref={messageListRef}>
         {/* slice() creates a copy of the list of messages before reversing it with reverse() */}
         { sortedMessages.length !== 0 && sortedMessages.slice().reverse().map((message, index) => {
           const currentUserIsSender = message.userSender.id === user.id;
