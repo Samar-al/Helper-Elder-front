@@ -1,4 +1,20 @@
 @use 'src/styles/_vars';
+
+
+.servicecards {
+  display: flex;
+  justify-content: center;
+
+  &_list {
+    display: flex;
+    justify-content: left;
+    max-width: 80%;
+    overflow-x: auto;
+    scrollbar-color: vars.$main-color;
+    scrollbar-width: thin;
+  }
+}
+
 .card {
 
   display: flex;
@@ -12,7 +28,7 @@
   background: white;
   margin: 1em;
   padding: 2.75em 2.5em;
-  box-shadow: 0 1.5em 2.5em -.5em rgba(#000000, .1);
+  box-shadow: 0 1em 1em -.5em rgba(#000000, .5);
   transition: transform .45s ease, background .45s ease;
 
 
@@ -48,16 +64,6 @@
   100% {
     transform: translateX(.125em);
   }
-}
-
-.servicecards {
-
-  display: flex;
-  margin: 1rem;
-  overflow-x: auto;
-  scrollbar-color: vars.$main-color;
-  scrollbar-width: thin;
-
 }
 
 @media screen and (min-width: vars.$medium-breakpoint) {

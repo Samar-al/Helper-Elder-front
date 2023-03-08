@@ -1,7 +1,13 @@
 import { TextField, Rating, Button } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { reviewFormHandleSubmit, reviewFormSelectRate, reviewFormTypeComment } from '../../actions/review';
+import { useEffect } from 'react';
+import {
+  reviewFormClear,
+  reviewFormHandleSubmit,
+  reviewFormSelectRate,
+  reviewFormTypeComment,
+} from '../../actions/review';
 import './styles.scss';
 
 export default function ReviewForm({ id, firstname }) {
@@ -19,6 +25,11 @@ export default function ReviewForm({ id, firstname }) {
     };
     dispatch(reviewFormHandleSubmit(review));
   }
+
+  useEffect(
+    () => () => dispatch(reviewFormClear()),
+    [],
+  );
 
   return (
     <div className="create_review">

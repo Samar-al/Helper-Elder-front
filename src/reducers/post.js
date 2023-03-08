@@ -3,7 +3,7 @@ import { GET_FILTERED_POSTS } from '../actions/resultposts';
 
 export const initialState = {
   currentPost: null,
-  currentReviews: null,
+  currentReviews: [],
   postsList: [],
   // valueSearchBar: '',
 };
