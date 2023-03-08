@@ -3,14 +3,16 @@
   display: flex;
   flex-wrap: wrap;
   margin: 2rem;
+  border-radius: 10px;
+  border: 2px, solid, vars.$main-color;
 
     &_info_media {
-      border: 2px, solid, vars.$main-color;
+      
       display: flex;
       flex-direction: column;
       padding: 0.5rem;
       width: 100%;
-      border-bottom: 0;
+      border-bottom:2px, solid, vars.$main-color;
 
       img {
         border: 1px, solid, vars.$main-color;
@@ -66,7 +68,6 @@
       flex-direction: column;
       width: 100%;
       padding: 1rem;
-      border: 2px, solid, vars.$main-color;
       
         &_paragraph {
           display: flex;
@@ -105,14 +106,13 @@
     justify-content: center;
 
     &_info_media {
-      border: 2px, solid, vars.$main-color;
-      border-right: 0;
       width: 300px;
+      border-bottom: 0;
+      border-right: 2px, solid, vars.$main-color;
     }
 
     &_info_text {
-      width: 700px;
-      
+      max-width: 700px;
       &_paragraph_edit {
 
         width : 60%;
