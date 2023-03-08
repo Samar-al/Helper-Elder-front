@@ -48,7 +48,18 @@ const conversationMiddleware = (store) => (next) => (action) => {
             console.log('conversation not found');
           }
           else {
-            store.dispatch(getConversations(response.data));
+            console.log(response.data);
+            const conversationList = [];
+            for (let i = 0; i < response.data.length; i += 1) {
+              conversationList.push({
+                id: response.data[0][i].id,
+                title: response.data[0][i].title,
+                interlocutor: response.data[1][i].firstname,
+                lastMessage: response.data[2][i].content,
+                updateDate: response.data[0][i].updated_at,
+              });
+            }
+            store.dispatch(getConversations(conversationList));
           }
         })
         .catch((error) => {
