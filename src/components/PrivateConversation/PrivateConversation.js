@@ -15,6 +15,8 @@ export default function PrivateConversation() {
   const { user } = useSelector((state) => state.authentication);
   const dispatch = useDispatch();
   const location = useLocation();
+  // sort() sorts the elements of the array making it possible to compare the message sending dates to display the last message sent at the end of the conversation.
+  const sortedMessages = [...messagesList].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   function getInterlocutor() {
     if (messagesList[0].userSender.id === user.id) return messagesList[0].userRecipient;
@@ -58,7 +60,8 @@ export default function PrivateConversation() {
         </div>
       </div>
       <div className="message_conversation">
-        { messagesList.length !== 0 && messagesList.map((message, index) => {
+        {/* slice() creates a copy of the list of messages before reversing it with reverse() */}
+        { sortedMessages.length !== 0 && sortedMessages.slice().reverse().map((message, index) => {
           const currentUserIsSender = message.userSender.id === user.id;
           const previousMessage = messagesList[index - 1];
           const previousMessageIsFromSameUser = previousMessage && previousMessage.userSender.id === message.userSender.id;
