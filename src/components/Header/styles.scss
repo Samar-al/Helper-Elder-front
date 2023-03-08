@@ -78,9 +78,14 @@
     }
 
     &_link {
+      color: white;
       display: block;
       padding: 1.5rem;
       font-size: 5vw;
+
+      &-active {
+        font-weight: bold;
+      }
     }
   }
 

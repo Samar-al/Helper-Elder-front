@@ -70,7 +70,8 @@
         }
 
         &:hover {
-          background-color: vars.$main-color;
+          background-color:  lightgrey;
+          transform: scale(1.02);
         }
       }
     }
