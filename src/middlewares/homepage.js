@@ -9,12 +9,7 @@ const homepageMiddleware = (store) => (next) => (action) => {
         baseUrl,
       )
         .then((response) => {
-          if (response.status !== 200) {
-            console.log('last posts loading failed');
-          }
-          else {
-            store.dispatch(getLastPosts(response.data.postsHelper, response.data.postsElder));
-          }
+          store.dispatch(getLastPosts(response.data.postsHelper, response.data.postsElder));
         })
         .catch((error) => {
           console.log(error);

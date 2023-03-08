@@ -22,7 +22,6 @@ import {
   typeZipcode,
   selectPonctual,
   selectService,
-  selectTypeUser,
   typeRadius,
   submitNewPost,
 } from '../../actions/createpostform';
@@ -38,7 +37,6 @@ export default function CreatePostForm() {
     radiusInput,
     selectedPonctual,
     selectedServices,
-    selectedTypeUser,
   } = useSelector((state) => state.createpostform);
 
   const { user } = useSelector((state) => state.authentication);

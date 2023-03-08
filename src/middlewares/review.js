@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { displayInfoMessages, hideFormModal } from '../actions/app';
-import { reviewFormClear, REVIEW_FORM_HANDLE_SUBMIT } from '../actions/review';
+import { reviewFormClear, reviewFormErrorsThrow, REVIEW_FORM_HANDLE_SUBMIT } from '../actions/review';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
+import errorManagement from './errorManagement';
 
 const reviewMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -26,6 +27,9 @@ const reviewMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          const HTTPCode = error.response.status;
+          if (HTTPCode === 401) errorManagement(HTTPCode, store);
+          else store.dispatch(reviewFormErrorsThrow(['La création de l\'avis a échoué.']));
         });
       break;
     default:
