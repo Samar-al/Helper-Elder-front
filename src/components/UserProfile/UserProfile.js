@@ -14,7 +14,6 @@ import { convFormClear } from '../../actions/conversation';
 import { redirectAction, showFormModal } from '../../actions/app';
 import ReviewPannel from '../ReviewPannel/ReviewPannel';
 
-
 export default function UserProfile() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.authentication);

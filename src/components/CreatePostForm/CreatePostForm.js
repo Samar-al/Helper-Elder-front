@@ -26,7 +26,7 @@ import {
   submitNewPost,
 } from '../../actions/createpostform';
 import './styles.scss';
-import { hourlyRateRegex, radiusRegex, zipcodeRegex } from '../../utils/regex';
+import { hourlyRateRegex, radiusRegex, zipcodeTypeRegex } from '../../utils/regex';
 
 export default function CreatePostForm() {
   const {
@@ -126,7 +126,7 @@ export default function CreatePostForm() {
             value={zipcodeInput}
             size="small"
             onChange={(event) => {
-              if (zipcodeRegex.test(event.target.value)) dispatch(typeZipcode(event.target.value));
+              if (zipcodeTypeRegex.test(event.target.value)) dispatch(typeZipcode(event.target.value));
             }}
           />
         </div>

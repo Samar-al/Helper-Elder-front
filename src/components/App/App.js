@@ -80,7 +80,6 @@ function App() {
           <Route path="/connexion" element={<Connexion />} />
           <Route path="/inscription" element={<Registration />} />
 
-
           {/* posts */}
           <Route path="/annonce" element={<ResultPosts />} />
           <Route path="/annonce/:id" element={<DetailedPost />} />

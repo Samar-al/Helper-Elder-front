@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { displayInfoMessages, redirectAction } from '../actions/app';
-import { SUBMIT_NEW_USER, registrationFormClear } from '../actions/registration';
+import { SUBMIT_NEW_USER, registrationFormClear, registrationFormThrowErrors } from '../actions/registration';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 
 const registrationMiddleware = (store) => (next) => (action) => {
@@ -15,17 +15,16 @@ const registrationMiddleware = (store) => (next) => (action) => {
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )
         .then((response) => {
-          if (response.status !== 201) {
-            console.log('user profile creation failed');
-          }
-          else {
-            store.dispatch(registrationFormClear());
-            store.dispatch(redirectAction('/'));
-            store.dispatch(displayInfoMessages(['Nouvel utilisateur créé avec succès !']));
-          }
+          store.dispatch(registrationFormClear());
+          store.dispatch(redirectAction('/'));
+          store.dispatch(displayInfoMessages(['Nouvel utilisateur créé avec succès !']));
         })
         .catch((error) => {
           console.log(error);
+          const HTTPCode = error.response.status;
+          const formErrors = ['L\'inscription a échoué.'];
+          if (HTTPCode === 422) formErrors.push('L\'adresse e-mail renseignée est peut-être déjà utilisée.');
+          store.dispatch(registrationFormThrowErrors(formErrors));
         });
       break;
     default:

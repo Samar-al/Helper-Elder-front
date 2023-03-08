@@ -16,14 +16,9 @@ const reviewMiddleware = (store) => (next) => (action) => {
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )
         .then((response) => {
-          if (response.status !== 201) {
-            console.log('review creation failed');
-          }
-          else {
-            store.dispatch(displayInfoMessages(['Avis enregistré !']));
-            store.dispatch(hideFormModal());
-            store.dispatch(reviewFormClear());
-          }
+          store.dispatch(displayInfoMessages(['Avis enregistré !']));
+          store.dispatch(hideFormModal());
+          store.dispatch(reviewFormClear());
         })
         .catch((error) => {
           console.log(error);
