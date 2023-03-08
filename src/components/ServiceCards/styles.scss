@@ -4,11 +4,12 @@
 .servicecards {
   display: flex;
   justify-content: center;
+  max-width: 80%;
+  margin-bottom: 1em;
 
   &_list {
     display: flex;
     justify-content: left;
-    max-width: 80%;
     overflow-x: auto;
     scrollbar-color: vars.$main-color;
     scrollbar-width: thin;
@@ -28,7 +29,7 @@
   background: white;
   margin: 1em;
   padding: 2.75em 2.5em;
-  box-shadow: 0 1em 1em -.5em rgba(#000000, .5);
+  box-shadow: vars.$standard-box-shadow;
   transition: transform .45s ease, background .45s ease;
 
 
