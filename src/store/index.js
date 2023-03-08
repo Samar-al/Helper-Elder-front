@@ -11,6 +11,7 @@ import postMiddleware from '../middlewares/post';
 import reviewMiddleware from '../middlewares/review';
 import userProfileMiddleware from '../middlewares/userprofile';
 import conversationMiddleware from '../middlewares/conversation';
+import registrationMiddleware from '../middlewares/registration';
 
 const store = createStore(
   reducer,
@@ -23,6 +24,7 @@ const store = createStore(
     reviewMiddleware,
     userProfileMiddleware,
     conversationMiddleware,
+    registrationMiddleware,
   )),
 );
 

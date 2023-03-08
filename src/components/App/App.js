@@ -26,7 +26,9 @@ import Contact from '../Contact/Contact';
 import { clearInfoModal, loadServices, redirectDone } from '../../actions/app';
 import InfoModal from '../InfoModal/InfoModal';
 import LegalMentions from '../LegalMentions/LegalMentions';
+import Registration from '../Registration/Registration';
 import NotFound from '../NotFound/NotFound';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -76,6 +78,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/connexion" element={<Connexion />} />
+          <Route path="/inscription" element={<Registration />} />
+
 
           {/* posts */}
           <Route path="/annonce" element={<ResultPosts />} />
