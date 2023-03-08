@@ -25,7 +25,7 @@ const reducer = (state = initialState, action = {}) => {
     case GET_MESSAGES: return { ...state, messagesList: action.data };
     case SEND_MESSAGE: return { ...state, messageInput: action.message };
     case SUBMIT_MESSAGE: return { ...state, messageInput: '' };
-    case SAVE_MESSAGE: return { ...state, messagesList: [...state.messagesList, action.message] };
+    case SAVE_MESSAGE: return { ...state, messagesList: [action.message, ...state.messagesList] };
     default:
       return state;
   }
