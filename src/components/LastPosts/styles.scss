@@ -68,6 +68,10 @@
         &_content {
           display: none;
         }
+
+        &:hover {
+          background-color: vars.$main-color;
+        }
       }
     }
   }

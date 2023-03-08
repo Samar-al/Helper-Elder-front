@@ -19,19 +19,22 @@
 
   &_nav_link {
     padding: 1rem;
+    padding-bottom: 0.5em;
     color: inherit;
+    background: 
+      linear-gradient(currentColor 0 0) 
+      bottom /var(--d, 0) 2px 
+      no-repeat;
+    transition:0.4s;
+    
 
     &:hover {
-      font-weight: bold;
-      font-size: large;
+      --d: 80%;
     }
 
     &-active {
       font-weight: bold;
       color: vars.$main-color;
-      // text-decoration: underline;
-      border-bottom: 2px solid vars.$main-color;
-      padding: 0.4em;
     }
   }
 
