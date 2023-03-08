@@ -5,7 +5,7 @@ import profile from '../../../public/img/placeholders/avatar_placeholder.png';
 
 export default function ListConversation() {
   return (
-    <main>
+    <div className="conversation">
       <div className="conversation_header">
         <div className="conversation_header_button">
           <NavLink to="/mon-profil">
@@ -90,6 +90,6 @@ export default function ListConversation() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

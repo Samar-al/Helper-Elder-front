@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import notFoundImg from '../../assets/img/notFoundImg.png';
 import './styles.scss';
 
 export default function NotFound() {
@@ -18,10 +19,9 @@ export default function NotFound() {
 
   return (
     <div className="not-found">
-      <div className="not-found_content">
-        <h1>Oops ! Page Non Trouvée</h1>
-        <p>{randomText}</p>
-      </div>
+      <h1>Oops ! Page Non Trouvée</h1>
+      <img src={notFoundImg} alt="helpers elders 404" className="not-found_img" />
+      <p>{randomText}</p>
     </div>
   );
 }

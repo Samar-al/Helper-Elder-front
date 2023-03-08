@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { displayInfoMessages, hideFormModal } from '../actions/app';
-import { convFormClear, CONV_FORM_SUBMIT_CONV } from '../actions/conversation';
+import { convFormClear, convFormErrorsThrow, CONV_FORM_SUBMIT_CONV } from '../actions/conversation';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 import errorManagement from './errorManagement';
 
@@ -16,18 +16,15 @@ const conversationMiddleware = (store) => (next) => (action) => {
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )
         .then((response) => {
-          if (response.status !== 201) {
-            console.log('conversation creation failed');
-          }
-          else {
-            store.dispatch(hideFormModal());
-            store.dispatch(convFormClear());
-            store.dispatch(displayInfoMessages(['Conversation créée !', 'Message envoyé !']));
-          }
+          store.dispatch(hideFormModal());
+          store.dispatch(convFormClear());
+          store.dispatch(displayInfoMessages(['Conversation créée !', 'Message envoyé !']));
         })
         .catch((error) => {
           console.log(error);
-          errorManagement(error.response.status, store);
+          const HTTPCode = error.response.status;
+          if (HTTPCode === 401) errorManagement(HTTPCode, store);
+          else store.dispatch(convFormErrorsThrow(['La création de la conversation a échoué.']));
         });
       break;
     default:

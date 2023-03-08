@@ -39,14 +39,9 @@ const postMiddleware = (store) => (next) => (action) => {
         `${baseUrl}/annonce/${searchUrl()}`,
       )
         .then((response) => {
-          if (response.status !== 200) {
-            console.log('posts not found');
-          }
-          else {
-            const arrayPostsFilter = response.data.filter(filterByServices).filter(filterByZipcode);
-            store.dispatch(getFilteredPosts(arrayPostsFilter));
-            store.dispatch(redirectAction('/annonce'));
-          }
+          const arrayPostsFilter = response.data.filter(filterByServices).filter(filterByZipcode);
+          store.dispatch(getFilteredPosts(arrayPostsFilter));
+          store.dispatch(redirectAction('/annonce'));
         })
         .catch((error) => {
           console.log(error);
@@ -60,14 +55,9 @@ const postMiddleware = (store) => (next) => (action) => {
         `${baseUrl}/annonce/${action.id}`, // TO DO check that this is the right URL
       )
         .then((response) => {
-          if (response.status !== 200) {
-            console.log('post not found');
-          }
-          else {
-            store.dispatch(getPost(response.data));
-            if (store.getState().authentication.user !== null) {
-              store.dispatch(loadReviews(response.data.user.id));
-            }
+          store.dispatch(getPost(response.data));
+          if (store.getState().authentication.user !== null) {
+            store.dispatch(loadReviews(response.data.user.id));
           }
         })
         .catch((error) => {

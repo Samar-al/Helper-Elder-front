@@ -1,12 +1,8 @@
 @use '../../styles/vars';
 
-main {
-  width: 100%;
-  height: auto;
-}
-
 .conversation {
-
+  width: 100%;
+  
   &_header {
   width: 100%;
   height: 5em;

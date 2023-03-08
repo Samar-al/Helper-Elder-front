@@ -16,3 +16,6 @@ export const hourlyRateRegex = /^\d{0,}(,\d{0,2})?$/;
 
 // allows to type only numbers with up to 3 digits
 export const radiusRegex = /^\d{0,3}$/;
+
+// allows to type only numbers and /
+export const birthdateRegex = /^(\d|\/){0,10}$/;
