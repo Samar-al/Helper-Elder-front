@@ -52,9 +52,9 @@ export default function DetailedPost() {
             <p>{currentPost.postalCode}</p> {/* TODO MAP */}
           </div>
           <div className="detailed-post_right">
-            <div className="detailed-post_right_header">
-              <h1 className="detailed-post_right_title">{currentPost.title} <span className="detailed-post_right_title_subtitle">Service {currentPost.workType ? 'ponctuel' : 'régulier'} </span></h1>
-              {user && (
+            <h1 className="detailed-post_right_title">{currentPost.title} <span className="detailed-post_right_title_subtitle">Service {currentPost.workType ? 'ponctuel' : 'régulier'} </span></h1>
+            <p className="detailed-post_right_content">{currentPost.content}</p>
+            {user && (
               <div className="detailed-post_right_message">
                 <Button
                   onClick={() => {
@@ -65,9 +65,7 @@ export default function DetailedPost() {
                 >Envoyer un message
                 </Button>
               </div>
-              )}
-            </div>
-            <p className="detailed-post_right_content">{currentPost.content}</p>
+            )}
           </div>
         </div>
       )}
