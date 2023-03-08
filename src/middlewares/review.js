@@ -22,9 +22,7 @@ const reviewMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
-          const HTTPCode = error.response.status;
-          if (HTTPCode === 401) errorManagement(HTTPCode, store);
-          else store.dispatch(reviewFormErrorsThrow(['La création de l\'avis a échoué.']));
+          if (!errorManagement(error.response.status, store)) store.dispatch(reviewFormErrorsThrow(['La création de l\'avis a échoué.']));
         });
       break;
     default:

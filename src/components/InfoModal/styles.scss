@@ -11,6 +11,10 @@
   max-width: 200px;
   color: white;
 
+  &--error {
+    background-color: red;
+  }
+
   &_title {
     font-weight: bold;
   }
@@ -28,9 +32,5 @@
     &:not(:last-child) {
       margin-bottom: 0.5em;
     }
-  }
-
-  &-hidden {
-    display: none;
   }
 }

@@ -29,7 +29,6 @@ import LegalMentions from '../LegalMentions/LegalMentions';
 import Registration from '../Registration/Registration';
 import NotFound from '../NotFound/NotFound';
 
-
 function App() {
   const dispatch = useDispatch();
   const { redirectPath, largeFontSize, infoMessages } = useSelector((state) => state.app);
@@ -73,7 +72,7 @@ function App() {
       <Background />
       <Header />
       <Searchbar />
-      <InfoModal />
+      {infoMessages.length !== 0 && <InfoModal />}
       <main>
         <Routes>
           <Route path="/" element={<Homepage />} />
