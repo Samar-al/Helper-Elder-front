@@ -43,16 +43,18 @@ export default function PrivateConversation() {
     <main className="message">
       <div className="message_header">
         <div className="message_header_button">
-          <NavLink to="/mon-profil/conversation">
-            <ArrowBackIcon />
-          </NavLink>
-          <p>Retour</p>
+          <div className="message_header_back">
+            <NavLink to="/mon-profil/conversation">
+              <ArrowBackIcon />
+            </NavLink>
+            <p>Retour</p>
+          </div>
           <div>
             <p>{ messagesList.length !== 0 && messagesList[0].conversation.title}</p>
           </div>
-        </div>
-        <div className="message_header_user">
-          <p>{messagesList.length !== 0 && getInterlocutor().firstname}</p>
+          <div className="message_header_user">
+            <p>{messagesList.length !== 0 && getInterlocutor().firstname}</p>
+          </div>
         </div>
       </div>
       <div className="message_conversation">
@@ -85,7 +87,7 @@ export default function PrivateConversation() {
       >
         <div className="message_form_container">
           <div className="message_form_container_text">
-            <textarea
+            <input
               placeholder="Entrez votre message"
               value={messageInput}
               onChange={(e) => dispatch(sendMessage(e.target.value))}
