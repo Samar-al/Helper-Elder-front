@@ -43,6 +43,7 @@
       & p {
         font-size: 0.9em;
         margin-left: 5px;
+        padding: 5px;
       }
     }
 
@@ -109,7 +110,7 @@
     }
 
     &_talk {
-      margin: 20px 0;
+      margin: 5px 0;
       color: white;
       display: flex;
       align-items: center;
@@ -123,9 +124,10 @@
       }
 
       & p {
-        padding: 15px;
-        line-height: 25px;
-        border-radius: 20px;
+        padding: 1em;
+        border-radius: 2em;
+        word-break: break-all;
+        text-align: left;
       }
     }
   }
@@ -215,7 +217,6 @@
 
 @media (min-width: vars.$medium-breakpoint) {
   .message_conversation {
-    width: 70%;
 
     &_talk img {
       width: 50px;
