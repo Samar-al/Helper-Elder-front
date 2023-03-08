@@ -30,8 +30,7 @@ export default function DetailedPost() {
 
   return (
     <>
-      <div className="main">
-        {currentPost !== null && (
+      {currentPost !== null && (
         <div className="detailed-post">
           <div className="detailed-post_left">
             <img className="detailed-post_left_picture" src={currentPost.user.picture} alt={currentPost.user.firstname} />
@@ -71,9 +70,8 @@ export default function DetailedPost() {
             <p className="detailed-post_right_content">{currentPost.content}</p>
           </div>
         </div>
-        )}
-        {currentReviews.length !== 0 && <ReviewPannel reviews={currentReviews} />}
-      </div>
+      )}
+      {currentReviews.length !== 0 && <ReviewPannel reviews={currentReviews} />}
       {formModalIsVisible && currentPost !== null && <FormModal targetUser={currentPost.user} />}
     </>
   );

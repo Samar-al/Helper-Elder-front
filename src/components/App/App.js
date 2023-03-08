@@ -29,7 +29,6 @@ import LegalMentions from '../LegalMentions/LegalMentions';
 import Registration from '../Registration/Registration';
 import NotFound from '../NotFound/NotFound';
 
-
 function App() {
   const dispatch = useDispatch();
   const { redirectPath, largeFontSize, infoMessages } = useSelector((state) => state.app);
@@ -79,7 +78,6 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/connexion" element={<Connexion />} />
           <Route path="/inscription" element={<Registration />} />
-
 
           {/* posts */}
           <Route path="/annonce" element={<ResultPosts />} />

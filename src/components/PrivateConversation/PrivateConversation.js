@@ -34,7 +34,7 @@ export default function PrivateConversation() {
     },
   ];
   return (
-    <main className="message">
+    <div className="message">
       <div className="message_header">
         <div className="message_header_button">
           <NavLink to="/mon-profil/conversation">
@@ -75,6 +75,6 @@ export default function PrivateConversation() {
           </button>
         </div>
       </form>
-    </main>
+    </div>
   );
 }
