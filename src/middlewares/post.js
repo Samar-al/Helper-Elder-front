@@ -13,6 +13,7 @@ const postMiddleware = (store) => (next) => (action) => {
 
   // filter functions
   function filterByZipcode(post) {
+    if (adressInput === '') return true;
     // eslint-disable-next-line max-len
     if (adressInput.slice(0, 2) === 97) return adressInput.slice(0, 3) === post.postalCode.slice(0, 3);
     return adressInput.slice(0, 2) === post.postalCode.slice(0, 2);
