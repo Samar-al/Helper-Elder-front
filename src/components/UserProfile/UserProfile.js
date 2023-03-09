@@ -4,7 +4,7 @@ import {
   Rating,
 } from '@mui/material';
 import { useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
 import { formatDate } from '../../utils/functions';
@@ -19,8 +19,10 @@ export default function UserProfile() {
   const { user } = useSelector((state) => state.authentication);
   const { currentPageUser } = useSelector((state) => state.userprofile);
   const { formModalIsVisible } = useSelector((state) => state.app);
+  const { conversationList } = useSelector((state) => state.conversation);
   const location = useLocation();
   const isMyProfile = location.pathname === '/mon-profil';
+  const navigate = useNavigate();
 
   // if the current page is '/mon-profil'
   // this component will use the logged user to display its information
@@ -89,7 +91,10 @@ export default function UserProfile() {
                   <div className="userprofile_button_message">
                     <Button
                       onClick={() => {
-                        dispatch(showFormModal('conversation'));
+                        // eslint-disable-next-line max-len
+                        const conversation = conversationList.find((conv) => conv.interlocutorId === pageUser.id);
+                        if (conversation) navigate(`/conversation/${conversation.id}`);
+                        else dispatch(showFormModal('conversation'));
                       }}
                       variant="contained"
                     >Envoyer un message
