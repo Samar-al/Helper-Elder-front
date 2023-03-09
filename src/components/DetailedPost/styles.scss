@@ -18,14 +18,10 @@
   &_user {
     margin-bottom: 5px;
     font-weight: bold;
-    padding-bottom: 0.3em;
-    background: 
-    linear-gradient(currentColor 0 0) 
-    bottom /var(--d, 0) 2px 
-    no-repeat;
-  transition:0.4s;
+    
     &:hover {
-      --d: 40%;
+      text-decoration: underline;
+      color: vars.$main-color ;
     }
   }
 
