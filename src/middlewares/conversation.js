@@ -48,7 +48,6 @@ const conversationMiddleware = (store) => (next) => (action) => {
             console.log('conversation not found');
           }
           else {
-            console.log(response.data);
             const conversationList = [];
             for (let i = 0; i < response.data[0].length; i += 1) {
               conversationList.push({

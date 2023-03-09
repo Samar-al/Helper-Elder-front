@@ -2,3 +2,8 @@
 export function formatDate(pDate) {
   return (new Date(pDate)).toLocaleDateString('fr');
 }
+
+export function formatDateWithHour(pDate) {
+  const time = (new Intl.DateTimeFormat('fr', { timeStyle: 'short' })).format(new Date(pDate));
+  return `Le ${formatDate(pDate)} à ${time}`;
+}
