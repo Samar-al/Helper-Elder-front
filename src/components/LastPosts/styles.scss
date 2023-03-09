@@ -67,6 +67,11 @@
         &_content {
           display: none;
         }
+
+        &:hover {
+          background-color:  vars.$hover-white-color;
+          transition: 0.2s;
+        }
       }
     }
   }

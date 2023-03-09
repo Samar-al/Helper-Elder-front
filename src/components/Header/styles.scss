@@ -11,7 +11,12 @@
 
   &_logo {
     height: 150px;
+    transition: transform .1s;
+    &:hover {
+        transform: rotate(-10deg);
+        }
   }
+  
 
   &_nav {
     display: flex;
@@ -19,11 +24,22 @@
 
   &_nav_link {
     padding: 1rem;
+    padding-bottom: 0.4em;
     color: inherit;
+    background: 
+      linear-gradient(currentColor 0 0) 
+      bottom /var(--d, 0) 2px 
+      no-repeat;
+    transition:0.4s;
+    
+
+    &:hover {
+      --d: 70%;
+    }
 
     &-active {
       font-weight: bold;
-      font-style: italic;
+      color: vars.$main-color;
     }
   }
 
@@ -67,9 +83,15 @@
     }
 
     &_link {
+      color: white;
       display: block;
       padding: 1.5rem;
       font-size: 5vw;
+
+      &-active {
+        font-weight: bolder;
+        font-style: italic;
+      }
     }
   }
 
