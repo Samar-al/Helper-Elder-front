@@ -31,8 +31,8 @@ export default function ResultPost({
         <div className="search_results_list_item_post_date">{postalCode} - posté le {formatDateWithHour(createdAt)}</div>
         <div className="search_results_list_item_post_content"><p className="search_results_list_item_post_content_text">{content}</p></div>
         <div className="search_results_list_item_post_services">
-          <SmallTag type="frequency" label={`Service ${workType ? 'ponctuel' : 'régulier'}`} />
-          {tag.length !== 0 && tag.map((service) => <SmallTag type="service" key={service.name} label={service.name} />)}
+          <SmallTag type="light" label={`Service ${workType ? 'ponctuel' : 'régulier'}`} />
+          {tag.map((service) => <SmallTag type="light" key={service.name} label={service.name} />)}
         </div>
       </NavLink>
     </div>

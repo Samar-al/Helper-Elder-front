@@ -14,6 +14,7 @@
   &_picture {
     width: 100px;
     margin: 5px;
+    border-radius: 50%;
   }
 
   &_user {
@@ -23,18 +24,6 @@
     &:hover {
       text-decoration: underline;
       color: vars.$main-color ;
-    }
-  }
-
-  &_service {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    line-height: 1.4em;
-    margin-bottom: 10px;
-
-    &_rate {
-      margin-bottom: 5px;
     }
   }
 }
@@ -53,23 +42,40 @@
     text-align: right;
   }
 
-  &_title {
+  &_top {
+    display: flex;
     margin: 10px;
-    font-weight: bold;
+    justify-content: center;
+    flex-wrap: wrap;
 
-    &_subtitle {
-      font-weight: lighter;
-      font-size: 0.9em;
+    &_date {
       font-style: italic;
     }
+  
+    &_title {
+      margin-right: 5px;
+      font-weight: bold;
+    }
   }
+  
 
   &_content {
     text-align: justify;
-    word-wrap: break-word;
     display: flex;
+    flex-direction: column;
     flex: 1;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+
+    &_text {
+      overflow-wrap: anywhere;
+    }
+
+    &_service {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
   }
 }
 

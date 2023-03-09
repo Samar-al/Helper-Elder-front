@@ -1,7 +1,7 @@
 @use '../../styles/vars';
 
 .small_tag {
-  padding: .2em 0.4em;
+  padding: .4em;
   
   color: black;
   border-radius: 0.5em;
@@ -9,21 +9,15 @@
   margin-right: 0.5em;
   margin-top: 0.5em;
 
-  &--frequency {
+  &--light {
     color: vars.$main-color;
     font-weight: bold;
     background-color: vars.$background-color;
   }
 
-  &--service {
-    color: rgb(88, 86, 86);
-    background-color: white;
-    font-style: italic;
-  }
-
   &--dark {
     background-color: vars.$light-color;
-    font-style: bold;
+    font-weight: bold;
     color: white;
   }
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function SmallTag({ type, label }) {
   return (
-    <span className={`small_tag small_tag--${type}`}>{label}</span>
+    <div className={`small_tag small_tag--${type}`}>{label}</div>
   );
 }
 
