@@ -11,7 +11,12 @@
 
   &_logo {
     height: 150px;
+    transition: transform .1s;
+    &:hover {
+        transform: rotate(-15deg);
+        }
   }
+  
 
   &_nav {
     display: flex;
