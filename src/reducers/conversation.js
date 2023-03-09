@@ -15,7 +15,7 @@ const initialState = {
   messageInput: '',
   conversationList: [],
   messagesList: [],
-  erros: [],
+  errors: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
