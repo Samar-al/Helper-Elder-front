@@ -14,7 +14,6 @@
       box-shadow: vars.$standard-box-shadow;
       display: flex;
       border-radius: 10px;
-      padding: 1em 1em 1em 0;
       margin: 1em;
 
       &_user {
@@ -24,7 +23,12 @@
         align-items: center;
         padding: 1em;
         border-right: 1px solid white;
-        width: 5em;
+        &:hover {
+          background-color: vars.$main-color;
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+          transition: background-color 0.2s;
+        }
 
         &_picture {
           margin-bottom: 0.5em;
@@ -52,9 +56,16 @@
 
       &_post {
 
-        margin: 1em;
+        padding: 1em;
         display: flex;
         flex-direction: column;
+
+        &:hover {
+          background-color: vars.$main-color;
+          border-top-right-radius: 10px;
+          border-bottom-right-radius: 10px;
+          transition: background-color 0.2s;
+        }
 
         &_title {
           font-weight: bold;
@@ -64,10 +75,12 @@
           -webkit-box-orient: vertical;
           overflow: hidden;
           text-overflow: ellipsis;
+          margin-bottom: 0.5em;
         }
 
         &_date {
           word-wrap: break-word;
+          margin-bottom: 0.5em;
         }
 
         &_content {
@@ -109,6 +122,16 @@
             display: block;
           }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: vars.$tiny-breakpoint) { 
+  .search_results_list {
+    &_item {
+      &_user {
+        display: none;
       }
     }
   }

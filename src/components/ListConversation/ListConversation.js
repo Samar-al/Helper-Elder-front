@@ -32,7 +32,7 @@ export default function ListConversation() {
               <p className="conversation_section_list_content_content">Dernier message: {conversation.lastMessage}</p>
             </div>
             <div className="conversation_section_list_date">
-              <p className="conversation_section_list_date_time">{formatDateWithHour(conversation.updateDate)}</p>
+              <p className="conversation_section_list_date_time">Le {formatDateWithHour(conversation.updateDate)}</p>
               {/* If there are new messages */}
               {/* <p className="conversation_section_list_date_num">2</p> */}
             </div>

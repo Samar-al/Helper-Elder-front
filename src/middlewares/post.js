@@ -55,7 +55,7 @@ const postMiddleware = (store) => (next) => (action) => {
     case LOAD_POST:
       axios.get(
         // URL
-        `${baseUrl}/annonce/${action.id}`, // TO DO check that this is the right URL
+        `${baseUrl}/annonce/${action.id}`,
       )
         .then((response) => {
           store.dispatch(getPost(response.data));
@@ -65,14 +65,13 @@ const postMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
-          errorManagement(error.response.status, store);
         });
       break;
 
     case LOAD_REVIEWS:
       axios.get(
         // URL
-        `${baseUrl}/profil/${action.userId}`, // TO DO check that this is the right URL
+        `${baseUrl}/profil/${action.userId}`,
         // header
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )
