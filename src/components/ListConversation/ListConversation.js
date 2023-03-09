@@ -1,10 +1,20 @@
 import './styles.scss';
+import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { formatDateWithHour } from '../../utils/functions';
+import { loadConversations } from '../../actions/conversation';
 
 export default function ListConversation() {
   const { conversationList } = useSelector((state) => state.conversation);
+  const dispatch = useDispatch();
+
+  // no second parameter so conversations will reload every time
+  useEffect(
+    () => {
+      if (conversationList.length === 0) dispatch(loadConversations());
+    },
+  );
 
   return (
     <div className="conversation">

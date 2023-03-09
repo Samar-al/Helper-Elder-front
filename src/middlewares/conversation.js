@@ -70,8 +70,8 @@ const conversationMiddleware = (store) => (next) => (action) => {
           store.dispatch(getMessages(response.data));
         })
         .catch((error) => {
-          // TODO redirection 403 conversation
           console.log(error);
+          errorManagement(error.response.status, store);
         });
       break;
     case SUBMIT_MESSAGE:
