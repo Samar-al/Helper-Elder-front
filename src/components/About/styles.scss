@@ -27,9 +27,13 @@
   }
 
   &_picture {
+    
     width: 80%;
-    text-align: center;
-    box-shadow:8px 8px 10px 0 rgba(0,0,0,0.5);
+    img {
+      box-shadow:8px 8px 10px 0 rgba(0,0,0,0.5);
+      width: 100%;
+    }
+    
   }
 }
 
@@ -38,9 +42,10 @@
   .about {
     flex-wrap: nowrap;
     justify-content: space-around;
+    align-items: center;
 
     &_picture {
-      width: 40%;
+      max-width: 45%;
     }
 
     &_text{
