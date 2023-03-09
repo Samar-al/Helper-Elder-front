@@ -91,7 +91,7 @@ function App() {
 
           {/* conversation */}
           <Route path="/mon-profil/conversation" element={<ListConversation />} />
-          <Route path="/mon-profil/conversation/1" element={<PrivateConversation />} />
+          <Route path="/mon-profil/conversation/:id" element={<PrivateConversation />} />
 
           {/* others */}
           <Route path="/mentions-légales" element={<LegalMentions />} />
