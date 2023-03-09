@@ -1,11 +1,12 @@
 @use '../../styles/vars';
 
 .detailed-post {
-
+  display: flex;
+  flex-direction: column-reverse;
   justify-content: center;
 }
 .detailed-post_left {
-  margin:2rem;
+  margin:0 2rem 2rem 2rem;
   border:solid 2px vars.$main-color;
   border-radius: 5px;
   padding: 15px;
@@ -27,6 +28,7 @@
 
   &_service {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     line-height: 1.4em;
     margin-bottom: 10px;
@@ -71,13 +73,17 @@
   }
 }
 
-@media (min-width: vars.$small-breakpoint) {
+@media (min-width: vars.$medium-breakpoint) {
   .detailed-post {
-    display: flex;
+    flex-direction: row;
 
     &_right_title {
       margin-top: 10px;
       margin-bottom: 10px;
+    }
+
+    &_left {
+      margin: 2rem 0 2rem 2rem;
     }
   }
 }

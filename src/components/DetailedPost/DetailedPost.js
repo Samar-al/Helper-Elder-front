@@ -8,6 +8,7 @@ import FormModal from '../FormModal/FormModal';
 import { showFormModal } from '../../actions/app';
 import { convFormClear, convFormTypeTitle } from '../../actions/conversation';
 import ReviewPannel from '../ReviewPannel/ReviewPannel';
+import SmallTag from '../SmallTag/SmallTag';
 
 export default function DetailedPost() {
   const dispatch = useDispatch();
@@ -42,12 +43,12 @@ export default function DetailedPost() {
               </NavLink>
             </p>
             <Rating value={currentPost.user.avgRating} readOnly />
-            <ul className="detailed-post_left_service">
+            <div className="detailed-post_left_service">
               Services proposés:
               {currentPost.tag.map((service) => (
-                <li key={service.id} className="detailed-post_left_service_item">{service.name}</li>
+                <SmallTag key={service.id} type="dark" label={service.name} />
               ))}
-            </ul>
+            </div>
             <p className="detailed-post_left_service_rate">Tarifs {currentPost.hourlyRate}€ de l'heure</p>
             <p>{currentPost.postalCode}</p> {/* TODO MAP */}
           </div>

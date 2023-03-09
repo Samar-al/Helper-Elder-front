@@ -20,4 +20,10 @@
     background-color: white;
     font-style: italic;
   }
+
+  &--dark {
+    background-color: vars.$light-color;
+    font-style: bold;
+    color: white;
+  }
 }
