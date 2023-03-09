@@ -135,6 +135,28 @@
         border-radius: 2em;
         word-break: break-all;
         text-align: left;
+        margin-right: 10px;
+        background: vars.$light-color;
+      }
+
+      &_username {
+        color: black;
+        font-size: 15px;
+        margin: 2px;
+        padding: 2px;
+        font-style: italic;
+      }
+      
+      &--right {
+        margin-left: auto;
+        display: flex;
+        flex-direction: row-reverse;
+      }
+      
+      &--left p {
+        margin-left: 10px;
+        background: rgb(216, 216, 216);
+        color: black;
       }
     }
   }
@@ -186,30 +208,7 @@
   }
 }
 
-.username {
-  color: black;
-  font-size: 15px;
-  margin: 2px;
-  padding: 2px;
-  font-style: italic;
-}
 
-.right {
-  margin-left: auto;
-  display: flex;
-  flex-direction: row-reverse;
-
-  & p {
-    margin-right: 10px;
-    background: vars.$light-color;
-  }
-}
-
-.left p {
-  margin-left: 10px;
-  background: rgb(216, 216, 216);
-  color: black;
-}
 
 
 @media (min-width: vars.$medium-breakpoint) {

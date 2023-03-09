@@ -71,17 +71,17 @@ export default function PrivateConversation() {
         {/* slice() creates a copy of the list of messages before reversing it with reverse() */}
         { messagesList.length !== 0 && messagesList.map((message, index) => {
           const currentUserIsSender = message.userSender.id === user.id;
-          const previousMessage = messagesList[index - 1];
+          const previousMessage = messagesList[index + 1];
           const previousMessageIsFromSameUser = previousMessage && previousMessage.userSender.id === message.userSender.id;
           return (
             <div
               key={message.id}
-              className={`message_conversation_talk ${currentUserIsSender ? 'right' : 'left'}`}
+              className={`message_conversation_talk ${currentUserIsSender ? 'message_conversation_talk--right' : 'message_conversation_talk--left'}`}
             >
               {!previousMessageIsFromSameUser && (
                 <div>
                   <img src={message.userSender.picture} alt="profil" />
-                  <div className="username">{message.userSender.firstname}</div>
+                  <div className="message_conversation_talk_username">{message.userSender.firstname}</div>
                 </div>
               )}
               <p>{message.content}</p>
