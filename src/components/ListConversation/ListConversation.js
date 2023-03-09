@@ -2,7 +2,6 @@ import './styles.scss';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import profile from '../../../public/img/placeholders/avatar_placeholder.png';
 import { loadConversations } from '../../actions/conversation';
 
 export default function ListConversation() {
@@ -15,18 +14,17 @@ export default function ListConversation() {
     },
     [],
   );
-  console.log(conversationList);
   return (
     <main>
       <div className="conversation_header">
         Mes Conversations
       </div>
       {conversationList.map((conversation) => (
-        <NavLink to={`/mon-profil/conversation/${conversation.id}`}>
+        <NavLink key={conversation.id} to={`/mon-profil/conversation/${conversation.id}`}>
           <div className="conversation_section">
             <div className="conversation_section_list">
               <div className="conversation_section_list_picture">
-                <img src={profile} alt="profil" />
+                <img src={conversation.picture} alt="profil" />
               </div>
               <div className="conversation_section_list_content">
                 <p className="conversation_section_list_content_name">{conversation.interlocutor}</p>

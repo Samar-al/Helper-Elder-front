@@ -50,11 +50,12 @@ const conversationMiddleware = (store) => (next) => (action) => {
           else {
             console.log(response.data);
             const conversationList = [];
-            for (let i = 0; i < response.data.length; i += 1) {
+            for (let i = 0; i < response.data[0].length; i += 1) {
               conversationList.push({
                 id: response.data[0][i].id,
                 title: response.data[0][i].title,
                 interlocutor: response.data[1][i].firstname,
+                picture: response.data[1][i].picture,
                 lastMessage: response.data[2][i].content,
                 updateDate: response.data[0][i].updated_at,
               });

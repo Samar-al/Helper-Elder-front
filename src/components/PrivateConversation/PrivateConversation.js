@@ -5,7 +5,6 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SendIcon from '@mui/icons-material/Send';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
-import profile from '../../../public/img/placeholders/avatar_placeholder.png';
 import { loadMessages, sendMessage, submitMessage } from '../../actions/conversation';
 // import loader from '../../assets/img/icons/loader.gif';
 
@@ -50,6 +49,7 @@ export default function PrivateConversation() {
     });
   }, [messagesList]);
 
+  console.log(messagesList);
   return (
     <main className="message">
       <div className="message_header">
@@ -60,7 +60,7 @@ export default function PrivateConversation() {
             </NavLink>
             <p>Retour</p>
           </div>
-          <div>
+          <div className="message_header_title">
             <p>{ messagesList.length !== 0 && messagesList[0].conversation ? messagesList[0].conversation.title : ''}</p>
           </div>
           <div className="message_header_user">
@@ -81,7 +81,7 @@ export default function PrivateConversation() {
             >
               {!previousMessageIsFromSameUser && (
                 <div>
-                  <img src={profile} alt="profil" />
+                  <img src={message.userSender.picture} alt="profil" />
                   <div className="username">{message.userSender.firstname}</div>
                 </div>
               )}
