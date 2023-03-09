@@ -22,7 +22,7 @@ export default function ListConversation() {
       </div>
       {conversationList.map((conversation) => (
         <div key={conversation.id} className="conversation_section">
-          <NavLink className="conversation_section_list" to={`/mon-profil/conversation/${conversation.id}`}>
+          <NavLink className="conversation_section_list" to={`/conversation/${conversation.id}`}>
             <div className="conversation_section_list_picture">
               <img src={conversation.picture} alt="profil" />
             </div>
@@ -38,7 +38,7 @@ export default function ListConversation() {
             </div>
           </NavLink>
         </div>
-      </div>
+      ))}
     </div>
   );
 }

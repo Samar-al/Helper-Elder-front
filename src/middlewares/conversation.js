@@ -8,7 +8,7 @@ import {
   LOAD_MESSAGES,
   saveMessage,
   SUBMIT_MESSAGE,
-   convFormErrorsThrow,
+  convFormErrorsThrow,
 } from '../actions/conversation';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 import errorManagement from './errorManagement';
@@ -42,21 +42,16 @@ const conversationMiddleware = (store) => (next) => (action) => {
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )
         .then((response) => {
-          if (response.status !== 200) {
-            console.log('conversation not found');
-          }
-          else {
-            const conversationList = [];
-            for (let i = 0; i < response.data[0].length; i += 1) {
-              conversationList.push({
-                id: response.data[0][i].id,
-                title: response.data[0][i].title,
-                interlocutor: response.data[1][i].firstname,
-                picture: response.data[1][i].picture,
-                lastMessage: response.data[2][i].content,
-                updateDate: response.data[0][i].updated_at,
-              });
-            }
+          const conversationList = [];
+          for (let i = 0; i < response.data[0].length; i += 1) {
+            conversationList.push({
+              id: response.data[0][i].id,
+              title: response.data[0][i].title,
+              interlocutor: response.data[1][i].firstname,
+              picture: response.data[1][i].picture,
+              lastMessage: response.data[2][i].content,
+              updateDate: response.data[0][i].updated_at,
+            });
             store.dispatch(getConversations(conversationList));
           }
         })
@@ -72,12 +67,7 @@ const conversationMiddleware = (store) => (next) => (action) => {
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )
         .then((response) => {
-          if (response.status !== 200) {
-            console.log('messages not found');
-          }
-          else {
-            store.dispatch(getMessages(response.data));
-          }
+          store.dispatch(getMessages(response.data));
         })
         .catch((error) => {
           // TODO redirection 403 conversation
@@ -94,13 +84,7 @@ const conversationMiddleware = (store) => (next) => (action) => {
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )
         .then((response) => {
-          if (response.status !== 201) {
-            console.log('message not send');
-          }
-          else {
-            console.log(response);
-            store.dispatch(saveMessage(response.data));
-          }
+          store.dispatch(saveMessage(response.data));
         })
         .catch((error) => {
           console.log(error);

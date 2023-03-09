@@ -90,8 +90,8 @@ function App() {
           <Route path="/mon-profil/modifier" element={<PrivateRoute element={<UserProfileEdit />} />} />
 
           {/* conversation */}
-          <Route path="/mon-profil/conversation" element={<ListConversation />} />
-          <Route path="/mon-profil/conversation/:id" element={<PrivateConversation />} />
+          <Route path="/conversation" element={<PrivateRoute element={<ListConversation />} />} />
+          <Route path="/conversation/:id" element={<PrivateRoute element={<PrivateConversation />} />} />
 
           {/* others */}
           <Route path="/mentions-légales" element={<LegalMentions />} />

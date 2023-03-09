@@ -80,15 +80,15 @@ export default function Header() {
                 Mon profil
               </NavLink>
             </li>
-            <li className="header_nav_item slideInDown-3">
+            <li className="header_nav_item slideInDown-4">
               <NavLink
-                to="/mon-profil/conversation"
-                className={(isActive) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
+                to="/conversation"
+                className={({ isActive }) => (isActive ? 'header_nav_link header_nav_link-active' : 'header_nav_link')}
               >
                 Mes Conversations
               </NavLink>
             </li>
-            <li className="header_nav_item slideInDown-4">
+            <li className="header_nav_item slideInDown-5">
               <NavLink
                 className="header_nav_link"
                 onClick={() => handleSubmitLogout()}

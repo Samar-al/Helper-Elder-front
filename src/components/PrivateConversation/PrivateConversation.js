@@ -5,7 +5,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SendIcon from '@mui/icons-material/Send';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
-import { loadMessages, sendMessage, submitMessage } from '../../actions/conversation';
+import { loadMessages, typeMessage, submitMessage } from '../../actions/conversation';
 // import loader from '../../assets/img/icons/loader.gif';
 
 export default function PrivateConversation() {
@@ -54,7 +54,7 @@ export default function PrivateConversation() {
       <div className="message_header">
         <div className="message_header_button">
           <div className="message_header_back">
-            <NavLink to="/mon-profil/conversation">
+            <NavLink to="/conversation">
               <ArrowBackIcon />
             </NavLink>
             <p>Retour</p>
@@ -101,7 +101,7 @@ export default function PrivateConversation() {
             <input
               placeholder="Entrez votre message"
               value={messageInput}
-              onChange={(e) => dispatch(sendMessage(e.target.value))}
+              onChange={(e) => dispatch(typeMessage(e.target.value))}
             />
           </div>
           <button
