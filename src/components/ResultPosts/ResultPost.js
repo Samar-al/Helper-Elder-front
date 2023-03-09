@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom';
 import StarIcon from '@mui/icons-material/Star';
 import { amber } from '@mui/material/colors';
 import { formatDateWithHour } from '../../utils/functions';
+import SmallTag from '../SmallTag/SmallTag';
+import { useSelector } from 'react-redux';
 
 export default function ResultPost({
   user,
@@ -13,7 +15,10 @@ export default function ResultPost({
   createdAt,
   content,
   id,
+  tag,
+  workType,
 }) {
+  const serviceList = useSelector
   return (
     <div className="search_results_list_item">
       <NavLink to={`/profil/${user.id}`} className="search_results_list_item_user">
@@ -25,6 +30,10 @@ export default function ResultPost({
       <NavLink to={`/annonce/${id}`} className="search_results_list_item_post">
         <h3 className="search_results_list_item_post_title">{title}</h3>
         <div className="search_results_list_item_post_date">{postalCode} - posté le {formatDateWithHour(createdAt)}</div>
+        <div className="search_results_list_item_post_services">
+          <SmallTag type="frequency" label={`Service ${workType ? 'ponctuel' : 'régulier'}`} />
+          {/* {service} */}
+        </div>
         <div className="search_results_list_item_post_content"><p className="search_results_list_item_post_content_text">{content}</p></div>
       </NavLink>
     </div>
@@ -44,4 +53,8 @@ ResultPost.propTypes = {
   content: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  tag: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  workType: PropTypes.bool.isRequired,
 };
