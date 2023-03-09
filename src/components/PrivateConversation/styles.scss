@@ -189,6 +189,7 @@
       border-radius: 30px;
       align-items: center;
       justify-content: space-between;
+      border: 2px solid vars.$light-color;
 
       &_text {
         width: 90%;
@@ -214,6 +215,10 @@
         & img {
           width: 30px;
         }
+      }
+
+      &:hover {
+        border: 2px solid vars.$main-color;
       }
     }
   }
