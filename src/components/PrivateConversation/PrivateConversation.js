@@ -49,7 +49,6 @@ export default function PrivateConversation() {
     });
   }, [messagesList]);
 
-  console.log(messagesList);
   return (
     <main className="message">
       <div className="message_header">
