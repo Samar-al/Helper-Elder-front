@@ -24,7 +24,7 @@
 
   &_nav_link {
     padding: 1rem;
-    padding-bottom: 0.5em;
+    padding-bottom: 0.4em;
     color: inherit;
     background: 
       linear-gradient(currentColor 0 0) 
@@ -34,7 +34,7 @@
     
 
     &:hover {
-      --d: 80%;
+      --d: 70%;
     }
 
     &-active {
