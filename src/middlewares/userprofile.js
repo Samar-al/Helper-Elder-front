@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { redirectAction } from '../actions/app';
+import { displayInfoMessages, redirectAction } from '../actions/app';
 import {
   FETCH_PAGE_USER,
   handleUserChangesSaved,
@@ -30,7 +30,8 @@ const userProfileMiddleware = (store) => (next) => (action) => {
           else {
             store.dispatch(handleUserChangesSaved());
             store.dispatch(saveLoggedUser(response.data)); // updating the user in the state
-            store.dispatch(redirectAction('/'));
+            store.dispatch(redirectAction('/mon-profil'));
+            store.dispatch(displayInfoMessages(['Profil modifié !']));
           }
         })
         .catch((error) => {

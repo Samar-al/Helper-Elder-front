@@ -31,6 +31,7 @@ import {
   zipcodeRegex,
   emailRegex,
   birthdateRegex,
+  passwordRegex,
 } from '../../utils/regex';
 import { formatDateForApi } from '../../utils/functions';
 import FormErrors from '../FormErrors/FormErrors';
@@ -60,7 +61,7 @@ export default function Registration() {
     if (!zipcodeRegex.test(postalCodeInput)) formErrors.push('Veuillez entrer un code postal valide à 5 chiffres.');
     if (!emailRegex.test(emailInput)) formErrors.push('Veuillez entrer une adresse e-mail valide.');
     if (passwordInput !== passwordConfirmationInput) formErrors.push('Les deux mots de passe ne correspondent pas.');
-    if (passwordInput.trim().length < 4) formErrors.push('Le mot de passe est trop court.');
+    if (!passwordRegex.test(passwordInput)) formErrors.push('Le mot de passe doit contenir au moins une minuscule, une majuscule, un chiffre et comporter au moins 6 caractères.');
     if (!birthdateRegex.test(birthdateInput)) formErrors.push('Veuillez entrer une date de naissance valide (JJ/MM/AAAA).');
 
     dispatch(registrationFormThrowErrors(formErrors));

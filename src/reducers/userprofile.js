@@ -78,7 +78,7 @@ const reducer = (state = initialState, action = {}) => {
         descriptionInput: action.data.description,
       };
     case SAVE_PAGE_USER: return { ...state, currentPageUser: action.data };
-    case CLEAR_PAGE_USER: return { ...state, currentPageUser: null};
+    case CLEAR_PAGE_USER: return { ...state, currentPageUser: null };
     default:
       return state;
   }
