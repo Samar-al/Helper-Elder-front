@@ -54,8 +54,8 @@ export default function DetailedPost() {
           <div className="detailed-post_right">
             <h1 className="detailed-post_right_title">{currentPost.title} <span className="detailed-post_right_title_subtitle">Service {currentPost.workType ? 'ponctuel' : 'régulier'} </span></h1>
             <p className="detailed-post_right_content">{currentPost.content}</p>
-            {user && (
-              <div className="detailed-post_right_message">
+            <div className="detailed-post_right_message">
+              {user && (
                 <Button
                   onClick={() => {
                     dispatch(showFormModal('conversation'));
@@ -64,12 +64,12 @@ export default function DetailedPost() {
                   variant="contained"
                 >Envoyer un message
                 </Button>
-              </div>
-            )}
-            <div className="detailed-post_right_message">
-              <p>
-                <NavLink className="detailed-post_right_message_link" to="/connexion">Connectez-vous</NavLink> ou <NavLink className="detailed-post_right_message_link" to="/inscription">créez un compte</NavLink> pour répondre à cette annonce.
-              </p>
+              )}
+              {!user && (
+                <p>
+                  <NavLink className="detailed-post_right_message_link" to="/connexion">Connectez-vous</NavLink> ou <NavLink className="detailed-post_right_message_link" to="/inscription">créez un compte</NavLink> pour répondre à cette annonce.
+                </p>
+              )}
             </div>
           </div>
         </div>
