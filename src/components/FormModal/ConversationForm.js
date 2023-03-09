@@ -22,8 +22,8 @@ export default function ConversationForm({ id, firstname }) {
   If there are error, returns false. */
   function validateMessage() {
     const formErrors = [];
-    if (titleInput.length < 1 || titleInput.length > 255) formErrors.push('Le titre doit contenir entre 1 et 255 caractères.');
-    if (messageInput.length < 1) formErrors.push('Le message doit contenir au moins 1 caractère.');
+    if (titleInput.trim().length < 1 || titleInput.trim().length > 255) formErrors.push('Le titre doit contenir entre 1 et 255 caractères.');
+    if (messageInput.trim().length < 1) formErrors.push('Le message doit contenir au moins 1 caractère.');
 
     dispatch(convFormErrorsThrow(formErrors));
     if (formErrors.length !== 0) {
@@ -31,8 +31,8 @@ export default function ConversationForm({ id, firstname }) {
     }
 
     return {
-      title: titleInput,
-      content: messageInput,
+      title: titleInput.trim(),
+      content: messageInput.trim(),
       userSender: user.id,
       userRecipient: id,
     };

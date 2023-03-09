@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { displayInfoMessages, redirectAction } from '../actions/app';
-import { SUBMIT_NEW_USER, registrationFormClear } from '../actions/registration';
+import { SUBMIT_NEW_USER, registrationFormClear, registrationFormThrowErrors } from '../actions/registration';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
+import errorManagement from './errorManagement';
 
 const registrationMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -15,17 +16,17 @@ const registrationMiddleware = (store) => (next) => (action) => {
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )
         .then((response) => {
-          if (response.status !== 201) {
-            console.log('user profile creation failed');
-          }
-          else {
-            store.dispatch(registrationFormClear());
-            store.dispatch(redirectAction('/'));
-            store.dispatch(displayInfoMessages(['Nouvel utilisateur créé avec succès !']));
-          }
+          store.dispatch(registrationFormClear());
+          store.dispatch(redirectAction('/'));
+          store.dispatch(displayInfoMessages(['Nouvel utilisateur créé avec succès !']));
         })
         .catch((error) => {
           console.log(error);
+          if (!errorManagement(error.response.status, store)) {
+            const formErrors = ['L\'inscription a échoué.'];
+            if (error.response.status === 422) formErrors.push('L\'adresse e-mail renseignée est peut-être déjà utilisée.');
+            store.dispatch(registrationFormThrowErrors(formErrors));
+          }
         });
       break;
     default:

@@ -22,9 +22,7 @@ const conversationMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
-          const HTTPCode = error.response.status;
-          if (HTTPCode === 401) errorManagement(HTTPCode, store);
-          else store.dispatch(convFormErrorsThrow(['La création de la conversation a échoué.']));
+          if (!errorManagement(error.response.status, store)) store.dispatch(convFormErrorsThrow(['La création de la conversation a échoué.']));
         });
       break;
     default:

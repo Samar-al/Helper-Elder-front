@@ -72,7 +72,7 @@ function App() {
       <Background />
       <Header />
       <Searchbar />
-      <InfoModal />
+      {infoMessages.length !== 0 && <InfoModal />}
       <main>
         <Routes>
           <Route path="/" element={<Homepage />} />

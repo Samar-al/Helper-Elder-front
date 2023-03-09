@@ -1,4 +1,4 @@
-import { redirectAction } from '../actions/app';
+import { displayInfoMessages, redirectAction } from '../actions/app';
 import { handleLogout } from '../actions/authentication';
 
 export default function (HTTPCode, store) {
@@ -7,9 +7,14 @@ export default function (HTTPCode, store) {
       store.dispatch(handleLogout());
       store.dispatch(redirectAction('/connexion'));
       break;
+    case 403:
+      store.dispatch(displayInfoMessages(['Erreur : Accès refusé !']));
+      store.dispatch(redirectAction('/'));
+      break;
     case 404:
       store.dispatch(redirectAction('/404'));
       break;
-    default: break;
+    default: return false;
   }
+  return true;
 }

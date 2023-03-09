@@ -10,6 +10,7 @@ import {
   SELECT_NEW_USER_TYPE,
   REGISTRATION_FORM_CLEAR,
   TYPE_NEW_USER_PASSWORD_CONFIRMATION,
+  REGISTRATION_FORM_THROW_ERRORS,
 } from '../actions/registration';
 
 const initialState = {
@@ -20,9 +21,10 @@ const initialState = {
   emailInput: '',
   passwordInput: '',
   passwordConfirmationInput: '',
-  descriptionInput: '',
-  selectedTypeNewUser: [],
-  selectedGender: [],
+  // descriptionInput: '',
+  selectedTypeNewUser: 0,
+  selectedGender: 0,
+  errors: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -86,7 +88,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         selectedTypeNewUser: Number(action.input),
       };
-
+    case REGISTRATION_FORM_THROW_ERRORS:
+      return {
+        ...state,
+        errors: action.errors,
+      };
     case REGISTRATION_FORM_CLEAR:
       return {
         ...initialState,
