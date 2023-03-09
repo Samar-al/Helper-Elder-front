@@ -26,6 +26,10 @@
       display: flex;
       align-items: center;
       padding-left: 0.5em;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     &_button {
