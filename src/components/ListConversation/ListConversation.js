@@ -1,20 +1,11 @@
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { loadConversations } from '../../actions/conversation';
+import { useSelector } from 'react-redux';
 import { formatDateWithHour } from '../../utils/functions';
 
 export default function ListConversation() {
   const { conversationList } = useSelector((state) => state.conversation);
-  const dispatch = useDispatch();
 
-  useEffect(
-    () => {
-      dispatch(loadConversations());
-    },
-    [],
-  );
   return (
     <div className="conversation">
       <div className="conversation_header">
