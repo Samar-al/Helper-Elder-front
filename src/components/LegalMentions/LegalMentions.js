@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-import { ReportGmailerrorred } from '@mui/icons-material';
 import './styles.scss';
 
 export default function LegalMentions() {

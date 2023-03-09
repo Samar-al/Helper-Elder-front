@@ -5,7 +5,9 @@ import aboutPicture from '../../../public/img/a-propos-picture.jpg';
 export default function About() {
   return (
     <div className="about">
-      <img className="about_picture" alt="logo" src={aboutPicture} />
+      <div className="about_picture">
+        <img alt="logo" src={aboutPicture} />
+      </div>
       <div className="about_text">
         <h1 className="about_title">À propos de nous</h1>
         <div className="about_content">

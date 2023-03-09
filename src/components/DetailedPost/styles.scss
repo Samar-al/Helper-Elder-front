@@ -18,8 +18,10 @@
   &_user {
     margin-bottom: 5px;
     font-weight: bold;
+    
     &:hover {
       text-decoration: underline;
+      color: vars.$main-color ;
     }
   }
 
