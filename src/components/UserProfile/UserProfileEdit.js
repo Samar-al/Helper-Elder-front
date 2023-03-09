@@ -55,7 +55,7 @@ export default function UserProfile() {
       email: emailInput,
       postal_code: postalCodeInput,
       gender: selectedGender,
-      dscription: descriptionInput,
+      description: descriptionInput,
     };
     dispatch(submitUserChanges(updatedUser));
   }
@@ -63,11 +63,10 @@ export default function UserProfile() {
   return (
     <div className="userprofile">
       <div className="userprofile_info_media">
-        <img alt="userprofile" src={user.picture ? user.picture : avatarPlaceholder} />
+        <img className="userprofile_picture" alt="userprofile" src={user.picture ? user.picture : avatarPlaceholder} />
       </div>
       <div className="userprofile_info_text">
         <form onSubmit={(event) => submitForm(event)}>
-
           <div className="userprofile_button_modify">
             <Button type="submit" variant="contained">Enregistrer</Button>
           </div>
@@ -132,7 +131,7 @@ export default function UserProfile() {
             </FormControl>
           </div>
 
-          <div className="userprofile_inputs">
+          <div className="userprofile_input">
             <div className="userprofile_input_description_edit">
               <TextField
                 fullWidth
