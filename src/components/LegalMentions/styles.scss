@@ -29,6 +29,7 @@
     p {
       margin-bottom: 1rem;
     }
+    
     h1{
     font-weight: bold;
     margin-bottom: 1rem;
@@ -36,11 +37,14 @@
     color: vars.$main-color;
     font-size: large;
     }
+
     a {
       color:vars.$main-color;
       font-style: italic;
-      
 
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     span {

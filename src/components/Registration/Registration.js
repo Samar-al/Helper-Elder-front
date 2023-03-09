@@ -7,7 +7,7 @@ import {
   TextField,
 } from '@mui/material';
 // import { DatePicker } from '@mui/x-date-pickers';
-
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   typeNewUserLastname,
@@ -19,11 +19,21 @@ import {
   selectNewUserGender,
   selectNewUserType,
   submitNewUser,
+  registrationFormThrowErrors,
+  typeNewUserPasswordConfirmation,
+  registrationFormClear,
 
 } from '../../actions/registration';
 import './styles.scss';
-import { zipcodeRegex, birthdateRegex } from '../../utils/regex';
+import {
+  zipcodeTypeRegex,
+  birthdateTypeRegex,
+  zipcodeRegex,
+  emailRegex,
+  birthdateRegex,
+} from '../../utils/regex';
 import { formatDateForApi } from '../../utils/functions';
+import FormErrors from '../FormErrors/FormErrors';
 
 export default function Registration() {
   const {
@@ -33,38 +43,60 @@ export default function Registration() {
     postalCodeInput,
     emailInput,
     passwordInput,
+    passwordConfirmationInput,
     selectedTypeNewUser,
     selectedGender,
+    errors,
   } = useSelector((state) => state.registration);
 
   const dispatch = useDispatch();
 
-  // function passwordValidation(event) {
-  //   if ({ passwordInput } === { passwordConfirmationInput }) {
-  //     return dispatch(typeNewUserPassword(event.target.value));
-  //   }
-  //   alert('Les deux mots de passe ne sont pas identiques');
-  // }
+  function validateNewUser() {
+    const formErrors = [];
+    if (![1, 2].includes(selectedTypeNewUser)) formErrors.push('Veuillez selectionner un rôle valide (Elder ou Helper).');
+    if (![1, 2].includes(selectedGender)) formErrors.push('Veuillez selectionner un genre.');
+    if (firstnameInput.trim().length < 1 || firstnameInput.length > 60) formErrors.push('Le prénom doit contenir entre 1 et 60 caractères.');
+    if (lastnameInput.trim().length < 1 || lastnameInput.length > 60) formErrors.push('Le nom doit contenir entre 1 et 60 caractères.');
+    if (!zipcodeRegex.test(postalCodeInput)) formErrors.push('Veuillez entrer un code postal valide à 5 chiffres.');
+    if (!emailRegex.test(emailInput)) formErrors.push('Veuillez entrer une adresse e-mail valide.');
+    if (passwordInput !== passwordConfirmationInput) formErrors.push('Les deux mots de passe ne correspondent pas.');
+    if (passwordInput.trim().length < 4) formErrors.push('Le mot de passe est trop court.');
+    if (!birthdateRegex.test(birthdateInput)) formErrors.push('Veuillez entrer une date de naissance valide (JJ/MM/AAAA).');
 
-  function submitForm(e) {
-    e.preventDefault();
-    const newUser = {
-      firstname: firstnameInput,
-      lastname: lastnameInput,
+    dispatch(registrationFormThrowErrors(formErrors));
+    if (formErrors.length !== 0) {
+      return false;
+    }
+
+    return {
+      firstname: firstnameInput.trim(),
+      lastname: lastnameInput.trim(),
       birthdate: formatDateForApi(birthdateInput),
       postal_code: postalCodeInput,
       email: emailInput,
-      password: passwordInput,
+      password: passwordInput.trim(),
       gender: selectedGender,
       type: selectedTypeNewUser,
       description: selectedTypeNewUser === 1
         ? 'Je me suis inscrit-e sur le site helpers-elders afin de trouver une personne qui puisse m’aider dans mes tâches quotidiennes.'
         : 'Je me suis inscrit-e sur le site helpers-elders afin de proposer mes services à des personnes dans le besoin. ',
     };
-    dispatch(submitNewUser(newUser));
   }
+
+  function submitForm(e) {
+    e.preventDefault();
+    const newUser = validateNewUser();
+    if (newUser) dispatch(submitNewUser(newUser));
+  }
+
+  useEffect(
+    () => () => dispatch(registrationFormClear()),
+    [],
+  );
+
   return (
     <div className="registration">
+      {errors.length !== 0 && <FormErrors errors={errors} />}
       <div className="registration_header">
         <h1 className="registration_header_title">Créer un compte</h1>
       </div>
@@ -78,6 +110,7 @@ export default function Registration() {
           </div>
           <div className="registration_form_input">
             <TextField
+              required
               className="registration_form_input_lastname"
               label="Nom"
               value={lastnameInput}
@@ -88,6 +121,7 @@ export default function Registration() {
           </div>
           <div className="registration_form_input">
             <TextField
+              required
               className="registration_form_input_firstname"
               label="Prénom"
               value={firstnameInput}
@@ -104,30 +138,33 @@ export default function Registration() {
           </div>
           <div className="registration_form_input">
             <TextField
+              required
               className="registration_form_input_birthdate"
               label="Date de naissance (JJ/MM/AAAA)"
               value={birthdateInput}
               size="small"
               fullWidth
               onChange={(event) => {
-                if (birthdateRegex.test(event.target.value)) dispatch(typeNewUserBirthdate(event.target.value));
+                if (birthdateTypeRegex.test(event.target.value)) dispatch(typeNewUserBirthdate(event.target.value));
               }}
             />
           </div>
           <div className="registration_form_input">
             <TextField
+              required
               className="registration_form_input_postalcode"
               label="Code postal"
               value={postalCodeInput}
               size="small"
               fullWidth
               onChange={(event) => {
-                if (zipcodeRegex.test(event.target.value)) dispatch(typeNewUserPostalCode(event.target.value));
+                if (zipcodeTypeRegex.test(event.target.value)) dispatch(typeNewUserPostalCode(event.target.value));
               }}
             />
           </div>
           <div className="registration_form_input">
             <TextField
+              required
               className="registration_form_input_email"
               type="email"
               label="Email"
@@ -139,6 +176,7 @@ export default function Registration() {
           </div>
           <div className="registration_form_input">
             <TextField
+              required
               className="registration_form_input_password"
               type="password"
               label="Mot de passe"
@@ -148,14 +186,18 @@ export default function Registration() {
               onChange={(event) => dispatch(typeNewUserPassword(event.target.value))}
             />
           </div>
-          {/* <div className="registration_form_input">
+          <div className="registration_form_input">
             <TextField
+              required
+              fullWidth
               className="registration_form_input_password"
               label="Confirmer votre mot de passe"
+              type="password"
               value={passwordConfirmationInput}
               size="small"
+              onChange={(event) => dispatch(typeNewUserPasswordConfirmation(event.target.value))}
             />
-          </div> */}
+          </div>
           {/* <div className="registration_form_input">
             <TextField
               className="registration_form_input_description"

@@ -16,20 +16,13 @@ const reviewMiddleware = (store) => (next) => (action) => {
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )
         .then((response) => {
-          if (response.status !== 201) {
-            console.log('review creation failed');
-          }
-          else {
-            store.dispatch(displayInfoMessages(['Avis enregistré !']));
-            store.dispatch(hideFormModal());
-            store.dispatch(reviewFormClear());
-          }
+          store.dispatch(displayInfoMessages(['Avis enregistré !']));
+          store.dispatch(hideFormModal());
+          store.dispatch(reviewFormClear());
         })
         .catch((error) => {
           console.log(error);
-          const HTTPCode = error.response.status;
-          if (HTTPCode === 401) errorManagement(HTTPCode, store);
-          else store.dispatch(reviewFormErrorsThrow(['La création de l\'avis a échoué.']));
+          if (!errorManagement(error.response.status, store)) store.dispatch(reviewFormErrorsThrow(['La création de l\'avis a échoué.']));
         });
       break;
     default:

@@ -10,4 +10,21 @@
   width: 100%;
   min-height: 75px;
 
+  &_link {
+    padding-bottom: 0.5em;
+    background: 
+      linear-gradient(currentColor 0 0) 
+      bottom /var(--d, 0) 2px 
+      no-repeat;
+    transition:0.4s;
+    &:hover {
+      --d: 100%;
+    }
+
+    &-active {
+      font-weight: bold;
+    }
+  }
+
+
 }

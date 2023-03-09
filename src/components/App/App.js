@@ -3,7 +3,8 @@ import {
   Route,
   Routes,
   useNavigate,
-  Navigate
+  Navigate,
+  useLocation
 } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,6 +34,7 @@ function App() {
   const dispatch = useDispatch();
   const { redirectPath, largeFontSize, infoMessages } = useSelector((state) => state.app);
   const navigate = useNavigate();
+  const location = useLocation();
 
   // on first app render
   useEffect(
@@ -71,8 +73,8 @@ function App() {
     <div className={largeFontSize ? 'app app--large' : 'app'}>
       <Background />
       <Header />
-      <Searchbar />
-      <InfoModal />
+      {!location.pathname.split('/').includes('conversation') && <Searchbar />}
+      {infoMessages.length !== 0 && <InfoModal />}
       <main>
         <Routes>
           <Route path="/" element={<Homepage />} />
@@ -90,8 +92,8 @@ function App() {
           <Route path="/mon-profil/modifier" element={<PrivateRoute element={<UserProfileEdit />} />} />
 
           {/* conversation */}
-          <Route path="/mon-profil/conversation" element={<ListConversation />} />
-          <Route path="/mon-profil/conversation/1" element={<PrivateConversation />} />
+          <Route path="/conversation" element={<PrivateRoute element={<ListConversation />} />} />
+          <Route path="/conversation/:id" element={<PrivateRoute element={<PrivateConversation />} />} />
 
           {/* others */}
           <Route path="/mentions-légales" element={<LegalMentions />} />

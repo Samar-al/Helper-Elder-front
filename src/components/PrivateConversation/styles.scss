@@ -5,27 +5,35 @@
   border-radius: 25px;
   box-shadow: 0 30px 70px 0px rgba(0, 0, 0, 0.2);
   display: flex;
-  justify-content: flex-end;
   flex-direction: column;
   position: relative;
-  height: 100vh;
+  width: 100%;
+  max-height: 80vh;
+  flex: 1;
 
   &_header {
-    position: absolute;
     background-color: vars.$main-color;
     top: 0px;
     width: 100%;
     height: 70px;
     display: flex;
-    justify-content: space-between;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     color: white;
+    height: 5em;
+
+    &_back {
+      display: flex;
+      align-items: center;
+      padding-left: 0.5em;
+    }
 
     &_button {
       width: 100%;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      padding-left: .5em;
 
       & img {
         width: 30px;
@@ -33,9 +41,16 @@
       }
 
       & p {
-        font-size: 20px;
+        font-size: 0.9em;
         margin-left: 5px;
+        padding: 5px;
       }
+    }
+
+    &_title {
+      overflow: hidden;
+      word-break: break-all;
+      padding: 1.5em;
     }
 
     &_user {
@@ -76,10 +91,18 @@
     width: 100%;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     overflow: hidden;
-    height: calc(100vh - 70px - 90px);
     overflow-y: scroll;
+    padding: 1em;
+    flex: 1;
+    min-height: 0px;
+    margin-bottom: 5px;
+
+    &_title {
+      margin: 20px;
+      font-style: italic;
+    }
 
     &_loader {
       left: 0;
@@ -96,7 +119,7 @@
     }
 
     &_talk {
-      margin: 20px 0;
+      margin: 5px 0;
       color: white;
       display: flex;
       align-items: center;
@@ -110,61 +133,74 @@
       }
 
       & p {
-        padding: 15px;
-        line-height: 25px;
-        border-radius: 20px;
+        padding: 1em;
+        border-radius: 2em;
+        word-break: break-all;
+        text-align: left;
+        margin-right: 10px;
+        background: vars.$light-color;
+      }
+
+      &_username {
+        color: black;
+        font-size: 15px;
+        margin: 2px;
+        padding: 2px;
+        font-style: italic;
+      }
+      
+      &--right {
+        margin-left: auto;
+        display: flex;
+        flex-direction: row-reverse;
+      }
+      
+      &--left p {
+        margin-left: 10px;
+        background: rgb(216, 216, 216);
+        color: black;
       }
     }
   }
 
   &_form {
     width: 100%;
-    height: 90px;
     background-color: vars.$light-color;
     display: flex;
     align-items: center;
     justify-content: center;
     bottom: 0;
+    padding: 15px;
 
     &_container {
       background: white;
       display: flex;
       width: 90%;
       height: 60px;
-      border-radius: 9999px;
+      border-radius: 30px;
+      align-items: center;
+      justify-content: space-between;
 
       &_text {
         width: 90%;
-        height: 100%;
         display: flex;
-        justify-content: flex-start;
-        align-items: center;
+        margin-left: 1em;
 
 
-        & textarea {
-          resize: none;
+        & input {
           border: none;
-          outline: none;
-          padding-left: 10px;
           font-size: 16px;
-          width: 100%;
-          height: 40px;
           padding-top: 10px;
-          font-family: Arial, Helvetica, sans-serif;
           border-radius: 9999px;
+          padding: 10px;
+          width: 100%;
         }
       }
 
       &_button {
         background: white;
-        border-top-right-radius: 25px;
-        border-bottom-right-radius: 25px;
-        width: 70px;
         border: none;
-        display: flex;
-        padding-right: 5px;
-        justify-content: center;
-        align-items: center;
+        margin-right: 1em;
 
         & img {
           width: 30px;
@@ -174,38 +210,18 @@
   }
 }
 
-.username {
-  color: black;
-  font-size: 15px;
-  margin: 2px;
-  padding: 2px;
-  font-style: italic;
-}
 
-.right {
-  margin-left: auto;
-
-  & p {
-    margin-right: 10px;
-    background: vars.$light-color;
-  }
-}
-
-
-
-.left p {
-  margin-left: 10px;
-  background: rgb(216, 216, 216);
-  color: black;
-}
 
 
 @media (min-width: vars.$medium-breakpoint) {
   .message_conversation {
-    width: 70%;
 
     &_talk img {
       width: 50px;
     }
+  }
+
+  .message_header_button p {
+    font-size: 1.1em;
   }
 }

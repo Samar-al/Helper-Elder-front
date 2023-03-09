@@ -13,6 +13,7 @@ export default function ResultPosts() {
         {/*  <p className="list_posts_result">4 résultats sur 357</p>
         TODO to be implemented in a later version */}
         <div className="posts">
+          {console.log(postsList)}
           {postsList.map((post) => <ResultPost key={post.id} {...post} />)}
         </div>
         {/* <div className="pagination">

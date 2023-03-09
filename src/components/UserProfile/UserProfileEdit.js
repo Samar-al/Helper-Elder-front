@@ -24,7 +24,7 @@ import {
 } from '../../actions/userprofile';
 
 import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
-import { zipcodeRegex } from '../../utils/regex';
+import { zipcodeTypeRegex } from '../../utils/regex';
 
 export default function UserProfile() {
   const {
@@ -115,7 +115,7 @@ export default function UserProfile() {
                 label="Localisation"
                 value={postalCodeInput}
                 onChange={(event) => {
-                  if (zipcodeRegex.test(event.target.value)) dispatch(profileEditTypePostalCode(event.target.value));
+                  if (zipcodeTypeRegex.test(event.target.value)) dispatch(profileEditTypePostalCode(event.target.value));
                 }}
               />
             </div>

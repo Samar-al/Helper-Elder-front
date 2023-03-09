@@ -22,7 +22,7 @@ export default function ReviewForm({ id, firstname }) {
   If there are error, returns false. */
   function validateReview() {
     const formErrors = [];
-    if (commentInput.length < 20 || commentInput.length > 150) formErrors.push('Le commentaire doit contenir entre 20 et 150 caractères.');
+    if (commentInput.trim().length < 20 || commentInput.trim().length > 150) formErrors.push('Le commentaire doit contenir entre 20 et 150 caractères.');
 
     dispatch(reviewFormErrorsThrow(formErrors));
     if (formErrors.length !== 0) {
@@ -30,7 +30,7 @@ export default function ReviewForm({ id, firstname }) {
     }
 
     return {
-      content: commentInput,
+      content: commentInput.trim(),
       rate: rateInput,
       userGiver: giverId,
       userTaker: id,
