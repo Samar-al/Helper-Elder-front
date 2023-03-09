@@ -54,7 +54,12 @@
     &_title {
       overflow: hidden;
       word-break: break-all;
-      padding: 1.5em;
+      margin: 0 1em;
+      display: -webkit-box;
+        -webkit-line-clamp: 2; /* number of lines to show */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     &_user {

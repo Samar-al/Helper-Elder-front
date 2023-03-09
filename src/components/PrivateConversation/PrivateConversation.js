@@ -58,7 +58,7 @@ export default function PrivateConversation() {
             <p>Retour</p>
           </NavLink>
           <div className="message_header_title">
-            <p>{ messagesList.length !== 0 && messagesList[0].conversation ? messagesList[0].conversation.title : ''}</p>
+            { messagesList.length !== 0 && messagesList[0].conversation ? messagesList[0].conversation.title : ''}
           </div>
           <div className="message_header_user">
             <p>{messagesList.length !== 0 && getInterlocutor().firstname}</p>
