@@ -37,17 +37,13 @@
   &_section {
     display: flex;
     justify-content: center;
-
-    &_list:first-of-type {
-      margin-top: 1.6em;
-    }
+    border-bottom: 1px solid grey;
+    margin: 1em 1em;
 
     &_list {
       width: 95%;
       height: 5em;
       display: flex;
-      margin-bottom: 1em;
-      border-bottom: 1px solid grey;
 
       &_picture {
         width: 20%;

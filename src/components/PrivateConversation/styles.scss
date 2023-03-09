@@ -153,14 +153,14 @@
       display: flex;
       width: 90%;
       height: 60px;
-      border-radius: 9999px;
+      border-radius: 30px;
+      align-items: center;
+      justify-content: space-between;
 
       &_text {
         width: 90%;
-        height: 100%;
         display: flex;
-        justify-content: flex-start;
-        align-items: center;
+        margin-left: 1em;
 
 
         & input {
@@ -175,14 +175,8 @@
 
       &_button {
         background: white;
-        border-top-right-radius: 25px;
-        border-bottom-right-radius: 25px;
-        width: 70px;
         border: none;
-        display: flex;
-        padding-right: 5px;
-        justify-content: center;
-        align-items: center;
+        margin-right: 1em;
 
         & img {
           width: 30px;
