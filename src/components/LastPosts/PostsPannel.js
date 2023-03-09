@@ -7,7 +7,7 @@ export default function PostsPannel({ title, posts }) {
     <div className="lastposts_pannel">
       <div className="lastposts_pannel_title"><h2>{title}</h2></div>
       <div className="lastposts_pannel_postlist">
-        {posts.map((post) => <Post key={post.id} {...post} />)}
+        {posts.map((post) => <Post key={post.id} picture={post.user.picture} {...post} />)}
       </div>
     </div>
   );

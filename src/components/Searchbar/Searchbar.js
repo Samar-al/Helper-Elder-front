@@ -13,7 +13,7 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPostType, selectServices, typeAdress } from '../../actions/searchbar';
-import { zipcodeRegex } from '../../utils/regex';
+import { zipcodeTypeRegex } from '../../utils/regex';
 import FontSizeToggler from '../FontSizeToggler/FontSizeToggler';
 import { searchPosts } from '../../actions/resultposts';
 
@@ -93,7 +93,7 @@ export default function Searchbar() {
               value={adressInput}
               onChange={(e) => {
                 // match un nombre contenant 0 à 5 chiffres ("" passe le test)
-                if (zipcodeRegex.test(e.target.value)) dispatch(typeAdress(e.target.value));
+                if (zipcodeTypeRegex.test(e.target.value)) dispatch(typeAdress(e.target.value));
               }}
             />
           </div>

@@ -9,12 +9,7 @@ const appMiddleware = (store) => (next) => (action) => {
         `${baseUrl}/service`,
       )
         .then((response) => {
-          if (response.status !== 200) {
-            console.log('services types loading failed');
-          }
-          else {
-            store.dispatch(getServices(response.data));
-          }
+          store.dispatch(getServices(response.data));
         })
         .catch((error) => {
           console.log(error);

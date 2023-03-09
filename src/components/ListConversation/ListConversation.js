@@ -16,7 +16,7 @@ export default function ListConversation() {
     [],
   );
   return (
-    <main>
+    <div className="conversation">
       <div className="conversation_header">
         Mes Conversations
       </div>
@@ -38,7 +38,7 @@ export default function ListConversation() {
             </div>
           </NavLink>
         </div>
-      ))}
-    </main>
+      </div>
+    </div>
   );
 }

@@ -7,7 +7,8 @@ import {
   SELECT_SERVICE,
   SELECT_TYPE_USER,
   TYPE_RADIUS,
-  HANDLE_POST_SAVED,
+  CREATE_POST_FORM_CLEAR,
+  CREATE_POST_THROW_ERRORS,
 } from '../actions/createpostform';
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
   selectedPonctual: '',
   selectedServices: [],
   selectedTypeUser: [],
+  errors: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -70,9 +72,14 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         selectedTypeUser: action.input,
       };
-    case HANDLE_POST_SAVED:
+    case CREATE_POST_FORM_CLEAR:
       return {
         ...initialState,
+      };
+    case CREATE_POST_THROW_ERRORS:
+      return {
+        ...state,
+        errors: action.errors,
       };
     default:
       return state;

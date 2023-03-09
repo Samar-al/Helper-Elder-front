@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { displayInfoMessages, hideFormModal } from '../actions/app';
-import { reviewFormClear, REVIEW_FORM_HANDLE_SUBMIT } from '../actions/review';
+import { reviewFormClear, reviewFormErrorsThrow, REVIEW_FORM_HANDLE_SUBMIT } from '../actions/review';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
+import errorManagement from './errorManagement';
 
 const reviewMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -15,17 +16,13 @@ const reviewMiddleware = (store) => (next) => (action) => {
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )
         .then((response) => {
-          if (response.status !== 201) {
-            console.log('review creation failed');
-          }
-          else {
-            store.dispatch(displayInfoMessages(['Avis enregistré !']));
-            store.dispatch(hideFormModal());
-            store.dispatch(reviewFormClear());
-          }
+          store.dispatch(displayInfoMessages(['Avis enregistré !']));
+          store.dispatch(hideFormModal());
+          store.dispatch(reviewFormClear());
         })
         .catch((error) => {
           console.log(error);
+          if (!errorManagement(error.response.status, store)) store.dispatch(reviewFormErrorsThrow(['La création de l\'avis a échoué.']));
         });
       break;
     default:

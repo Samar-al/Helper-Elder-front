@@ -1,17 +1,19 @@
 import axios from 'axios';
 import { displayInfoMessages, redirectAction } from '../actions/app';
-import { handlePostSaved, SUBMIT_NEW_POST } from '../actions/createpostform';
+import { createPostFormClear, createPostThrowErrors, SUBMIT_NEW_POST } from '../actions/createpostform';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 import {
   getPost, getReviews, loadReviews, LOAD_POST, LOAD_REVIEWS,
 } from '../actions/detailedpost';
 import { getFilteredPosts, SEARCH_POSTS } from '../actions/resultposts';
+import errorManagement from './errorManagement';
 
 const postMiddleware = (store) => (next) => (action) => {
   const { adressInput, selectedServices, postType } = store.getState().searchbar;
 
   // filter functions
   function filterByZipcode(post) {
+    // eslint-disable-next-line max-len
     if (adressInput.slice(0, 2) === 97) return adressInput.slice(0, 3) === post.postalCode.slice(0, 3);
     return adressInput.slice(0, 2) === post.postalCode.slice(0, 2);
   }
@@ -37,17 +39,13 @@ const postMiddleware = (store) => (next) => (action) => {
         `${baseUrl}/annonce/${searchUrl()}`,
       )
         .then((response) => {
-          if (response.status !== 200) {
-            console.log('posts not found');
-          }
-          else {
-            const arrayPostsFilter = response.data.filter(filterByServices).filter(filterByZipcode);
-            store.dispatch(getFilteredPosts(arrayPostsFilter));
-            store.dispatch(redirectAction('/annonce'));
-          }
+          const arrayPostsFilter = response.data.filter(filterByServices).filter(filterByZipcode);
+          store.dispatch(getFilteredPosts(arrayPostsFilter));
+          store.dispatch(redirectAction('/annonce'));
         })
         .catch((error) => {
           console.log(error);
+          errorManagement(error.response.status, store);
         });
       break;
 
@@ -57,18 +55,14 @@ const postMiddleware = (store) => (next) => (action) => {
         `${baseUrl}/annonce/${action.id}`, // TO DO check that this is the right URL
       )
         .then((response) => {
-          if (response.status !== 200) {
-            console.log('post not found');
-          }
-          else {
-            store.dispatch(getPost(response.data));
-            if (store.getState().authentication.user !== null) {
-              store.dispatch(loadReviews(response.data.user.id));
-            }
+          store.dispatch(getPost(response.data));
+          if (store.getState().authentication.user !== null) {
+            store.dispatch(loadReviews(response.data.user.id));
           }
         })
         .catch((error) => {
           console.log(error);
+          errorManagement(error.response.status, store);
         });
       break;
 
@@ -106,13 +100,14 @@ const postMiddleware = (store) => (next) => (action) => {
             console.log('post creation failed');
           }
           else {
-            store.dispatch(handlePostSaved());
+            store.dispatch(createPostFormClear());
             store.dispatch(redirectAction('/'));
             store.dispatch(displayInfoMessages(['Annonce créée avec succès !']));
           }
         })
         .catch((error) => {
           console.log(error);
+          if (!errorManagement(error.response.status, store)) store.dispatch(createPostThrowErrors('La création d\'annonce a échoué'));
         });
       break;
     default:

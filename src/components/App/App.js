@@ -1,5 +1,10 @@
 import './styles.scss';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import {
+  Route,
+  Routes,
+  useNavigate,
+  Navigate
+} from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../Header/Header';
@@ -21,6 +26,8 @@ import Contact from '../Contact/Contact';
 import { clearInfoModal, loadServices, redirectDone } from '../../actions/app';
 import InfoModal from '../InfoModal/InfoModal';
 import LegalMentions from '../LegalMentions/LegalMentions';
+import Registration from '../Registration/Registration';
+import NotFound from '../NotFound/NotFound';
 
 function App() {
   const dispatch = useDispatch();
@@ -63,29 +70,41 @@ function App() {
   return (
     <div className={largeFontSize ? 'app app--large' : 'app'}>
       <Background />
-      <div className="wrapper">
-        <div>
-          <Header />
-          <Searchbar />
-          <InfoModal />
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/connexion" element={<Connexion />} />
-            <Route path="/profil/:id" element={<PrivateRoute element={<UserProfile />} />} />
-            <Route path="/mentions-légales" element={<LegalMentions />} />
-            <Route path="/annonce" element={<ResultPosts />} />
-            <Route path="/mon-profil" element={<PrivateRoute element={<UserProfile />} />} />
-            <Route path="/mon-profil/modifier" element={<PrivateRoute element={<UserProfileEdit />} />} />
-            <Route path="/annonce/:id" element={<DetailedPost />} />
-            <Route path="/a-propos" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
-            <Route path="/mon-profil/conversation" element={<ListConversation />} />
-            <Route path="/mon-profil/conversation/:id" element={<PrivateConversation />} />
-          </Routes>
-        </div>
-        <Footer />
-      </div>
+      <Header />
+      <Searchbar />
+      {infoMessages.length !== 0 && <InfoModal />}
+      <main>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/connexion" element={<Connexion />} />
+          <Route path="/inscription" element={<Registration />} />
+
+          {/* posts */}
+          <Route path="/annonce" element={<ResultPosts />} />
+          <Route path="/annonce/:id" element={<DetailedPost />} />
+          <Route path="/poster-une-annonce" element={<PrivateRoute element={<CreatePostForm />} />} />
+
+          {/* profiles */}
+          <Route path="/profil/:id" element={<PrivateRoute element={<UserProfile />} />} />
+          <Route path="/mon-profil" element={<PrivateRoute element={<UserProfile />} />} />
+          <Route path="/mon-profil/modifier" element={<PrivateRoute element={<UserProfileEdit />} />} />
+
+          {/* conversation */}
+          <Route path="/mon-profil/conversation" element={<ListConversation />} />
+          <Route path="/mon-profil/conversation/:id" element={<PrivateConversation />} />
+
+          {/* others */}
+          <Route path="/mentions-légales" element={<LegalMentions />} />
+          <Route path="/a-propos" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+
+          {/* error 404 */}
+          <Route path="/404" element={<NotFound />} />
+          <Route path="/*" element={<Navigate to="/404" />} />
+
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 }

@@ -8,6 +8,7 @@ import {
 } from '../actions/userprofile';
 import { saveLoggedUser } from '../actions/authentication';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
+import errorManagement from './errorManagement';
 
 const userProfileMiddleware = (store) => (next) => (action) => {
   const currentState = store.getState();
@@ -34,6 +35,7 @@ const userProfileMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          errorManagement(error.response.status, store);
         });
       break;
     case FETCH_PAGE_USER:
@@ -53,6 +55,7 @@ const userProfileMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          errorManagement(error.response.status, store);
         });
       break;
     default:

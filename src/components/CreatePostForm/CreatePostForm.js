@@ -13,7 +13,7 @@ import {
   Select,
   TextField,
 } from '@mui/material';
-
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   typeContent,
@@ -22,12 +22,19 @@ import {
   typeZipcode,
   selectPonctual,
   selectService,
-  selectTypeUser,
   typeRadius,
   submitNewPost,
+  createPostThrowErrors,
+  createPostFormClear,
 } from '../../actions/createpostform';
 import './styles.scss';
-import { hourlyRateRegex, radiusRegex, zipcodeRegex } from '../../utils/regex';
+import {
+  hourlyRateTypeRegex,
+  radiusTypeRegex,
+  zipcodeRegex,
+  zipcodeTypeRegex,
+} from '../../utils/regex';
+import FormErrors from '../FormErrors/FormErrors';
 
 export default function CreatePostForm() {
   const {
@@ -38,32 +45,54 @@ export default function CreatePostForm() {
     radiusInput,
     selectedPonctual,
     selectedServices,
-    selectedTypeUser,
+    errors,
   } = useSelector((state) => state.createpostform);
-
   const { user } = useSelector((state) => state.authentication);
-
   const { serviceList } = useSelector((state) => state.app);
 
   const dispatch = useDispatch();
 
-  function submitForm(e) {
-    e.preventDefault();
-    const post = {
+  function validatePost() {
+    const formErrors = [];
+    if (titleInput.trim().length < 1 || titleInput.trim().length > 255) formErrors.push('Le titre doit contenir entre 1 et 255 caractères.');
+    if (contentInput.trim().length < 100 || titleInput.trim().length > 500) formErrors.push('Le contenu de l\'annonce doit contenir entre 100 et 500 caractères.');
+    if (Number(rateInput) > 500) formErrors.push('Le tarif horaire ne doit pas dépasser 500€.');
+    if (!['true', 'false'].includes(selectedPonctual)) formErrors.push('Veuillez indiquer si le service est pontuel ou régulier.');
+    if (!zipcodeRegex.test(zipcodeInput)) formErrors.push('Veuillez entrer un code postal valide à 5 chiffres.');
+    if (Number(radiusInput) > 999) formErrors.push('Le rayon géographique ne doit pas dépasser 999km.');
+    if (selectedServices.length === 0) formErrors.push('Veuillez sélectionner au moins un type de service.');
+
+    dispatch(createPostThrowErrors(formErrors));
+    if (formErrors.length !== 0) {
+      return false;
+    }
+
+    return {
       user_id: user.id,
       title: titleInput,
       content: contentInput,
-      hourly_rate: rateInput,
+      hourly_rate: Number(rateInput),
       work_type: selectedPonctual,
       postal_code: zipcodeInput,
       radius: Number(radiusInput),
       tag: selectedServices,
     };
-    dispatch(submitNewPost(post));
   }
+
+  function submitForm(e) {
+    e.preventDefault();
+    const post = validatePost();
+    if (post) dispatch(submitNewPost(post));
+  }
+
+  useEffect(
+    () => () => dispatch(createPostFormClear()),
+    [],
+  );
 
   return (
     <div className="create_post">
+      {errors.length !== 0 && <FormErrors errors={errors} />}
       <div className="create_post_header">
         <h1 className="create_post_header_title">Poster une annonce</h1>
       </div>
@@ -76,6 +105,7 @@ export default function CreatePostForm() {
         </div> */}
         <div className="form_input">
           <TextField
+            required
             className="form_input_title"
             label="Titre de l'annonce"
             value={titleInput}
@@ -123,12 +153,13 @@ export default function CreatePostForm() {
         </div>
         <div className="form_input">
           <TextField
+            required
             className="form_input_zipcode"
             label="Code postal"
             value={zipcodeInput}
             size="small"
             onChange={(event) => {
-              if (zipcodeRegex.test(event.target.value)) dispatch(typeZipcode(event.target.value));
+              if (zipcodeTypeRegex.test(event.target.value)) dispatch(typeZipcode(event.target.value));
             }}
           />
         </div>
@@ -142,13 +173,14 @@ export default function CreatePostForm() {
               endAdornment: <InputAdornment position="end">km</InputAdornment>,
             }}
             onChange={(event) => {
-              if (radiusRegex.test(event.target.value)) dispatch(typeRadius(event.target.value));
+              if (radiusTypeRegex.test(event.target.value)) dispatch(typeRadius(event.target.value));
             }}
           />
         </div>
         <div className="form_input">
           <TextField
-            rows={10}
+            required
+            rows={6}
             className="form_input_content"
             multiline
             label="Contenu de l'annonce"
@@ -165,7 +197,7 @@ export default function CreatePostForm() {
               endAdornment: <InputAdornment position="end">€</InputAdornment>,
             }}
             onChange={(event) => {
-              if (hourlyRateRegex.test(event.target.value)) dispatch(typeRate(event.target.value));
+              if (hourlyRateTypeRegex.test(event.target.value)) dispatch(typeRate(event.target.value));
             }}
           />
         </div>

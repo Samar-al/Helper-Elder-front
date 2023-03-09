@@ -8,7 +8,6 @@ export default function Post({
   picture,
   title,
   postalCode,
-  city,
   createdAt,
   content,
   id,
@@ -33,8 +32,7 @@ export default function Post({
 Post.propTypes = {
   picture: PropTypes.string,
   title: PropTypes.string.isRequired,
-  postalCode: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
-  city: PropTypes.string, // .isRequired, // commented as long as field is null in fixtures
+  postalCode: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
@@ -42,6 +40,4 @@ Post.propTypes = {
 
 Post.defaultProps = {
   picture: 'img/placeholders/avatar_placeholder.png',
-  postalCode: '75001',
-  city: 'Paris',
 };

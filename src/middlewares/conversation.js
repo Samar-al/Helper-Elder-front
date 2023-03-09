@@ -8,8 +8,10 @@ import {
   LOAD_MESSAGES,
   saveMessage,
   SUBMIT_MESSAGE,
+   convFormErrorsThrow,
 } from '../actions/conversation';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
+import errorManagement from './errorManagement';
 
 const conversationMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -23,17 +25,13 @@ const conversationMiddleware = (store) => (next) => (action) => {
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )
         .then((response) => {
-          if (response.status !== 201) {
-            console.log('conversation creation failed');
-          }
-          else {
-            store.dispatch(hideFormModal());
-            store.dispatch(convFormClear());
-            store.dispatch(displayInfoMessages(['Conversation créée !', 'Message envoyé !']));
-          }
+          store.dispatch(hideFormModal());
+          store.dispatch(convFormClear());
+          store.dispatch(displayInfoMessages(['Conversation créée !', 'Message envoyé !']));
         })
         .catch((error) => {
           console.log(error);
+          if (!errorManagement(error.response.status, store)) store.dispatch(convFormErrorsThrow(['La création de la conversation a échoué.']));
         });
       break;
     case LOAD_CONVERSATIONS:

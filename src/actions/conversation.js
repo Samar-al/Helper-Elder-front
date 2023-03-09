@@ -10,6 +10,7 @@ export const GET_MESSAGES = 'GET_MESSAGES';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const SUBMIT_MESSAGE = 'SUBMIT_MESSAGE';
 export const SAVE_MESSAGE = 'SAVE_MESSAGE';
+export const CONV_FORM_ERRORS_THROW = 'CONV_FORM_ERRORS_THROW';
 
 // Action creator
 export const convFormTypeTitle = (value) => ({
@@ -63,4 +64,8 @@ export const submitMessage = (message) => ({
 export const saveMessage = (message) => ({
   type: SAVE_MESSAGE,
   message: message,
+
+export const convFormErrorsThrow = (errors) => ({
+  type: CONV_FORM_ERRORS_THROW,
+  errors: errors,
 });

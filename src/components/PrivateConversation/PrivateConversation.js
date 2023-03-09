@@ -50,7 +50,7 @@ export default function PrivateConversation() {
   }, [messagesList]);
 
   return (
-    <main className="message">
+    <div className="message">
       <div className="message_header">
         <div className="message_header_button">
           <div className="message_header_back">
@@ -112,6 +112,6 @@ export default function PrivateConversation() {
           </button>
         </div>
       </form>
-    </main>
+    </div>
   );
 }

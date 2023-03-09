@@ -3,14 +3,16 @@
   display: flex;
   flex-wrap: wrap;
   margin: 2rem;
+  border-radius: 10px;
+  border: 2px, solid, vars.$main-color;
 
     &_info_media {
-      border: 2px, solid, vars.$main-color;
+      
       display: flex;
       flex-direction: column;
-      padding: 1rem;
+      padding: 0.5rem;
       width: 100%;
-      border-bottom: 0;
+      border-bottom:2px, solid, vars.$main-color;
 
       img {
         border: 1px, solid, vars.$main-color;
@@ -66,7 +68,6 @@
       flex-direction: column;
       width: 100%;
       padding: 1rem;
-      border: 2px, solid, vars.$main-color;
       
         &_paragraph {
           display: flex;
@@ -88,11 +89,13 @@
           text-align: left;
           display: flex;
           flex-direction: column;
+          width: 80%;
         }
     }
 
     &_form_item {
       margin-bottom: 0.5rem;
+      width: 90%;
     }
 }
 
@@ -103,13 +106,17 @@
     justify-content: center;
 
     &_info_media {
-      border: 2px, solid, vars.$main-color;
-      border-right: 0;
       width: 300px;
+      border-bottom: 0;
+      border-right: 2px, solid, vars.$main-color;
     }
 
     &_info_text {
-      width: 700px;
+      max-width: 700px;
+      &_paragraph_edit {
+
+        width : 60%;
+      }
     }
 
     &_button {
@@ -125,15 +132,6 @@
         overflow: hidden;
         text-overflow: ellipsis;
       }
-    }
-  }
-}
-
-@media (min-width: vars.$small-breakpoint) { 
-  .userprofile {
-    &_info_text_paragraph_edit {
-      width:50% 
-
     }
   }
 }

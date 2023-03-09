@@ -7,6 +7,9 @@ import {
   SAVE_MESSAGE,
   SEND_MESSAGE,
   SUBMIT_MESSAGE,
+  CONV_FORM_ERRORS_THROW,
+  CONV_FORM_TYPE_MSG,
+  CONV_FORM_TYPE_TITLE,
 } from '../actions/conversation';
 
 const initialState = {
@@ -14,6 +17,7 @@ const initialState = {
   messageInput: '',
   conversationList: [],
   messagesList: [],
+  erros: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -26,6 +30,7 @@ const reducer = (state = initialState, action = {}) => {
     case SEND_MESSAGE: return { ...state, messageInput: action.message };
     case SUBMIT_MESSAGE: return { ...state, messageInput: '' };
     case SAVE_MESSAGE: return { ...state, messagesList: [action.message, ...state.messagesList] };
+    case CONV_FORM_ERRORS_THROW: return { ...state, errors: action.errors };
     default:
       return state;
   }

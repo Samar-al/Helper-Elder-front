@@ -36,9 +36,8 @@
           display: flex;
 
           &_picture {
-            width: 48px;
-            height: 48px;
-            font-size: 0; // hiding alt when image is not found
+            width: 4em;
+            height: 4em;
           }
 
           &_info {
