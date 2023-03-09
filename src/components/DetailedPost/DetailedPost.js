@@ -52,7 +52,7 @@ export default function DetailedPost() {
             <p>{currentPost.postalCode}</p> {/* TODO MAP */}
           </div>
           <div className="detailed-post_right">
-            <h1 className="detailed-post_right_title">{currentPost.title} <span className="detailed-post_right_title_subtitle">Service {currentPost.workType ? 'ponctuel' : 'régulier'} </span></h1>
+            <h1 className="detailed-post_right_title">{currentPost.title} <span className="detailed-post_right_title_subtitle">(Service {currentPost.workType ? 'ponctuel' : 'régulier'})</span></h1>
             <p className="detailed-post_right_content">{currentPost.content}</p>
             {user && (
               <div className="detailed-post_right_message">

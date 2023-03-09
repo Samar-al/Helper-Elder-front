@@ -18,7 +18,9 @@ const postMiddleware = (store) => (next) => (action) => {
     if (adressInput.slice(0, 2) === 97) return adressInput.slice(0, 3) === post.postalCode.slice(0, 3);
     return adressInput.slice(0, 2) === post.postalCode.slice(0, 2);
   }
+
   function filterByServices(post) {
+    if (selectedServices.length === 0) return true;
     if (postType === 'aidant') {
       const tagsAsInt = post.tag.map((tag) => tag.id);
       return selectedServices.every((service) => tagsAsInt.includes(service));
