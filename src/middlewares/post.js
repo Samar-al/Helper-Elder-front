@@ -69,7 +69,7 @@ const postMiddleware = (store) => (next) => (action) => {
     case LOAD_REVIEWS:
       axios.get(
         // URL
-        `${baseUrl}/profil/${action.userId}`,
+        `${baseUrl}/avis-par-utilisateur/${action.userId}`,
         // header
         getHttpAuthHeaders(store.getState().authentication.jwt),
       )
@@ -78,6 +78,7 @@ const postMiddleware = (store) => (next) => (action) => {
             console.log('user not found');
           }
           else {
+            console.log(response);
             store.dispatch(getReviews(response.data.reviewsTaker));
           }
         })
