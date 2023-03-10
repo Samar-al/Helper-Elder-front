@@ -12,10 +12,6 @@
 
   &_logo {
     height: 150px;
-    transition: transform .1s;
-    &:hover {
-        transform: rotate(-10deg);
-        }
   }
   
 
@@ -53,7 +49,21 @@
   }
 }
 
+@media screen and (min-width: vars.$medium-breakpoint) {
+
+  .header {
+    &_logo {
+      transition: transform .1s;
+      &:hover {
+          transform: rotate(-10deg);
+          }
+    }
+  }
+
+}
+
 @media screen and (max-width: vars.$medium-breakpoint) {
+
   .header_nav {
     flex-direction: column;
     justify-content: center;
