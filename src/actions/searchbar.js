@@ -1,10 +1,10 @@
-// === action types
+// Action type
 export const SELECT_POST_TYPE = 'SELECT_POST_TYPE';
 export const TYPE_ADRESS = 'TYPE_ADRESS';
 export const SELECT_SERVICES = 'SELECT_SERVICES';
 export const SEARCHBAR_THROW_ERRORS = 'SEARCHBAR_THROW_ERRORS';
 
-// === action creators
+// Action creator
 export const selectPostType = (value) => ({
   type: SELECT_POST_TYPE,
   value: value,

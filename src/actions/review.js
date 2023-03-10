@@ -1,11 +1,11 @@
-// === action types
+// Action type
 export const REVIEW_FORM_SELECT_RATE = 'REVIEW_FORM_SELECT_RATE';
 export const REVIEW_FORM_TYPE_COMMENT = 'REVIEW_FORM_TYPE_COMMENT';
 export const REVIEW_FORM_HANDLE_SUBMIT = 'REVIEW_FORM_HANDLE_SUBMIT';
 export const REVIEW_FORM_CLEAR = 'REVIEW_FORM_CLEAR';
 export const REVIEW_FORM_ERRORS_THROW = 'REVIEW_FORM_ERRORS_THROW';
 
-// === action creators
+// Action creator
 export const reviewFormSelectRate = (value) => ({
   type: REVIEW_FORM_SELECT_RATE,
   input: value,

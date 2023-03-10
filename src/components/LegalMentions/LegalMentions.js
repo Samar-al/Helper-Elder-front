@@ -7,22 +7,18 @@ export default function LegalMentions() {
       <h1 className="legalmentions_title">Mentions légales</h1>
       <div className="legalmentions_text">
         <h1>Éditeur du Site :</h1>
-        <p> Site Web : (helperselders)</p>
-        <p>SARL Helpers Elders (Numéro de SIRET)</p>
-        <p>Email : herlpers.elders@gmail.com</p>
+        <p> Site Web : helpers-elders.surge.sh</p>
+        <p>Email : <a href="mailto:helpers.elders@gmail.com">helpers.elders@gmail.com </a></p>
 
         <h1>Hébergement :</h1>
-
-        <p>Hébergeur : SARL HERLPERSELDERS</p>
-        <p>Site Web : (helperselders)</p>
+        <p>Site Web : helpers-elders.surge.sh</p>
 
         <h1>Développement :</h1>
-        <p>SARL HERLPERSELDERS</p>
-        <p>Site Web : (helperselders)</p>
+        <p>Site Web : helpers-elders.surge.sh</p>
 
         <h1>Conditions d’utilisation :</h1>
         <p>
-          Ce site ((helperselders)) est proposé en différents langages web (HTML, HTML5, Javascript, CSS, etc…)
+          Ce site (helpers-elders) est proposé en différents langages web (HTML, HTML5, Javascript, CSS, etc…)
           pour un meilleur confort d’utilisation et un graphisme plus agréable.
           Nous vous recommandons de recourir à des navigateurs modernes comme Internet explorer, Safari, Firefox, Google Chrome, etc…
           L’agence web HelpersElders met en œuvre tous les moyens dont elle dispose, pour assurer une information fiable
@@ -33,7 +29,7 @@ export default function LegalMentions() {
         </p>
         <h1>Cookies :</h1>
         <p>
-          Le site (helperselders) peut-être amené à vous demander l’acceptation des cookies pour des besoins de statistiques et d’affichage.
+          Le site helpers-elders peut-être amené à vous demander l’acceptation des cookies pour des besoins de statistiques et d’affichage.
           Un cookie est une information déposée sur votre disque dur par le serveur du site que vous visitez.
           Il contient plusieurs données qui sont stockées sur votre ordinateur dans un simple fichier texte auquel un serveur accède pour lire
           et enregistrer des informations . Certaines parties de ce site ne peuvent être fonctionnelles sans l’acceptation de cookies.
@@ -56,11 +52,11 @@ export default function LegalMentions() {
 
         <h1>Services fournis :</h1>
         <p>
-          L’ensemble des activités de la société ainsi que ses informations sont présentés sur notre site (helperselders).
-          SARL HERLPERSELDERS s’efforce de fournir sur le site (helperselders) des informations aussi précises que possible.
-          Les renseignements figurant sur le site (helperselders) ne sont pas exhaustifs et les photos non contractuelles.
+          L’ensemble des activités de la société ainsi que ses informations sont présentés sur notre site helpers-elders.
+          SARL HERLPERSELDERS s’efforce de fournir sur le site helpers-elders des informations aussi précises que possible.
+          Les renseignements figurant sur le site helpers-elders ne sont pas exhaustifs et les photos non contractuelles.
           Ils sont donnés sous réserve de modifications ayant été apportées depuis leur mise en ligne.
-          Par ailleurs, tous les informations indiquées sur le site (helperselders) sont données à titre indicatif,
+          Par ailleurs, tous les informations indiquées sur le site helpers-elders sont données à titre indicatif,
           et sont susceptibles de changer ou d’évoluer sans préavis.
         </p>
 
@@ -80,7 +76,7 @@ export default function LegalMentions() {
         </p>
         <h1>Propriété intellectuelle :</h1>
         <p>
-          Tout le contenu du présent site (helperselders), incluant, de façon non limitative, les graphismes, images,
+          Tout le contenu du présent site helpers-elders, incluant, de façon non limitative, les graphismes, images,
           textes, vidéos, animations, sons, logos, gifs et icônes ainsi que leur mise en forme sont la propriété exclusive
           de la société à l’exception des marques, logos ou contenus appartenant à d’autres sociétés partenaires ou auteurs.
           Toute reproduction, distribution, modification, adaptation, retransmission ou publication, même partielle,
@@ -98,13 +94,13 @@ export default function LegalMentions() {
         </p>
         <h1>Litiges :</h1>
         <p>
-          Les présentes conditions du site (helperselders) sont régies par les lois françaises et toute contestation ou litiges
+          Les présentes conditions du site helpers-elders sont régies par les lois françaises et toute contestation ou litiges
           qui pourraient naître de l’interprétation ou de l’exécution de celles-ci seront de la compétence exclusive des tribunaux
           dont dépend le siège social de la société. La langue de référence, pour le règlement de contentieux éventuels, est le français.
         </p>
         <h1>Données personnelles :</h1>
         <p>
-          De manière générale, vous n’êtes pas tenu de nous communiquer vos données personnelles lorsque vous visitez notre site Internet (helperselders).
+          De manière générale, vous n’êtes pas tenu de nous communiquer vos données personnelles lorsque vous visitez notre site Internet helpers-elders.
           Cependant, ce principe comporte certaines exceptions. En effet, pour certains services proposés par notre site, vous pouvez être amenés à nous
           communiquer certaines données telles que : votre nom, votre fonction, le nom de votre société, votre adresse électronique, et votre numéro de téléphone.
           Tel est le cas lorsque vous remplissez le formulaire qui vous est proposé en ligne, dans la rubrique « contact ».

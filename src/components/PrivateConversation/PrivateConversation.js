@@ -90,7 +90,8 @@ export default function PrivateConversation() {
           );
         })}
       </div>
-      {/*  <div className="message_conversation_loader">
+      {/* Loader is there is too much messages (V2)
+      <div className="message_conversation_loader">
         <img src={loader} alt="Loading..." />
       </div> */}
       <form

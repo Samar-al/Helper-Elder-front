@@ -9,15 +9,6 @@
   background-color: vars.$background-color;
   z-index: -1;
 
-  // previous "dirty" method :
-  // background-image: url("../../assets/img/homepage_background.png");
-  // background-size: contain;
-  // background-repeat: no-repeat;
-
-  // @media (min-width: 1228px) {
-  //   background-size: cover;
-  // }
-
   &-notfound {
     background-image: linear-gradient(to bottom right, #94d8c1, #b1edf8);
   }
