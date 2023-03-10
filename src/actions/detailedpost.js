@@ -4,6 +4,7 @@ export const GET_POST = 'GET_POST';
 export const LOAD_REVIEWS = 'LOAD_REVIEWS';
 export const GET_REVIEWS = 'GET_REVIEWS';
 
+// Action creator
 export const loadPost = (id) => ({
   type: LOAD_POST,
   id: id,

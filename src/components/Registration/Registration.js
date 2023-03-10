@@ -198,7 +198,8 @@ export default function Registration() {
               onChange={(event) => dispatch(typeNewUserPasswordConfirmation(event.target.value))}
             />
           </div>
-          {/* <div className="registration_form_input">
+          {/* Description Input
+          <div className="registration_form_input">
             <TextField
               className="registration_form_input_description"
               label="Description"

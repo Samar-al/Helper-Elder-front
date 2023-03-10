@@ -36,8 +36,10 @@
           display: flex;
 
           &_picture {
-            width: 4em;
-            height: 4em;
+            max-width: 4em;
+            max-height: 4em;
+            min-width: 4em;
+            min-height: 4em;
             border-radius: 50%;
           }
 

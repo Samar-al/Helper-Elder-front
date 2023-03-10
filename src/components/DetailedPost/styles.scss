@@ -13,6 +13,7 @@
 
   &_picture {
     width: 100px;
+    height: 100px;
     margin: 5px;
     border-radius: 50%;
   }
@@ -55,24 +56,24 @@
   }
 
   &_top {
-    display: flex;
     margin: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
 
     &_date {
       font-style: italic;
       font-size: 0.8em;
+
+      & strong {
+        font-weight: bold;
+      }
     }
   
     &_title {
       margin-right: 5px;
       font-weight: bold;
+      margin-bottom: 0.2em;
     }
   }
   
-
   &_content {
     text-align: justify;
     display: flex;

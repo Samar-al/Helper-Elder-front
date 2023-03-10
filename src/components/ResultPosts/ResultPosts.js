@@ -1,6 +1,5 @@
 import './styles.scss';
 // import { Pagination } from '@mui/material';
-// import data from './data';
 import { useSelector } from 'react-redux';
 import ResultPost from './ResultPost';
 import FormErrors from '../FormErrors/FormErrors';

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Button, Rating } from '@mui/material';
 import './styles.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -5,6 +6,7 @@ import { useEffect } from 'react';
 import { useLocation, NavLink, useNavigate } from 'react-router-dom';
 import { loadPost } from '../../actions/detailedpost';
 import FormModal from '../FormModal/FormModal';
+import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
 import { showFormModal } from '../../actions/app';
 import { convFormClear, convFormTypeTitle } from '../../actions/conversation';
 import ReviewPannel from '../ReviewPannel/ReviewPannel';
@@ -37,7 +39,7 @@ export default function DetailedPost() {
       {currentPost !== null && (
         <div className="detailed-post">
           <div className="detailed-post_left">
-            <img className="detailed-post_left_picture" src={currentPost.user.picture} alt={currentPost.user.firstname} />
+            <img className="detailed-post_left_picture" src={currentPost.user.picture || avatarPlaceholder} alt="user avatar" />
             <p className="detailed-post_left_user">
               <NavLink
                 to={`/profil/${currentPost.user.id}`}
@@ -47,12 +49,12 @@ export default function DetailedPost() {
             </p>
             <Rating value={currentPost.user.avgRating} readOnly />
             <p className="detailed-post_left_service_rate">Tarifs {currentPost.hourlyRate}€ de l'heure</p>
-            <p>{currentPost.postalCode}</p> {/* TODO MAP */}
+            <p>Localisation : {currentPost.postalCode}{currentPost.radius > 0 ? ` (rayon: ${currentPost.radius} km)` : ''}</p> {/* TODO MAP */}
           </div>
           <div className="detailed-post_right">
             <div className="detailed-post_right_top">
               <h1 className="detailed-post_right_top_title">{currentPost.title}</h1>
-              <span className="detailed-post_right_top_date">| {currentPost.user.type === 1 ? 'Demande' : 'Offre' } postée le {formatDateWithHour(currentPost.createdAt)}</span>
+              <p className="detailed-post_right_top_date"><strong>{user.type === 1 ? 'Demande' : 'Offre' }</strong> postée le {formatDateWithHour(currentPost.createdAt)}</p>
             </div>
             <div className="detailed-post_right_content">
               <p className="detailed-post_right_content_text">{currentPost.content}</p>
@@ -67,7 +69,6 @@ export default function DetailedPost() {
               {user && (
                 <Button
                   onClick={() => {
-                    // eslint-disable-next-line max-len
                     const conversation = conversationList.find((conv) => conv.interlocutorId === currentPost.user.id);
                     if (conversation) navigate(`/conversation/${conversation.id}`);
                     else {

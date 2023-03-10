@@ -109,7 +109,7 @@ export default function Searchbar() {
               size="small"
               value={adressInput}
               onChange={(e) => {
-                // match un nombre contenant 0 à 5 chiffres ("" passe le test)
+                // for a number from 0 to 5 digits ("" is accepted)
                 if (zipcodeTypeRegex.test(e.target.value)) dispatch(typeAdress(e.target.value));
               }}
             />
