@@ -63,8 +63,8 @@ export default function DetailedPost() {
                 ))}
               </div>
             </div>
-            {user && (
-              <div className="detailed-post_right_message">
+            <div className="detailed-post_right_message">
+              {user && (
                 <Button
                   onClick={() => {
                     // eslint-disable-next-line max-len
