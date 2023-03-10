@@ -38,7 +38,7 @@ export default function DetailedPost() {
       {currentPost !== null && (
         <div className="detailed-post">
           <div className="detailed-post_left">
-            <img className="detailed-post_left_picture" src={currentPost.user.picture ? currentPost.user.picture : avatarPlaceholder} alt={currentPost.user.firstname} />
+            <img className="detailed-post_left_picture" src={currentPost.user.picture || avatarPlaceholder} alt="user avatar" />
             <p className="detailed-post_left_user">
               <NavLink
                 to={`/profil/${currentPost.user.id}`}

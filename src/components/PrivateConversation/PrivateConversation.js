@@ -81,7 +81,7 @@ export default function PrivateConversation() {
             >
               {!previousMessageIsFromSameUser && (
                 <div>
-                  <img src={message.userSender.picture ? message.userSender.picture : avatarPlaceholder} alt="profil" />
+                  <img src={message.userSender.picture || avatarPlaceholder} alt="user avatar" />
                   <div className="message_conversation_talk_username">{message.userSender.firstname}</div>
                 </div>
               )}
