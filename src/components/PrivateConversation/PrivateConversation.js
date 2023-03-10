@@ -4,6 +4,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SendIcon from '@mui/icons-material/Send';
 import { useDispatch, useSelector } from 'react-redux';
+import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
 import { useEffect, useRef } from 'react';
 import { loadMessages, typeMessage, submitMessage } from '../../actions/conversation';
 // import loader from '../../assets/img/icons/loader.gif';
@@ -80,7 +81,7 @@ export default function PrivateConversation() {
             >
               {!previousMessageIsFromSameUser && (
                 <div>
-                  <img src={message.userSender.picture} alt="profil" />
+                  <img src={message.userSender.picture ? message.userSender.picture : avatarPlaceholder} alt="profil" />
                   <div className="message_conversation_talk_username">{message.userSender.firstname}</div>
                 </div>
               )}

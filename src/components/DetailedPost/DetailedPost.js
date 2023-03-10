@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useLocation, NavLink, useNavigate } from 'react-router-dom';
 import { loadPost } from '../../actions/detailedpost';
 import FormModal from '../FormModal/FormModal';
+import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
 import { showFormModal } from '../../actions/app';
 import { convFormClear, convFormTypeTitle } from '../../actions/conversation';
 import ReviewPannel from '../ReviewPannel/ReviewPannel';
@@ -37,7 +38,7 @@ export default function DetailedPost() {
       {currentPost !== null && (
         <div className="detailed-post">
           <div className="detailed-post_left">
-            <img className="detailed-post_left_picture" src={currentPost.user.picture} alt={currentPost.user.firstname} />
+            <img className="detailed-post_left_picture" src={currentPost.user.picture ? currentPost.user.picture : avatarPlaceholder} alt={currentPost.user.firstname} />
             <p className="detailed-post_left_user">
               <NavLink
                 to={`/profil/${currentPost.user.id}`}
