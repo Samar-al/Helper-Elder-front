@@ -26,7 +26,7 @@
   }
 
   &_messages {
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
     text-align: left;
 
     &:not(:last-child) {
