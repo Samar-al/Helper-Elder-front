@@ -51,7 +51,7 @@ export default function UserProfile() {
         dispatch(convFormClear());
       };
     },
-    [],
+    [location],
   );
 
   return (

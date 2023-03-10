@@ -36,8 +36,12 @@
       }
 
       &_giver {
-        font-style: italic;
         margin-bottom: 0.5em;
+        font-weight: bold;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
 
       &_content {
@@ -62,7 +66,6 @@
       min-width: 120px;
       margin-right: 30px;
       margin-bottom: 0;
-      font-style: italic;
     }
   }
 }
