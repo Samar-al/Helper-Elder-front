@@ -1,6 +1,5 @@
 import './styles.scss';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 import { Rating } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import StarIcon from '@mui/icons-material/Star';

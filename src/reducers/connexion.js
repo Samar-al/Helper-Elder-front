@@ -4,7 +4,6 @@ import {
   TYPE_EMAIL,
   TYPE_PASSWORD,
 } from '../actions/connexion';
-// import { username, password } from '../components/Connexion/login';
 
 export const initialState = {
   emailInput: '',

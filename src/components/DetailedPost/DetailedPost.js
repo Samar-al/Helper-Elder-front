@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Button, Rating } from '@mui/material';
 import './styles.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -67,7 +68,6 @@ export default function DetailedPost() {
               {user && (
                 <Button
                   onClick={() => {
-                    // eslint-disable-next-line max-len
                     const conversation = conversationList.find((conv) => conv.interlocutorId === currentPost.user.id);
                     if (conversation) navigate(`/conversation/${conversation.id}`);
                     else {

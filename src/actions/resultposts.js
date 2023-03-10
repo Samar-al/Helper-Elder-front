@@ -2,6 +2,7 @@
 export const GET_FILTERED_POSTS = 'GET_FILTERED_POSTS-ELDERS';
 export const SEARCH_POSTS = 'SEARCH_POSTS';
 
+// Action creator
 export const getFilteredPosts = (data) => ({
   type: GET_FILTERED_POSTS,
   data: data,
