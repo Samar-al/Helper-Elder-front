@@ -25,6 +25,7 @@ import {
 
 import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
 import { zipcodeTypeRegex } from '../../utils/regex';
+import { formatDateForApi } from '../../utils/functions';
 
 export default function UserProfile() {
   const {
@@ -51,7 +52,7 @@ export default function UserProfile() {
       id: user.id,
       firstname: firstnameInput,
       lastname: lastnameInput,
-      birthdate: birthdateInput,
+      birthdate: formatDateForApi(birthdateInput),
       email: emailInput,
       postal_code: postalCodeInput,
       gender: selectedGender,

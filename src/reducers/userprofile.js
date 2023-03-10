@@ -11,6 +11,8 @@ import {
   CLEAR_PAGE_USER,
 } from '../actions/userprofile';
 
+import { formatDate } from '../utils/functions';
+
 const initialState = {
   firstnameInput: '',
   lastnameInput: '',
@@ -71,7 +73,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         firstnameInput: action.data.firstname,
         lastnameInput: action.data.lastname,
-        birthdateInput: action.data.birthdate,
+        birthdateInput: formatDate(action.data.birthdate),
         emailInput: action.data.email,
         postalCodeInput: action.data.postalCode,
         selectedGender: action.data.gender,
