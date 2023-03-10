@@ -20,12 +20,13 @@
 
   &_nav {
     display: flex;
+    flex-grow: 1;
+    justify-content: space-evenly;
   }
 
   &_nav_link {
-    padding: 1rem;
-    padding-bottom: 0.4em;
     color: inherit;
+    padding-bottom: 0.4em;
     background: 
       linear-gradient(currentColor 0 0) 
       bottom /var(--d, 0) 2px 
@@ -37,7 +38,7 @@
       --d: 70%;
     }
 
-    &-active {
+    &--active {
       font-weight: bold;
       color: vars.$main-color;
     }
@@ -85,10 +86,10 @@
     &_link {
       color: white;
       display: block;
-      padding: 1.5rem;
+      padding: 0.4em;
       font-size: 5vw;
 
-      &-active {
+      &--active {
         font-weight: bolder;
         font-style: italic;
       }
