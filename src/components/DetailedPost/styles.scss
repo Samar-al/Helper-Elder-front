@@ -55,20 +55,21 @@
   }
 
   &_top {
-    display: flex;
     margin: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
 
     &_date {
       font-style: italic;
       font-size: 0.8em;
+
+      & strong {
+        font-weight: bold;
+      }
     }
   
     &_title {
       margin-right: 5px;
       font-weight: bold;
+      margin-bottom: 0.2em;
     }
   }
   
