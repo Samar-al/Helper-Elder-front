@@ -17,6 +17,8 @@ import { zipcodeTypeRegex } from '../../utils/regex';
 import FontSizeToggler from '../FontSizeToggler/FontSizeToggler';
 import { searchPosts } from '../../actions/resultposts';
 
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
 export default function Searchbar() {
   const { adressInput, selectedServices, postType } = useSelector((state) => state.searchbar);
   const dispatch = useDispatch();
@@ -74,7 +76,17 @@ export default function Searchbar() {
               The list is not created as long as services are not loaded */}
               {serviceList && serviceList.map((service) => (
                 <MenuItem key={service.name} value={service.id}>
-                  <Checkbox checked={selectedServices.includes(service.id)} />
+                  <Checkbox
+                    {...label}
+                    sx={{
+                      color: '#104b4d',
+                      '&.Mui-checked': {
+                        color: '#104b4d',
+                      },
+                    }}
+                    checked={selectedServices.includes(service.id)}
+                  />
+
                   <ListItemText primary={service.name} />
                 </MenuItem>
               ))}
