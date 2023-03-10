@@ -24,7 +24,7 @@ import {
 } from '../../actions/userprofile';
 
 import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
-import { zipcodeTypeRegex } from '../../utils/regex';
+import { zipcodeTypeRegex, birthdateTypeRegex } from '../../utils/regex';
 import { formatDateForApi } from '../../utils/functions';
 
 export default function UserProfile() {
@@ -96,7 +96,9 @@ export default function UserProfile() {
                 size="small"
                 label="Date de naissance"
                 value={birthdateInput}
-                onChange={(event) => dispatch(profileEditTypeBirthdate(event.target.value))}
+                onChange={(event) => {
+                  if (birthdateTypeRegex.test(event.target.value)) dispatch(profileEditTypeBirthdate(event.target.value));
+                }}
               />
             </div>
             <div className="userprofile_form_item">
