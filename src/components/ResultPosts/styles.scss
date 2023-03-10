@@ -42,10 +42,6 @@
           }
         }
 
-        &_name {
-
-        }
-
         &_rating {
           &--small {
             margin-top: 0.5em;
@@ -81,8 +77,14 @@
           margin-bottom: 0.5em;
         }
 
-        &_date {
+        &_date, &_localisation {
           overflow-wrap: anywhere;
+          font-size: 0.8em;
+
+          & strong {font-weight: bold}
+        }
+
+        &_date {
           margin-bottom: 0.5em;
         }
 

@@ -47,12 +47,12 @@ export default function DetailedPost() {
             </p>
             <Rating value={currentPost.user.avgRating} readOnly />
             <p className="detailed-post_left_service_rate">Tarifs {currentPost.hourlyRate}€ de l'heure</p>
-            <p>{currentPost.postalCode}</p> {/* TODO MAP */}
+            <p>Localisation : {currentPost.postalCode}{currentPost.radius > 0 ? ` (rayon: ${currentPost.radius} km)` : ''}</p> {/* TODO MAP */}
           </div>
           <div className="detailed-post_right">
             <div className="detailed-post_right_top">
               <h1 className="detailed-post_right_top_title">{currentPost.title}</h1>
-              <span className="detailed-post_right_top_date">| {currentPost.user.type === 1 ? 'Demande' : 'Offre' } postée le {formatDateWithHour(currentPost.createdAt)}</span>
+              <p className="detailed-post_right_top_date"><strong>{user.type === 1 ? 'Demande' : 'Offre' }</strong> postée le {formatDateWithHour(currentPost.createdAt)}</p>
             </div>
             <div className="detailed-post_right_content">
               <p className="detailed-post_right_content_text">{currentPost.content}</p>

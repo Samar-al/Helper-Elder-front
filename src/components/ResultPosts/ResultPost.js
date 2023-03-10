@@ -1,6 +1,5 @@
 import './styles.scss';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 import { Rating } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import StarIcon from '@mui/icons-material/Star';
@@ -17,6 +16,7 @@ export default function ResultPost({
   id,
   tag,
   workType,
+  radius,
 }) {
   return (
     <div className="search_results_list_item">
@@ -28,7 +28,8 @@ export default function ResultPost({
       </NavLink>
       <NavLink to={`/annonce/${id}`} className="search_results_list_item_post">
         <h3 className="search_results_list_item_post_title">{title}</h3>
-        <div className="search_results_list_item_post_date">{postalCode} - posté le {formatDateWithHour(createdAt)}</div>
+        <div className="search_results_list_item_post_localisation">Localisation : {postalCode}{radius > 0 ? ` (rayon: ${radius} km)` : ''}</div>
+        <div className="search_results_list_item_post_date"><strong>{user.type === 1 ? 'Demande' : 'Offre' }</strong> postée le {formatDateWithHour(createdAt)}</div>
         <div className="search_results_list_item_post_content"><p className="search_results_list_item_post_content_text">{content}</p></div>
         <div className="search_results_list_item_post_services">
           <SmallTag type="light" label={`Service ${workType ? 'ponctuel' : 'régulier'}`} />
@@ -46,6 +47,7 @@ ResultPost.propTypes = {
       picture: PropTypes.string.isRequired,
       firstname: PropTypes.string.isRequired,
       avgRating: PropTypes.number.isRequired,
+      type: PropTypes.number.isRequired,
     }).isRequired,
   title: PropTypes.string.isRequired,
   postalCode: PropTypes.string.isRequired,
@@ -56,4 +58,5 @@ ResultPost.propTypes = {
     name: PropTypes.string.isRequired,
   }).isRequired).isRequired,
   workType: PropTypes.bool.isRequired,
+  radius: PropTypes.number.isRequired,
 };
