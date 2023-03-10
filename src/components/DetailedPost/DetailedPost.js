@@ -8,6 +8,8 @@ import FormModal from '../FormModal/FormModal';
 import { showFormModal } from '../../actions/app';
 import { convFormClear, convFormTypeTitle } from '../../actions/conversation';
 import ReviewPannel from '../ReviewPannel/ReviewPannel';
+import SmallTag from '../SmallTag/SmallTag';
+import { formatDateWithHour } from '../../utils/functions';
 
 export default function DetailedPost() {
   const dispatch = useDispatch();
@@ -44,20 +46,25 @@ export default function DetailedPost() {
               </NavLink>
             </p>
             <Rating value={currentPost.user.avgRating} readOnly />
-            <ul className="detailed-post_left_service">
-              Services proposés:
-              {currentPost.tag.map((service) => (
-                <li key={service.id} className="detailed-post_left_service_item">{service.name}</li>
-              ))}
-            </ul>
             <p className="detailed-post_left_service_rate">Tarifs {currentPost.hourlyRate}€ de l'heure</p>
             <p>{currentPost.postalCode}</p> {/* TODO MAP */}
           </div>
           <div className="detailed-post_right">
-            <h1 className="detailed-post_right_title">{currentPost.title} <span className="detailed-post_right_title_subtitle">Service {currentPost.workType ? 'ponctuel' : 'régulier'} </span></h1>
-            <p className="detailed-post_right_content">{currentPost.content}</p>
-            <div className="detailed-post_right_message">
-              {user && (
+            <div className="detailed-post_right_top">
+              <h1 className="detailed-post_right_top_title">{currentPost.title}</h1>
+              <span className="detailed-post_right_top_date">posté le {formatDateWithHour(currentPost.createdAt)}</span>
+            </div>
+            <div className="detailed-post_right_content">
+              <p className="detailed-post_right_content_text">{currentPost.content}</p>
+              <div className="detailed-post_right_content_service">
+                <SmallTag type="dark" label={`Service ${currentPost.workType ? 'ponctuel' : 'régulier'}`} />
+                {currentPost.tag.map((service) => (
+                  <SmallTag key={service.id} type="dark" label={service.name} />
+                ))}
+              </div>
+            </div>
+            {user && (
+              <div className="detailed-post_right_message">
                 <Button
                   onClick={() => {
                     // eslint-disable-next-line max-len

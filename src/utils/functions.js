@@ -5,7 +5,7 @@ export function formatDate(pDate) {
 
 export function formatDateWithHour(pDate) {
   const time = (new Intl.DateTimeFormat('fr', { timeStyle: 'short' })).format(new Date(pDate));
-  return `Le ${formatDate(pDate)} à ${time}`;
+  return `${formatDate(pDate)} à ${time}`;
 }
 
 export function formatDateForApi(pDate) {

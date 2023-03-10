@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { displayInfoMessages, hideFormModal } from '../actions/app';
+import { displayInfoMessages, hideFormModal, redirectAction } from '../actions/app';
 import {
   convFormClear,
   CONV_FORM_SUBMIT_CONV,
@@ -58,6 +58,7 @@ const conversationMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          errorManagement(error.response.status, store);
         });
       break;
     case LOAD_MESSAGES:
@@ -72,7 +73,8 @@ const conversationMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
-          errorManagement(error.response.status, store);
+          if (error.response.status === 403) store.dispatch(redirectAction('/conversation'));
+          else errorManagement(error.response.status, store);
         });
       break;
     case SUBMIT_MESSAGE:
@@ -89,6 +91,7 @@ const conversationMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          errorManagement(error.response.status, store);
         });
       break;
     default:
