@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { formatDateWithHour } from '../../utils/functions';
+import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
 import { loadConversations } from '../../actions/conversation';
 
 export default function ListConversation() {
@@ -28,7 +29,7 @@ export default function ListConversation() {
         <div key={conversation.id} className="conversation_section">
           <NavLink className="conversation_section_list" to={`/conversation/${conversation.id}`}>
             <div className="conversation_section_list_picture">
-              <img src={conversation.picture} alt="profil" />
+              <img src={conversation.picture || avatarPlaceholder} alt="user avatar" />
             </div>
             <div className="conversation_section_list_content">
               <p className="conversation_section_list_content_name">{conversation.interlocutor}</p>

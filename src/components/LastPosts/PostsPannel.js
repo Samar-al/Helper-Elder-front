@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import Post from './Post';
+import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
 
 // panneau dernières annonces (offre/demande)
 export default function PostsPannel({ title, posts }) {
@@ -7,7 +8,7 @@ export default function PostsPannel({ title, posts }) {
     <div className="lastposts_pannel">
       <div className="lastposts_pannel_title"><h2>{title}</h2></div>
       <div className="lastposts_pannel_postlist">
-        {posts.map((post) => <Post key={post.id} picture={post.user.picture} {...post} />)}
+        {posts.map((post) => <Post key={post.id} picture={post.user.picture ? post.user.picture : avatarPlaceholder} {...post} />)}
       </div>
     </div>
   );

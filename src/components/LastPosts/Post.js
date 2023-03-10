@@ -2,6 +2,7 @@ import './styles.scss';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { formatDate } from '../../utils/functions';
+import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
 
 // une annonce parmis les annonces à afficher en homepage
 export default function Post({
@@ -16,7 +17,7 @@ export default function Post({
     <div className="lastposts_pannel_postlist_post">
       <NavLink to={`/annonce/${id}`}>
         <div className="lastposts_pannel_postlist_post_header">
-          <img alt={title} src={picture} className="lastposts_pannel_postlist_post_header_picture" />
+          <img alt="user avatar" src={picture || avatarPlaceholder} className="lastposts_pannel_postlist_post_header_picture" />
           <div className="lastposts_pannel_postlist_post_header_info">
             <h3 className="lastposts_pannel_postlist_post_header_info_title">{title}</h3>
             <p className="lastposts_pannel_postlist_post_header_info_city">{postalCode}</p>

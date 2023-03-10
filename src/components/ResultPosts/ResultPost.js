@@ -6,6 +6,7 @@ import StarIcon from '@mui/icons-material/Star';
 import { amber } from '@mui/material/colors';
 import { formatDateWithHour } from '../../utils/functions';
 import SmallTag from '../SmallTag/SmallTag';
+import avatarPlaceholder from '../../../public/img/placeholders/avatar_placeholder.png';
 
 export default function ResultPost({
   user,
@@ -21,7 +22,7 @@ export default function ResultPost({
   return (
     <div className="search_results_list_item">
       <NavLink to={`/profil/${user.id}`} className="search_results_list_item_user">
-        <div className="search_results_list_item_user_picture"><img src={user.picture} alt={user.firstname} /></div>
+        <div className="search_results_list_item_user_picture"><img src={user.picture || avatarPlaceholder} alt="user avatar" /></div>
         <div className="search_results_list_item_user_name">{user.firstname}</div>
         <div className="search_results_list_item_user_rating--large"><Rating value={user.avgRating} size="small" readOnly /></div>
         <div className="search_results_list_item_user_rating--small">{user.avgRating} <StarIcon sx={{ fontSize: 12, color: amber[500] }} /></div>

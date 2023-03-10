@@ -64,7 +64,7 @@ export default function UserProfile() {
   return (
     <div className="userprofile">
       <div className="userprofile_info_media">
-        <img className="userprofile_picture" alt="userprofile" src={user.picture ? user.picture : avatarPlaceholder} />
+        <img className="userprofile_picture" alt="user avatar" src={user.picture || avatarPlaceholder} />
       </div>
       <div className="userprofile_info_text">
         <form onSubmit={(event) => submitForm(event)}>
