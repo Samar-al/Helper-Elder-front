@@ -6,19 +6,19 @@ export default function Footer() {
     <div className="footer">
       <NavLink
         to="a-propos"
-        className={({ isActive }) => (isActive ? 'footer_link footer_link-active' : 'footer_link')}
+        className={({ isActive }) => (isActive ? 'footer_link footer_link--active' : 'footer_link')}
       >
         À propos
       </NavLink>
       <NavLink
         to="mentions-légales"
-        className={({ isActive }) => (isActive ? 'footer_link footer_link-active' : 'footer_link')}
+        className={({ isActive }) => (isActive ? 'footer_link footer_link--active' : 'footer_link')}
       >
         Mentions légales
       </NavLink>
       <NavLink
         to="contact"
-        className={({ isActive }) => (isActive ? 'footer_link footer_link-active' : 'footer_link')}
+        className={({ isActive }) => (isActive ? 'footer_link footer_link--active' : 'footer_link')}
       >
         Contact
       </NavLink>

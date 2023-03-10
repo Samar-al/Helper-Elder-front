@@ -32,7 +32,7 @@ export default function Header() {
           <NavLink
             to="/"
             onClick={() => dispatch(closeBurger())}
-            className={({ isActive }) => (isActive ? 'header_nav_link header_nav_link-active' : 'header_nav_link')}
+            className={({ isActive }) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
           >
             Accueil
           </NavLink>
@@ -43,7 +43,7 @@ export default function Header() {
               <NavLink
                 to="/connexion"
                 onClick={() => dispatch(closeBurger())}
-                className={({ isActive }) => (isActive ? 'header_nav_link header_nav_link-active' : 'header_nav_link')}
+                className={({ isActive }) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
               >
                 Connexion
               </NavLink>
@@ -53,7 +53,7 @@ export default function Header() {
               <NavLink
                 to="/inscription"
                 onClick={() => dispatch(closeBurger())}
-                className={({ isActive }) => (isActive ? 'header_nav_link header_nav_link-active' : 'header_nav_link')}
+                className={({ isActive }) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
               >
                 Inscription
               </NavLink>
@@ -66,7 +66,7 @@ export default function Header() {
               <NavLink
                 to="/poster-une-annonce"
                 onClick={() => dispatch(closeBurger())}
-                className={({ isActive }) => (isActive ? 'header_nav_link header_nav_link-active' : 'header_nav_link')}
+                className={({ isActive }) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
               >
                 Poster une annonce
               </NavLink>
@@ -75,7 +75,7 @@ export default function Header() {
               <NavLink
                 to="/mon-profil"
                 onClick={() => dispatch(closeBurger())}
-                className={({ isActive }) => (isActive ? 'header_nav_link header_nav_link-active' : 'header_nav_link')}
+                className={({ isActive }) => (isActive ? 'header_nav_link header_nav_link--active' : 'header_nav_link')}
               >
                 Mon profil
               </NavLink>
