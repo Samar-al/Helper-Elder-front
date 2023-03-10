@@ -45,7 +45,7 @@
         flex-direction: column;
 
         &_comment {
-          word-wrap: break-word;
+          overflow-wrap: anywhere;
         }
       }
     }

@@ -38,6 +38,7 @@
           &_picture {
             width: 4em;
             height: 4em;
+            border-radius: 50%;
           }
 
           &_info {
@@ -49,7 +50,7 @@
             &_title {
               text-align: left;
               display: -webkit-box;
-              -webkit-line-clamp: 1; /* number of lines to show */
+              -webkit-line-clamp: 2; /* number of lines to show */
               -webkit-box-orient: vertical;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -70,7 +71,7 @@
 
         &:hover {
           background-color:  vars.$hover-white-color;
-          transition: 0.2s;
+          transition: background-color 0.2s;
         }
       }
     }

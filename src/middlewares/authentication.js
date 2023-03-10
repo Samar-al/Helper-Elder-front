@@ -8,6 +8,7 @@ import {
   saveLoggedUser,
 } from '../actions/authentication';
 import { loginFormThrowErrors } from '../actions/connexion';
+import { loadConversations } from '../actions/conversation';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 
 const authenticationMiddleware = (store) => (next) => (action) => {
@@ -26,6 +27,7 @@ const authenticationMiddleware = (store) => (next) => (action) => {
           // saving the jwt token and then using it to fetch the logged user from API
           store.dispatch(saveJwt(response.data.token));
           store.dispatch(fetchLoggedUser(response.data.token));
+          store.dispatch(loadConversations());
         })
         .catch((error) => {
           console.log(error);

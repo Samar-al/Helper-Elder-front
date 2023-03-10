@@ -1,20 +1,21 @@
 import './styles.scss';
-import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { loadConversations } from '../../actions/conversation';
+import { NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { formatDateWithHour } from '../../utils/functions';
+import { loadConversations } from '../../actions/conversation';
 
 export default function ListConversation() {
   const { conversationList } = useSelector((state) => state.conversation);
   const dispatch = useDispatch();
 
+  // no second parameter so conversations will reload every time
   useEffect(
     () => {
-      dispatch(loadConversations());
+      if (conversationList.length === 0) dispatch(loadConversations());
     },
-    [],
   );
+
   return (
     <div className="conversation">
       <div className="conversation_header">
@@ -35,7 +36,7 @@ export default function ListConversation() {
               <p className="conversation_section_list_content_content">Dernier message: {conversation.lastMessage}</p>
             </div>
             <div className="conversation_section_list_date">
-              <p className="conversation_section_list_date_time">{formatDateWithHour(conversation.updateDate)}</p>
+              <p className="conversation_section_list_date_time">Le {formatDateWithHour(conversation.updateDate)}</p>
               {/* If there are new messages */}
               {/* <p className="conversation_section_list_date_num">2</p> */}
             </div>

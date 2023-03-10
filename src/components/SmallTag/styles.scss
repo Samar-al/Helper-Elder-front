@@ -1,0 +1,23 @@
+@use '../../styles/vars';
+
+.small_tag {
+  padding: .4em;
+  
+  color: black;
+  border-radius: 0.5em;
+  font-size: 0.8em;
+  margin-right: 0.5em;
+  margin-top: 0.5em;
+
+  &--light {
+    color: vars.$main-color;
+    font-weight: bold;
+    background-color: vars.$background-color;
+  }
+
+  &--dark {
+    background-color: vars.$light-color;
+    font-weight: bold;
+    color: white;
+  }
+}

@@ -1,11 +1,12 @@
 @use '../../styles/vars';
 
 .detailed-post {
-
+  display: flex;
+  flex-direction: column-reverse;
   justify-content: center;
 }
 .detailed-post_left {
-  margin:2rem;
+  margin:0 2rem 2rem 2rem;
   border:solid 2px vars.$main-color;
   border-radius: 5px;
   padding: 15px;
@@ -13,6 +14,7 @@
   &_picture {
     width: 100px;
     margin: 5px;
+    border-radius: 50%;
   }
 
   &_user {
@@ -22,17 +24,6 @@
     &:hover {
       text-decoration: underline;
       color: vars.$main-color ;
-    }
-  }
-
-  &_service {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.4em;
-    margin-bottom: 10px;
-
-    &_rate {
-      margin-bottom: 5px;
     }
   }
 }
@@ -63,33 +54,54 @@
     }
   }
 
-  &_title {
+  &_top {
+    display: flex;
     margin: 10px;
-    font-weight: bold;
+    justify-content: center;
+    flex-wrap: wrap;
 
-    &_subtitle {
-      font-weight: lighter;
-      font-size: 0.9em;
+    &_date {
       font-style: italic;
     }
+  
+    &_title {
+      margin-right: 5px;
+      font-weight: bold;
+    }
   }
+  
 
   &_content {
     text-align: justify;
-    word-wrap: break-word;
     display: flex;
+    flex-direction: column;
     flex: 1;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+
+    &_text {
+      overflow-wrap: anywhere;
+    }
+
+    &_service {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
   }
 }
 
-@media (min-width: vars.$small-breakpoint) {
+@media (min-width: vars.$medium-breakpoint) {
   .detailed-post {
-    display: flex;
+    flex-direction: row;
 
     &_right_title {
       margin-top: 10px;
       margin-bottom: 10px;
+    }
+
+    &_left {
+      margin: 2rem 0 2rem 2rem;
     }
   }
 }

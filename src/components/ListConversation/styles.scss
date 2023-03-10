@@ -44,7 +44,6 @@
     display: flex;
     justify-content: center;
     margin: 0 1em;
-    padding-bottom: 0.5em;
 
     &:not(:last-child) {
       border-bottom: 1px solid grey;
@@ -106,7 +105,7 @@
         flex-direction: column;
 
         &_time {
-          font-size: .6em;
+          font-size: .8em;
           color: rgb(129, 122, 122);
           display: flex;
           justify-content: center;
