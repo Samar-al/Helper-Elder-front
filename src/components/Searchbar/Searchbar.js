@@ -12,16 +12,31 @@ import {
 } from '@mui/material';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { selectPostType, selectServices, typeAdress } from '../../actions/searchbar';
+import { useNavigate } from 'react-router-dom';
+import {
+  searchbarThrowErrors, selectPostType, selectServices, typeAdress,
+} from '../../actions/searchbar';
 import { zipcodeTypeRegex } from '../../utils/regex';
 import FontSizeToggler from '../FontSizeToggler/FontSizeToggler';
-import { searchPosts } from '../../actions/resultposts';
+import { getFilteredPosts, searchPosts } from '../../actions/resultposts';
 
 export default function Searchbar() {
   const { adressInput, selectedServices, postType } = useSelector((state) => state.searchbar);
   const dispatch = useDispatch();
   const { serviceList } = useSelector((state) => state.app);
-  // const { valueSearchBar } = useSelector((state) => state.post);
+  const navigate = useNavigate();
+
+  function validateSearch() {
+    const formErrors = [];
+    if (!['offer', 'request'].includes(postType)) formErrors.push('Veuillez sélectionner un type d\'annonce pour votre recherche (Offre/Demande)');
+    if ([1, 4].includes(adressInput.length) || (adressInput.length === 3 && !['971', '972', '973', '974', '976'].includes(adressInput))) formErrors.push('Veuillez entrer un code postal ou numéro de département valide (pour la Corse, entrez 20)');
+
+    dispatch(searchbarThrowErrors(formErrors));
+    if (formErrors.length !== 0) {
+      return false;
+    }
+    return true;
+  }
 
   return (
     <div className="searchbar">
@@ -30,7 +45,9 @@ export default function Searchbar() {
         className="searchbar_form"
         onSubmit={(event) => {
           event.preventDefault();
-          dispatch(searchPosts());
+          dispatch(getFilteredPosts([]));
+          if (validateSearch()) dispatch(searchPosts());
+          navigate('/annonce');
         }}
       >
         <div className="searchbar_form_item">
@@ -74,7 +91,7 @@ export default function Searchbar() {
               The list is not created as long as services are not loaded */}
               {serviceList && serviceList.map((service) => (
                 <MenuItem key={service.name} value={service.id}>
-                  <Checkbox checked={selectedServices.includes(service.id)} />
+                  <Checkbox sx={{ '&.Mui-checked': { color: '#104b4d' } }} checked={selectedServices.includes(service.id)} />
                   <ListItemText primary={service.name} />
                 </MenuItem>
               ))}
@@ -88,7 +105,7 @@ export default function Searchbar() {
           à
           <div className="searchbar_form_item">
             <TextField
-              label="Code postal"
+              label="Code postal/Dépt."
               size="small"
               value={adressInput}
               onChange={(e) => {

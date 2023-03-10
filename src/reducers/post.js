@@ -5,7 +5,6 @@ export const initialState = {
   currentPost: null,
   currentReviews: [],
   postsList: [],
-  // valueSearchBar: '',
 };
 
 const reducer = (state = initialState, action = {}) => {

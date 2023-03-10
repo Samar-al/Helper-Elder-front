@@ -115,8 +115,8 @@ export default function CreatePostForm() {
         </div>
         <div className="form_radio">
           <RadioGroup row name="radio_button_group" value={selectedPonctual} onChange={(event) => dispatch(selectPonctual(event.target.value))}>
-            <FormControlLabel value="true" control={<Radio />} label="Service ponctuel" />
-            <FormControlLabel value="false" control={<Radio />} label="Service régulier" />
+            <FormControlLabel value="true" control={<Radio sx={{ '&.Mui-checked': { color: '#104b4d' } }} />} label="Service ponctuel" />
+            <FormControlLabel value="false" control={<Radio sx={{ '&.Mui-checked': { color: '#104b4d' } }} />} label="Service régulier" />
           </RadioGroup>
         </div>
         <div className="form_input">
@@ -144,7 +144,7 @@ export default function CreatePostForm() {
               The list is not created as long as services are not loaded */}
               {serviceList && serviceList.map((service) => (
                 <MenuItem key={service.name} value={service.id}>
-                  <Checkbox checked={selectedServices.includes(service.id)} />
+                  <Checkbox sx={{ '&.Mui-checked': { color: '#104b4d' } }} checked={selectedServices.includes(service.id)} />
                   <ListItemText primary={service.name} />
                 </MenuItem>
               ))}

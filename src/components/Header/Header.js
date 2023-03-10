@@ -9,7 +9,7 @@ import { displayInfoMessages } from '../../actions/app';
 export default function Header() {
   const { isBurgerOpen } = useSelector((state) => state.burger);
   const { user } = useSelector((state) => state.authentication);
-
+  const burgerClass = isBurgerOpen ? 'header_burger header_burger_fixed' : 'header_burger';
   const dispatch = useDispatch();
 
   function handleSubmitLogout() {
@@ -101,7 +101,7 @@ export default function Header() {
           </>
         )}
       </div>
-      <button type="button" className="header_burger">
+      <button type="button" className={burgerClass}>
         <span
           className="burger_bar"
           onClick={() => dispatch(toggleBurger())}
