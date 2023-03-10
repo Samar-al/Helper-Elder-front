@@ -1,4 +1,5 @@
 import {
+  GET_REVIEWS,
   REVIEW_FORM_CLEAR,
   REVIEW_FORM_ERRORS_THROW,
   REVIEW_FORM_SELECT_RATE,
@@ -9,6 +10,7 @@ export const initialState = {
   rateInput: 0,
   commentInput: '',
   errors: [],
+  currentReviews: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -17,6 +19,7 @@ const reducer = (state = initialState, action = {}) => {
     case REVIEW_FORM_TYPE_COMMENT: return { ...state, commentInput: action.input };
     case REVIEW_FORM_CLEAR: return { ...initialState };
     case REVIEW_FORM_ERRORS_THROW: return { ...state, errors: action.errors };
+    case GET_REVIEWS: return { ...state, currentReviews: action.data };
     default: return state;
   }
 };

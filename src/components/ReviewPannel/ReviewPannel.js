@@ -10,8 +10,7 @@ export default function ReviewPannel({ reviews }) {
         {reviews.map((review) => (
           <div className="reviews_pannel_item" key={review.id}>
             <div className="reviews_pannel_item_giver">
-              {/* // TODO display the first name of review giver here */}
-              Avis anonyme
+              {review.author.firstname}
             </div>
             <div className="reviews_pannel_item_content">
               <div className="reviews_pannel_item_content_rate">
