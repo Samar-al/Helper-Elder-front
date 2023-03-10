@@ -1,8 +1,14 @@
 import './styles.scss';
 import PropTypes from 'prop-types';
 import { Rating } from '@mui/material';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getReviews } from '../../actions/review';
 
 export default function ReviewPannel({ reviews }) {
+  const dispatch = useDispatch();
+  useEffect(() => () => dispatch(getReviews([])), []);
+
   return (
     <div className="reviews">
       <div className="reviews_pannel">
