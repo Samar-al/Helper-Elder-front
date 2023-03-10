@@ -7,6 +7,8 @@ export const zipcodeRegex = /^\d{5}$/;
 
 export const emailRegex = /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
+export const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
+
 /*
   Old regex with cents : /^\d{0,3}(,\d{0,2})?$/;
 

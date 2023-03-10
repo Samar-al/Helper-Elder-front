@@ -53,14 +53,12 @@ export default function PrivateConversation() {
     <div className="message">
       <div className="message_header">
         <div className="message_header_button">
-          <div className="message_header_back">
-            <NavLink to="/conversation">
-              <ArrowBackIcon />
-            </NavLink>
+          <NavLink className="message_header_back" to="/conversation">
+            <ArrowBackIcon />
             <p>Retour</p>
-          </div>
+          </NavLink>
           <div className="message_header_title">
-            <p>{ messagesList.length !== 0 && messagesList[0].conversation ? messagesList[0].conversation.title : ''}</p>
+            { messagesList.length !== 0 && messagesList[0].conversation ? messagesList[0].conversation.title : ''}
           </div>
           <div className="message_header_user">
             <p>{messagesList.length !== 0 && getInterlocutor().firstname}</p>

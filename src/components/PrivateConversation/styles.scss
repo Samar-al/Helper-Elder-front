@@ -26,6 +26,10 @@
       display: flex;
       align-items: center;
       padding-left: 0.5em;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     &_button {
@@ -50,7 +54,12 @@
     &_title {
       overflow: hidden;
       word-break: break-all;
-      padding: 1.5em;
+      margin: 0 1em;
+      display: -webkit-box;
+        -webkit-line-clamp: 2; /* number of lines to show */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     &_user {
@@ -180,6 +189,7 @@
       border-radius: 30px;
       align-items: center;
       justify-content: space-between;
+      border: 2px solid vars.$light-color;
 
       &_text {
         width: 90%;
@@ -205,6 +215,10 @@
         & img {
           width: 30px;
         }
+      }
+
+      &:hover {
+        border: 2px solid vars.$main-color;
       }
     }
   }

@@ -5,6 +5,9 @@
   margin: 2rem;
   border-radius: 10px;
   border: 2px, solid, vars.$main-color;
+  width: 80%;
+  max-width: 1000px;
+  flex-direction: column;
 
     &_info_media {
       
@@ -95,7 +98,6 @@
 
     &_form_item {
       margin-bottom: 0.5rem;
-      width: 90%;
     }
 }
 
@@ -104,6 +106,7 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
+    flex-direction: row;
 
     &_info_media {
       width: 300px;

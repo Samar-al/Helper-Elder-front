@@ -40,6 +40,18 @@
   &_message {
     margin-top: 1em;
     text-align: right;
+    p {
+      font-weight: lighter;
+      font-size: 0.9em;
+    }
+
+    &_link {
+      font-weight: bold;
+      &:hover {
+        text-decoration: underline;
+        color: vars.$main-color;
+      }
+    }
   }
 
   &_top {

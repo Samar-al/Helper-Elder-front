@@ -71,8 +71,13 @@ export default function DetailedPost() {
                   variant="contained"
                 >Envoyer un message
                 </Button>
-              </div>
-            )}
+              )}
+              {!user && (
+                <p>
+                  <NavLink className="detailed-post_right_message_link" to="/connexion">Connectez-vous</NavLink> ou <NavLink className="detailed-post_right_message_link" to="/inscription">créez un compte</NavLink> pour répondre à cette annonce.
+                </p>
+              )}
+            </div>
           </div>
         </div>
       )}

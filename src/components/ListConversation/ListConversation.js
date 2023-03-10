@@ -20,6 +20,9 @@ export default function ListConversation() {
       <div className="conversation_header">
         Mes Conversations
       </div>
+      {conversationList.length === 0 && (
+        <div className="conversation_message"> Vous n'avez aucune conversation.</div>
+      )}
       {conversationList.map((conversation) => (
         <div key={conversation.id} className="conversation_section">
           <NavLink className="conversation_section_list" to={`/conversation/${conversation.id}`}>
