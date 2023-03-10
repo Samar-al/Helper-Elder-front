@@ -2,7 +2,10 @@
 
 .conversation {
   width: 100%;
-  
+  flex:1;
+  &_message {
+    font-style: italic;
+  }  
   &_header {
   width: 100%;
   height: 5em;
@@ -34,15 +37,21 @@
       height: 2em;
       }
     }
+
   }
 
   &_section {
     display: flex;
     justify-content: center;
-    margin: 0 1em 0.5em 1em;
+    margin: 0 1em;
 
     &:not(:last-child) {
       border-bottom: 1px solid grey;
+    }
+
+    &:hover {
+      background-color:  vars.$hover-white-color;
+      transition: 0.2s;
     }
 
     &_list {

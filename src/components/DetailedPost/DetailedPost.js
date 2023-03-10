@@ -2,7 +2,7 @@ import { Button, Rating } from '@mui/material';
 import './styles.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { useLocation, NavLink } from 'react-router-dom';
+import { useLocation, NavLink, useNavigate } from 'react-router-dom';
 import { loadPost } from '../../actions/detailedpost';
 import FormModal from '../FormModal/FormModal';
 import { showFormModal } from '../../actions/app';
@@ -17,6 +17,8 @@ export default function DetailedPost() {
   const { currentPost, currentReviews } = useSelector((state) => state.post);
   const { formModalIsVisible } = useSelector((state) => state.app);
   const { user } = useSelector((state) => state.authentication);
+  const { conversationList } = useSelector((state) => state.conversation);
+  const navigate = useNavigate();
 
   useEffect(
     () => {
@@ -65,14 +67,24 @@ export default function DetailedPost() {
               <div className="detailed-post_right_message">
                 <Button
                   onClick={() => {
-                    dispatch(showFormModal('conversation'));
-                    dispatch(convFormTypeTitle(`RE: ${currentPost.title}`));
+                    // eslint-disable-next-line max-len
+                    const conversation = conversationList.find((conv) => conv.interlocutorId === currentPost.user.id);
+                    if (conversation) navigate(`/conversation/${conversation.id}`);
+                    else {
+                      dispatch(showFormModal('conversation'));
+                      dispatch(convFormTypeTitle(`RE: ${currentPost.title}`));
+                    }
                   }}
                   variant="contained"
                 >Envoyer un message
                 </Button>
-              </div>
-            )}
+              )}
+              {!user && (
+                <p>
+                  <NavLink className="detailed-post_right_message_link" to="/connexion">Connectez-vous</NavLink> ou <NavLink className="detailed-post_right_message_link" to="/inscription">créez un compte</NavLink> pour répondre à cette annonce.
+                </p>
+              )}
+            </div>
           </div>
         </div>
       )}

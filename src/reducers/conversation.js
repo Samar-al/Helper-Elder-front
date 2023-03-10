@@ -15,14 +15,19 @@ const initialState = {
   messageInput: '',
   conversationList: [],
   messagesList: [],
-  erros: [],
+  errors: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case CONV_FORM_TYPE_TITLE: return { ...state, titleInput: action.input };
     case CONV_FORM_TYPE_MSG: return { ...state, messageInput: action.input };
-    case CONV_FORM_CLEAR: return { ...initialState };
+    case CONV_FORM_CLEAR: return {
+      ...state,
+      titleInput: '',
+      messageInput: '',
+      errors: [],
+    };
     case GET_CONVERSATIONS: return { ...state, conversationList: action.data };
     case GET_MESSAGES: return { ...state, messagesList: action.data };
     case TYPE_MESSAGE: return { ...state, messageInput: action.message };

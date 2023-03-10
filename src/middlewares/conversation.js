@@ -48,6 +48,7 @@ const conversationMiddleware = (store) => (next) => (action) => {
               id: response.data[0][i].id,
               title: response.data[0][i].title,
               interlocutor: response.data[1][i].firstname,
+              interlocutorId: response.data[1][i].id,
               picture: response.data[1][i].picture,
               lastMessage: response.data[2][i].content,
               updateDate: response.data[0][i].updated_at,

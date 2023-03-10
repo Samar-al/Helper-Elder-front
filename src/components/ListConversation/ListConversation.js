@@ -1,25 +1,29 @@
 import './styles.scss';
-import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { loadConversations } from '../../actions/conversation';
+import { NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { formatDateWithHour } from '../../utils/functions';
+import { loadConversations } from '../../actions/conversation';
 
 export default function ListConversation() {
   const { conversationList } = useSelector((state) => state.conversation);
   const dispatch = useDispatch();
 
+  // no second parameter so conversations will reload every time
   useEffect(
     () => {
-      dispatch(loadConversations());
+      if (conversationList.length === 0) dispatch(loadConversations());
     },
-    [],
   );
+
   return (
     <div className="conversation">
       <div className="conversation_header">
         Mes Conversations
       </div>
+      {conversationList.length === 0 && (
+        <div className="conversation_message"> Vous n'avez aucune conversation.</div>
+      )}
       {conversationList.map((conversation) => (
         <div key={conversation.id} className="conversation_section">
           <NavLink className="conversation_section_list" to={`/conversation/${conversation.id}`}>
