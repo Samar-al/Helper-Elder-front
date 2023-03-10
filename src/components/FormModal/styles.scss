@@ -28,6 +28,9 @@
       position: absolute;
       top: 0.4em;
       right: 0.5em;
+      &:hover{
+        cursor: pointer;
+      }
     }
 
     .create_conversation, .create_review {
