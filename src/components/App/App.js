@@ -29,10 +29,12 @@ import InfoModal from '../InfoModal/InfoModal';
 import LegalMentions from '../LegalMentions/LegalMentions';
 import Registration from '../Registration/Registration';
 import NotFound from '../NotFound/NotFound';
+import { loadConversations } from '../../actions/conversation';
 
 function App() {
   const dispatch = useDispatch();
   const { redirectPath, largeFontSize, infoMessages } = useSelector((state) => state.app);
+  const { user } = useSelector((state) => state.authentication);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -41,6 +43,7 @@ function App() {
     () => {
       // loading services for searchbar and post creation form
       dispatch(loadServices());
+      if (user) dispatch(loadConversations());
     },
     [],
   );

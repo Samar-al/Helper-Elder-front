@@ -83,6 +83,7 @@ export default function Header() {
             <li className="header_nav_item slideInDown-4">
               <NavLink
                 to="/conversation"
+                onClick={() => dispatch(closeBurger())}
                 className={({ isActive }) => (isActive ? 'header_nav_link header_nav_link-active' : 'header_nav_link')}
               >
                 Mes Conversations
