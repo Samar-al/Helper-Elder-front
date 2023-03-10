@@ -6,7 +6,6 @@ import {
   RadioGroup,
   TextField,
 } from '@mui/material';
-// import { DatePicker } from '@mui/x-date-pickers';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -105,8 +104,8 @@ export default function Registration() {
         <form onSubmit={(e) => submitForm(e)}>
           <div className="registration_form_radio">
             <RadioGroup row name="radio_button_group" value={selectedTypeNewUser} onChange={(event) => dispatch(selectNewUserType(event.target.value))}>
-              <FormControlLabel value="1" control={<Radio />} label="Je suis un ELDER (cherche de l'aide)" />
-              <FormControlLabel value="2" control={<Radio />} label="Je suis un HELPER (propose de l'aide)" />
+              <FormControlLabel value="1" control={<Radio sx={{ '&.Mui-checked': { color: '#104b4d' } }} />} label="Je suis un ELDER (cherche de l'aide)" />
+              <FormControlLabel value="2" control={<Radio sx={{ '&.Mui-checked': { color: '#104b4d' } }} />} label="Je suis un HELPER (propose de l'aide)" />
             </RadioGroup>
           </div>
           <div className="registration_form_input">
@@ -133,8 +132,8 @@ export default function Registration() {
           </div>
           <div className="registration_form_radio">
             <RadioGroup row name="radio_button_group" value={selectedGender} onChange={(event) => dispatch(selectNewUserGender(event.target.value))}>
-              <FormControlLabel value="1" control={<Radio />} label="Homme" />
-              <FormControlLabel value="2" control={<Radio />} label="Femme" />
+              <FormControlLabel value="1" control={<Radio sx={{ '&.Mui-checked': { color: '#104b4d' } }} />} label="Homme" />
+              <FormControlLabel value="2" control={<Radio sx={{ '&.Mui-checked': { color: '#104b4d' } }} />} label="Femme" />
             </RadioGroup>
           </div>
           <div className="registration_form_input">

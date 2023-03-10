@@ -74,7 +74,7 @@ export default function Searchbar() {
               The list is not created as long as services are not loaded */}
               {serviceList && serviceList.map((service) => (
                 <MenuItem key={service.name} value={service.id}>
-                  <Checkbox checked={selectedServices.includes(service.id)} />
+                  <Checkbox sx={{ '&.Mui-checked': { color: '#104b4d' } }} checked={selectedServices.includes(service.id)} />
                   <ListItemText primary={service.name} />
                 </MenuItem>
               ))}
