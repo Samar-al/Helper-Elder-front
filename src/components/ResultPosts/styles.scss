@@ -23,6 +23,8 @@
         align-items: center;
         padding: 1em;
         border-right: 1px solid white;
+        min-width: 7em;
+        max-width: 7em;
         &:hover {
           background-color: vars.$main-color;
           border-top-left-radius: 10px;
@@ -59,6 +61,7 @@
         padding: 1em;
         display: flex;
         flex-direction: column;
+        flex: 1;
 
         &:hover {
           background-color: vars.$main-color;
@@ -107,6 +110,20 @@
         }
       }
     }
+
+    &_empty {
+      background-color: vars.$light-color;
+      padding: 1em;
+      margin: 2em;
+      border-radius: 10px;
+      color: white;
+
+      & h2 {
+        font-size: 2em;
+        font-weight: bold;
+        margin-bottom: 1em;
+      }
+    }
   }
 }
 
@@ -116,7 +133,8 @@
 
     &_item {
       &_user {
-        width: 10em;
+        min-width: 10em;
+        max-width: 10em;
         &_picture {
           width: 100px;
         }

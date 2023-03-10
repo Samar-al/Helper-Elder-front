@@ -52,7 +52,7 @@ export default function DetailedPost() {
           <div className="detailed-post_right">
             <div className="detailed-post_right_top">
               <h1 className="detailed-post_right_top_title">{currentPost.title}</h1>
-              <span className="detailed-post_right_top_date">posté le {formatDateWithHour(currentPost.createdAt)}</span>
+              <span className="detailed-post_right_top_date">| {currentPost.user.type === 1 ? 'Demande' : 'Offre' } postée le {formatDateWithHour(currentPost.createdAt)}</span>
             </div>
             <div className="detailed-post_right_content">
               <p className="detailed-post_right_content_text">{currentPost.content}</p>

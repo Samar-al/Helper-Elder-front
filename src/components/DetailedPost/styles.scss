@@ -59,9 +59,11 @@
     margin: 10px;
     justify-content: center;
     flex-wrap: wrap;
+    align-items: center;
 
     &_date {
       font-style: italic;
+      font-size: 0.8em;
     }
   
     &_title {
