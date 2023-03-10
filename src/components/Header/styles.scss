@@ -32,7 +32,11 @@
       linear-gradient(currentColor 0 0) 
       bottom /var(--d, 0) 2px 
       no-repeat;
-    transition: background 0.4s;
+    transition: background 0.4s; 
+
+    &:hover {
+      --d: 100%;
+    }
 
     &--active {
       font-weight: bold;
@@ -84,6 +88,10 @@
       display: block;
       padding: 0.4em;
       font-size: 5vw;
+
+      &:hover {
+        --d: 0%;
+      }
 
       &--active {
         font-weight: bolder;
