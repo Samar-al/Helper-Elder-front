@@ -1,4 +1,4 @@
-export const baseUrl = 'http://localhost:8000/api';
+export const baseUrl = 'https://localhost:8000/api';
 
 export function getHttpAuthHeaders(jwt) {
   return {
