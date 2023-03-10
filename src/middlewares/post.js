@@ -21,7 +21,7 @@ const postMiddleware = (store) => (next) => (action) => {
 
   function filterByServices(post) {
     if (selectedServices.length === 0) return true;
-    if (postType === 'aidant') {
+    if (postType === 'offer') {
       const tagsAsInt = post.tag.map((tag) => tag.id);
       return selectedServices.every((service) => tagsAsInt.includes(service));
     }
@@ -36,7 +36,6 @@ const postMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case SEARCH_POSTS:
-      if (postType !== 'offer' && postType !== 'request') break;
       axios.get(
         // URL
         `${baseUrl}/annonce/${searchUrl()}`,
@@ -44,7 +43,6 @@ const postMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           const arrayPostsFilter = response.data.filter(filterByServices).filter(filterByZipcode);
           store.dispatch(getFilteredPosts(arrayPostsFilter));
-          store.dispatch(redirectAction('/annonce'));
         })
         .catch((error) => {
           console.log(error);
