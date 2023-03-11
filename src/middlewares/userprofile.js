@@ -9,6 +9,7 @@ import {
 import { saveLoggedUser } from '../actions/authentication';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
 import errorManagement from './errorManagement';
+import { loadReviews } from '../actions/review';
 
 const userProfileMiddleware = (store) => (next) => (action) => {
   const currentState = store.getState();
@@ -52,6 +53,7 @@ const userProfileMiddleware = (store) => (next) => (action) => {
           }
           else {
             store.dispatch(savePageUser(response.data));
+            store.dispatch(loadReviews(response.data.id));
           }
         })
         .catch((error) => {

@@ -20,6 +20,7 @@ export default function UserProfile() {
   const { currentPageUser } = useSelector((state) => state.userprofile);
   const { formModalIsVisible } = useSelector((state) => state.app);
   const { conversationList } = useSelector((state) => state.conversation);
+  const { currentReviews } = useSelector((state) => state.review);
   const location = useLocation();
   const isMyProfile = location.pathname === '/mon-profil';
   const navigate = useNavigate();
@@ -43,14 +44,14 @@ export default function UserProfile() {
   useEffect(
     () => {
       if (Number(location.pathname.split('/').pop()) === user.id) dispatch(redirectAction('/mon-profil'));
-      else if (!isMyProfile) dispatch(fetchPageUser(location.pathname.split('/').pop()));
+      else dispatch(fetchPageUser(isMyProfile ? user.id : location.pathname.split('/').pop()));
 
       return () => {
         dispatch(clearPageUser());
         dispatch(convFormClear());
       };
     },
-    [],
+    [location],
   );
 
   return (
@@ -149,9 +150,8 @@ export default function UserProfile() {
         </>
         )}
       </div>
-      {pageUser
-      && pageUser.reviewsTaker.length !== 0
-      && <ReviewPannel reviews={pageUser.reviewsTaker} />}
+      {currentReviews.length !== 0
+      && <ReviewPannel reviews={currentReviews} />}
     </>
   );
 }

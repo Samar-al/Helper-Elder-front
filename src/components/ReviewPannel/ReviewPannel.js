@@ -1,8 +1,15 @@
 import './styles.scss';
 import PropTypes from 'prop-types';
 import { Rating } from '@mui/material';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { getReviews } from '../../actions/review';
 
 export default function ReviewPannel({ reviews }) {
+  const dispatch = useDispatch();
+  useEffect(() => () => dispatch(getReviews([])), []);
+
   return (
     <div className="reviews">
       <div className="reviews_pannel">
@@ -10,8 +17,7 @@ export default function ReviewPannel({ reviews }) {
         {reviews.map((review) => (
           <div className="reviews_pannel_item" key={review.id}>
             <div className="reviews_pannel_item_giver">
-              {/* // TODO display the first name of review giver here */}
-              Avis anonyme
+              <NavLink to={`/profil/${review.author.id}`}>{review.author.firstname}</NavLink>
             </div>
             <div className="reviews_pannel_item_content">
               <div className="reviews_pannel_item_content_rate">

@@ -53,8 +53,8 @@ const conversationMiddleware = (store) => (next) => (action) => {
               lastMessage: response.data[2][i].content,
               updateDate: response.data[0][i].updated_at,
             });
-            store.dispatch(getConversations(conversationList));
           }
+          store.dispatch(getConversations(conversationList));
         })
         .catch((error) => {
           console.log(error);
