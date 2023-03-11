@@ -16,10 +16,11 @@ import { formatDateWithHour } from '../../utils/functions';
 export default function DetailedPost() {
   const dispatch = useDispatch();
   const location = useLocation();
-  const { currentPost, currentReviews } = useSelector((state) => state.post);
+  const { currentPost } = useSelector((state) => state.post);
   const { formModalIsVisible } = useSelector((state) => state.app);
   const { user } = useSelector((state) => state.authentication);
   const { conversationList } = useSelector((state) => state.conversation);
+  const { currentReviews } = useSelector((state) => state.review);
   const navigate = useNavigate();
 
   useEffect(

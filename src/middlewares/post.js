@@ -3,11 +3,10 @@ import axios from 'axios';
 import { displayInfoMessages, redirectAction } from '../actions/app';
 import { createPostFormClear, createPostThrowErrors, SUBMIT_NEW_POST } from '../actions/createpostform';
 import { baseUrl, getHttpAuthHeaders } from '../utils/api';
-import {
-  getPost, getReviews, loadReviews, LOAD_POST, LOAD_REVIEWS,
-} from '../actions/detailedpost';
+import { getPost, LOAD_POST } from '../actions/detailedpost';
 import { getFilteredPosts, SEARCH_POSTS } from '../actions/resultposts';
 import errorManagement from './errorManagement';
+import { loadReviews } from '../actions/review';
 
 const postMiddleware = (store) => (next) => (action) => {
   const { adressInput, selectedServices, postType } = store.getState().searchbar;
@@ -59,26 +58,6 @@ const postMiddleware = (store) => (next) => (action) => {
           store.dispatch(getPost(response.data));
           if (store.getState().authentication.user !== null) {
             store.dispatch(loadReviews(response.data.user.id));
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      break;
-
-    case LOAD_REVIEWS:
-      axios.get(
-        // URL
-        `${baseUrl}/profil/${action.userId}`,
-        // header
-        getHttpAuthHeaders(store.getState().authentication.jwt),
-      )
-        .then((response) => {
-          if (response.status !== 200) {
-            console.log('user not found');
-          }
-          else {
-            store.dispatch(getReviews(response.data.reviewsTaker));
           }
         })
         .catch((error) => {
