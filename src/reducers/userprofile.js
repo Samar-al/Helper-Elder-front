@@ -9,6 +9,7 @@ import {
   FILL_USER_EDIT_FORM,
   SAVE_PAGE_USER,
   CLEAR_PAGE_USER,
+  USER_EDIT_FORM_THROW_ERRORS,
 } from '../actions/userprofile';
 
 import { formatDate } from '../utils/functions';
@@ -22,6 +23,7 @@ const initialState = {
   selectedGender: '',
   descriptionInput: '',
   currentPageUser: null,
+  errors: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -81,6 +83,7 @@ const reducer = (state = initialState, action = {}) => {
       };
     case SAVE_PAGE_USER: return { ...state, currentPageUser: action.data };
     case CLEAR_PAGE_USER: return { ...state, currentPageUser: null };
+    case USER_EDIT_FORM_THROW_ERRORS: return { ...state, errors: action.errors };
     default:
       return state;
   }

@@ -12,6 +12,7 @@ export const FILL_USER_EDIT_FORM = 'FILL_USER_EDIT_FORM';
 export const FETCH_PAGE_USER = 'FETCH_PAGE_USER';
 export const SAVE_PAGE_USER = 'SAVE_PAGE_USER';
 export const CLEAR_PAGE_USER = 'CLEAR_PAGE_USER';
+export const USER_EDIT_FORM_THROW_ERRORS = 'USER_EDIT_FORM_THROW_ERRORS';
 
 // Action creator
 export const profileEditTypeFirstname = (value) => ({
@@ -75,4 +76,9 @@ export const savePageUser = (data) => ({
 
 export const clearPageUser = () => ({
   type: CLEAR_PAGE_USER,
+});
+
+export const userEditFormThrowErrors = (errors) => ({
+  type: USER_EDIT_FORM_THROW_ERRORS,
+  errors: errors,
 });
