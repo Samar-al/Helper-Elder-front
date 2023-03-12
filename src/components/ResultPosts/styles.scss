@@ -34,8 +34,8 @@
 
         &_picture {
           margin-bottom: 0.5em;
-          width: 100px;
-          height: 100px;
+          width: 4em;
+          height: 4em;
 
           &>img {
             border-radius: 50%;
@@ -140,7 +140,10 @@
         min-width: 10em;
         max-width: 10em;
         &_picture {
-          width: 100px;
+          max-width: 100px;
+          min-width: 100px;
+          max-height: 100px;
+          min-height: 100px;
         }
         &_rating {
           &--small {
@@ -160,6 +163,8 @@
     &_item {
       &_user {
         display: none;
+      }
+      &_post {
         border-radius: 10px;
       }
     }
